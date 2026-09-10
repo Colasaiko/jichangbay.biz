@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://jichangbay.biz/sitemap-index.xml

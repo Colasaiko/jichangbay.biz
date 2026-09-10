@@ -1,0 +1,41 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { airports } from '../../data/airports';
+---
+<Layout title="机场套餐对比中心 - 机场湾" description="详细对比全网各大机场套餐价格、线路、流量与特点，一键筛选最适合你的机场。">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <h1 class="text-3xl font-bold mb-8">机场比较中心</h1>
+    <p class="mb-8 text-gray-600 dark:text-gray-400">选择预算、线路与需求，横向对比 29 家机场参数。所有价格为预估参考值，具体以官网为准。</p>
+    
+    <div class="overflow-x-auto">
+      <table class="min-w-full text-sm text-left whitespace-nowrap bg-white dark:bg-midnight shadow-sm rounded-xl overflow-hidden">
+        <thead class="bg-gray-50 dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
+          <tr>
+            <th class="p-4 font-bold">品牌</th>
+            <th class="p-4 font-bold">起步价/月</th>
+            <th class="p-4 font-bold">基础流量</th>
+            <th class="p-4 font-bold">线路类型</th>
+            <th class="p-4 font-bold">流媒体</th>
+            <th class="p-4 font-bold">AI</th>
+            <th class="p-4 font-bold">操作</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+          {airports.map(airport => (
+            <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50">
+              <td class="p-4 font-bold"><a href={`/airports/${airport.slug}`} class="hover:text-cyan-blue">{airport.name}</a></td>
+              <td class="p-4 text-coral">¥{airport.startingPrice}</td>
+              <td class="p-4">{airport.traffic}</td>
+              <td class="p-4"><span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 rounded text-xs">{airport.lineType}</span></td>
+              <td class="p-4">{airport.streamingSupport}</td>
+              <td class="p-4">{airport.aiSupport}</td>
+              <td class="p-4">
+                <a href={airport.affiliateUrl} target="_blank" rel="sponsored nofollow noopener" class="text-cyan-blue hover:underline">直达官网</a>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</Layout>

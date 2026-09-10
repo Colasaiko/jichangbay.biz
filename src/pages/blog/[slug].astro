@@ -1,0 +1,34 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+<Layout title={`${post.data.title} - 机场湾`} description={post.data.description}>
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <nav class="text-sm mb-6 text-gray-500">
+      <a href="/" class="hover:text-cyan-blue">首页</a> &gt; 
+      <a href="/blog" class="hover:text-cyan-blue">博客</a> &gt; 
+      <span class="text-gray-800 dark:text-gray-200">{post.data.title}</span>
+    </nav>
+    <article class="prose dark:prose-invert max-w-none">
+      <Content />
+    </article>
+    <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800">
+      <h3 class="font-bold mb-4">推荐阅读</h3>
+      <div class="flex gap-4">
+        <a href="/airports" class="px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded hover:text-cyan-blue">查看机场推荐排行</a>
+        <a href="/questions" class="px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded hover:text-cyan-blue">常见问题解答</a>
+      </div>
+    </div>
+  </div>
+</Layout>

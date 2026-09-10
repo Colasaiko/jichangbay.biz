@@ -1,0 +1,25 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog');
+posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+<Layout title="机场湾博客 - 最新测速与教程" description="最新机场测速报告、科学上网教程与客户端配置指南。">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <h1 class="text-3xl font-bold mb-8">最新文章</h1>
+    <div class="space-y-6">
+      {posts.map(post => (
+        <article class="bg-white dark:bg-midnight p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800">
+          <span class="text-xs text-cyan-blue font-bold tracking-wider uppercase mb-2 block">{post.data.category}</span>
+          <h2 class="text-xl font-bold mb-2"><a href={`/blog/${post.slug}`} class="hover:text-cyan-blue transition">{post.data.title}</a></h2>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">{post.data.description}</p>
+          <div class="flex items-center justify-between text-sm text-gray-500">
+            <span>{post.data.pubDate.toLocaleDateString('zh-CN')}</span>
+            <a href={`/blog/${post.slug}`} class="text-cyan-blue hover:underline">阅读全文 &rarr;</a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</Layout>

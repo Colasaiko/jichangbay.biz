@@ -1,0 +1,25 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { airports } from '../../data/airports';
+---
+<Layout title="2026 机场品牌大全 - 机场湾" description="收录 29 个主流机场品牌，提供详细的套餐价格、线路特点、测速数据与优惠码。">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <h1 class="text-3xl font-bold mb-8">2026 机场品牌大全 (共 {airports.length} 个)</h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {airports.map(airport => (
+        <div class="bg-white dark:bg-midnight p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800">
+          <h2 class="text-xl font-bold mb-2"><a href={`/airports/${airport.slug}`} class="hover:text-cyan-blue">{airport.name}</a></h2>
+          <div class="space-y-2 text-sm text-gray-600 dark:text-gray-400 mb-4">
+            <p>起步价: <span class="text-coral font-bold">¥{airport.startingPrice}/月</span></p>
+            <p>线路类型: {airport.lineType}</p>
+            <p>AI支持: {airport.aiSupport}</p>
+          </div>
+          <div class="flex justify-between items-center">
+             <a href={`/airports/${airport.slug}`} class="text-cyan-blue text-sm hover:underline">查看详情</a>
+             <a href={airport.affiliateUrl} target="_blank" rel="sponsored nofollow noopener" class="px-4 py-2 bg-coral hover:bg-red-500 text-white rounded text-sm transition">前往官网</a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</Layout>

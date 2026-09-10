@@ -1,0 +1,28 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { airports } from '../../data/airports';
+const sorted = [...airports].sort(() => 0.5 - Math.random()).slice(0, 5);
+---
+<Layout title="Clash机场推荐：完美支持Clash订阅的机场推荐 - 机场湾" description="完美支持Clash订阅的机场推荐，精选 2026 年最适合此场景的机场品牌，包含详细测试与优惠码。">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <h1 class="text-3xl font-bold mb-6">Clash机场推荐</h1>
+    <div class="prose dark:prose-invert max-w-none mb-12">
+      <p>完美支持Clash订阅的机场推荐。在本专题中，我们针对该需求严格筛选了市面上表现优异的品牌，为您提供客观的购买建议。</p>
+    </div>
+    
+    <div class="space-y-6">
+      {sorted.map(airport => (
+        <div class="bg-white dark:bg-midnight p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 flex flex-col md:flex-row justify-between items-center">
+          <div class="mb-4 md:mb-0">
+            <h2 class="text-xl font-bold mb-2"><a href={`/airports/${airport.slug}`} class="hover:text-cyan-blue">{airport.name}</a></h2>
+            <p class="text-sm text-gray-600 dark:text-gray-400">起步价: <span class="text-coral">¥{airport.startingPrice}/月</span> | 线路: {airport.lineType}</p>
+          </div>
+          <div class="flex space-x-3">
+             <a href={`/airports/${airport.slug}`} class="px-4 py-2 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded transition">详细评测</a>
+             <a href={airport.affiliateUrl} target="_blank" rel="sponsored nofollow noopener" class="px-4 py-2 bg-cyan-blue hover:bg-blue-600 text-white rounded transition">前往官网</a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</Layout>
