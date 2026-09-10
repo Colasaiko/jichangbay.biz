@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { airports } from '../../data/airports';
+import { getRankedAirports } from '../../utils/airportRanking';
 
   const getDisplayPrice = (airport: any) => {
     if (airport.monthlyStartingPrice !== null) return `¥${airport.monthlyStartingPrice}/月起`;
@@ -18,7 +19,7 @@ import { airports } from '../../data/airports';
   };
 
 import StructuredData from '../../components/StructuredData.astro';
-const filtered = airports.filter(a => (a.monthlyStartingPrice || 999) >= 15 && (a.monthlyStartingPrice || 999) <= 45).slice(0, 8);;
+const filtered = getRankedAirports().slice(0, 8);;
 ---
 <Layout title="2026机场推荐：2026机场怎么选？最新真实测评 - 机场湾" description="在 2026 年，单纯看价格已经不能满足需求，我们更应该关注线路类型、流媒体解锁以及 AI 兼容性。本专题汇聚了 2026 年表现最稳定、综合性价比最高的主力机场品牌。 结合价格、线路和测速数据的客观购买建议。">
   <StructuredData type="BreadcrumbList" data={{

@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { airports } from '../../data/airports';
+import { getRankedAirports } from '../../utils/airportRanking';
 
   const getDisplayPrice = (airport: any) => {
     if (airport.monthlyStartingPrice !== null) return `¥${airport.monthlyStartingPrice}/月起`;
@@ -18,7 +19,7 @@ import { airports } from '../../data/airports';
   };
 
 import StructuredData from '../../components/StructuredData.astro';
-const filtered = airports.filter(a => a.lineType.includes("IPLC") || a.lineType.includes("IEPL")).slice(0, 8);;
+const filtered = getRankedAirports().slice(0, 8);;
 ---
 <Layout title="稳定机场推荐：稳定机场怎么选？最新真实测评 - 机场湾" description="不晚高峰卡顿的稳定机场，适合重度跨国工作者、外贸人士。这里过滤掉了低端普通中转，只保留了使用专线或高级 BGP 优化的老牌大厂。 结合价格、线路和测速数据的客观购买建议。">
   <StructuredData type="BreadcrumbList" data={{
