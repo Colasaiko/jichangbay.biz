@@ -5,7 +5,7 @@ import { getCollection } from 'astro:content';
 
 const featuredAirports = airports.slice(0, 8);
 const posts = await getCollection('blog');
-const latestPosts = posts.slice(0, 4);
+const latestPosts = [...posts].sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()).slice(0, 4);
 ---
 <Layout title="2026 机场推荐：稳定、便宜与专线机场排行榜 - 机场湾" description="2026最新机场推荐、稳定机场、便宜梯子、VPN、Clash节点与流媒体解锁指南。全网最详尽的测速数据与购买建议。">
   <!-- 1. Hero & 2. 2026 更新状态 -->
@@ -13,7 +13,7 @@ const latestPosts = posts.slice(0, 4);
     <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 32px 32px;"></div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col md:flex-row items-center">
       <div class="md:w-1/2 pr-8">
-        <span class="inline-block py-1 px-3 rounded-full bg-cyan-blue/20 text-cyan-blue border border-cyan-blue/30 text-sm font-semibold mb-6 shadow-sm">🚀 2026 年最新测速数据已同步 · 收录 29 个品牌</span>
+        <span class="inline-block py-1 px-3 rounded-full bg-cyan-blue/20 text-cyan-blue border border-cyan-blue/30 text-sm font-semibold mb-6 shadow-sm">🚀 2026 年资料持续更新 · 严选收录 29 个品牌</span>
         <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">2026 机场推荐与<br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-blue to-coral">网络加速器</span>选择指南</h1>
         <p class="text-lg text-gray-300 mb-8 leading-relaxed">在这个信息爆炸的时代，打破网络边界是每个数字公民的必修课。从极致稳定的 IPLC 专线到性价比爆棚的便宜中转，我们为你提供最真实的数据参考。</p>
         <div class="flex flex-wrap gap-4">
@@ -31,7 +31,7 @@ const latestPosts = posts.slice(0, 4);
             <div class="flex justify-between items-center"><span class="text-sm text-gray-300 font-medium">ChatGPT 原生纯净度</span><div class="w-48 h-2.5 bg-gray-700/50 rounded-full overflow-hidden border border-gray-600/50"><div class="bg-green-500 h-full rounded-full" style="width: 98%"></div></div></div>
             <div class="flex justify-between items-center"><span class="text-sm text-gray-300 font-medium">均值性价比指数</span><div class="w-48 h-2.5 bg-gray-700/50 rounded-full overflow-hidden border border-gray-600/50"><div class="bg-coral h-full rounded-full" style="width: 85%"></div></div></div>
           </div>
-          <div class="mt-6 pt-4 border-t border-white/10 text-xs text-gray-400 text-center">系统每 24 小时根据全网 29 个节点表现动态更新权重</div>
+          <div class="mt-6 pt-4 border-t border-white/10 text-xs text-gray-400 text-center">根据收录品牌资料与编辑规则定期人工整理</div>
         </div>
       </div>
     </div>

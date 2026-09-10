@@ -1,6 +1,6 @@
 ---
 export interface Props {
-  type: 'WebSite' | 'Organization' | 'Article' | 'FAQPage';
+  type: 'WebSite' | 'Organization' | 'Article' | 'FAQPage' | 'BreadcrumbList';
   data: any;
 }
 const { type, data } = Astro.props;
@@ -11,4 +11,4 @@ let schemaData = {
   ...data
 };
 ---
-<script type="application/ld+json" set:html={JSON.stringify(schemaData)}></script>
+<script type="application/ld+json" is:inline set:html={JSON.stringify(schemaData)}></script>

@@ -1,9 +1,17 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { airports } from '../../data/airports';
+import StructuredData from '../../components/StructuredData.astro';
 const filtered = airports.filter(a => a.lineType.includes("IPLC") || a.lineType.includes("IEPL")).slice(0, 8);;
 ---
 <Layout title="稳定机场推荐：稳定机场怎么选？最新真实测评 - 机场湾" description="不晚高峰卡顿的稳定机场，适合重度跨国工作者、外贸人士。这里过滤掉了低端普通中转，只保留了使用专线或高级 BGP 优化的老牌大厂。 结合价格、线路和测速数据的客观购买建议。">
+  <StructuredData type="BreadcrumbList" data={{
+        itemListElement: [
+          { "@type": "ListItem", "position": 1, "name": "首页", "item": "https://jichangbay.biz/" },
+          { "@type": "ListItem", "position": 2, "name": "专题推荐", "item": "https://jichangbay.biz/airports" },
+          { "@type": "ListItem", "position": 3, "name": "稳定机场推荐", "item": `https://jichangbay.biz/recommend/${"stable-airport"}` }
+        ]
+      }} />
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <nav class="text-sm mb-6 text-gray-500">
       <a href="/" class="hover:text-cyan-blue">首页</a> &gt; 

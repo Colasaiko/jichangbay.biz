@@ -1,0 +1,84 @@
+import fs from 'fs';
+import path from 'path';
+
+const clients = [
+  { slug: 'clash-verge', name: 'Clash Verge Rev', os: 'Windows / macOS', desc: '目前 Windows 平台最推荐的开源代理工具。' },
+  { slug: 'mihomo', name: 'Mihomo Party', os: 'Windows / macOS', desc: '基于 Mihomo (原 Clash Meta) 内核的图形化客户端，支持所有最新协议。' },
+  { slug: 'shadowrocket', name: 'Shadowrocket', os: 'iOS / iPadOS', desc: 'iOS 平台最普及的科学上网工具，俗称小火箭。' },
+  { slug: 'v2rayn', name: 'v2rayN', os: 'Windows', desc: 'Windows 上经典的 V2Ray 客户端，支持 Xray 核心。' },
+  { slug: 'v2rayng', name: 'v2rayNG', os: 'Android', desc: 'Android 系统上极简强大的 V2Ray 代理工具。' },
+  { slug: 'quantumult-x', name: 'Quantumult X', os: 'iOS', desc: 'iOS 进阶用户首选，拥有极强的脚本和分流能力。' },
+  { slug: 'surge', name: 'Surge', os: 'macOS / iOS', desc: 'Apple 生态下最顶级的网络抓包与代理工具。' },
+  { slug: 'stash', name: 'Stash', os: 'iOS', desc: 'iOS 上的 Clash 规则兼容客户端。' },
+  { slug: 'sing-box', name: 'sing-box', os: '全平台', desc: '下一代通用代理平台内核，轻量且高性能。' },
+  { slug: 'hiddify', name: 'Hiddify Next', os: '全平台', desc: '基于 sing-box，全平台界面统一，开箱即用。' }
+];
+
+clients.forEach(c => {
+  const content = `---
+import Layout from '../../../layouts/Layout.astro';
+import StructuredData from '../../../components/StructuredData.astro';
+---
+<Layout title="${c.name} 下载与使用教程 - 机场湾" description="${c.desc}">
+  <StructuredData type="BreadcrumbList" data={{
+    itemListElement: [
+      { "@type": "ListItem", "position": 1, "name": "首页", "item": "https://jichangbay.biz/" },
+      { "@type": "ListItem", "position": 2, "name": "客户端下载", "item": "https://jichangbay.biz/clients/" },
+      { "@type": "ListItem", "position": 3, "name": "${c.name}", "item": "https://jichangbay.biz/clients/${c.slug}" }
+    ]
+  }} />
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <nav class="text-sm mb-8 text-gray-500 font-medium">
+      <a href="/" class="hover:text-cyan-blue">首页</a> <span class="mx-2">/</span> 
+      <a href="/clients" class="hover:text-cyan-blue">客户端中心</a> <span class="mx-2">/</span> 
+      <span class="text-gray-800 dark:text-gray-200">${c.name}</span>
+    </nav>
+
+    <div class="bg-white dark:bg-midnight p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 mb-8">
+      <h1 class="text-3xl font-bold mb-4">${c.name} 详细教程</h1>
+      <p class="text-lg text-gray-600 dark:text-gray-400 mb-6">${c.desc}</p>
+      
+      <div class="flex flex-wrap gap-4 mb-8">
+        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-800 rounded font-medium text-sm">支持系统：${c.os}</span>
+      </div>
+
+      <div class="prose dark:prose-invert max-w-none">
+        <h2>什么是 ${c.name}？</h2>
+        <p>${c.name} 是一款功能强大的第三方代理客户端。它支持多种主流的网络协议（如 VLESS, Trojan, Shadowsocks 等），允许用户通过导入订阅链接，实现智能分流（国内直连，国外代理）。</p>
+
+        <h2>适合谁使用？</h2>
+        <p>如果你使用的是 ${c.os} 设备，且希望拥有一个稳定、持续更新的工具来接管系统的网络流量，那么 ${c.name} 是你的不二之选。</p>
+
+        <h2>订阅导入与基本设置</h2>
+        <ol>
+          <li>从你的机场后台复制订阅链接（通常在仪表盘点击“一键订阅”或“复制 ${c.name} 订阅”）。</li>
+          <li>打开 ${c.name} 客户端，找到“配置”或“订阅”选项卡。</li>
+          <li>将链接粘贴进去并点击“下载”或“更新”。</li>
+          <li>更新成功后，回到主界面或节点列表，选择一个延迟较低的节点。</li>
+          <li>打开总开关（如果是 Windows 推荐开启 TUN 模式或系统代理）。</li>
+        </ol>
+
+        <h2>常见问题排查</h2>
+        <ul>
+          <li><strong>节点全部超时</strong>：请检查你的订阅是否过期，或者系统时间是否准确。</li>
+          <li><strong>能上 Google 但无法访问某特定网站</strong>：可能是分流规则较旧。尝试在设置中更新 GeoIP 和 GeoSite 数据库。</li>
+        </ul>
+
+        <h2>相关推荐</h2>
+        <p>如果你还在寻找稳定高速的节点，可以查看：</p>
+        <ul>
+          <li><a href="/airports">2026 机场综合推荐排行榜</a></li>
+          <li><a href="/recommend/premium-line">低延迟 IPLC 专线推荐</a></li>
+          <li><a href="https://www.clashwiki.blog/" target="_blank" rel="noopener">ClashWiki 更多图文与高级配置教程</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</Layout>
+`;
+  fs.mkdirSync(`src/pages/clients/${c.slug}`, { recursive: true });
+  fs.writeFileSync(`src/pages/clients/${c.slug}/index.astro`, content);
+});
+
+console.log("Client pages generated.");

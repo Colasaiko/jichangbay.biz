@@ -1,0 +1,61 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import StructuredData from '../../../components/StructuredData.astro';
+---
+<Layout title="Quantumult X 下载与使用教程 - 机场湾" description="iOS 进阶用户首选，拥有极强的脚本和分流能力。">
+  <StructuredData type="BreadcrumbList" data={{
+    itemListElement: [
+      { "@type": "ListItem", "position": 1, "name": "首页", "item": "https://jichangbay.biz/" },
+      { "@type": "ListItem", "position": 2, "name": "客户端下载", "item": "https://jichangbay.biz/clients/" },
+      { "@type": "ListItem", "position": 3, "name": "Quantumult X", "item": "https://jichangbay.biz/clients/quantumult-x" }
+    ]
+  }} />
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <nav class="text-sm mb-8 text-gray-500 font-medium">
+      <a href="/" class="hover:text-cyan-blue">首页</a> <span class="mx-2">/</span> 
+      <a href="/clients" class="hover:text-cyan-blue">客户端中心</a> <span class="mx-2">/</span> 
+      <span class="text-gray-800 dark:text-gray-200">Quantumult X</span>
+    </nav>
+
+    <div class="bg-white dark:bg-midnight p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 mb-8">
+      <h1 class="text-3xl font-bold mb-4">Quantumult X 详细教程</h1>
+      <p class="text-lg text-gray-600 dark:text-gray-400 mb-6">iOS 进阶用户首选，拥有极强的脚本和分流能力。</p>
+      
+      <div class="flex flex-wrap gap-4 mb-8">
+        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-800 rounded font-medium text-sm">支持系统：iOS</span>
+      </div>
+
+      <div class="prose dark:prose-invert max-w-none">
+        <h2>什么是 Quantumult X？</h2>
+        <p>Quantumult X 是一款功能强大的第三方代理客户端。它支持多种主流的网络协议（如 VLESS, Trojan, Shadowsocks 等），允许用户通过导入订阅链接，实现智能分流（国内直连，国外代理）。</p>
+
+        <h2>适合谁使用？</h2>
+        <p>如果你使用的是 iOS 设备，且希望拥有一个稳定、持续更新的工具来接管系统的网络流量，那么 Quantumult X 是你的不二之选。</p>
+
+        <h2>订阅导入与基本设置</h2>
+        <ol>
+          <li>从你的机场后台复制订阅链接（通常在仪表盘点击“一键订阅”或“复制 Quantumult X 订阅”）。</li>
+          <li>打开 Quantumult X 客户端，找到“配置”或“订阅”选项卡。</li>
+          <li>将链接粘贴进去并点击“下载”或“更新”。</li>
+          <li>更新成功后，回到主界面或节点列表，选择一个延迟较低的节点。</li>
+          <li>打开总开关（如果是 Windows 推荐开启 TUN 模式或系统代理）。</li>
+        </ol>
+
+        <h2>常见问题排查</h2>
+        <ul>
+          <li><strong>节点全部超时</strong>：请检查你的订阅是否过期，或者系统时间是否准确。</li>
+          <li><strong>能上 Google 但无法访问某特定网站</strong>：可能是分流规则较旧。尝试在设置中更新 GeoIP 和 GeoSite 数据库。</li>
+        </ul>
+
+        <h2>相关推荐</h2>
+        <p>如果你还在寻找稳定高速的节点，可以查看：</p>
+        <ul>
+          <li><a href="/airports">2026 机场综合推荐排行榜</a></li>
+          <li><a href="/recommend/premium-line">低延迟 IPLC 专线推荐</a></li>
+          <li><a href="https://www.clashwiki.blog/" target="_blank" rel="noopener">ClashWiki 更多图文与高级配置教程</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</Layout>

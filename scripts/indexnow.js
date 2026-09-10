@@ -3,22 +3,14 @@ import path from 'path';
 import { XMLParser } from 'fast-xml-parser';
 
 const host = 'jichangbay.biz';
-const key = 'd4f6084c763cc9357919b4793fb84c3d';
-const keyLocation = `https://${host}/${key}.txt`;
+const keyFile = fs.readdirSync('public').find(f => f.match(/^[a-f0-9]{32}\.txt$/));
+const key = keyFile ? keyFile.replace('.txt', '') : 'd4f6084c763cc9357919b4793fb84c3d';
+const keyLocation = 'https://' + host + '/' + key + '.txt';
 
 async function submitIndexNow() {
   try {
-    const sitemapPath = path.resolve('dist/sitemap-index.xml');
-    if (!fs.existsSync(sitemapPath)) {
-      console.error('Sitemap not found at dist/sitemap-index.xml. Run build first.');
-      return;
-    }
-    
-    // In Astro's generated sitemap, typically it's sitemap-0.xml. We should read the main sitemaps.
-    // We can just grab all URLs from all XML files in dist that start with sitemap
     const files = fs.readdirSync('dist').filter(f => f.startsWith('sitemap') && f.endsWith('.xml'));
     let urls = new Set();
-    
     const parser = new XMLParser();
     
     files.forEach(f => {
@@ -33,28 +25,37 @@ async function submitIndexNow() {
     });
 
     const urlList = Array.from(urls);
-    console.log(`Parsed ${urlList.length} URLs for IndexNow.`);
+    console.log("发现 URL: " + urlList.length);
+    console.log("合法 URL: " + urlList.length);
+    console.log("检查 key: " + keyLocation);
 
     if (urlList.length === 0) return;
 
-    const data = JSON.stringify({
-      host,
-      key,
-      keyLocation,
-      urlList
-    });
+    // Batch processing
+    const batchSize = 100;
+    for (let i = 0; i < urlList.length; i += batchSize) {
+      const batch = urlList.slice(i, i + batchSize);
+      console.log("提交 URL (" + (i + 1) + " - " + (i + batch.length) + "):");
+      
+      const data = JSON.stringify({
+        host,
+        key,
+        keyLocation,
+        urlList: batch
+      });
 
-    const response = await fetch('https://api.indexnow.org/indexnow', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json; charset=utf-8'
-      },
-      body: data
-    });
+      const response = await fetch('https://api.indexnow.org/indexnow', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8'
+        },
+        body: data
+      });
 
-    console.log(`IndexNow HTTP Status: ${response.status}`);
-    if (!response.ok) {
-      console.error('IndexNow Error:', await response.text());
+      console.log("HTTP 状态: " + response.status);
+      if (!response.ok) {
+        console.error('IndexNow Error:', await response.text());
+      }
     }
   } catch (err) {
     console.error('IndexNow Submission Failed:', err);

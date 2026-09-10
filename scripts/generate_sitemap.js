@@ -37,9 +37,17 @@ for (const file of htmlFiles) {
   </url>`;
 }
 
-const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+const sitemap0 = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">` + urls + `
 </urlset>`;
 
-fs.writeFileSync(path.join(distDir, 'sitemap-index.xml'), sitemap);
+const sitemapIndex = `<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap>
+    <loc>https://jichangbay.biz/sitemap-0.xml</loc>
+  </sitemap>
+</sitemapindex>`;
+
+fs.writeFileSync(path.join(distDir, 'sitemap-0.xml'), sitemap0);
+fs.writeFileSync(path.join(distDir, 'sitemap-index.xml'), sitemapIndex);
 console.log('Sitemap generated.');

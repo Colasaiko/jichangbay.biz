@@ -1,7 +1,14 @@
 ---
+import StructuredData from '../../components/StructuredData.astro';
 import Layout from '../../layouts/Layout.astro';
 ---
 <Layout title="主流代理客户端下载与使用教程 - 机场湾" description="Clash Verge, Shadowrocket, v2rayN 等全平台客户端下载地址与图文配置导入教程。">
+  <StructuredData type="BreadcrumbList" data={{
+    itemListElement: [
+      { "@type": "ListItem", "position": 1, "name": "首页", "item": "https://jichangbay.biz/" },
+      { "@type": "ListItem", "position": 2, "name": "客户端下载与教程中心", "item": "https://jichangbay.biz/clients/" }
+    ]
+  }} />
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <div class="text-center mb-16">
       <h1 class="text-4xl font-bold mb-4">客户端下载与教程中心</h1>
@@ -15,10 +22,10 @@ import Layout from '../../layouts/Layout.astro';
         <h2 class="text-2xl font-bold mb-2">Windows 客户端</h2>
         <p class="text-sm text-gray-500 mb-6 h-10">推荐 Windows 10/11 用户使用，支持最新的规则分流引擎。</p>
         <ul class="space-y-3 mb-8">
-          <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-cyan-blue"></span> <strong>Clash Verge Rev</strong> <span class="text-xs px-2 py-0.5 bg-green-100 text-green-700 rounded dark:bg-green-900 dark:text-green-300">强烈推荐</span></li>
-          <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-gray-300 dark:bg-gray-700"></span> <strong>v2rayN</strong></li>
+          <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-cyan-blue"></span> <a href="/clients/clash-verge" class="font-bold hover:text-cyan-blue transition">Clash Verge Rev</a> <span class="text-xs px-2 py-0.5 bg-green-100 text-green-700 rounded dark:bg-green-900 dark:text-green-300">强烈推荐</span></li>
+          <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-gray-300 dark:bg-gray-700"></span> <a href="/clients/v2rayn" class="font-bold hover:text-cyan-blue transition">v2rayN</a></li>
         </ul>
-        <a href="https://www.clashwiki.blog/" target="_blank" rel="noopener" class="block w-full text-center py-2 bg-gray-100 dark:bg-gray-800 hover:bg-cyan-blue hover:text-white rounded-lg transition font-medium">查看图文教程 &rarr;</a>
+        <a href="/clients/clash-verge" class="block w-full text-center py-2 bg-gray-100 dark:bg-gray-800 hover:bg-cyan-blue hover:text-white rounded-lg transition font-medium">Windows 客户端使用指南 &rarr;</a>
       </div>
 
       <!-- macOS -->
@@ -27,10 +34,10 @@ import Layout from '../../layouts/Layout.astro';
         <h2 class="text-2xl font-bold mb-2">macOS 客户端</h2>
         <p class="text-sm text-gray-500 mb-6 h-10">完美适配 Apple Silicon (M1/M2/M3) 及 Intel 芯片。</p>
         <ul class="space-y-3 mb-8">
-          <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-cyan-blue"></span> <strong>ClashX Meta</strong> <span class="text-xs px-2 py-0.5 bg-green-100 text-green-700 rounded dark:bg-green-900 dark:text-green-300">免费首选</span></li>
-          <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-purple-400"></span> <strong>Surge Mac</strong> <span class="text-xs px-2 py-0.5 bg-gray-100 text-gray-700 rounded dark:bg-gray-800 dark:text-gray-300">高级付费</span></li>
+          <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-cyan-blue"></span> <a href="/clients/mihomo" class="font-bold hover:text-cyan-blue transition">Mihomo Party</a> <span class="text-xs px-2 py-0.5 bg-green-100 text-green-700 rounded dark:bg-green-900 dark:text-green-300">免费首选</span></li>
+          <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-purple-400"></span> <a href="/clients/surge" class="font-bold hover:text-cyan-blue transition">Surge</a> <span class="text-xs px-2 py-0.5 bg-gray-100 text-gray-700 rounded dark:bg-gray-800 dark:text-gray-300">高级付费</span></li>
         </ul>
-        <a href="https://www.clashwiki.blog/" target="_blank" rel="noopener" class="block w-full text-center py-2 bg-gray-100 dark:bg-gray-800 hover:bg-cyan-blue hover:text-white rounded-lg transition font-medium">查看图文教程 &rarr;</a>
+        <a href="/clients/mihomo" class="block w-full text-center py-2 bg-gray-100 dark:bg-gray-800 hover:bg-cyan-blue hover:text-white rounded-lg transition font-medium">查看图文教程 &rarr;</a>
       </div>
 
       <!-- iOS -->
@@ -39,10 +46,10 @@ import Layout from '../../layouts/Layout.astro';
         <h2 class="text-2xl font-bold mb-2">iOS / iPadOS</h2>
         <p class="text-sm text-gray-500 mb-6 h-10">需要在非国区 App Store 登录外区 Apple ID 下载。</p>
         <ul class="space-y-3 mb-8">
-          <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-cyan-blue"></span> <strong>Shadowrocket</strong> <span class="text-xs px-2 py-0.5 bg-green-100 text-green-700 rounded dark:bg-green-900 dark:text-green-300">大众首选 ($2.99)</span></li>
-          <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-gray-300 dark:bg-gray-700"></span> <strong>Quantumult X</strong></li>
+          <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-cyan-blue"></span> <a href="/clients/shadowrocket" class="font-bold hover:text-cyan-blue transition">Shadowrocket</a> <span class="text-xs px-2 py-0.5 bg-green-100 text-green-700 rounded dark:bg-green-900 dark:text-green-300">大众首选 ($2.99)</span></li>
+          <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-gray-300 dark:bg-gray-700"></span> <a href="/clients/quantumult-x" class="font-bold hover:text-cyan-blue transition">Quantumult X</a></li>
         </ul>
-        <a href="https://www.clashwiki.blog/" target="_blank" rel="noopener" class="block w-full text-center py-2 bg-gray-100 dark:bg-gray-800 hover:bg-cyan-blue hover:text-white rounded-lg transition font-medium">获取外区 ID 教程 &rarr;</a>
+        <a href="/clients/shadowrocket" class="block w-full text-center py-2 bg-gray-100 dark:bg-gray-800 hover:bg-cyan-blue hover:text-white rounded-lg transition font-medium">iOS 客户端导入教程 &rarr;</a>
       </div>
 
       <!-- Android -->
@@ -51,10 +58,10 @@ import Layout from '../../layouts/Layout.astro';
         <h2 class="text-2xl font-bold mb-2">Android 客户端</h2>
         <p class="text-sm text-gray-500 mb-6 h-10">通过 Google Play 或直接下载 APK 文件安装。</p>
         <ul class="space-y-3 mb-8">
-          <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-cyan-blue"></span> <strong>Clash Meta for Android</strong> <span class="text-xs px-2 py-0.5 bg-green-100 text-green-700 rounded dark:bg-green-900 dark:text-green-300">性能最优</span></li>
-          <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-gray-300 dark:bg-gray-700"></span> <strong>v2rayNG</strong></li>
+          <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-cyan-blue"></span> <a href="/clients/mihomo" class="font-bold hover:text-cyan-blue transition">Clash Meta</a> <span class="text-xs px-2 py-0.5 bg-green-100 text-green-700 rounded dark:bg-green-900 dark:text-green-300">性能最优</span></li>
+          <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-gray-300 dark:bg-gray-700"></span> <a href="/clients/v2rayng" class="font-bold hover:text-cyan-blue transition">v2rayNG</a></li>
         </ul>
-        <a href="https://www.clashwiki.blog/" target="_blank" rel="noopener" class="block w-full text-center py-2 bg-gray-100 dark:bg-gray-800 hover:bg-cyan-blue hover:text-white rounded-lg transition font-medium">查看图文教程 &rarr;</a>
+        <a href="/clients/v2rayng" class="block w-full text-center py-2 bg-gray-100 dark:bg-gray-800 hover:bg-cyan-blue hover:text-white rounded-lg transition font-medium">查看图文教程 &rarr;</a>
       </div>
     </div>
   </div>

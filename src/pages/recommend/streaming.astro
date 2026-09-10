@@ -1,9 +1,17 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { airports } from '../../data/airports';
+import StructuredData from '../../components/StructuredData.astro';
 const filtered = airports.filter(a => a.streamingSupport === "支持").slice(0, 8);;
 ---
 <Layout title="流媒体解锁机场推荐：流媒体解锁机场怎么选？最新真实测评 - 机场湾" description="Netflix、Disney+、HBO Max 全解锁机场推荐。通过 DNS 解锁技术，在电视盒子或手机上畅享 4K 高清内容，无缓冲等待。 结合价格、线路和测速数据的客观购买建议。">
+  <StructuredData type="BreadcrumbList" data={{
+        itemListElement: [
+          { "@type": "ListItem", "position": 1, "name": "首页", "item": "https://jichangbay.biz/" },
+          { "@type": "ListItem", "position": 2, "name": "专题推荐", "item": "https://jichangbay.biz/airports" },
+          { "@type": "ListItem", "position": 3, "name": "流媒体解锁机场推荐", "item": `https://jichangbay.biz/recommend/${"streaming"}` }
+        ]
+      }} />
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <nav class="text-sm mb-6 text-gray-500">
       <a href="/" class="hover:text-cyan-blue">首页</a> &gt; 
