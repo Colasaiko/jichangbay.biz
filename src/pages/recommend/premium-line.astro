@@ -1,24 +1,13 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { airports } from '../../data/airports';
+import { airports } from '../../data/airports'; 
+import { getDisplayPrice } from '../../utils/airportPrice'; 
+import { getRankedAirports } from '../../utils/airportRanking';
 
-  const getDisplayPrice = (airport: any) => {
-    if (airport.monthlyStartingPrice !== null) return `¥${airport.monthlyStartingPrice}/月起`;
-    if (airport.plans && airport.plans.length > 0) {
-      let minQ = Math.min(...airport.plans.map((p: any) => p.quarterly).filter((p: any) => p !== null));
-      if (minQ !== Infinity) return `季付 ¥${minQ} 起`;
-      let minH = Math.min(...airport.plans.map((p: any) => p.semiannual).filter((p: any) => p !== null));
-      if (minH !== Infinity) return `半年付 ¥${minH} 起`;
-      let minA = Math.min(...airport.plans.map((p: any) => p.annual).filter((p: any) => p !== null));
-      if (minA !== Infinity) return `年付 ¥${minA} 起`;
-      let minO = Math.min(...airport.plans.map((p: any) => p.oneTime).filter((p: any) => p !== null));
-      if (minO !== Infinity) return `¥${minO} 一次性`;
-    }
-    return '特惠起步';
-  };
+  
 
 import StructuredData from '../../components/StructuredData.astro';
-const filtered = airports.filter(a => a.lineType.includes("IPLC") || a.lineType.includes("IEPL")).slice(0, 8);;
+const filtered = getRankedAirports().filter(a => a.lineType.includes("IPLC") || a.lineType.includes("IEPL")).slice(0, 8);;
 ---
 <Layout title="专线机场推荐：专线机场怎么选？最新真实测评 - 机场湾" description="IPLC/IEPL 高端专线机场推荐。专线不受 GFW 敏感时期干扰，保证晚高峰测速稳定，是游戏加速与稳定秒开的最佳选择。 结合价格、线路和测速数据的客观购买建议。">
   <StructuredData type="BreadcrumbList" data={{

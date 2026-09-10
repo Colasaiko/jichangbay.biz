@@ -1,6 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { airports } from '../../data/airports';
+import { airports } from '../../data/airports'; 
+import { getDisplayPrice, getMonthlySortPrice } from '../../utils/airportPrice'; 
+import { getRankedAirports } from '../../utils/airportRanking';
 
   const getMinTraffic = (airport: any) => {
     if (airport.plans && airport.plans.length > 0) {
@@ -62,9 +64,9 @@ import { airports } from '../../data/airports';
           </tr>
         </thead>
         <tbody id="compare-tbody" class="divide-y divide-gray-100 dark:divide-gray-800">
-          {airports.map(airport => (
+          {getRankedAirports().map(airport => (
             <tr class="airport-row hover:bg-gray-50 dark:hover:bg-gray-800/50 transition" 
-                data-price={airport.monthlyStartingPrice || 0} 
+                data-price={getMonthlySortPrice(airport)} 
                 data-line={airport.lineType} 
                 data-streaming={airport.streamingSupport}>
               <td class="p-4 font-bold text-lg">
@@ -72,7 +74,7 @@ import { airports } from '../../data/airports';
                   {airport.name}
                 </a>
               </td>
-              <td class="p-4 font-bold text-coral">¥{airport.monthlyStartingPrice || 0}</td>
+              <td class="p-4 font-bold text-coral">{getDisplayPrice(airport)}</td>
               <td class="p-4 text-gray-600 dark:text-gray-400">{getMinTraffic(airport)}</td>
               <td class="p-4"><span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded text-xs font-medium">{airport.lineType}</span></td>
               <td class="p-4"><span class={`px-2 py-1 rounded text-xs ${airport.streamingSupport === '支持' ? 'bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400' : 'bg-gray-100 text-gray-500 dark:bg-gray-800 dark:text-gray-400'}`}>{airport.streamingSupport}</span></td>
