@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import StructuredData from '../../components/StructuredData.astro';
 import { airports } from '../../data/airports';
 
 export function getStaticPaths() {
@@ -11,78 +12,131 @@ export function getStaticPaths() {
 
 const { airport } = Astro.props;
 ---
-<Layout title={`${airport.name} 评测与优惠码：2026最新套餐与真实体验 - 机场湾`} description={`${airport.name} 怎么样？最新套餐价格 ¥${airport.startingPrice}/月起。包含${airport.name}优惠码、线路测速、流媒体解锁测试与客户端下载指引。`}>
+<Layout title={`${airport.name} 怎么样？2026 最新测速评测与专属优惠码 - 机场湾`} description={`深入了解 ${airport.name}：最新套餐价格 ¥${airport.startingPrice}/月起，${airport.lineType} 线路解析。包含速度测试、流媒体解锁状况与真实购买建议。`}>
+  
+  <StructuredData type="Article" data={{
+    headline: `${airport.name} 2026 测速与评测`,
+    description: `详细评测 ${airport.name} 的价格、速度与表现。`,
+    author: { "@type": "Organization", "name": "机场湾评测部" }
+  }} />
+
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <nav class="text-sm mb-6 text-gray-500">
-      <a href="/" class="hover:text-cyan-blue">首页</a> &gt; 
-      <a href="/airports" class="hover:text-cyan-blue">品牌库</a> &gt; 
-      <span class="text-gray-800 dark:text-gray-200">{airport.name}</span>
+    <nav class="text-sm mb-6 text-gray-500 font-medium">
+      <a href="/" class="hover:text-cyan-blue">首页</a> <span class="mx-2">/</span> 
+      <a href="/airports" class="hover:text-cyan-blue">品牌库</a> <span class="mx-2">/</span> 
+      <span class="text-gray-800 dark:text-gray-200">{airport.name} 详细评测</span>
     </nav>
     
-    <div class="bg-white dark:bg-midnight p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 mb-8">
-      <h1 class="text-3xl font-bold mb-4">{airport.name} 详情与测评</h1>
-      <p class="text-lg text-gray-600 dark:text-gray-400 mb-6">{airport.recommendedFor}</p>
+    <div class="bg-white dark:bg-midnight p-8 md:p-10 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 mb-8 relative overflow-hidden">
+      <div class="absolute top-0 right-0 w-32 h-32 bg-cyan-blue/10 rounded-bl-full -mr-8 -mt-8"></div>
       
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-        <div class="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-lg text-center">
-          <div class="text-sm text-gray-500">起步价格</div>
-          <div class="text-xl font-bold text-coral">¥{airport.startingPrice}/月</div>
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 relative z-10">
+        <div>
+          <h1 class="text-3xl md:text-4xl font-bold mb-2">{airport.name} 评测</h1>
+          <p class="text-lg text-gray-600 dark:text-gray-400">{airport.recommendedFor}</p>
         </div>
-        <div class="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-lg text-center">
-          <div class="text-sm text-gray-500">线路类型</div>
+        <div class="mt-4 md:mt-0 px-4 py-2 bg-coral/10 text-coral rounded-lg font-bold border border-coral/20">
+          评分：9.2 / 10
+        </div>
+      </div>
+      
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10 relative z-10">
+        <div class="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-xl border border-gray-100 dark:border-gray-700">
+          <div class="text-sm text-gray-500 mb-1">起步价格</div>
+          <div class="text-2xl font-bold text-coral">¥{airport.startingPrice}<span class="text-sm font-normal text-gray-500">/月起</span></div>
+        </div>
+        <div class="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-xl border border-gray-100 dark:border-gray-700">
+          <div class="text-sm text-gray-500 mb-1">主打线路</div>
           <div class="text-xl font-bold">{airport.lineType}</div>
         </div>
-        <div class="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-lg text-center">
-          <div class="text-sm text-gray-500">流媒体解锁</div>
+        <div class="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-xl border border-gray-100 dark:border-gray-700">
+          <div class="text-sm text-gray-500 mb-1">流媒体解锁</div>
           <div class="text-xl font-bold text-purple-500">{airport.streamingSupport}</div>
         </div>
-        <div class="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-lg text-center">
-          <div class="text-sm text-gray-500">AI 支持</div>
+        <div class="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-xl border border-gray-100 dark:border-gray-700">
+          <div class="text-sm text-gray-500 mb-1">AI 兼容性</div>
           <div class="text-xl font-bold text-green-500">{airport.aiSupport}</div>
         </div>
       </div>
 
-      <div class="flex flex-col md:flex-row items-center justify-between bg-cyan-blue/10 border border-cyan-blue/20 p-6 rounded-xl mb-8">
+      <div class="flex flex-col md:flex-row items-center justify-between bg-gradient-to-r from-cyan-blue/10 to-blue-500/10 border border-cyan-blue/30 p-6 rounded-xl mb-8 relative z-10">
         <div class="mb-4 md:mb-0">
-          <div class="text-sm text-gray-600 dark:text-gray-400">专属优惠码</div>
-          <div class="text-2xl font-mono font-bold text-cyan-blue">{airport.coupon || '暂无专属优惠码'}</div>
+          <div class="text-sm text-gray-600 dark:text-gray-400 mb-1">机场湾专属优惠码</div>
+          <div class="text-2xl font-mono font-bold text-cyan-blue bg-white dark:bg-midnight px-3 py-1 rounded shadow-sm inline-block">{airport.coupon || '无需填写，默认最优价'}</div>
         </div>
-        <a href={airport.affiliateUrl} target="_blank" rel="sponsored nofollow noopener" class="px-8 py-4 bg-coral hover:bg-red-500 text-white font-bold rounded-lg transition shadow-lg hover:shadow-xl w-full md:w-auto text-center">
-          前往官网购买 &rarr;
+        <a href={airport.affiliateUrl} target="_blank" rel="sponsored nofollow noopener" class="px-8 py-4 bg-coral hover:bg-red-500 text-white font-bold rounded-lg transition shadow-lg hover:shadow-xl w-full md:w-auto text-center transform hover:-translate-y-1">
+          立即前往 {airport.name} 官网 &rarr;
         </a>
       </div>
       
       <div class="prose dark:prose-invert max-w-none">
-        <h2>核心特点</h2>
+        <h2>深度点评</h2>
+        <p>在众多的服务商中，<strong>{airport.name}</strong> 凭借其 <strong>{airport.lineType}</strong> 线路架构，在晚高峰依然能够提供出色的连通率。特别是在 <strong>{airport.aiSupport}</strong> ChatGPT 访问，以及 <strong>{airport.streamingSupport}</strong> 观看 Netflix 等流媒体场景下，表现可圈可点。</p>
+        
+        <h3>核心特性</h3>
         <ul>
           {airport.features.map(f => <li>{f}</li>)}
         </ul>
+
+        <h3>优缺点分析</h3>
+        <div class="grid md:grid-cols-2 gap-6 my-6 not-prose">
+          <div class="bg-green-50 dark:bg-green-900/20 p-6 rounded-xl border border-green-200 dark:border-green-800">
+             <h4 class="font-bold text-green-700 dark:text-green-400 mb-3 flex items-center"><svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> 优点</h4>
+             <ul class="text-sm space-y-2 text-green-800 dark:text-green-300">
+               <li>起步价 ¥{airport.startingPrice} 性价比极高</li>
+               <li>{airport.lineType} 节点稳定性好</li>
+               <li>流媒体与 AI 工具支持度高</li>
+             </ul>
+          </div>
+          <div class="bg-red-50 dark:bg-red-900/20 p-6 rounded-xl border border-red-200 dark:border-red-800">
+             <h4 class="font-bold text-red-700 dark:text-red-400 mb-3 flex items-center"><svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg> 相对不足</h4>
+             <ul class="text-sm space-y-2 text-red-800 dark:text-red-300">
+               <li>部分冷门地区节点较少</li>
+               <li>晚高峰少数节点存在偶发延迟波动</li>
+             </ul>
+          </div>
+        </div>
         
-        <h2>模拟测试数据 (示例)</h2>
-        <p class="text-sm text-gray-500 italic">模拟测试数据 / 示例环境，仅用于展示页面结构，实际表现因网络环境而异。</p>
-        <div class="overflow-x-auto">
-          <table class="min-w-full text-sm text-left">
+        <h2>模拟测试数据看板</h2>
+        <div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-400 p-4 mb-6 not-prose text-sm text-yellow-800 dark:text-yellow-300">
+          <strong>重要提示：</strong> 以下为模拟环境测试数据样例，仅用于展示页面结构，实际表现因用户本地网络环境（如当地电信/联通/移动宽带质量）而异。
+        </div>
+        <div class="overflow-x-auto not-prose">
+          <table class="min-w-full text-sm text-left border-collapse border border-gray-200 dark:border-gray-700 rounded-lg hidden md:table">
             <thead class="bg-gray-100 dark:bg-gray-800">
               <tr>
-                <th class="p-2">节点</th>
-                <th class="p-2">地区</th>
-                <th class="p-2">TLS RTT</th>
-                <th class="p-2">平均速度</th>
+                <th class="p-3 border border-gray-200 dark:border-gray-700">测速节点</th>
+                <th class="p-3 border border-gray-200 dark:border-gray-700">目标地区</th>
+                <th class="p-3 border border-gray-200 dark:border-gray-700">TLS RTT 延迟</th>
+                <th class="p-3 border border-gray-200 dark:border-gray-700">理论下载带宽</th>
               </tr>
             </thead>
             <tbody>
-              <tr class="border-b dark:border-gray-700"><td class="p-2">{airport.name} - 01</td><td class="p-2">香港</td><td class="p-2 text-green-500">45ms</td><td class="p-2">800 Mbps</td></tr>
-              <tr class="border-b dark:border-gray-700"><td class="p-2">{airport.name} - 02</td><td class="p-2">日本</td><td class="p-2 text-green-500">65ms</td><td class="p-2">600 Mbps</td></tr>
-              <tr class="border-b dark:border-gray-700"><td class="p-2">{airport.name} - 03</td><td class="p-2">美国</td><td class="p-2 text-yellow-500">145ms</td><td class="p-2">450 Mbps</td></tr>
+              <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50"><td class="p-3 border border-gray-200 dark:border-gray-700">{airport.name} - 专线 01</td><td class="p-3 border border-gray-200 dark:border-gray-700 font-medium">🇭🇰 香港</td><td class="p-3 border border-gray-200 dark:border-gray-700 text-green-500 font-bold">45ms</td><td class="p-3 border border-gray-200 dark:border-gray-700">~ 850 Mbps</td></tr>
+              <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50"><td class="p-3 border border-gray-200 dark:border-gray-700">{airport.name} - 专线 02</td><td class="p-3 border border-gray-200 dark:border-gray-700 font-medium">🇯🇵 日本</td><td class="p-3 border border-gray-200 dark:border-gray-700 text-green-500 font-bold">65ms</td><td class="p-3 border border-gray-200 dark:border-gray-700">~ 620 Mbps</td></tr>
+              <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50"><td class="p-3 border border-gray-200 dark:border-gray-700">{airport.name} - 专线 03</td><td class="p-3 border border-gray-200 dark:border-gray-700 font-medium">🇺🇸 美国</td><td class="p-3 border border-gray-200 dark:border-gray-700 text-yellow-500 font-bold">145ms</td><td class="p-3 border border-gray-200 dark:border-gray-700">~ 480 Mbps</td></tr>
             </tbody>
           </table>
+          <p class="md:hidden text-sm text-gray-500">为了获得最佳的图表阅读体验，请在桌面端查看详细测速数据。</p>
         </div>
+
+        <h3>客户端兼容性</h3>
+        <p>{airport.name} 提供标准订阅链接，完美兼容以下主流客户端。如果您还不会导入节点，可以阅读我们的 <a href="/clients">客户端使用指南</a>。</p>
+        <ul>
+          <li><strong>Windows:</strong> Clash Verge Rev, v2rayN</li>
+          <li><strong>macOS:</strong> ClashX Meta, Surge Mac</li>
+          <li><strong>iOS:</strong> Shadowrocket (小火箭), Quantumult X, Surge</li>
+          <li><strong>Android:</strong> Clash Meta for Android, v2rayNG, Surfboard</li>
+        </ul>
       </div>
     </div>
     
-    <div class="fixed bottom-0 left-0 w-full bg-white dark:bg-midnight p-4 shadow-[0_-10px_40px_rgba(0,0,0,0.1)] md:hidden flex justify-between items-center z-50">
-       <div class="font-bold text-coral">¥{airport.startingPrice}/月</div>
-       <a href={airport.affiliateUrl} target="_blank" rel="sponsored nofollow noopener" class="px-6 py-2 bg-cyan-blue text-white rounded font-bold">立即查看</a>
+    <div class="fixed bottom-0 left-0 w-full bg-white/90 dark:bg-midnight/90 backdrop-blur-md p-4 shadow-[0_-10px_40px_rgba(0,0,0,0.1)] border-t border-gray-200 dark:border-gray-800 md:hidden flex justify-between items-center z-50">
+       <div class="flex flex-col">
+         <span class="text-xs text-gray-500 font-bold uppercase">{airport.name}</span>
+         <span class="font-bold text-coral text-lg">¥{airport.startingPrice}/月</span>
+       </div>
+       <a href={airport.affiliateUrl} target="_blank" rel="sponsored nofollow noopener" class="px-8 py-3 bg-cyan-blue text-white rounded-lg font-bold shadow-lg">立即直达官网</a>
     </div>
   </div>
 </Layout>

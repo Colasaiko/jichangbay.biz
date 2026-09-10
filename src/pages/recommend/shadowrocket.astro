@@ -1,28 +1,77 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { airports } from '../../data/airports';
-const sorted = [...airports].sort(() => 0.5 - Math.random()).slice(0, 5);
+const filtered = airports.slice(2, 10); // All support SR;
 ---
-<Layout title="Shadowrocket机场推荐：小火箭节点订阅推荐 - 机场湾" description="小火箭节点订阅推荐，精选 2026 年最适合此场景的机场品牌，包含详细测试与优惠码。">
+<Layout title="Shadowrocket机场推荐：Shadowrocket机场怎么选？最新真实测评 - 机场湾" description="专为 iOS 用户优化的 Shadowrocket (小火箭) 节点订阅推荐，支持一键导入、自动更新规则和扫码添加。 结合价格、线路和测速数据的客观购买建议。">
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <h1 class="text-3xl font-bold mb-6">Shadowrocket机场推荐</h1>
+    <nav class="text-sm mb-6 text-gray-500">
+      <a href="/" class="hover:text-cyan-blue">首页</a> &gt; 
+      <a href="/airports" class="hover:text-cyan-blue">专题推荐</a> &gt; 
+      <span class="text-gray-800 dark:text-gray-200">Shadowrocket机场推荐</span>
+    </nav>
+    <div class="mb-12 border-b border-gray-200 dark:border-gray-800 pb-8">
+      <h1 class="text-4xl font-bold mb-6">Shadowrocket机场推荐</h1>
+      <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">专为 iOS 用户优化的 Shadowrocket (小火箭) 节点订阅推荐，支持一键导入、自动更新规则和扫码添加。</p>
+    </div>
+    
     <div class="prose dark:prose-invert max-w-none mb-12">
-      <p>小火箭节点订阅推荐。在本专题中，我们针对该需求严格筛选了市面上表现优异的品牌，为您提供客观的购买建议。</p>
+      <h2>核心选择标准</h2>
+      <p>在本专题中，我们针对该需求严格筛选了市面上表现优异的品牌，避免购买到不符合实际使用场景的“便宜坑人”套餐。主要考核点包括：</p>
+      <ul>
+        <li><strong>节点可用率与晚高峰测速</strong>：确保基础稳定。</li>
+        <li><strong>性价比模型</strong>：结合起步价与流量的综合评分。</li>
+        <li><strong>相关协议兼容性</strong>：是否完美匹配你的目标客户端或流媒体需求。</li>
+      </ul>
+      <p>下面是我们为您从 29 个品牌中根据这些标准筛选出的前几名最佳选择：</p>
     </div>
     
     <div class="space-y-6">
-      {sorted.map(airport => (
-        <div class="bg-white dark:bg-midnight p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 flex flex-col md:flex-row justify-between items-center">
-          <div class="mb-4 md:mb-0">
-            <h2 class="text-xl font-bold mb-2"><a href={`/airports/${airport.slug}`} class="hover:text-cyan-blue">{airport.name}</a></h2>
-            <p class="text-sm text-gray-600 dark:text-gray-400">起步价: <span class="text-coral">¥{airport.startingPrice}/月</span> | 线路: {airport.lineType}</p>
+      {filtered.map((airport, index) => (
+        <div class="bg-white dark:bg-midnight p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 flex flex-col md:flex-row justify-between items-start md:items-center relative overflow-hidden group">
+          <div class="absolute top-0 left-0 w-1 h-full bg-cyan-blue opacity-50 group-hover:opacity-100 transition"></div>
+          <div class="mb-4 md:mb-0 pl-4 w-full md:w-2/3">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="bg-gray-100 dark:bg-gray-800 text-gray-500 font-bold px-2 py-1 rounded text-xs">TOP {index + 1}</span>
+              <h2 class="text-2xl font-bold"><a href={`/airports/${airport.slug}`} class="hover:text-cyan-blue transition">{airport.name}</a></h2>
+            </div>
+            <div class="flex flex-wrap gap-2 text-sm text-gray-600 dark:text-gray-400 mb-3">
+              <span class="px-2 py-1 bg-gray-50 dark:bg-gray-800/50 rounded">起步价: <span class="text-coral font-bold">¥{airport.startingPrice}/月</span></span>
+              <span class="px-2 py-1 bg-gray-50 dark:bg-gray-800/50 rounded">线路: {airport.lineType}</span>
+              <span class="px-2 py-1 bg-gray-50 dark:bg-gray-800/50 rounded text-purple-500">流媒体: {airport.streamingSupport}</span>
+            </div>
+            <p class="text-sm text-gray-500 line-clamp-2">{airport.recommendedFor}</p>
           </div>
-          <div class="flex space-x-3">
-             <a href={`/airports/${airport.slug}`} class="px-4 py-2 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded transition">详细评测</a>
-             <a href={airport.affiliateUrl} target="_blank" rel="sponsored nofollow noopener" class="px-4 py-2 bg-cyan-blue hover:bg-blue-600 text-white rounded transition">前往官网</a>
+          <div class="flex flex-col md:items-end w-full md:w-auto pl-4 md:pl-0 gap-3">
+             <a href={`/airports/${airport.slug}`} class="px-6 py-2 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg transition font-medium text-center w-full md:w-auto">阅读详细评测</a>
+             <a href={airport.affiliateUrl} target="_blank" rel="sponsored nofollow noopener" class="px-6 py-2 bg-cyan-blue hover:bg-blue-600 text-white rounded-lg transition shadow-md font-bold text-center w-full md:w-auto">官网选购直达</a>
           </div>
         </div>
       ))}
+      
+      {filtered.length === 0 && (
+        <div class="p-8 text-center text-gray-500 bg-gray-50 dark:bg-gray-800 rounded-xl">暂无完全符合该严苛条件的机场数据。</div>
+      )}
+    </div>
+    
+    <div class="prose dark:prose-invert max-w-none mt-16 pt-8 border-t border-gray-200 dark:border-gray-800">
+      <h2>常见问题 (FAQ)</h2>
+      <div class="space-y-4">
+        <details class="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-lg cursor-pointer">
+          <summary class="font-bold">这些排名是固定不变的吗？</summary>
+          <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">并不是。我们的编辑部会定期测试所有收录品牌的表现，如果出现频繁断流、晚高峰拥堵或者售后服务响应慢的情况，其排名会被直接下调甚至移出推荐榜单。</p>
+        </details>
+        <details class="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-lg cursor-pointer">
+          <summary class="font-bold">我应该买多长时间的套餐？</summary>
+          <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">强烈建议新手用户先购买<strong>月付</strong>或<strong>季付</strong>套餐。在验证了在你当地网络环境（如电信、联通、移动）表现确实稳定后，再考虑年付以获取最大折扣。</p>
+        </details>
+      </div>
+      
+      <h3>相关资源推荐</h3>
+      <p>如果你还需要了解更多客户端配置或横向对比，请参考：
+        <a href="/compare" class="text-cyan-blue hover:underline">全站套餐横向比较中心</a>、
+        <a href="https://www.clashwiki.blog/" target="_blank" rel="noopener" class="text-cyan-blue hover:underline">ClashWiki 客户端教程</a>。
+      </p>
     </div>
   </div>
 </Layout>

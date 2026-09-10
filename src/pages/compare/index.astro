@@ -2,35 +2,76 @@
 import Layout from '../../layouts/Layout.astro';
 import { airports } from '../../data/airports';
 ---
-<Layout title="机场套餐对比中心 - 机场湾" description="详细对比全网各大机场套餐价格、线路、流量与特点，一键筛选最适合你的机场。">
+<Layout title="2026 机场套餐参数详细对比中心 - 机场湾" description="详细对比全网各大机场套餐价格、线路、流量与特点，一键筛选最适合你的机场。">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <h1 class="text-3xl font-bold mb-8">机场比较中心</h1>
-    <p class="mb-8 text-gray-600 dark:text-gray-400">选择预算、线路与需求，横向对比 29 家机场参数。所有价格为预估参考值，具体以官网为准。</p>
+    <div class="mb-12 border-b border-gray-200 dark:border-gray-800 pb-8">
+      <h1 class="text-4xl font-bold mb-4">机场参数比较中心</h1>
+      <p class="text-lg text-gray-600 dark:text-gray-400">选择预算、线路与需求，横向动态对比 29 家机场参数。所有价格为预估参考值，具体以官网为准。</p>
+    </div>
+    
+    <div class="bg-white dark:bg-midnight p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800 mb-8 flex flex-col md:flex-row gap-6">
+      <div class="flex-1">
+        <label class="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">最高预算</label>
+        <select id="filter-price" class="w-full bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-2 text-sm text-gray-800 dark:text-gray-200">
+          <option value="999">全部价格</option>
+          <option value="15">¥15 以下</option>
+          <option value="20">¥20 以下</option>
+          <option value="30">¥30 以下</option>
+        </select>
+      </div>
+      <div class="flex-1">
+        <label class="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">线路类型</label>
+        <select id="filter-line" class="w-full bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-2 text-sm text-gray-800 dark:text-gray-200">
+          <option value="ALL">全部线路</option>
+          <option value="IPLC">IPLC 专线</option>
+          <option value="IEPL">IEPL 专线</option>
+          <option value="BGP">BGP 优化</option>
+        </select>
+      </div>
+      <div class="flex-1">
+        <label class="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">流媒体解锁</label>
+        <select id="filter-streaming" class="w-full bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-2 text-sm text-gray-800 dark:text-gray-200">
+          <option value="ALL">不限</option>
+          <option value="支持">完全支持</option>
+        </select>
+      </div>
+      <div class="flex-1 flex items-end">
+        <button id="btn-sort-price" class="w-full bg-cyan-blue hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition text-sm">按价格升序排序</button>
+      </div>
+    </div>
     
     <div class="overflow-x-auto">
-      <table class="min-w-full text-sm text-left whitespace-nowrap bg-white dark:bg-midnight shadow-sm rounded-xl overflow-hidden">
-        <thead class="bg-gray-50 dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
+      <table class="min-w-full text-sm text-left whitespace-nowrap bg-white dark:bg-midnight shadow-sm rounded-xl overflow-hidden border border-gray-100 dark:border-gray-800">
+        <thead class="bg-gray-50 dark:bg-gray-800/50 border-b border-gray-100 dark:border-gray-800">
           <tr>
             <th class="p-4 font-bold">品牌</th>
-            <th class="p-4 font-bold">起步价/月</th>
+            <th class="p-4 font-bold text-coral">起步价/月</th>
             <th class="p-4 font-bold">基础流量</th>
             <th class="p-4 font-bold">线路类型</th>
             <th class="p-4 font-bold">流媒体</th>
-            <th class="p-4 font-bold">AI</th>
-            <th class="p-4 font-bold">操作</th>
+            <th class="p-4 font-bold text-green-500">AI支持</th>
+            <th class="p-4 font-bold text-right">操作</th>
           </tr>
         </thead>
-        <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+        <tbody id="compare-tbody" class="divide-y divide-gray-100 dark:divide-gray-800">
           {airports.map(airport => (
-            <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50">
-              <td class="p-4 font-bold"><a href={`/airports/${airport.slug}`} class="hover:text-cyan-blue">{airport.name}</a></td>
-              <td class="p-4 text-coral">¥{airport.startingPrice}</td>
-              <td class="p-4">{airport.traffic}</td>
-              <td class="p-4"><span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 rounded text-xs">{airport.lineType}</span></td>
-              <td class="p-4">{airport.streamingSupport}</td>
-              <td class="p-4">{airport.aiSupport}</td>
-              <td class="p-4">
-                <a href={airport.affiliateUrl} target="_blank" rel="sponsored nofollow noopener" class="text-cyan-blue hover:underline">直达官网</a>
+            <tr class="airport-row hover:bg-gray-50 dark:hover:bg-gray-800/50 transition" 
+                data-price={airport.startingPrice} 
+                data-line={airport.lineType} 
+                data-streaming={airport.streamingSupport}>
+              <td class="p-4 font-bold text-lg">
+                <a href={`/airports/${airport.slug}`} class="hover:text-cyan-blue flex items-center gap-2">
+                  {airport.name}
+                </a>
+              </td>
+              <td class="p-4 font-bold text-coral">¥{airport.startingPrice}</td>
+              <td class="p-4 text-gray-600 dark:text-gray-400">{airport.traffic}</td>
+              <td class="p-4"><span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded text-xs font-medium">{airport.lineType}</span></td>
+              <td class="p-4"><span class={`px-2 py-1 rounded text-xs ${airport.streamingSupport === '支持' ? 'bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400' : 'bg-gray-100 text-gray-500 dark:bg-gray-800 dark:text-gray-400'}`}>{airport.streamingSupport}</span></td>
+              <td class="p-4 text-green-600 dark:text-green-400 font-medium">{airport.aiSupport}</td>
+              <td class="p-4 text-right space-x-2 flex justify-end">
+                <a href={`/airports/${airport.slug}`} class="px-3 py-1 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded transition text-xs">详细测评</a>
+                <a href={airport.affiliateUrl} target="_blank" rel="sponsored nofollow noopener" class="px-3 py-1 bg-coral hover:bg-red-500 text-white rounded transition text-xs shadow-sm">直达官网</a>
               </td>
             </tr>
           ))}
@@ -39,3 +80,56 @@ import { airports } from '../../data/airports';
     </div>
   </div>
 </Layout>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const filterPrice = document.getElementById('filter-price');
+    const filterLine = document.getElementById('filter-line');
+    const filterStreaming = document.getElementById('filter-streaming');
+    const btnSortPrice = document.getElementById('btn-sort-price');
+    const tbody = document.getElementById('compare-tbody');
+    const rows = Array.from(tbody.querySelectorAll('.airport-row'));
+    
+    let isAsc = true;
+
+    function render() {
+      const maxPrice = parseInt(filterPrice.value);
+      const reqLine = filterLine.value;
+      const reqStream = filterStreaming.value;
+      
+      let visibleCount = 0;
+      rows.forEach(row => {
+        const price = parseInt(row.getAttribute('data-price'));
+        const line = row.getAttribute('data-line');
+        const stream = row.getAttribute('data-streaming');
+        
+        let match = true;
+        if (price > maxPrice) match = false;
+        if (reqLine !== 'ALL' && !line.includes(reqLine)) match = false;
+        if (reqStream !== 'ALL' && stream !== reqStream) match = false;
+        
+        row.style.display = match ? '' : 'none';
+        if (match) visibleCount++;
+      });
+    }
+
+    function sortRows() {
+      isAsc = !isAsc;
+      btnSortPrice.textContent = isAsc ? '按价格升序排序' : '按价格降序排序';
+      
+      rows.sort((a, b) => {
+        const pa = parseInt(a.getAttribute('data-price'));
+        const pb = parseInt(b.getAttribute('data-price'));
+        return isAsc ? pa - pb : pb - pa;
+      });
+      
+      rows.forEach(row => tbody.appendChild(row));
+      render();
+    }
+
+    filterPrice.addEventListener('change', render);
+    filterLine.addEventListener('change', render);
+    filterStreaming.addEventListener('change', render);
+    btnSortPrice.addEventListener('click', sortRows);
+  });
+</script>

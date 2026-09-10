@@ -1,0 +1,50 @@
+---
+---
+<header class="bg-fog-white/90 dark:bg-deep-sea/90 backdrop-blur-md shadow-sm sticky top-0 z-50 transition-colors duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+    <a href="/" class="text-xl font-bold text-cyan-blue tracking-tight hover:opacity-80 transition flex items-center gap-2">
+      <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+      机场湾
+    </a>
+    
+    <nav class="hidden lg:flex space-x-6 text-sm font-medium items-center">
+      <a href="/" class="hover:text-cyan-blue transition">首页</a>
+      <a href="/recommend/2026-airport" class="hover:text-cyan-blue transition">2026机场推荐</a>
+      <a href="/airports" class="hover:text-cyan-blue transition">机场排行榜</a>
+      <a href="/compare" class="hover:text-cyan-blue transition">机场对比</a>
+      <a href="/recommend/ladder" class="hover:text-cyan-blue transition">梯子推荐</a>
+      <a href="/recommend/clash" class="hover:text-cyan-blue transition">Clash</a>
+      <a href="/clients" class="hover:text-cyan-blue transition">客户端</a>
+      <a href="/blog" class="hover:text-cyan-blue transition">文章</a>
+      <a href="/questions" class="hover:text-cyan-blue transition">问题百科</a>
+    </nav>
+    
+    <div class="flex items-center space-x-4">
+      <button id="theme-toggle" class="p-2 rounded-md hover:bg-gray-200 dark:hover:bg-midnight transition">
+        <svg class="w-5 h-5 hidden dark:block text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+        <svg class="w-5 h-5 block dark:hidden text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
+      </button>
+      <button id="mobile-menu-btn" class="lg:hidden p-2 text-gray-700 dark:text-gray-300">
+        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="hidden lg:hidden bg-fog-white dark:bg-deep-sea border-t border-gray-200 dark:border-gray-800">
+    <div class="px-4 py-4 space-y-2 flex flex-col font-medium">
+      <a href="/" class="block px-3 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-midnight">首页</a>
+      <a href="/recommend/2026-airport" class="block px-3 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-midnight">2026机场推荐</a>
+      <a href="/airports" class="block px-3 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-midnight">机场排行榜</a>
+      <a href="/compare" class="block px-3 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-midnight">机场对比</a>
+      <a href="/recommend/ladder" class="block px-3 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-midnight">梯子推荐</a>
+      <a href="/clients" class="block px-3 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-midnight">客户端</a>
+      <a href="/blog" class="block px-3 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-midnight">文章</a>
+      <a href="/questions" class="block px-3 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-midnight">问题百科</a>
+    </div>
+  </div>
+</header>
+<script is:inline>
+  document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
+    document.getElementById('mobile-menu')?.classList.toggle('hidden');
+  });
+</script>
