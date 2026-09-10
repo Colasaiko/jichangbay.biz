@@ -1,6 +1,22 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { airports } from '../../data/airports';
+
+  const getDisplayPrice = (airport: any) => {
+    if (airport.monthlyStartingPrice !== null) return `¥${airport.monthlyStartingPrice}/月起`;
+    if (airport.plans && airport.plans.length > 0) {
+      let minQ = Math.min(...airport.plans.map((p: any) => p.quarterly).filter((p: any) => p !== null));
+      if (minQ !== Infinity) return `季付 ¥${minQ} 起`;
+      let minH = Math.min(...airport.plans.map((p: any) => p.semiannual).filter((p: any) => p !== null));
+      if (minH !== Infinity) return `半年付 ¥${minH} 起`;
+      let minA = Math.min(...airport.plans.map((p: any) => p.annual).filter((p: any) => p !== null));
+      if (minA !== Infinity) return `年付 ¥${minA} 起`;
+      let minO = Math.min(...airport.plans.map((p: any) => p.oneTime).filter((p: any) => p !== null));
+      if (minO !== Infinity) return `¥${minO} 一次性`;
+    }
+    return '特惠起步';
+  };
+
 import StructuredData from '../../components/StructuredData.astro';
 const filtered = airports.slice(0, 8); // All support Clash;
 ---
@@ -44,7 +60,7 @@ const filtered = airports.slice(0, 8); // All support Clash;
               <h2 class="text-2xl font-bold"><a href={`/airports/${airport.slug}`} class="hover:text-cyan-blue transition">{airport.name}</a></h2>
             </div>
             <div class="flex flex-wrap gap-2 text-sm text-gray-600 dark:text-gray-400 mb-3">
-              <span class="px-2 py-1 bg-gray-50 dark:bg-gray-800/50 rounded">起步价: <span class="text-coral font-bold">¥{airport.startingPrice}/月</span></span>
+              <span class="px-2 py-1 bg-gray-50 dark:bg-gray-800/50 rounded">起步价: <span class="text-coral font-bold">{getDisplayPrice(airport)}</span></span>
               <span class="px-2 py-1 bg-gray-50 dark:bg-gray-800/50 rounded">线路: {airport.lineType}</span>
               <span class="px-2 py-1 bg-gray-50 dark:bg-gray-800/50 rounded text-purple-500">流媒体: {airport.streamingSupport}</span>
             </div>

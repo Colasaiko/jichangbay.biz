@@ -1,6 +1,14 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { airports } from '../../data/airports';
+
+  const getMinTraffic = (airport: any) => {
+    if (airport.plans && airport.plans.length > 0) {
+      return airport.plans[0].traffic;
+    }
+    return '未知';
+  };
+
 ---
 <Layout title="2026 机场套餐参数详细对比中心 - 机场湾" description="详细对比全网各大机场套餐价格、线路、流量与特点，一键筛选最适合你的机场。">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -56,7 +64,7 @@ import { airports } from '../../data/airports';
         <tbody id="compare-tbody" class="divide-y divide-gray-100 dark:divide-gray-800">
           {airports.map(airport => (
             <tr class="airport-row hover:bg-gray-50 dark:hover:bg-gray-800/50 transition" 
-                data-price={airport.startingPrice} 
+                data-price={airport.monthlyStartingPrice || 0} 
                 data-line={airport.lineType} 
                 data-streaming={airport.streamingSupport}>
               <td class="p-4 font-bold text-lg">
@@ -64,8 +72,8 @@ import { airports } from '../../data/airports';
                   {airport.name}
                 </a>
               </td>
-              <td class="p-4 font-bold text-coral">¥{airport.startingPrice}</td>
-              <td class="p-4 text-gray-600 dark:text-gray-400">{airport.traffic}</td>
+              <td class="p-4 font-bold text-coral">¥{airport.monthlyStartingPrice || 0}</td>
+              <td class="p-4 text-gray-600 dark:text-gray-400">{getMinTraffic(airport)}</td>
               <td class="p-4"><span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded text-xs font-medium">{airport.lineType}</span></td>
               <td class="p-4"><span class={`px-2 py-1 rounded text-xs ${airport.streamingSupport === '支持' ? 'bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400' : 'bg-gray-100 text-gray-500 dark:bg-gray-800 dark:text-gray-400'}`}>{airport.streamingSupport}</span></td>
               <td class="p-4 text-green-600 dark:text-green-400 font-medium">{airport.aiSupport}</td>

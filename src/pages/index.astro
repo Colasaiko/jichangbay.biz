@@ -5,6 +5,27 @@ import { getCollection } from 'astro:content';
 
 const featuredAirports = airports.slice(0, 8);
 const posts = await getCollection('blog');
+
+  const getDisplayPrice = (airport: any) => {
+    if (airport.monthlyStartingPrice !== null) return `¥${airport.monthlyStartingPrice}/月起`;
+    
+    // find lowest available payment
+    if (airport.plans && airport.plans.length > 0) {
+      let minQ = Math.min(...airport.plans.map((p: any) => p.quarterly).filter((p: any) => p !== null));
+      if (minQ !== Infinity) return `季付 ¥${minQ} 起`;
+      
+      let minH = Math.min(...airport.plans.map((p: any) => p.semiannual).filter((p: any) => p !== null));
+      if (minH !== Infinity) return `半年付 ¥${minH} 起`;
+      
+      let minA = Math.min(...airport.plans.map((p: any) => p.annual).filter((p: any) => p !== null));
+      if (minA !== Infinity) return `年付 ¥${minA} 起`;
+      
+      let minO = Math.min(...airport.plans.map((p: any) => p.oneTime).filter((p: any) => p !== null));
+      if (minO !== Infinity) return `¥${minO} 一次性`;
+    }
+    return '价格未知';
+  };
+
 const latestPosts = [...posts].sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()).slice(0, 4);
 ---
 <Layout title="2026 机场推荐：稳定、便宜与专线机场排行榜 - 机场湾" description="2026最新机场推荐、稳定机场、便宜梯子、VPN、Clash节点与流媒体解锁指南。全网最详尽的测速数据与购买建议。">
@@ -91,7 +112,7 @@ const latestPosts = [...posts].sort((a, b) => b.data.pubDate.valueOf() - a.data.
             <div class="grid grid-cols-12 gap-4 p-4 border-b border-gray-50 dark:border-gray-800 items-center hover:bg-gray-50 dark:hover:bg-gray-800/30 transition text-sm">
               <div class="col-span-2 font-bold text-lg text-gray-900 dark:text-white"><a href={`/airports/${airport.slug}`} class="hover:text-cyan-blue flex items-center gap-2">{airport.name}</a></div>
               <div class="col-span-2 text-gray-500 dark:text-gray-400"><span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 rounded text-xs">{airport.recommendedFor}</span></div>
-              <div class="col-span-1 text-coral font-bold text-base">¥{airport.startingPrice}/月</div>
+              <div class="col-span-1 text-coral font-bold text-base">¥{airport.monthlyStartingPrice || 999}/月</div>
               <div class="col-span-1 font-medium">{airport.lineType}</div>
               <div class="col-span-1 text-green-500 font-medium">{airport.aiSupport}</div>
               <div class="col-span-1 text-purple-500 font-medium">{airport.streamingSupport}</div>

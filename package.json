@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro check && astro build && node scripts/generate_sitemap.js",
+    "validate:data": "node scripts/validate-airports.mjs",
+    "build": "npm run validate:data && astro check && astro build && node scripts/generate_sitemap.js",
     "preview": "astro preview",
     "astro": "astro"
   },

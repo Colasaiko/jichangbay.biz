@@ -12,7 +12,7 @@ export function getStaticPaths() {
 
 const { airport } = Astro.props;
 ---
-<Layout title={`${airport.name} 怎么样？2026 最新测速评测与专属优惠码 - 机场湾`} description={`深入了解 ${airport.name}：最新套餐价格 ¥${airport.startingPrice}/月起，${airport.lineType} 线路解析。包含速度测试、流媒体解锁状况与真实购买建议。`}>
+<Layout title={`${airport.name} 怎么样？2026 最新测速评测与专属优惠码 - 机场湾`} description={`深入了解 ${airport.name}：最新套餐价格 ¥${airport.monthlyStartingPrice || 999}/月起，${airport.lineType} 线路解析。包含速度测试、流媒体解锁状况与真实购买建议。`}>
   
   <StructuredData type="BreadcrumbList" data={{
     itemListElement: [
@@ -50,7 +50,7 @@ const { airport } = Astro.props;
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10 relative z-10">
         <div class="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-xl border border-gray-100 dark:border-gray-700">
           <div class="text-sm text-gray-500 mb-1">起步价格</div>
-          <div class="text-2xl font-bold text-coral">¥{airport.startingPrice}<span class="text-sm font-normal text-gray-500">/月起</span></div>
+          <div class="text-2xl font-bold text-coral">¥{airport.monthlyStartingPrice || 999}<span class="text-sm font-normal text-gray-500">/月起</span></div>
         </div>
         <div class="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-xl border border-gray-100 dark:border-gray-700">
           <div class="text-sm text-gray-500 mb-1">主打线路</div>
@@ -90,7 +90,7 @@ const { airport } = Astro.props;
           <div class="bg-green-50 dark:bg-green-900/20 p-6 rounded-xl border border-green-200 dark:border-green-800">
              <h4 class="font-bold text-green-700 dark:text-green-400 mb-3 flex items-center"><svg class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> 优点</h4>
              <ul class="text-sm space-y-2 text-green-800 dark:text-green-300">
-               <li>起步价 ¥{airport.startingPrice} 性价比极高</li>
+               <li>起步价 ¥{airport.monthlyStartingPrice || 999} 性价比极高</li>
                <li>{airport.lineType} 节点稳定性好</li>
                <li>流媒体与 AI 工具支持度高</li>
              </ul>
@@ -141,7 +141,7 @@ const { airport } = Astro.props;
     <div class="fixed bottom-0 left-0 w-full bg-white/90 dark:bg-midnight/90 backdrop-blur-md p-4 shadow-[0_-10px_40px_rgba(0,0,0,0.1)] border-t border-gray-200 dark:border-gray-800 md:hidden flex justify-between items-center z-50">
        <div class="flex flex-col">
          <span class="text-xs text-gray-500 font-bold uppercase">{airport.name}</span>
-         <span class="font-bold text-coral text-lg">¥{airport.startingPrice}/月</span>
+         <span class="font-bold text-coral text-lg">¥{airport.monthlyStartingPrice || 999}/月</span>
        </div>
        <a href={airport.affiliateUrl} target="_blank" rel="sponsored nofollow noopener" class="px-8 py-3 bg-cyan-blue text-white rounded-lg font-bold shadow-lg">立即直达官网</a>
     </div>

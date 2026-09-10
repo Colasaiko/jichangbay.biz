@@ -10,7 +10,7 @@ import { airports } from '../../data/airports';
         <div class="bg-white dark:bg-midnight p-6 rounded-xl shadow-sm border border-gray-100 dark:border-gray-800">
           <h2 class="text-xl font-bold mb-2"><a href={`/airports/${airport.slug}`} class="hover:text-cyan-blue">{airport.name}</a></h2>
           <div class="space-y-2 text-sm text-gray-600 dark:text-gray-400 mb-4">
-            <p>起步价: <span class="text-coral font-bold">¥{airport.startingPrice}/月</span></p>
+            <p>起步价: <span class="text-coral font-bold">¥{airport.monthlyStartingPrice || 999}/月</span></p>
             <p>线路类型: {airport.lineType}</p>
             <p>AI支持: {airport.aiSupport}</p>
           </div>
