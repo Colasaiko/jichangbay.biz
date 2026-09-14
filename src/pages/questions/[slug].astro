@@ -9,7 +9,6 @@ import { getRankedAirports } from '../../utils/airportRanking';
 import { getDisplayPrice } from '../../utils/airportPrice';
 
 export async function getStaticPaths() {
-  // Only generate paths for P0 questions
   const p0Questions = questions.filter((q: any) => q.priority === 'P0');
   
   return p0Questions.map((q: any) => ({
@@ -20,9 +19,9 @@ export async function getStaticPaths() {
 
 const { question } = Astro.props;
 
-// Read markdown content
 let htmlContent = '';
 try {
+  // @ts-ignore
   const mdPath = path.join(process.cwd(), 'src/data/questions_content', `${question.slug}.md`);
   const mdContent = fs.readFileSync(mdPath, 'utf8');
   htmlContent = marked.parse(mdContent) as string;
@@ -33,8 +32,8 @@ try {
 const schemaData = {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": question.question,
-  "description": question.shortAnswer,
+  "headline": question.seoTitle || question.question,
+  "description": question.seoDescription || question.shortAnswer,
   "datePublished": "2026-09-14T08:00:00+08:00",
   "author": {
     "@type": "Organization",
@@ -45,8 +44,8 @@ const schemaData = {
 const topAirports = getRankedAirports().slice(0, 3);
 ---
 <Layout 
-  title={`${question.question} 常见原因与解决方法 - 机场湾`} 
-  description={`${question.shortAnswer} 本文详细解析${question.question}的排查与解决步骤。`}
+  title={question.seoTitle || `${question.question} 常见原因与解决方法 - 机场湾`} 
+  description={question.seoDescription || question.shortAnswer}
 >
   <StructuredData type="Article" data={schemaData} />
   
@@ -92,12 +91,37 @@ const topAirports = getRankedAirports().slice(0, 3);
         <!-- Related Navigation -->
         <div class="mt-12 pt-8 border-t border-gray-100 dark:border-gray-800">
           <h3 class="text-xl font-bold mb-4">继续探索</h3>
-          <div class="flex flex-wrap gap-4">
-            <a href="/recommend/2026-airport/" class="px-4 py-2 bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg text-sm font-medium transition">👉 2026 稳定机场推荐</a>
-            <a href="/recommend/cheap-airport/" class="px-4 py-2 bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg text-sm font-medium transition">👉 便宜机场推荐</a>
-            <a href="/clients/" class="px-4 py-2 bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg text-sm font-medium transition">📱 客户端下载与配置</a>
-            <a href="/recommend/ai/" class="px-4 py-2 bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg text-sm font-medium transition">🤖 ChatGPT 适用节点</a>
+          <div class="flex flex-wrap gap-4 mb-8">
+            {question.relatedArticles && question.relatedArticles.map((article: any) => (
+              <a href={article.url} class="px-4 py-2 bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg text-sm font-medium transition">👉 {article.title}</a>
+            ))}
           </div>
+          
+          {question.relatedQuestions && question.relatedQuestions.length > 0 && (
+            <div class="bg-gray-50 dark:bg-gray-800/50 rounded-xl p-6">
+              <h4 class="font-bold mb-4">相关问题</h4>
+              <ul class="space-y-2">
+                {question.relatedQuestions.map((rqText: string) => {
+                  const rq = questions.find((q: any) => q.question === rqText);
+                  if (rq && rq.priority === 'P0') {
+                    return (
+                      <li>
+                        <a href={`/questions/${rq.slug}/`} class="text-cyan-blue hover:underline block py-1">
+                          {rqText}
+                        </a>
+                      </li>
+                    );
+                  }
+                  return (
+                    <li class="text-gray-600 dark:text-gray-400 py-1 flex justify-between group">
+                      <span>{rqText}</span>
+                      <a href="/questions/" class="text-sm text-cyan-blue opacity-0 group-hover:opacity-100 transition">去问题中心查看 &rarr;</a>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          )}
         </div>
       </article>
 
@@ -109,7 +133,7 @@ const topAirports = getRankedAirports().slice(0, 3);
           </h3>
           <div class="space-y-4">
             {topAirports.map((airport: any, index: number) => (
-              <a href={`/airports/${airport.slug}`} class="block group">
+              <a href={`/airports/${airport.slug}/`} class="block group">
                 <div class="flex justify-between items-center mb-1">
                   <span class="font-bold text-gray-900 dark:text-white group-hover:text-cyan-blue transition">
                     {airport.name}
