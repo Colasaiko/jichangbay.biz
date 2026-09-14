@@ -1,51 +1,181 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import StructuredData from '../../components/StructuredData.astro';
+import { questions } from '../../data/questions';
 
-const faqs = [
-  { q: "机场是什么？为什么不用 VPN？", a: "所谓“机场”，通常是指提供 Shadowsocks、V2Ray、Trojan 等新型代理协议的服务商。相较于传统的 VPN（如 ExpressVPN、NordVPN），机场协议在面对 GFW 的深度包检测（DPI）时具有更强的隐蔽性，速度和稳定性在 2026 年远超传统 VPN。" },
-  { q: "专线机场（IPLC/IEPL）到底好在哪里？", a: "普通的公网中转节点在晚高峰（晚上 8 点至 11 点）会因为公网拥堵导致严重的丢包。而 IPLC（国际私有租用线路）和 IEPL 是通过点对点的物理专线传输，彻底绕过了公网拥堵，能保证全天候的超低延迟与零丢包，是游戏和 4K 秒开的最佳选择。" },
-  { q: "看 Netflix、Disney+ 为什么要专门选流媒体解锁机场？", a: "Netflix 等平台对访问者的 IP 有严格的限制（封锁机房 IP）。如果节点不支持解锁，你将只能看到自制剧，或者完全无法播放。优秀的机场会通过 DNS 劫持等技术解锁流媒体库，让你畅享完整内容。" },
-  { q: "为什么推荐使用 Clash 或 Shadowrocket 而不是官网自带客户端？", a: "大部分商家提供的一键客户端基于老旧内核，且不支持多机场同时订阅。而开源的第三方客户端（如 Clash Verge、Shadowrocket）支持强大的分流规则（国内直连，国外走代理），并且可以随时切换不同商家的节点，安全性与灵活性更高。" },
-  { q: "节点显示超时（Timeout）怎么办？", a: "首先请确认你的订阅是否已过期或流量已用完。其次，尝试在客户端中执行“更新订阅”操作。如果更新后依然全部超时，请登录商家官网查看是否有最新公告或更换订阅链接。" }
-];
-
-const schemaData = {
-  mainEntity: faqs.map(faq => ({
-    "@type": "Question",
-    "name": faq.q,
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": faq.a
-    }
-  }))
-};
+const p0Questions = questions.filter((q: any) => q.priority === 'P0');
+const topSearches = p0Questions.slice(0, 12);
+const categories = Array.from(new Set(questions.map((q: any) => q.category)));
 ---
-<Layout title="机场知识与常见问题百科 - 机场湾" description="新手如何购买和使用梯子？专线和中转的区别是什么？了解最全的科学上网知识与常见问题解答。">
-  <StructuredData type="FAQPage" data={schemaData} />
-  
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <div class="mb-12 text-center">
-      <h1 class="text-4xl font-bold mb-4">常见问题百科 (FAQ)</h1>
-      <p class="text-lg text-gray-600 dark:text-gray-400">汇集了从新手入门到高阶进阶的所有网络工具使用知识。</p>
-    </div>
-    
-    <div class="bg-white dark:bg-midnight rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 p-8">
-      <div class="space-y-6">
-        {faqs.map(faq => (
-          <details class="group bg-gray-50 dark:bg-gray-800/50 rounded-xl p-6 cursor-pointer border border-transparent hover:border-cyan-blue/30 transition">
-            <summary class="font-bold text-lg flex justify-between items-center outline-none">
-              {faq.q}
-              <span class="text-cyan-blue group-open:rotate-180 transition-transform">
-                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-              </span>
-            </summary>
-            <div class="mt-4 text-gray-600 dark:text-gray-400 leading-relaxed border-t border-gray-200 dark:border-gray-700 pt-4">
-              {faq.a}
-            </div>
-          </details>
-        ))}
+<Layout title="机场与网络工具常见问题百科 - 机场湾" description="覆盖机场选择、Clash、小火箭、节点、套餐、ChatGPT、流媒体与常见故障的完整问题与排查指南。">
+  <!-- Hero Section -->
+  <div class="bg-gradient-to-b from-deep-sea to-midnight text-white py-16 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 32px 32px;"></div>
+    <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+      <h1 class="text-3xl md:text-5xl font-bold mb-6">机场与网络工具常见问题百科</h1>
+      <p class="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto">覆盖机场选择、Clash、小火箭、节点、套餐、ChatGPT、流媒体与常见故障。</p>
+      
+      <div class="relative max-w-2xl mx-auto">
+        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+          <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+          </svg>
+        </div>
+        <input type="text" id="search-input" class="block w-full pl-11 pr-4 py-4 rounded-xl text-gray-900 bg-white shadow-lg focus:outline-none focus:ring-2 focus:ring-cyan-blue" placeholder="搜索问题，例如“Clash 全部超时”“100GB够不够”">
       </div>
     </div>
   </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    
+    <!-- Top Searches -->
+    <div class="mb-12">
+      <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">🔥 大家最常找</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {topSearches.map((q: any) => (
+          <a href={`/questions/${q.slug}/`} class="p-4 bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-md border border-gray-100 dark:border-gray-700 transition flex flex-col justify-between group">
+            <h3 class="font-bold text-gray-900 dark:text-white group-hover:text-cyan-blue transition mb-2">{q.question}</h3>
+            <span class="text-xs text-blue-600 bg-blue-50 dark:bg-blue-900/30 dark:text-blue-400 w-max px-2 py-1 rounded">{q.category}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <!-- Main Directory -->
+    <div class="flex flex-col lg:flex-row gap-8">
+      
+      <!-- Categories Sidebar -->
+      <aside class="lg:w-1/4">
+        <div class="sticky top-24 bg-white dark:bg-midnight p-6 rounded-2xl border border-gray-100 dark:border-gray-800">
+          <h3 class="text-lg font-bold mb-4">分类导航</h3>
+          <ul class="space-y-2" id="category-list">
+            <li>
+              <button data-cat="all" class="cat-btn w-full text-left px-4 py-2 rounded-lg bg-cyan-blue text-white font-medium transition">
+                全部 ({questions.length})
+              </button>
+            </li>
+            {categories.map((cat: any) => {
+              const count = questions.filter((q: any) => q.category === cat).length;
+              return (
+                <li>
+                  <button data-cat={cat} class="cat-btn w-full text-left px-4 py-2 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 font-medium transition">
+                    {cat} ({count})
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </aside>
+
+      <!-- Questions List -->
+      <div class="lg:w-3/4">
+        <div id="no-results" class="hidden text-center py-12 text-gray-500">
+          没有找到匹配的问题，尝试换个关键词？
+        </div>
+        
+        <div class="space-y-4" id="questions-container">
+          {questions.map((q: any) => (
+            <div class="q-card bg-white dark:bg-midnight border border-gray-100 dark:border-gray-800 rounded-xl overflow-hidden shadow-sm" data-cat={q.category} data-text={`${q.question.toLowerCase()} ${q.shortAnswer.toLowerCase()} ${q.category.toLowerCase()}`}>
+              
+              {q.priority === 'P0' ? (
+                <div class="p-6">
+                  <div class="flex items-center gap-2 mb-2">
+                    <span class="text-xs font-bold text-red-500 bg-red-50 dark:bg-red-900/30 px-2 py-0.5 rounded">HOT</span>
+                    <span class="text-xs text-gray-500">{q.category}</span>
+                  </div>
+                  <h3 class="text-lg font-bold mb-2">
+                    <a href={`/questions/${q.slug}/`} class="hover:text-cyan-blue">{q.question}</a>
+                  </h3>
+                  <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2">{q.shortAnswer}</p>
+                  <a href={`/questions/${q.slug}/`} class="text-sm font-bold text-cyan-blue hover:underline">查看完整指南 &rarr;</a>
+                </div>
+              ) : (
+                <details class="group">
+                  <summary class="flex justify-between items-center font-medium cursor-pointer list-none p-6 text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-800/50 transition">
+                    <span class="flex flex-col md:flex-row md:items-center gap-2 md:gap-4">
+                      <span class="text-base font-bold">{q.question}</span>
+                      <span class="text-xs text-gray-400 border border-gray-200 dark:border-gray-700 px-2 py-0.5 rounded w-max">{q.category}</span>
+                    </span>
+                    <span class="transition group-open:rotate-180">
+                      <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                    </span>
+                  </summary>
+                  <div class="text-gray-600 dark:text-gray-400 p-6 pt-0 border-t border-gray-50 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-900/20">
+                    <p class="mb-4">{q.shortAnswer}</p>
+                    <!-- Small internal links block for P1/P2 if they mention Clash/Netflix/etc -->
+                    <div class="flex flex-wrap gap-2">
+                      {(q.question.includes('Clash') || q.shortAnswer.includes('Clash')) && <a href="/clients/clash-verge/" class="text-xs text-cyan-blue bg-blue-50 dark:bg-blue-900/30 px-2 py-1 rounded">Clash 下载与教程</a>}
+                      {(q.question.includes('Shadowrocket') || q.shortAnswer.includes('小火箭')) && <a href="/clients/shadowrocket/" class="text-xs text-cyan-blue bg-blue-50 dark:bg-blue-900/30 px-2 py-1 rounded">Shadowrocket 教程</a>}
+                      {(q.question.includes('Netflix') || q.question.includes('流媒体')) && <a href="/recommend/streaming/" class="text-xs text-cyan-blue bg-blue-50 dark:bg-blue-900/30 px-2 py-1 rounded">流媒体机场推荐</a>}
+                      {(q.question.includes('ChatGPT') || q.question.includes('AI')) && <a href="/recommend/ai/" class="text-xs text-cyan-blue bg-blue-50 dark:bg-blue-900/30 px-2 py-1 rounded">ChatGPT 节点推荐</a>}
+                      {(q.category === '套餐与价格') && <a href="/recommend/cheap-airport/" class="text-xs text-cyan-blue bg-blue-50 dark:bg-blue-900/30 px-2 py-1 rounded">便宜机场排行榜</a>}
+                      {(q.category === '线路与节点') && <a href="/recommend/premium-line/" class="text-xs text-cyan-blue bg-blue-50 dark:bg-blue-900/30 px-2 py-1 rounded">专线机场推荐</a>}
+                      <a href="/airports/" class="text-xs text-cyan-blue bg-blue-50 dark:bg-blue-900/30 px-2 py-1 rounded">返回机场大全</a>
+                    </div>
+                  </div>
+                </details>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+      
+    </div>
+  </div>
 </Layout>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('search-input');
+    const catBtns = document.querySelectorAll('.cat-btn');
+    const qCards = document.querySelectorAll('.q-card');
+    const noResults = document.getElementById('no-results');
+    
+    let currentCat = 'all';
+    let currentSearch = '';
+
+    function filter() {
+      let visible = 0;
+      qCards.forEach(card => {
+        const cat = card.getAttribute('data-cat');
+        const text = card.getAttribute('data-text');
+        
+        let matchCat = currentCat === 'all' || cat === currentCat;
+        let matchSearch = currentSearch === '' || text.includes(currentSearch);
+        
+        if (matchCat && matchSearch) {
+          card.style.display = '';
+          visible++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+      
+      if (visible === 0) {
+        noResults.classList.remove('hidden');
+      } else {
+        noResults.classList.add('hidden');
+      }
+    }
+
+    searchInput.addEventListener('input', (e) => {
+      currentSearch = e.target.value.toLowerCase().trim();
+      filter();
+    });
+
+    catBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Update active state
+        catBtns.forEach(b => {
+          b.classList.remove('bg-cyan-blue', 'text-white');
+          b.classList.add('text-gray-600', 'dark:text-gray-400');
+        });
+        btn.classList.add('bg-cyan-blue', 'text-white');
+        btn.classList.remove('text-gray-600', 'dark:text-gray-400');
+        
+        currentCat = btn.getAttribute('data-cat');
+        filter();
+      });
+    });
+  });
+</script>

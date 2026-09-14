@@ -1,0 +1,132 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { questions } from '../../data/questions';
+import fs from 'fs';
+import path from 'path';
+import { marked } from 'marked';
+import StructuredData from '../../components/StructuredData.astro';
+import { getRankedAirports } from '../../utils/airportRanking';
+import { getDisplayPrice } from '../../utils/airportPrice';
+
+export async function getStaticPaths() {
+  // Only generate paths for P0 questions
+  const p0Questions = questions.filter((q: any) => q.priority === 'P0');
+  
+  return p0Questions.map((q: any) => ({
+    params: { slug: q.slug },
+    props: { question: q },
+  }));
+}
+
+const { question } = Astro.props;
+
+// Read markdown content
+let htmlContent = '';
+try {
+  const mdPath = path.join(process.cwd(), 'src/data/questions_content', `${question.slug}.md`);
+  const mdContent = fs.readFileSync(mdPath, 'utf8');
+  htmlContent = marked.parse(mdContent) as string;
+} catch (e) {
+  htmlContent = '<p>内容正在整理中...</p>';
+}
+
+const schemaData = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": question.question,
+  "description": question.shortAnswer,
+  "datePublished": "2026-09-14T08:00:00+08:00",
+  "author": {
+    "@type": "Organization",
+    "name": "机场湾"
+  }
+};
+
+const topAirports = getRankedAirports().slice(0, 3);
+---
+<Layout 
+  title={`${question.question} 常见原因与解决方法 - 机场湾`} 
+  description={`${question.shortAnswer} 本文详细解析${question.question}的排查与解决步骤。`}
+>
+  <StructuredData type="Article" data={schemaData} />
+  
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <!-- Breadcrumb -->
+    <nav class="flex text-sm text-gray-500 mb-8" aria-label="Breadcrumb">
+      <ol class="inline-flex items-center space-x-1 md:space-x-3">
+        <li class="inline-flex items-center">
+          <a href="/" class="hover:text-cyan-blue">首页</a>
+        </li>
+        <li>
+          <div class="flex items-center">
+            <svg class="w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/></svg>
+            <a href="/questions/" class="hover:text-cyan-blue ml-1 md:ml-2">问题百科</a>
+          </div>
+        </li>
+        <li>
+          <div class="flex items-center">
+            <svg class="w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/></svg>
+            <span class="ml-1 md:ml-2 text-gray-700 dark:text-gray-300 font-medium">{question.question}</span>
+          </div>
+        </li>
+      </ol>
+    </nav>
+
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+      
+      <!-- Main Content -->
+      <article class="lg:col-span-3 bg-white dark:bg-midnight p-6 md:p-10 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800">
+        <header class="mb-8 border-b border-gray-100 dark:border-gray-800 pb-8">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="px-3 py-1 bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 text-sm font-medium rounded-full">{question.category}</span>
+          </div>
+          <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white leading-tight">
+            {question.question}
+          </h1>
+        </header>
+
+        <div class="prose prose-lg dark:prose-invert max-w-none prose-headings:text-gray-900 dark:prose-headings:text-white prose-a:text-cyan-blue hover:prose-a:text-blue-600 prose-img:rounded-xl">
+          <div set:html={htmlContent} />
+        </div>
+
+        <!-- Related Navigation -->
+        <div class="mt-12 pt-8 border-t border-gray-100 dark:border-gray-800">
+          <h3 class="text-xl font-bold mb-4">继续探索</h3>
+          <div class="flex flex-wrap gap-4">
+            <a href="/recommend/2026-airport/" class="px-4 py-2 bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg text-sm font-medium transition">👉 2026 稳定机场推荐</a>
+            <a href="/recommend/cheap-airport/" class="px-4 py-2 bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg text-sm font-medium transition">👉 便宜机场推荐</a>
+            <a href="/clients/" class="px-4 py-2 bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg text-sm font-medium transition">📱 客户端下载与配置</a>
+            <a href="/recommend/ai/" class="px-4 py-2 bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg text-sm font-medium transition">🤖 ChatGPT 适用节点</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Sidebar -->
+      <aside class="space-y-6">
+        <div class="bg-gradient-to-b from-blue-50 to-white dark:from-gray-800 dark:to-midnight p-6 rounded-2xl border border-blue-100 dark:border-gray-700">
+          <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
+            <span>🏆</span> 稳定备用机场推荐
+          </h3>
+          <div class="space-y-4">
+            {topAirports.map((airport: any, index: number) => (
+              <a href={`/airports/${airport.slug}`} class="block group">
+                <div class="flex justify-between items-center mb-1">
+                  <span class="font-bold text-gray-900 dark:text-white group-hover:text-cyan-blue transition">
+                    {airport.name}
+                    {index === 0 && <span class="ml-2 text-[10px] bg-red-100 text-red-600 px-1 py-0.5 rounded font-bold">#1 首选</span>}
+                  </span>
+                  <span class="text-coral font-bold text-sm">{getDisplayPrice(airport)}</span>
+                </div>
+                <div class="text-xs text-gray-500 line-clamp-1">{airport.recommendedFor}</div>
+              </a>
+            ))}
+          </div>
+          <a href="/compare/" class="block text-center w-full mt-6 py-2 border border-cyan-blue text-cyan-blue rounded-lg text-sm font-bold hover:bg-cyan-blue hover:text-white transition">
+            查看完整榜单 & 对比
+          </a>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</Layout>
