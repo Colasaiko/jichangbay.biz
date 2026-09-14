@@ -1,0 +1,98 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { airports } from '../../../data/airports';
+import { getRankedAirports } from '../../../utils/airportRanking';
+
+// Get ranked airports for sidebar
+const rankedAirports = getRankedAirports().slice(0, 5);
+---
+
+<Layout title="Clash for Mac 怎么下载和使用？苹果电脑最全导入配置教程" description="提供最新版 Clash Mac (Clash Verge / ClashX) 下载地址，教你如何在 Mac / MacBook 苹果电脑上导入节点订阅、设置系统代理并进行测速。">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex flex-col lg:flex-row gap-12">
+    
+    <!-- Main Content -->
+    <main class="lg:w-2/3">
+      <div class="bg-white dark:bg-midnight rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 p-8 mb-8">
+        <h1 class="text-3xl font-bold mb-4">Mac 怎么使用 Clash？苹果电脑订阅导入教程</h1>
+        <p class="text-gray-600 dark:text-gray-400 mb-6">
+          在 Mac 上使用 Clash 已经成为主流。本文整合了 <strong>clash mac, clash for mac, mac os clash</strong> 的相关设置。无论是旧版的 ClashX，还是最新支持 Meta 内核的 <strong>Clash Verge Mac</strong>，设置流程大同小异。
+        </p>
+        
+        <div class="prose dark:prose-invert max-w-none">
+          <h2>1. 苹果电脑怎么下载 Clash</h2>
+          <p>
+            由于旧版 Clash for Windows 和 ClashX 已经停止维护，现在强烈建议在 Mac (MacBook/iMac) 上下载并安装基于 Tauri 构建的 <strong>Clash Verge Rev</strong> 或 <strong>Clash Nyanpasu</strong>。它们不仅完美兼容 Apple Silicon (M1/M2/M3)，同时也支持 Intel 芯片。
+          </p>
+          <a href="https://github.com/clash-verge-rev/clash-verge-rev/releases" target="_blank" class="inline-block px-6 py-2 bg-cyan-blue text-white rounded-lg font-medium hover:bg-blue-600 transition">
+            前往 GitHub 下载 Clash Verge Mac 版
+          </a>
+
+          <h2 class="mt-8">2. Mac Clash 怎么导入节点与配置</h2>
+          <p>
+            很多人询问 <strong>mac clash如何配置</strong>。只需三步：
+          </p>
+          <ol>
+            <li>在机场后台复制您的 Clash 订阅链接 (Subscribe URL)。</li>
+            <li>打开 Mac 上的 Clash 客户端，进入 <code>订阅 (Subscriptions)</code> 或 <code>配置 (Profiles)</code> 界面。</li>
+            <li>粘贴链接并点击“导入 (Import)”，等待下载完成即可。如果提示 <strong>clash导入为什么timeout</strong>，请检查当前网络是否需要先挂代理才能拉取。</li>
+          </ol>
+
+          <h2 class="mt-8">3. Clash 如何在 Mac 上使用 (设置系统代理)</h2>
+          <p>
+            配置下载完成后，点击 <code>代理 (Proxies)</code>，选择一个绿色的节点（如果全是红色，可能是 <strong>clash节点timeout</strong>，请更新订阅）。最后，在设置中打开 <strong>System Proxy (系统代理)</strong> 即可完成翻墙配置。
+          </p>
+          
+          <h2 class="mt-8">常见问题 (FAQ)</h2>
+          
+          <details class="mb-4 bg-gray-50 dark:bg-gray-800/50 p-4 rounded-lg cursor-pointer">
+            <summary class="font-bold">Clash Verge Mac 提示系统代理需要管理员权限？</summary>
+            <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">安装 <code>Helper</code> (服务助手) 即可。进入设置，找到 Service Mode 并点击 Install，在弹出的 Mac 授权窗口输入锁屏密码即可一劳永逸开启 TUN 模式或系统代理。</p>
+          </details>
+          
+          <details class="mb-4 bg-gray-50 dark:bg-gray-800/50 p-4 rounded-lg cursor-pointer">
+            <summary class="font-bold">Mac电脑使用Clash网速很慢是为什么？</summary>
+            <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">首先更换节点排除线路问题。另外可以检查是否开启了 TUN 模式，或者 Mac 上的防火墙冲突。</p>
+          </details>
+
+          <details class="mb-4 bg-gray-50 dark:bg-gray-800/50 p-4 rounded-lg cursor-pointer">
+            <summary class="font-bold">Clash开启TUN后全部Timeout怎么办？</summary>
+            <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">前往我们的<a href="/questions/" class="text-cyan-blue">故障排查中心</a>查看，这通常是因为网卡劫持失败或配置未包含 DNS 解析规则。</p>
+          </details>
+        </div>
+      </div>
+    </main>
+
+    <!-- Sidebar -->
+    <aside class="lg:w-1/3">
+      <div class="sticky top-24 space-y-8">
+        
+        <div class="bg-white dark:bg-midnight rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 p-6">
+          <h3 class="text-xl font-bold mb-4">🏆 适合 Mac 的机场推荐</h3>
+          <ul class="space-y-4">
+            {rankedAirports.map(airport => (
+              <li>
+                <a href={`/airports/${airport.slug}`} class="group flex items-center justify-between p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition border border-transparent hover:border-gray-200 dark:hover:border-gray-700">
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-cyan-blue/10 flex items-center justify-center text-cyan-blue font-bold">
+                      {airport.name.charAt(0)}
+                    </div>
+                    <div>
+                      <div class="font-bold text-gray-900 dark:text-white group-hover:text-cyan-blue transition">{airport.name}</div>
+                      <div class="text-xs text-gray-500">¥{airport.monthlyStartingPrice} 起</div>
+                    </div>
+                  </div>
+                  <span class="text-gray-400 group-hover:text-cyan-blue transition">&rarr;</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+          <div class="mt-4 pt-4 border-t border-gray-100 dark:border-gray-800">
+            <a href="/airports/" class="text-sm font-bold text-cyan-blue hover:underline block text-center">查看完整机场推荐排名</a>
+          </div>
+        </div>
+
+      </div>
+    </aside>
+
+  </div>
+</Layout>

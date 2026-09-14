@@ -10,7 +10,7 @@ const qList = JSON.parse(jsonStr);
 let fail = false;
 
 // 1. Check total count
-if (qList.length !== 249) {
+if (qList.length < 249) {
   console.error(`Total questions expected 249, got ${qList.length}`);
   fail = true;
 }

@@ -2,11 +2,13 @@
 import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 import { airports } from '../../data/airports';
+import { questions } from '../../data/questions';
 
 const posts = await getCollection('blog');
 const searchData = [
-  ...posts.map(p => ({ title: p.data.title, desc: p.data.description, url: `/blog/${p.slug}`, type: '文章' })),
-  ...airports.map(a => ({ title: a.name, desc: a.recommendedFor, url: `/airports/${a.slug}`, type: '机场' }))
+  ...posts.map(p => ({ title: p.data.title, desc: p.data.description, url: `/blog/${p.slug}`, type: '文章', aliases: '' })),
+  ...airports.map(a => ({ title: a.name, desc: a.recommendedFor, url: `/airports/${a.slug}`, type: '机场', aliases: (a.searchAliases || []).join(' ') })),
+  ...questions.map(q => ({ title: q.question, desc: q.shortAnswer, url: `/questions/${q.slug}`, type: '常见问题', aliases: (q.searchAliases || []).join(' ') }))
 ];
 ---
 <Layout title="全站搜索 - 机场湾" description="在机场湾搜索评测文章、品牌详情与客户端教程。">
@@ -50,7 +52,8 @@ const searchData = [
 
     const matches = searchData.filter(item => 
       item.title.toLowerCase().includes(query) || 
-      item.desc.toLowerCase().includes(query)
+      item.desc.toLowerCase().includes(query) ||
+      (item.aliases && item.aliases.toLowerCase().includes(query))
     ).slice(0, 10);
 
     if (matches.length === 0) {

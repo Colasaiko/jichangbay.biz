@@ -445,6 +445,21 @@ export const questions = [
       "Clash 导入订阅失败怎么办？",
       "机场购买后如何开始使用？",
       "Clash Verge 没有节点怎么办？"
+    ],
+    "searchAliases": [
+      "clash配置",
+      "clash教程",
+      "重置clash配置",
+      "clash配置教程",
+      "clash如何配置",
+      "电脑clash配置",
+      "clash mac命令行",
+      "clash规则配置推荐",
+      "clash for windows配置教程手机",
+      "clash 如何配置",
+      "通过clash内核导出订阅配置",
+      "clash使用指南",
+      "clash自用配置教程"
     ]
   },
   {
@@ -493,6 +508,24 @@ export const questions = [
       "机场节点全部超时怎么办？",
       "机场订阅链接失效怎么办？",
       "机场流量用完怎么办？"
+    ],
+    "searchAliases": [
+      "clash timeout",
+      "clash节点timeout",
+      "clash全部timeout",
+      "clash所有节点全部超时",
+      "clash开启tun后全部timeout",
+      "代理有流量但是连不上全部timeout",
+      "clash左下角总是显示未连接",
+      "clash全部节点time",
+      "clash全是timeout",
+      "fclash的所有代理突然都timeout",
+      "clash输入链接时tcp连接超时",
+      "clash所有的节点都超时",
+      "calsh全部timeout",
+      "clash verge节点全部超时间",
+      "电脑clash verge用着用着突然全部timeout",
+      "clash连接显示检测超时或失败"
     ]
   },
   {
@@ -3125,5 +3158,92 @@ export const questions = [
     "shortAnswer": "根据多数用户的经验，undefined因此建议结合实际测试数据来进行最终决策。",
     "relatedArticles": [],
     "relatedQuestions": []
+  },
+  {
+    "id": 250,
+    "slug": "is-tun-mode-global",
+    "question": "TUN模式是全局模式吗？",
+    "category": "客户端",
+    "intent": "INFORMATIONAL",
+    "priority": "P1",
+    "shortAnswer": "TUN 模式可以在网卡层级接管所有流量，因此常被称为全局代理，但具体仍受路由规则控制。",
+    "searchAliases": [
+      "tun模式是全局模式吗",
+      "什么是tun模式",
+      "全局加速和tun加速",
+      "vpn规则模式和tun模式"
+    ]
+  },
+  {
+    "id": 251,
+    "slug": "clash-verge-vs-clash-for-windows",
+    "question": "Clash Verge和Clash for Windows有什么区别？",
+    "category": "客户端",
+    "intent": "INFORMATIONAL",
+    "priority": "P1",
+    "shortAnswer": "Verge 采用了更现代的 Tauri 架构且支持 Meta(Mihomo) 内核，功能更强大，目前 CFW 已停止维护，推荐使用 Verge。",
+    "searchAliases": [
+      "clash verge和clash for windows区别",
+      "clash verge vs clash for windows",
+      "windows clash verge 对比"
+    ]
+  },
+  {
+    "id": 252,
+    "slug": "sing-box-vs-clash",
+    "question": "Sing-box和Clash有什么区别？",
+    "category": "客户端",
+    "intent": "INFORMATIONAL",
+    "priority": "P1",
+    "shortAnswer": "Sing-box 是一个更轻量、跨平台且支持更多新协议（如 VLESS Reality）的新一代核心，Clash 生态则更成熟且拥有丰富的图形界面。",
+    "searchAliases": [
+      "sing box clash 对比",
+      "clash meta 和 sing-box",
+      "singbox内核和clash",
+      "s-ui sing-box web panel vs v2raya 对比 客户端"
+    ]
+  },
+  {
+    "id": 253,
+    "slug": "how-to-write-sing-box-config",
+    "question": "Sing-box怎么编写配置？",
+    "category": "客户端",
+    "intent": "HOW_TO",
+    "priority": "P2",
+    "shortAnswer": "Sing-box 采用纯 JSON 格式配置，重点在于配置入站(inbounds)、出站(outbounds)和路由规则(route)，建议利用图形化客户端自动生成。",
+    "searchAliases": [
+      "sing-box 配置",
+      "sing-box用的config.json配置如何编写",
+      "如何编写或修改 sing-box 路由规则 (routing)",
+      "sing-box自定义出站json",
+      "修改 sing-box outbound 文件, 一步一步"
+    ]
+  },
+  {
+    "id": 254,
+    "slug": "is-one-yuan-airport-good",
+    "question": "一元机场好用吗？",
+    "category": "选购指南",
+    "intent": "INFORMATIONAL",
+    "priority": "P2",
+    "shortAnswer": "极低价机场通常存在超售严重、晚高峰卡顿和高跑路风险，不适合作为主力，仅推荐作为临时备用。",
+    "searchAliases": [
+      "一元机场好用吗",
+      "两块钱机场推荐 clash",
+      "白菜机场",
+      "廉价机场官网节点"
+    ]
+  },
+  {
+    "id": 255,
+    "slug": "philippines-airport-node",
+    "question": "菲律宾节点机场适合什么场景？",
+    "category": "线路与节点",
+    "intent": "INFORMATIONAL",
+    "priority": "P2",
+    "shortAnswer": "通常用于特定东南亚服游戏加速或注册限制区域的当地流媒体和业务账号，日常较少使用。",
+    "searchAliases": [
+      "菲律宾节点机场"
+    ]
   }
 ];

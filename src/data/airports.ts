@@ -70,7 +70,19 @@ export const airports = [
         "oneTime": 370
       }
     ],
-    "monthlyStartingPrice": 11
+    "monthlyStartingPrice": 11,
+    "searchAliases": [
+      "微风网络",
+      "微风机场",
+      "微风加速器",
+      "微风网络机场",
+      "微风网络官网",
+      "微风网络clash",
+      "微风网络手机上网",
+      "微风网络的机场好用吗",
+      "微风测评",
+      "breeze加速器"
+    ]
   },
   {
     "slug": "firefly",
@@ -143,7 +155,16 @@ export const airports = [
         "oneTime": 100
       }
     ],
-    "monthlyStartingPrice": 25
+    "monthlyStartingPrice": 25,
+    "searchAliases": [
+      "萤火虫网络",
+      "萤火虫机场",
+      "firefly萤火虫机场",
+      "firefly机场",
+      "萤火虫能不能用clash",
+      "萤火虫加速",
+      "firefly 机场邀请码"
+    ]
   },
   {
     "slug": "kuajieyun",
@@ -210,7 +231,11 @@ export const airports = [
         "oneTime": null
       }
     ],
-    "monthlyStartingPrice": 20
+    "monthlyStartingPrice": 20,
+    "searchAliases": [
+      "跨界云",
+      "kuajie"
+    ]
   },
   {
     "slug": "shanyue",
@@ -274,7 +299,11 @@ export const airports = [
         "oneTime": null
       }
     ],
-    "monthlyStartingPrice": 24
+    "monthlyStartingPrice": 24,
+    "searchAliases": [
+      "闪跃机场",
+      "闪跃这个机场这么样"
+    ]
   },
   {
     "slug": "wuyou",
@@ -338,7 +367,10 @@ export const airports = [
         "oneTime": null
       }
     ],
-    "monthlyStartingPrice": 19
+    "monthlyStartingPrice": 19,
+    "searchAliases": [
+      "无忧链接"
+    ]
   },
   {
     "slug": "lingmao",
@@ -423,7 +455,10 @@ export const airports = [
         "oneTime": null
       }
     ],
-    "monthlyStartingPrice": 25
+    "monthlyStartingPrice": 25,
+    "searchAliases": [
+      "灵猫机场"
+    ]
   },
   {
     "slug": "bitznet",
@@ -474,7 +509,10 @@ export const airports = [
         "oneTime": null
       }
     ],
-    "monthlyStartingPrice": null
+    "monthlyStartingPrice": null,
+    "searchAliases": [
+      "bitznet优惠券"
+    ]
   },
   {
     "slug": "feimaoyun",
@@ -701,7 +739,11 @@ export const airports = [
         "oneTime": null
       }
     ],
-    "monthlyStartingPrice": 20
+    "monthlyStartingPrice": 20,
+    "searchAliases": [
+      "暮光加速",
+      "暮光加速器 二毛"
+    ]
   },
   {
     "slug": "xingdaomeng",
