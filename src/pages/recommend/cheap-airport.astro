@@ -31,6 +31,7 @@ const cheapAirportsAll = getRankedAirports().map(airport => {
 cheapAirportsAll.sort((a, b) => a.effectiveMonthly - b.effectiveMonthly);
 const cheapAirports = cheapAirportsAll.slice(0, 8);
 
+import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
 ---
 <Layout title="便宜机场推荐：高性价比低价机场怎么选？真实价格揭秘" description="汇集全网便宜机场推荐、低价机场与高性价比梯子。为你揭秘月付与年付折算价格的文字游戏，解答一元机场好不好用，提供按预算（10元以内/20元以内）的真实月付筛选指南。">
   <StructuredData type="BreadcrumbList" data={{

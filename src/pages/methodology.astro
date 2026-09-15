@@ -1,0 +1,89 @@
+---
+import Layout from '../layouts/Layout.astro';
+import StructuredData from '../components/StructuredData.astro';
+
+const schemaData = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "机场湾资料来源与推荐方法",
+  "description": "说明机场湾的品牌资料来源、套餐数据边界、推荐与排名逻辑，以及推广链接披露原则。"
+};
+---
+<Layout title="机场湾资料来源与推荐方法｜排名与数据说明" description="说明机场湾的品牌资料来源、套餐数据边界、推荐与排名逻辑，以及推广链接披露原则。">
+  <StructuredData type="BreadcrumbList" data={{
+    itemListElement: [
+      { "@type": "ListItem", "position": 1, "name": "首页", "item": "https://jichangbay.biz/" },
+      { "@type": "ListItem", "position": 2, "name": "资料来源与推荐方法", "item": "https://jichangbay.biz/methodology/" }
+    ]
+  }} />
+  
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <!-- Breadcrumb -->
+    <nav class="flex text-sm text-gray-500 mb-8" aria-label="Breadcrumb">
+      <ol class="inline-flex items-center space-x-1 md:space-x-3">
+        <li class="inline-flex items-center">
+          <a href="/" class="hover:text-cyan-blue">首页</a>
+        </li>
+        <li>
+          <div class="flex items-center">
+            <svg class="w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/></svg>
+            <span class="ml-1 md:ml-2 text-gray-700 dark:text-gray-300 font-medium">资料来源与推荐方法</span>
+          </div>
+        </li>
+      </ol>
+    </nav>
+
+    <div class="bg-white dark:bg-midnight p-6 md:p-10 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800">
+      <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white leading-tight mb-8">
+        机场湾资料来源与推荐方法
+      </h1>
+      
+      <div class="prose prose-lg dark:prose-invert max-w-none prose-headings:text-gray-900 dark:prose-headings:text-white prose-a:text-cyan-blue hover:prose-a:text-blue-600">
+        
+        <h2>一、品牌资料来自哪里</h2>
+        <p>本站当前收录的所有机场及网络服务商资料，主要来源于：</p>
+        <ul>
+          <li><strong>服务商公开套餐页</strong>：我们定期查看并整理各个品牌官方网站上公示的套餐说明、线路简介以及使用文档。</li>
+          <li><strong>项目已有人工整理资料</strong>：基于本站编辑团队日常收集并手动录入于数据中心（如 <code>airports.ts</code> 等）的归档信息。</li>
+        </ul>
+
+        <h2>二、哪些信息本站能够确认</h2>
+        <p>在目前的展示机制下，以下信息是客观收录并可供核验的（以收录时为准）：</p>
+        <ul>
+          <li><strong>套餐价格与流量</strong>：官方注明的月付、季付、年付等价格体系以及对应的流量额度。</li>
+          <li><strong>公开线路类型</strong>：服务商在官网上自行标称的线路（如 IEPL、IPLC、公网中转等）。</li>
+          <li><strong>优惠码</strong>：服务商公开提供的常规折扣或专属促销码。</li>
+          <li><strong>流媒体与 AI 支持标识</strong>：数据库中记录的服务商声明的支持状态。</li>
+        </ul>
+
+        <h2>三、哪些本站不能保证</h2>
+        <p>网络服务环境极为复杂且瞬息万变，本站<strong>无法</strong>对以下情况提供保证或做出绝对化承诺：</p>
+        <ul>
+          <li><strong>实时速度与晚高峰表现</strong>：跨国连接速度受你本地的运营商（电信/联通/移动）、当地网络拥堵状况以及机场节点实时负载影响。</li>
+          <li><strong>在线率与稳定性</strong>：没有任何服务能保证 100% 不掉线。</li>
+          <li><strong>IP 纯净度与流媒体/AI 长期可用性</strong>：Netflix、ChatGPT 等第三方平台会持续封锁代理 IP，曾经可用的节点可能随时失效，更不能保证账号不会因 IP 变动而受风控。</li>
+          <li><strong>服务商未来运营状态</strong>：由于合规风险与经营变化，服务商随时有可能调整套餐甚至停止运营（即俗称的“跑路”）。本站不对任何第三方的存续与服务质量进行担保。</li>
+        </ul>
+
+        <h2>四、排名规则说明</h2>
+        <p>本站各榜单及列表页中的排序，是基于<strong>本站内部排序系统</strong>生成的，并不等同于“真实测速排名”或“绝对性能排名”。</p>
+        <ul>
+          <li><strong>固定首位展示</strong>：基于本站编辑评估与综合推荐逻辑，<code>#1 微风网络</code> 和 <code>#2 飞猫云</code> 享有固定的头部推荐位置。</li>
+          <li><strong>候选池机制</strong>：排名 #3 至 #7 的位置由系统在特定的优质品牌池中按规则分配。</li>
+          <li><strong>算法补充</strong>：其他品牌则依据算法权重、价格模型或随机数等混合机制排序呈现。</li>
+        </ul>
+        <p>排序反映了编辑部的综合评估及合作权重，用户应自行根据价格与实际需求进一步筛选。</p>
+
+        <h2>五、推广链接关系说明（Affiliate Disclosure）</h2>
+        <p>本站通过分享整理资料提供服务，为了维持站点的日常运营（服务器费用、域名及维护成本），我们通过以下方式获取收益：</p>
+        <ul>
+          <li><strong>推广链接</strong>：本站大部分标记为“前往官网”、“购买”等按钮的入口可能包含推广（Affiliate / 邀请）链接。</li>
+          <li><strong>佣金说明</strong>：如果你通过这些链接点击进入服务商网站并完成注册或消费，本站可能会获得一定比例的佣金或一次性奖励。</li>
+          <li><strong>不增加你的成本</strong>：通过推广链接购买，<strong>绝对不会</strong>增加你的任何购买成本或套餐价格，有时甚至能通过专属链接让你享受独家折扣。</li>
+        </ul>
+        <p>即便存在推广关系，我们仍会尽可能保持收录数据的准确性，并在价格与基础资料展示上维持客观录入原则。</p>
+
+      </div>
+    </div>
+  </div>
+</Layout>

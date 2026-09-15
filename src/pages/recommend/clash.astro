@@ -7,6 +7,7 @@ import StructuredData from '../../components/StructuredData.astro';
 
 // Clash specific logic: 
 const clashAirports = getRankedAirports().slice(0, 8);
+import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
 ---
 <Layout title="Clash机场推荐：兼容 Clash Verge/Meta 的订阅节点指南" description="针对 Clash 用户的机场节点选购指南。探讨机场服务商在客户端兼容性上的基本概念，附带详细 Clash 客户端下载与 Timeout 错误排查教程。">
   <StructuredData type="BreadcrumbList" data={{

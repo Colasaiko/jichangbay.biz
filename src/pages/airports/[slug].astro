@@ -11,6 +11,7 @@ export function getStaticPaths() {
 }
 
 const { airport } = Astro.props;
+import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
 ---
 <Layout title={`${airport.name} 怎么样？2026 最新测速评测与专属优惠码 - 机场湾`} description={`深入了解 ${airport.name}：最新套餐价格 ¥${airport.monthlyStartingPrice || 999}/月起，${airport.lineType} 线路解析。包含速度测试、流媒体解锁状况与真实购买建议。`}>
   

@@ -9,6 +9,7 @@ import StructuredData from '../../components/StructuredData.astro';
 const premiumAirports = getRankedAirports().filter(a => 
   a.lineType.includes('IPLC') || a.lineType.includes('IEPL') || a.lineType.includes('专线')
 ).slice(0, 8);
+import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
 ---
 <Layout title="专线机场推荐：IPLC与IEPL高端机场怎么选？" description="全面解析 IPLC 与 IEPL 专线机场的区别。为游戏玩家、金融交易员及高频视频会议用户整理的专线机场推荐榜单。客观分析专线的理论优势与实际局限。">
   <StructuredData type="BreadcrumbList" data={{

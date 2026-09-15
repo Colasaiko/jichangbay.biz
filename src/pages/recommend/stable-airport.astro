@@ -12,6 +12,7 @@ const stableAirports = getRankedAirports().filter(a =>
 if (stableAirports.length === 0) {
   stableAirports.push(...getRankedAirports().slice(0, 8));
 }
+import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
 ---
 <Layout title="稳定机场推荐：晚高峰不卡的梯子怎么选？" description="根据公开线路类型与适用场景筛选的稳定性候选机场。探讨不同网络架构在降低延迟和抗拥堵上的理论表现，为高频远程办公和视频会议提供参考。">
   <StructuredData type="BreadcrumbList" data={{

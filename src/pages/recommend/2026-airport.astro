@@ -6,6 +6,7 @@ import { getRankedAirports } from '../../utils/airportRanking';
 import StructuredData from '../../components/StructuredData.astro';
 
 const top8 = getRankedAirports().slice(0, 8);
+import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
 ---
 <Layout title="2026机场推荐：2026年机场怎么选？综合排行榜与选购指南" description="2026年最新机场推荐综合入口。解答月付还是年付、100GB够不够等新手疑问，并根据不同预算与场景（便宜、稳定、专线、Clash、AI、流媒体）提供快速匹配通道与真实品牌对比。">
   <StructuredData type="BreadcrumbList" data={{

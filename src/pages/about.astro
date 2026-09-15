@@ -1,9 +1,62 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import StructuredData from '../components/StructuredData.astro';
 ---
-<Layout title="关于本站 - 机场湾" description="关于本站页面，了解更多关于机场湾的信息。">
-  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 prose dark:prose-invert">
-    <h1>关于本站</h1>
-    <p set:html={`机场湾（jichangbay.biz）是一个致力于提供最新、最客观的 2026 年机场推荐、测速与科学上网教程的独立编辑部。`}></p>
+<Layout title="关于机场湾 - jichangbay.biz" description="了解机场湾是什么，我们目前收录了哪些内容，以及我们如何收集整理品牌资料与问题百科。">
+  <StructuredData type="BreadcrumbList" data={{
+    itemListElement: [
+      { "@type": "ListItem", "position": 1, "name": "首页", "item": "https://jichangbay.biz/" },
+      { "@type": "ListItem", "position": 2, "name": "关于我们", "item": "https://jichangbay.biz/about/" }
+    ]
+  }} />
+  
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <nav class="flex text-sm text-gray-500 mb-8" aria-label="Breadcrumb">
+      <ol class="inline-flex items-center space-x-1 md:space-x-3">
+        <li class="inline-flex items-center">
+          <a href="/" class="hover:text-cyan-blue">首页</a>
+        </li>
+        <li>
+          <div class="flex items-center">
+            <svg class="w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/></svg>
+            <span class="ml-1 md:ml-2 text-gray-700 dark:text-gray-300 font-medium">关于我们</span>
+          </div>
+        </li>
+      </ol>
+    </nav>
+
+    <div class="bg-white dark:bg-midnight p-6 md:p-10 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800">
+      <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white leading-tight mb-8">
+        关于机场湾
+      </h1>
+      
+      <div class="prose prose-lg dark:prose-invert max-w-none prose-headings:text-gray-900 dark:prose-headings:text-white prose-a:text-cyan-blue hover:prose-a:text-blue-600">
+        
+        <h2>机场湾是什么？网站做什么？</h2>
+        <p>机场湾 (jichangbay.biz) 成立于网络环境复杂多变的时代。作为一个中文内容中心，我们致力于整合并导航市面上的网络加速器工具、机场套餐资料以及相关客户端教程。我们的核心目的是减少信息壁垒，帮助需要跨境查阅文献、学习编程或是观看国际流媒体的用户，更快速地寻找到适合自身需求的解决方案。</p>
+
+        <h2>目前收录内容</h2>
+        <p>截至 2026 年，机场湾已建成以下核心模块：</p>
+        <ul>
+          <li><strong>品牌数据库</strong>：当前收录并长期跟踪 29 家主流网络加速服务商的基础套餐数据。</li>
+          <li><strong>深度问题百科</strong>：针对 Clash 连通性、订阅更新失败、Netflix 解锁失效等常见现象，编写了 249 条常见问题与 30 篇深度排查指南。</li>
+          <li><strong>专题推荐系统</strong>：按价格、稳定性、特定流媒体及 AI 使用场景等维度构建了分类对比系统。</li>
+          <li><strong>客户端教程中心</strong>：提供包括 Windows、Mac、iOS 在内的多平台代理工具配置方法。</li>
+        </ul>
+
+        <h2>资料来源原则</h2>
+        <p>本站的所有品牌套餐与参数资料，均来自对服务商公开页面及网络公开信息的整合与归档。我们扮演的是信息分发与导航的角色，旨在为用户横向对比提供基础的价格、流量、标称线路等参考坐标。更多详细的资料来源及说明，请访问我们的<a href="/methodology">资料来源与推荐方法</a>页面。</p>
+
+        <h2>为什么建立问题百科？</h2>
+        <p>很多新手用户在成功购买了套餐后，经常遇到“有节点但无法上网”、“订阅链接导入超时”等各类故障。而各大厂商的客服响应往往存在滞后。因此，我们通过梳理大量的用户常见搜索意图与报错日志，建立了一个本地化、可搜索的问题百科。我们希望用户能在这里第一时间找到故障的定位方法，减少盲目重置软件或误删配置的风险。</p>
+
+        <h2>为什么区分“公开资料”和“实际测试”？</h2>
+        <p>由于网络环境的客观限制，某一个节点在某个城市的晚高峰可能表现出色，但在另一个省份的另一家运营商网络下可能完全无法连接。为了避免利用个例误导消费者，我们将本站的内容定位为“基础资料收录”。这意味着你所看到的价格、节点支持标签，都是从厂商处采集的“公开标称资料”，而不代表本站在所有网络条件下的“真实测速保证”。我们希望你能带着这份清单，自己购买短期套餐去试错，以寻找最匹配本地网络的节点。</p>
+
+        <h2>联系方式</h2>
+        <p>如果你发现本站收录的某家品牌数据出现严重过时，或者有合作、建议需求，欢迎通过邮件与我们取得联系。我们将尽快对资料库进行复核与更新。</p>
+        <p>邮箱：<code>contact@jichangbay.biz</code></p>
+      </div>
+    </div>
   </div>
 </Layout>
