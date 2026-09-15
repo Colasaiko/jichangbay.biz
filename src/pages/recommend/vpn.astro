@@ -7,7 +7,7 @@ import { getRankedAirports } from '../../utils/airportRanking';
   
 
 import StructuredData from '../../components/StructuredData.astro';
-const filtered = getRankedAirports().filter(a => a.aiSupport === "支持").slice(0, 8);;
+const filtered = getRankedAirports().slice(0, 8);
 ---
 <Layout title="VPN推荐：VPN怎么选？最新真实测评 - 机场湾" description="相较于传统 VPN，我们更推荐使用基于新型协议的机场服务，它们速度更快、稳定性更高。以下是几款表现优异的翻墙替代方案。 结合价格、线路和测速数据的客观购买建议。">
   <StructuredData type="BreadcrumbList" data={{

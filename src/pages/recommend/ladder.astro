@@ -7,7 +7,7 @@ import { getRankedAirports } from '../../utils/airportRanking';
   
 
 import StructuredData from '../../components/StructuredData.astro';
-const filtered = getRankedAirports().filter(a => a.recommendedFor.includes("稳定") || (a.monthlyStartingPrice || 999) < 25).slice(0, 8);;
+const filtered = getRankedAirports().slice(0, 8);
 ---
 <Layout title="2026梯子推荐：2026梯子怎么选？最新真实测评 - 机场湾" description="科学上网梯子工具全面推荐。适合新手小白的一键连梯子，免除繁琐配置，支持 iOS、Android、Windows 多端自动同步。 结合价格、线路和测速数据的客观购买建议。">
   <StructuredData type="BreadcrumbList" data={{
