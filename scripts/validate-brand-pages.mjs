@@ -5,6 +5,7 @@ const BRAND_PAGE = path.resolve('src/pages/airports/[slug].astro');
 const INDEX_PAGE = path.resolve('src/pages/index.astro');
 const METHODOLOGY_PAGE = path.resolve('src/pages/methodology.astro');
 const DISCLAIMER_PAGE = path.resolve('src/pages/disclaimer.astro');
+const AFFILIATE_DISCLOSURE = path.resolve('src/components/AffiliateDisclosure.astro');
 
 const FORBIDDEN = [
   { pattern: '9.2 / 10', desc: '虚假评分 9.2/10' },
@@ -19,11 +20,24 @@ const FORBIDDEN = [
   { pattern: '节点稳定性好', desc: '无来源的节点稳定性好' },
   { pattern: '晚高峰少数节点存在偶发延迟波动', desc: '固化虚假缺点描述' },
   { pattern: '最新测速评测', desc: '未经证实的测速评测字样' },
+  { pattern: '{displayPriceText}起', desc: '重复起起' },
+  { pattern: '默认最优价', desc: '虚假的优惠保证' },
+  { pattern: '合作因素', desc: '虚假合作因素描述' },
+  { pattern: '合作权重', desc: '虚假合作权重描述' },
+  { pattern: '绝对不会增加', desc: '过于绝对的成本承诺' },
+];
+
+const BRAND_SPECIFIC_FORBIDDEN = [
+  { pattern: 'p.halfYear', desc: '错误的字段名 halfYear' },
+  { pattern: 'p.yearly', desc: '错误的字段名 yearly' },
 ];
 
 const FILES_TO_CHECK = [
   BRAND_PAGE,
   INDEX_PAGE,
+  METHODOLOGY_PAGE,
+  DISCLAIMER_PAGE,
+  AFFILIATE_DISCLOSURE
 ];
 
 let errors = 0;
@@ -35,10 +49,29 @@ for (const file of FILES_TO_CHECK) {
   }
   const content = fs.readFileSync(file, 'utf8');
   const rel = path.relative('.', file);
+  
   for (const { pattern, desc } of FORBIDDEN) {
     if (content.includes(pattern)) {
       console.error(`[FAIL] ${rel}: 发现禁止内容 "${desc}"`);
       errors++;
+    }
+  }
+
+  if (file === BRAND_PAGE) {
+    for (const { pattern, desc } of BRAND_SPECIFIC_FORBIDDEN) {
+      if (content.includes(pattern)) {
+        console.error(`[FAIL] ${rel}: 发现禁止内容 "${desc}"`);
+        errors++;
+      }
+    }
+    
+    // Check required plan fields
+    const requiredFields = ['p.monthly', 'p.quarterly', 'p.semiannual', 'p.annual', 'p.oneTime'];
+    for (const field of requiredFields) {
+      if (!content.includes(field)) {
+         console.error(`[FAIL] ${rel}: 缺失必要的套餐字段 "${field}"`);
+         errors++;
+      }
     }
   }
 }

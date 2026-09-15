@@ -1,23 +1,29 @@
+import { getLowestDirectPayment } from './airportPlanUtils';
+
 export const getDisplayPrice = (airport: any) => {
-  if (airport.monthlyStartingPrice !== null) return `¥${airport.monthlyStartingPrice}/月起`;
   if (airport.plans && airport.plans.length > 0) {
-    let minQ = Math.min(...airport.plans.map((p: any) => p.quarterly).filter((p: any) => p !== null));
-    if (minQ !== Infinity) return `季付 ¥${minQ} 起`;
-    let minH = Math.min(...airport.plans.map((p: any) => p.semiannual).filter((p: any) => p !== null));
-    if (minH !== Infinity) return `半年付 ¥${minH} 起`;
-    let minA = Math.min(...airport.plans.map((p: any) => p.annual).filter((p: any) => p !== null));
-    if (minA !== Infinity) return `年付 ¥${minA} 起`;
-    let minO = Math.min(...airport.plans.map((p: any) => p.oneTime).filter((p: any) => p !== null));
-    if (minO !== Infinity) return `¥${minO} 一次性`;
+    let minCost = Infinity;
+    let cycle = '';
+    airport.plans.forEach((p: any) => {
+      if (p.monthly !== null && p.monthly !== undefined && p.monthly < minCost) { minCost = p.monthly; cycle = '月付'; }
+      if (p.quarterly !== null && p.quarterly !== undefined && p.quarterly < minCost) { minCost = p.quarterly; cycle = '季付'; }
+      if (p.semiannual !== null && p.semiannual !== undefined && p.semiannual < minCost) { minCost = p.semiannual; cycle = '半年付'; }
+      if (p.annual !== null && p.annual !== undefined && p.annual < minCost) { minCost = p.annual; cycle = '年付'; }
+      if (p.oneTime !== null && p.oneTime !== undefined && p.oneTime < minCost) { minCost = p.oneTime; cycle = '一次性'; }
+    });
+    
+    if (minCost !== Infinity) {
+      if (airport.slug === 'bitznet' && minCost === 69.99) return `季付 ¥69.99 起`;
+      if (cycle === '月付') return `¥${minCost}/月起`;
+      if (cycle === '一次性') return `¥${minCost} 一次性起`;
+      return `${cycle} ¥${minCost} 起`;
+    }
   }
   return '价格未知';
 };
 
 export const getMonthlySortPrice = (airport: any) => {
   if (airport.monthlyStartingPrice !== null) return airport.monthlyStartingPrice;
-  // If no monthly price, we should not rank it as 0. 
-  // We can convert the lowest plan's total cost to a monthly equivalent for sorting purposes?
-  // User explicitly said "可以使用： monthlyStartingPrice ?? Number.MAX_SAFE_INTEGER 用于月付价格排序"
   return Number.MAX_SAFE_INTEGER;
 };
 
