@@ -1,8 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { questions } from '../../data/questions';
-import fs from 'fs';
-import path from 'path';
 import { marked } from 'marked';
 import StructuredData from '../../components/StructuredData.astro';
 import { getRankedAirports } from '../../utils/airportRanking';
@@ -19,13 +17,22 @@ export async function getStaticPaths() {
 
 const { question } = Astro.props;
 
+const questionContents = import.meta.glob(
+  '../../data/questions_content/*.md',
+  {
+    query: '?raw',
+    import: 'default',
+    eager: true,
+  }
+) as Record<string, string>;
+
+const contentPath = `../../data/questions_content/${question.slug}.md`;
+const mdContent = questionContents[contentPath];
+
 let htmlContent = '';
-try {
-  // @ts-ignore
-  const mdPath = path.join(process.cwd(), 'src/data/questions_content', `${question.slug}.md`);
-  const mdContent = fs.readFileSync(mdPath, 'utf8');
+if (mdContent) {
   htmlContent = marked.parse(mdContent) as string;
-} catch (e) {
+} else {
   htmlContent = '<p>内容正在整理中...</p>';
 }
 
