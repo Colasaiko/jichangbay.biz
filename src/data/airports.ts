@@ -87,7 +87,7 @@ export const airports = [
   {
     "slug": "firefly",
     "name": "firefly",
-    "affiliateUrl": "https://fly.fireflytttt.xyz/#/?code=mcYQUZxG",
+    "affiliateUrl": "https://vip02.fireflyaff.com/#/?code=mcYQUZxG",
     "coupon": "firefly (8折)",
     "macDownload": "https://168downloads.oss-ap-northeast-2.aliyuncs.com/ff/firefly-3.0.0-macos.zip",
     "lineType": "IEPL/IPLC专线",
@@ -169,7 +169,7 @@ export const airports = [
   {
     "slug": "kuajieyun",
     "name": "跨界云",
-    "affiliateUrl": "https://kasoasf.kuajiecloudtttt.mom/#/?code=HRzqSLrR",
+    "affiliateUrl": "https://vip02.kuajieaff.com/#/?code=HRzqSLrR",
     "coupon": "kuajie（8 折）",
     "macDownload": "https://168downloads.oss-ap-northeast-2.aliyuncs.com/kj/kuajiecloud-3.0.0-macos.zip",
     "lineType": "IEPL/IPLC专线",
@@ -240,7 +240,7 @@ export const airports = [
   {
     "slug": "shanyue",
     "name": "闪跃",
-    "affiliateUrl": "https://rfv.flashleapxx.xyz/#/?code=hCwClNUi",
+    "affiliateUrl": "https://vip02.flashleapaff.com/#/?code=hCwClNUi",
     "coupon": "shanyue（8折）",
     "macDownload": "https://168downloads.oss-ap-northeast-2.aliyuncs.com/sy/sycloud-3.0.0-macos.zip",
     "lineType": "IEPL/IPLC专线",
@@ -308,7 +308,7 @@ export const airports = [
   {
     "slug": "wuyou",
     "name": "无忧链接",
-    "affiliateUrl": "https://letter.worryfreettt.homes/#/?code=ydtFVWqU",
+    "affiliateUrl": "https://wep01.worryfreeaff.com/#/?code=ydtFVWqU",
     "coupon": "(暂无优惠）",
     "macDownload": "https://168downloads.oss-ap-northeast-2.aliyuncs.com/wy/wuyoucloud-3.0.0-macos.zip",
     "lineType": "IEPL/IPLC专线",
@@ -375,7 +375,7 @@ export const airports = [
   {
     "slug": "lingmao",
     "name": "灵猫",
-    "affiliateUrl": "https://downwww.civetnettttt.lol/#/?code=2Ai6V6Ub",
+    "affiliateUrl": "https://vip02.civetaff.com/#/?code=2Ai6V6Ub",
     "coupon": "lingmao（8折）",
     "macDownload": "https://168downloads.oss-ap-northeast-2.aliyuncs.com/lm/lingmaocloud-3.0.0-macos.zip",
     "lineType": "IEPL/IPLC专线",
@@ -517,7 +517,7 @@ export const airports = [
   {
     "slug": "feimaoyun",
     "name": "飞猫云",
-    "affiliateUrl": "https://dfg12cd.feimaogfttt1.sbs/#/?code=UUcH5yh9",
+    "affiliateUrl": "https://flycat1.flycatvipaff.cc/#/?code=UUcH5yh9",
     "coupon": "(暂无优惠）",
     "macDownload": "https://down-apps.oss-cn-hongkong.aliyuncs.com/fmy/images/%E9%A3%9E%E7%8C%AB%E4%BA%91-2.2.3-macos-universal.pkg",
     "lineType": "IEPL/IPLC专线",
@@ -595,7 +595,7 @@ export const airports = [
   {
     "slug": "sogo",
     "name": "sogo云",
-    "affiliateUrl": "https://asfdgd.sogotztz2.sbs/#/?code=JvxcPy2A",
+    "affiliateUrl": "https://wzjc.sogoyunaff.cc/#/?code=JvxcPy2A",
     "coupon": "(暂无优惠）",
     "macDownload": "https://asfdgd.sogotztz2.sbs/#/?code=JvxcPy2A",
     "lineType": "IEPL/IPLC专线",
@@ -670,7 +670,7 @@ export const airports = [
   {
     "slug": "muguang",
     "name": "暮光加速",
-    "affiliateUrl": "https://asfawsf.twilightttt.sbs/#/?code=1eGqV85O",
+    "affiliateUrl": "https://varnexa.twilightaff.com/#/?code=1eGqV85O",
     "coupon": "mm88（8折）",
     "macDownload": "https://muguang9.oss-ap-southeast-1.aliyuncs.com/v1.0.0/muguangjiasu-3.0.0-macos.zip",
     "lineType": "IEPL/IPLC专线",
@@ -748,7 +748,7 @@ export const airports = [
   {
     "slug": "xingdaomeng",
     "name": "星岛梦",
-    "affiliateUrl": "https://jljljfois.xdmttt4.lol/#/?code=1qBePxW1",
+    "affiliateUrl": "https://kfccbb.xingdaomeng.com/#/?code=1qBePxW1",
     "coupon": "nmw888（9折）",
     "macDownload": "https://down-apps.oss-cn-hongkong.aliyuncs.com/xdm/images/%E6%98%9F%E5%B2%9B%E6%A2%A6-2.2.3-macos-universal.pkg",
     "lineType": "IEPL/IPLC专线",
@@ -826,7 +826,7 @@ export const airports = [
   {
     "slug": "weituyun",
     "name": "唯兔云",
-    "affiliateUrl": "https://jifdsf.v2saat.homes/#/?code=bGS5G7xn",
+    "affiliateUrl": "https://fast.v2yunvipaff.com/#/?code=bGS5G7xn",
     "coupon": "rabbit（8折）",
     "macDownload": "https://down-apps.oss-cn-hongkong.aliyuncs.com/wty/download/v2cloud-3.0.0-macos.zip",
     "lineType": "IEPL/IPLC专线",
@@ -931,7 +931,7 @@ export const airports = [
   {
     "slug": "guangsuyun",
     "name": "光速云",
-    "affiliateUrl": "https://v5g.gggoltt.xyz/#/?code=GKfXFvJh",
+    "affiliateUrl": "https://mdlky.gsyaff.com/#/?code=GKfXFvJh",
     "coupon": "(暂无优惠）",
     "macDownload": "https://down-apps.oss-cn-hongkong.aliyuncs.com/gsy/images/%E5%85%89%E9%80%9F%E4%BA%91-2.2.3-macos-universal.pkg",
     "lineType": "IEPL/IPLC专线",
@@ -1018,7 +1018,7 @@ export const airports = [
   {
     "slug": "u1s1",
     "name": "U1S1",
-    "affiliateUrl": "https://hudeiuf.u1sat.my/#/?code=T1UVuVDP",
+    "affiliateUrl": "https://pkdj7.vipaff.cc/#/?code=T1UVuVDP",
     "coupon": "U1S1（85折）",
     "macDownload": "https://down-apps.oss-cn-hongkong.aliyuncs.com/u1s1/images/U1S1-2.2.3-macos-universal.pkg",
     "lineType": "IEPL/IPLC专线",
@@ -1095,7 +1095,7 @@ export const airports = [
   {
     "slug": "jilianyun",
     "name": "极连云",
-    "affiliateUrl": "https://1jdhjfeeef.jilianat.homes/#/?code=nrPTQT2i",
+    "affiliateUrl": "https://kdjhao.jlyvipaff.com/#/?code=nrPTQT2i",
     "coupon": "JLY888（8折）",
     "macDownload": "https://down-apps.oss-cn-hongkong.aliyuncs.com/jly/download/jly-2.2.3-macos-universal.pkg",
     "lineType": "IEPL/IPLC专线",
@@ -1174,7 +1174,7 @@ export const airports = [
   {
     "slug": "guangnianti",
     "name": "光年梯",
-    "affiliateUrl": "https://vv3dbvb.guangnianertt1.homes/#/?code=k0rrn5UQ",
+    "affiliateUrl": "https://ggmq.gntaff.com/#/?code=k0rrn5UQ",
     "coupon": "(暂无优惠）",
     "macDownload": "https://down-apps.oss-cn-hongkong.aliyuncs.com/gnt/download/gnt-2.2.3-macos-universal.pkg",
     "lineType": "IEPL/IPLC专线",
@@ -1253,7 +1253,7 @@ export const airports = [
   {
     "slug": "yifanyun",
     "name": "一翻云",
-    "affiliateUrl": "https://bbn3uyoiu.1fyohnzt.xyz/#/?code=e61goYLt",
+    "affiliateUrl": "https://wzjc.1flyunaff.cc/#/?code=e61goYLt",
     "coupon": "(暂无优惠）",
     "macDownload": "https://bbn3uyoiu.1fyohnzt.xyz/#/?code=e61goYLt（注册后网页内下载）",
     "lineType": "中转/直连",
@@ -1345,7 +1345,7 @@ export const airports = [
   {
     "slug": "ermaoyun",
     "name": "二猫云",
-    "affiliateUrl": "https://shadow.ermaotztz3.homes/#/?code=c842udvC",
+    "affiliateUrl": "https://waaa.2maoyunaff.cc/#/?code=c842udvC",
     "coupon": "ermao888（85折）",
     "macDownload": "https://shadow.ermaotztz3.homes/#/?code=c842udvC（注册后网页内下载）",
     "lineType": "IEPL/IPLC专线",
@@ -1423,7 +1423,7 @@ export const airports = [
   {
     "slug": "bianyuan",
     "name": "边缘节点",
-    "affiliateUrl": "https://bcbhk40y.ztymforedge.lol/#/?code=FhNDD3Sa",
+    "affiliateUrl": "https://work.edgenovaaff.cc/#/?code=etUBOp4S",
     "coupon": "xk808（8折）",
     "macDownload": "https://bcbhk40y.ztymforedge.lol/#/?code=etUBOp4S（注册后网页内下载）",
     "lineType": "IEPL/IPLC专线",
@@ -1500,7 +1500,7 @@ export const airports = [
   {
     "slug": "kexinyun",
     "name": "可信云",
-    "affiliateUrl": "https://asfasf.kexintztz2.sbs/#/?code=PY3isazT",
+    "affiliateUrl": "https://work.kosingaff.com/#/?code=PY3isazT",
     "coupon": "(暂无优惠）",
     "macDownload": "https://asfasf.kexintztz2.sbs/#/?code=PY3isazT（注册后网页内下载）",
     "lineType": "IEPL/IPLC专线",
@@ -1585,7 +1585,7 @@ export const airports = [
   {
     "slug": "sujie",
     "name": "速界机场",
-    "affiliateUrl": "https://linktest.tzztssuujj.xyz/#/?code=q1enwrOd",
+    "affiliateUrl": "https://work.speedworldaff.cc/#/?code=q1enwrOd",
     "coupon": "sujie888（8折)",
     "macDownload": "https://j3gncnh.tzztssuujj.xyz/#/?code=q1enwrOd（注册后网页内下载）",
     "lineType": "IEPL/IPLC专线",
@@ -1664,7 +1664,7 @@ export const airports = [
   {
     "slug": "kuaili",
     "name": "快狸",
-    "affiliateUrl": "https://iasfa.kuailitztz2.sbs/#/?code=9RhZkrkV",
+    "affiliateUrl": "https://work.kuailicloud.cc/#/?code=9RhZkrkV",
     "coupon": "(暂无优惠）",
     "macDownload": "https://iasfasf.kuailitztz2.xyz/#/?code=9RhZkrkV（注册后网页内下载）",
     "lineType": "IEPL/IPLC专线",
@@ -1742,7 +1742,7 @@ export const airports = [
   {
     "slug": "flyv",
     "name": "飞V",
-    "affiliateUrl": "https://asfawsf.flyvastt.lol/#/?code=6ae5FH9i",
+    "affiliateUrl": "https://varnexa.flyvaff.com/#/?code=6ae5FH9i",
     "coupon": "fly20（8折)",
     "macDownload": "https://asfawsf.flyvastt.lol/#/?code=6ae5FH9i（注册后网页内下载）",
     "lineType": "IEPL/IPLC专线",
@@ -1844,7 +1844,7 @@ export const airports = [
   {
     "slug": "tiziyun",
     "name": "梯子云",
-    "affiliateUrl": "https://asfawsf.ladderttt.sbs/#/?code=3vf6NG2u",
+    "affiliateUrl": "https://varnexa.ladderaff.com/#/?code=3vf6NG2u",
     "coupon": "tiziyun（8折)",
     "macDownload": "https://asfawsf.ladderttt.sbs/#/?code=3vf6NG2u（注册后网页内下载）",
     "lineType": "中转/直连",
@@ -1945,7 +1945,7 @@ export const airports = [
   {
     "slug": "wavenet",
     "name": "WaveNet",
-    "affiliateUrl": "https://asfawsf.wavenetttt.homes/#/?code=pcFhy7Lb",
+    "affiliateUrl": "https://varnexa.wavenetaff.com/#/?code=pcFhy7Lb",
     "coupon": "lw888（8折)",
     "macDownload": "https://asfawsf.wavenetttt.homes/#/?code=YPxgLl5c（注册后网页内下载）",
     "lineType": "IEPL/IPLC专线",
@@ -2048,7 +2048,7 @@ export const airports = [
   {
     "slug": "lingdongyun",
     "name": "灵动云",
-    "affiliateUrl": "https://asfawsf.lingdongyunttt.homes/#/?code=TIMwZeIR",
+    "affiliateUrl": "https://varnexa.lingdongaff.com/#/?code=TIMwZeIR",
     "coupon": "880223（8折)",
     "macDownload": "https://asfawsf.lingdongyunttt.homes/#/?code=TIMwZeIR（注册后网页内下载）",
     "lineType": "IEPL/IPLC专线",
@@ -2150,7 +2150,7 @@ export const airports = [
   {
     "slug": "yinxingren",
     "name": "隐形人",
-    "affiliateUrl": "https://asfweroasf.invisiblettt.homes/#/?code=8jyAXfu3",
+    "affiliateUrl": "https://varnexa.invisibleaff.com/#/?code=8jyAXfu3",
     "coupon": "yxr888（8折)",
     "macDownload": "https://asfweroasf.invisiblettt.homes/#/?code=8jyAXfu3（注册后网页内下载）",
     "lineType": "IEPL/IPLC专线",
