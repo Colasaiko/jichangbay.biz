@@ -5,47 +5,47 @@ import { getDisplayPrice } from '../../utils/airportPrice';
 import { getRankedAirports } from '../../utils/airportRanking';
 import StructuredData from '../../components/StructuredData.astro';
 
-// Streaming logic: Prioritize those with "解锁" or "全解锁" in streamingSupport.
+// Streaming logic: Prioritize those with "解锁" or "支持" in streamingSupport.
 const streamingAirports = getRankedAirports().filter(a => a.streamingSupport.includes('解锁') || a.streamingSupport.includes('支持')).slice(0, 8);
 if (streamingAirports.length === 0) {
   // fallback
   streamingAirports.push(...getRankedAirports().slice(0, 8));
 }
 ---
-<Layout title="流媒体机场推荐：Netflix与Disney+节点解锁指南" description="打得开外网不等于能看奈飞！为你推荐针对 Netflix、Disney+ 等流媒体优化的原生 IP 机场。解析解锁原理，破除“保证100%解锁”的虚假营销。">
+<Layout title="流媒体机场推荐记录：Netflix与Disney+节点支持情况" description="探讨 Netflix、Disney+ 等流媒体平台的代理检测机制，并汇总本站数据库中具备相关流媒体解锁标记的机场品牌，帮助追剧用户客观看待解锁表现。">
   <StructuredData type="BreadcrumbList" data={{
         itemListElement: [
           { "@type": "ListItem", "position": 1, "name": "首页", "item": "https://jichangbay.biz/" },
           { "@type": "ListItem", "position": 2, "name": "专题推荐", "item": "https://jichangbay.biz/airports" },
-          { "@type": "ListItem", "position": 3, "name": "流媒体解锁推荐", "item": "https://jichangbay.biz/recommend/streaming" }
+          { "@type": "ListItem", "position": 3, "name": "流媒体解锁记录", "item": "https://jichangbay.biz/recommend/streaming" }
         ]
       }} />
   <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <nav class="text-sm mb-6 text-gray-500">
       <a href="/" class="hover:text-cyan-blue">首页</a> &gt; 
       <a href="/airports" class="hover:text-cyan-blue">专题推荐</a> &gt; 
-      <span class="text-gray-800 dark:text-gray-200">流媒体解锁推荐</span>
+      <span class="text-gray-800 dark:text-gray-200">流媒体解锁记录</span>
     </nav>
     
     <div class="mb-12 border-b border-gray-200 dark:border-gray-800 pb-8">
-      <h1 class="text-4xl font-bold mb-6">流媒体机场推荐：Netflix / Disney+ 追剧党怎么选？</h1>
+      <h1 class="text-4xl font-bold mb-6">流媒体节点记录：客观认识 Netflix / Disney+ 解锁</h1>
       <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
-        一个残酷的现实是：“能打开 Google” 绝对不等于 “能看 Netflix”。流媒体平台对跨区版权保护极其严格，会定期封杀来自云服务商的广播 IP 数据中心。如果你是重度追剧党，你需要的是经过专门 DNS 解锁优化或具备干净原生 IP 落地资源的特殊机场。
+        “能打开 Google” 绝对不等于 “能看 Netflix”。流媒体平台对跨区版权保护极其严格，会定期封杀来自云服务商的数据中心 IP。本页主要探讨流媒体解锁的一般机制，并汇总本站数据库中带有流媒体支持标记的品牌，为追剧党提供参考。
       </p>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-16">
       <div class="lg:col-span-2 prose dark:prose-invert max-w-none">
-        <h2>流媒体选购三大定律</h2>
+        <h2>关于流媒体解锁的一般性探讨</h2>
         
-        <h3>1. 永远没有“绝对 100% 解锁”</h3>
-        <p>如果一家服务商告诉你他们“永久保证全线节点秒开奈飞”，那一定是虚假营销。Netflix 的风控系统是动态的，每隔几个月就会进行一次大规模封锁。优秀的机场并非不会掉解锁，而是<strong>掉了解锁后能在几小时内通过 DNS 劫持迅速修复</strong>。详情参见 <a href="/questions/netflix-proxy-detected/">Netflix 提示使用代理怎么办？</a></p>
+        <h3>1. 解锁状态并非永久不变</h3>
+        <p>很多用户期望找到“绝对 100% 永久解锁”的节点。然而，Netflix 等平台的风控系统是动态的，通常会定期进行大规模封锁。不同网络出口在流媒体平台上的表现可能不同，同一服务商的不同节点在不同时段也可能发生变化。当遇到解锁失效时，可参考 <a href="/questions/netflix-proxy-detected/">Netflix 提示使用代理怎么办？</a></p>
 
-        <h3>2. 不同节点，不同版权库</h3>
-        <p>你连接的节点国家决定了你能看到的内容。比如连接新加坡节点可能看得到中文字幕的动漫，而连美国节点则主要是美剧库。因此，对于追剧党来说，<strong>拥有丰富的国家/地区节点覆盖</strong>比单纯拥有几条极速专线更重要。</p>
+        <h3>2. 节点地区与版权库的关系</h3>
+        <p>你连接的节点国家通常决定了你能看到的内容库。比如连接新加坡节点可能看得到更多中文字幕的动漫，而连美国节点则主要是美剧库。因此，对于追剧党来说，节点覆盖的多样性往往是重要的考量维度之一。</p>
 
-        <h3>3. 流量永远是不够用的</h3>
-        <p>流媒体是吃流量的大户。看一部 4K HDR 格式的电影可能需要消耗 7GB~10GB 的数据。因此，不要为了省钱购买十几块钱只有 30GB 流量的小型套餐。如果是追剧主力，请务必关注 300GB 以上的大流量套餐。</p>
+        <h3>3. 流量消耗预警</h3>
+        <p>流媒体是吃流量的大户。观看一部 4K HDR 格式的电影可能需要消耗大量的网络数据。因此，重度追剧用户除了关注解锁状态，还需仔细评估套餐包含的基础流量池大小，以免月中便耗尽额度。</p>
       </div>
       
       <div class="bg-gray-50 dark:bg-gray-800/50 p-6 rounded-2xl h-fit border border-gray-100 dark:border-gray-700">
@@ -54,12 +54,12 @@ if (streamingAirports.length === 0) {
         <ul class="space-y-4 text-sm">
           <li class="border-b border-gray-200 dark:border-gray-700 pb-3">
             <span class="block font-bold text-gray-900 dark:text-white mb-1">主要为了用 ChatGPT / Claude</span>
-            <span class="text-gray-500 text-xs block mb-1">AI 平台对 IP 干净度要求比 Netflix 还要高，且容易封号。</span>
-            <a href="/recommend/ai/" class="text-cyan-blue hover:underline font-bold">👉 去看 AI 专属机场推荐</a>
+            <span class="text-gray-500 text-xs block mb-1">AI 平台对网络环境的要求与流媒体不完全相同。</span>
+            <a href="/recommend/ai/" class="text-cyan-blue hover:underline font-bold">👉 去看 AI 节点记录</a>
           </li>
           <li class="border-b border-gray-200 dark:border-gray-700 pb-3">
             <span class="block font-bold text-gray-900 dark:text-white mb-1">预算实在太低，想找几十块一年的</span>
-            <span class="text-gray-500 text-xs block mb-1">超低价几乎无缘原生 IP 解锁。</span>
+            <span class="text-gray-500 text-xs block mb-1">超低价套餐往往在流量配额上受到严格限制。</span>
             <a href="/recommend/cheap-airport/" class="text-cyan-blue hover:underline font-bold">👉 去看 便宜机场推荐</a>
           </li>
           <li>
@@ -71,14 +71,14 @@ if (streamingAirports.length === 0) {
     </div>
 
     <div class="mb-12">
-      <h2 class="text-3xl font-bold mb-8">优质流媒体支持品牌对比表</h2>
+      <h2 class="text-3xl font-bold mb-8">具备流媒体支持标记的品牌对比表</h2>
       
       <div class="overflow-x-auto mb-10 border border-gray-200 dark:border-gray-700 rounded-xl">
         <table class="w-full text-left text-sm text-gray-600 dark:text-gray-400">
           <thead class="bg-gray-50 dark:bg-gray-800/80 text-gray-900 dark:text-gray-200 font-bold">
             <tr>
               <th class="p-4 rounded-tl-xl">品牌</th>
-              <th class="p-4">官方解锁承诺</th>
+              <th class="p-4">本站记录的流媒体支持</th>
               <th class="p-4">线路类型</th>
               <th class="p-4">参考价格</th>
               <th class="p-4 rounded-tr-xl">详细资料</th>
@@ -105,11 +105,12 @@ if (streamingAirports.length === 0) {
               <h3 class="text-2xl font-bold mb-3">{airport.name}</h3>
               <div class="prose dark:prose-invert max-w-none text-sm">
                 <p>
-                  <strong>入选本专题的理由：</strong> 
-                  在公开数据库记录中，{airport.name} 在流媒体解锁这一核心指标上标称达到了 <strong>{airport.streamingSupport}</strong> 的水准。这意味着该服务商在落地机房端配备了相应的 DNS 劫持解锁机器，或是采购了具备住宅属性的原生 IP。
+                  <strong>数据记录说明：</strong> 
+                  在公开数据库记录中，{airport.name} 在流媒体支持这一指标上留有 <strong>{airport.streamingSupport}</strong> 的标记。
+                  这一字段仅反映本站收集数据时的状态，不意味着其底层必然部署了特定的解锁机器或拥有长期稳固的原生 IP 资源。
                 </p>
                 <p>
-                  不仅如此，其起步价格 {getDisplayPrice(airport)} 与 <strong>{airport.lineType}</strong> 的底层带宽冗余相匹配。对于想要在晚高峰流畅缓冲 4K 画质的用户来说，这是至关重要的。官方推荐场景 <em>{airport.recommendedFor}</em> 亦从侧面印证了其在跨国娱乐消费方面的能力。
+                  根据记录，其目前的起步价格为 {getDisplayPrice(airport)}，且采用 <strong>{airport.lineType}</strong> 作为底层架构。结合官方声明的 <em>{airport.recommendedFor}</em> 场景定位，如果你计划利用该服务商访问流媒体库，建议先充分评估其包含的基础流量是否足以覆盖你的观看需求。
                 </p>
               </div>
             </div>

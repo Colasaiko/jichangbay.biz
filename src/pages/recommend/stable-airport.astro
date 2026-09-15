@@ -5,12 +5,15 @@ import { getDisplayPrice } from '../../utils/airportPrice';
 import { getRankedAirports } from '../../utils/airportRanking';
 import StructuredData from '../../components/StructuredData.astro';
 
-// Stable specific logic: usually IPLC/IEPL or high-end transit. We prioritize those in the ranked list.
+// Stable specific logic: Filter based on lineType (IPLC/IEPL/优化中转) as potential candidates, not price.
 const stableAirports = getRankedAirports().filter(a => 
-  a.lineType.includes('IPLC') || a.lineType.includes('IEPL') || a.lineType.includes('专线') || a.monthlyStartingPrice >= 20
+  a.lineType.includes('IPLC') || a.lineType.includes('IEPL') || a.lineType.includes('专线') || a.lineType.includes('优化中转') || a.lineType.includes('BGP')
 ).slice(0, 8);
+if (stableAirports.length === 0) {
+  stableAirports.push(...getRankedAirports().slice(0, 8));
+}
 ---
-<Layout title="稳定机场推荐：晚高峰不卡的梯子怎么选？" description="针对远程办公、视频会议、外贸等高要求场景的稳定机场推荐。拒绝盲目追求低价，分析 IPLC/IEPL 专线在降低延迟、减少丢包和晚高峰抗拥堵上的真实表现。">
+<Layout title="稳定机场推荐：晚高峰不卡的梯子怎么选？" description="根据公开线路类型与适用场景筛选的稳定性候选机场。探讨不同网络架构在降低延迟和抗拥堵上的理论表现，为高频远程办公和视频会议提供参考。">
   <StructuredData type="BreadcrumbList" data={{
         itemListElement: [
           { "@type": "ListItem", "position": 1, "name": "首页", "item": "https://jichangbay.biz/" },
@@ -26,9 +29,9 @@ const stableAirports = getRankedAirports().filter(a =>
     </nav>
     
     <div class="mb-12 border-b border-gray-200 dark:border-gray-800 pb-8">
-      <h1 class="text-4xl font-bold mb-6">稳定机场推荐：告别晚高峰卡顿与频繁断线</h1>
+      <h1 class="text-4xl font-bold mb-6">稳定机场推荐：根据公开线路类型筛选的稳定性候选</h1>
       <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
-        当你搜索“稳定”时，意味着你已经厌倦了便宜梯子在晚高峰时段的无尽转圈，或者你的业务（外贸、远程办公、视频会议）根本无法容忍哪怕 5 秒钟的断流。本页面的核心逻辑，是依靠结构化的线路配置与价格门槛，为你筛选出具备真正“抗压能力”的品牌。
+        当你搜索“稳定”时，意味着你的业务（如外贸、远程办公、视频会议）对网络断流的容忍度极低。需要特别说明的是：<strong>线路类型本身不能保证实际稳定性，高价格也不等同于绝对稳定。</strong> 本页面的候选名单基于各品牌公开宣称的底层网络架构（如 IPLC/IEPL、高级 BGP 中转）进行筛选，仅供参考。
       </p>
     </div>
 
@@ -36,19 +39,19 @@ const stableAirports = getRankedAirports().filter(a =>
       <div class="lg:col-span-2 prose dark:prose-invert max-w-none">
         <h2>“稳定”究竟在要求什么？</h2>
         
-        <p>很多商家自称稳定，但脱离了技术架构的保证只是空谈。不同场景对“稳定”的定义截然不同：</p>
+        <p>不同场景对“稳定”的定义截然不同：</p>
         
-        <h3>1. 视频会议 / 语音通话 (Zoom / Teams / Discord)</h3>
-        <p><strong>核心需求：极低抖动与丢包率。</strong>如果你在跨国会议中声音断断续续，那不是因为你的总带宽不够，而是因为“公网中转”在国际出口发生了丢包。这类场景必须选择 <code>IPLC/IEPL 专线</code>。</p>
+        <h3>1. 视频会议 / 语音通话 (Zoom / Teams)</h3>
+        <p><strong>核心需求：极低抖动与丢包率。</strong>跨国会议中的声音断续通常由于国际出口丢包引起。对于对延迟和抖动极度敏感的场景，可以优先考虑公开资料中标注了专线（IPLC/IEPL）的服务，但最终表现仍取决于本地运营商、实际带宽、服务商负载和具体节点。</p>
 
         <h3>2. 跨境电商 / 独立站运营 / 外贸客服</h3>
-        <p><strong>核心需求：IP 环境与长时间在线。</strong>频繁掉线会导致客服软件掉线，甚至触发账号风控。此类用户需要的是具备冷备节点冗余、且严格限制超售的高端套餐。</p>
+        <p><strong>核心需求：IP 环境与在线连续性。</strong>频繁掉线会导致客服软件掉线，甚至触发风控。此类用户需要关注服务商是否具备备用入口与节点冗余策略。</p>
         
         <h3>3. 高清流媒体 (晚高峰看 Netflix / YouTube)</h3>
-        <p><strong>核心需求：持续的峰值带宽。</strong>很多机场白天测速极快，一到晚上八九点就卡成 PPT，因为大家都在挤同一条线路。稳定的流媒体体验需要商家有充足的上游带宽冗余。</p>
+        <p><strong>核心需求：持续的峰值带宽。</strong>稳定的流媒体体验需要商家有充足的上游带宽冗余，以应对晚高峰突发的集中流量。</p>
 
         <div class="bg-yellow-50 dark:bg-yellow-900/20 p-4 rounded-lg border-l-4 border-yellow-500 mt-6 text-sm text-gray-700 dark:text-gray-300">
-          <strong>真实情况说明：</strong>没有任何机场可以保证 365 天、24 小时 100% 不掉线。防火墙升级、海底光缆维修、上游机房故障都会导致短暂不可用。真正的“稳定”是指：发生故障时有备用入口、修复速度快、日常晚高峰不拥堵。建议重要业务用户至少备好两家不同底层的机场。
+          <strong>真实情况说明：</strong>没有任何机场可以保证 365 天、24 小时 100% 不掉线。防火墙升级、海底光缆维修、上游机房故障都会导致短暂不可用。建议重要业务用户至少备好两家不同底层网络架构的机场进行互备。
         </div>
       </div>
       
@@ -58,7 +61,7 @@ const stableAirports = getRankedAirports().filter(a =>
         <ul class="space-y-4 text-sm">
           <li class="border-b border-gray-200 dark:border-gray-700 pb-3">
             <span class="block font-bold text-gray-900 dark:text-white mb-1">如果预算在 20 元以下</span>
-            <span class="text-gray-500 text-xs block mb-1">稳定服务成本极高，低预算只能在晚高峰做出妥协。</span>
+            <span class="text-gray-500 text-xs block mb-1">低预算通常很难兼顾晚高峰的极致体验。</span>
             <a href="/recommend/cheap-airport/" class="text-cyan-blue hover:underline font-bold">👉 退后一步，去看 便宜机场</a>
           </li>
           <li class="border-b border-gray-200 dark:border-gray-700 pb-3">
@@ -75,14 +78,14 @@ const stableAirports = getRankedAirports().filter(a =>
     </div>
 
     <div class="mb-12">
-      <h2 class="text-3xl font-bold mb-8">稳定向品牌对比表</h2>
+      <h2 class="text-3xl font-bold mb-8">稳定性候选品牌对比表</h2>
       
       <div class="overflow-x-auto mb-10 border border-gray-200 dark:border-gray-700 rounded-xl">
         <table class="w-full text-left text-sm text-gray-600 dark:text-gray-400">
           <thead class="bg-gray-50 dark:bg-gray-800/80 text-gray-900 dark:text-gray-200 font-bold">
             <tr>
               <th class="p-4 rounded-tl-xl">品牌名称</th>
-              <th class="p-4">线路类型</th>
+              <th class="p-4">本站记录线路类型</th>
               <th class="p-4">参考起步价</th>
               <th class="p-4">适合场景</th>
               <th class="p-4 rounded-tr-xl">详细资料</th>
@@ -114,12 +117,12 @@ const stableAirports = getRankedAirports().filter(a =>
             
             <div class="prose dark:prose-invert max-w-none text-sm">
               <p>
-                <strong>为什么归入稳定专题：</strong>
-                {airport.name} 之所以被筛选进高可用性专题，主要得益于其公开资料标明的 <strong>{airport.lineType}</strong> 架构。
-                相比于容易受到国际出口拥堵影响的直连网络，这种线路类型在物理/逻辑链路上具备更强的抗波动能力。
+                <strong>为什么归入稳定性候选名单：</strong>
+                {airport.name} 能够进入本列表，是因为其在公开资料中标注了 <strong>{airport.lineType}</strong> 的底层网络架构。
+                在理论层面，这类架构在面对国际出口网络拥堵时，往往拥有比普通直连更好的抗干扰潜力。
               </p>
               <p>
-                该品牌最低起步价为 <strong>{getDisplayPrice(airport)}</strong>，这也变相设立了一定的门槛，阻挡了大量因极端低价涌入带来的超售拥挤现象，从而在晚高峰时段能够更好地保障高净值用户的带宽分配。适合 <em>{airport.recommendedFor}</em> 的用户将其作为主力使用。
+                结合本站记录的 {getDisplayPrice(airport)} 起步价与 <em>{airport.recommendedFor}</em> 的官方场景定位，该品牌适合对网络连续性有一定要求的用户进行实际测试。请在当地网络环境下亲自试用后，再决定是否长期作为主力。
               </p>
             </div>
           </div>

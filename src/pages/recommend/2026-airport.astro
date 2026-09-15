@@ -112,7 +112,7 @@ const top8 = getRankedAirports().slice(0, 8);
               <div class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed mb-4">
                 <strong>综合点评：</strong>
                 作为综合榜排名第 {index + 1} 的品牌，{airport.name} 的核心优势在于 <em>{airport.recommendedFor}</em>。
-                根据官方公布的数据，其线路类型为 {airport.lineType}，并在流媒体和 AI 支持度上标称达到了 {airport.streamingSupport} 和 {airport.aiSupport}。
+                根据本站数据库记录的数据，其线路类型为 {airport.lineType}，并在流媒体和 AI 支持度上记录为了 {airport.streamingSupport} 和 {airport.aiSupport}。
                 结合其最低起步价 {getDisplayPrice(airport)}，该品牌能够满足绝大多数常规用户的日用需求。
                 {airport.plans && airport.plans.length > 0 && `其常规套餐主要覆盖 ${airport.plans[0].traffic} 左右的基础流量需求，`}适合作为主力选项之一。
               </div>

@@ -1,32 +1,35 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { airports } from '../../data/airports'; 
 import { getDisplayPrice } from '../../utils/airportPrice';
 import { getRankedAirports } from '../../utils/airportRanking';
+import { getLowestMonthlyPlan, getLowestDirectPayment, getLowestAnnualPlan } from '../../utils/airportPlanUtils';
 import StructuredData from '../../components/StructuredData.astro';
 
-// Cheap specific logic: We only want airports whose true monthly or quarterly/3 or annual/12 price is low.
-// But we will just use the current top ranked and sort them or filter them by price.
-const cheapAirports = getRankedAirports().filter(a => {
-  if (a.monthlyStartingPrice && a.monthlyStartingPrice <= 20) return true;
-  // If no monthly, check if annual/12 is low
-  if (!a.monthlyStartingPrice && a.plans && a.plans.some(p => p.annual && (p.annual/12) <= 20)) return true;
-  return false;
-}).slice(0, 8);
+// Cheap specific logic: 
+// 1. Calculate an "effective lowest monthly cost" for filtering and sorting
+const cheapAirportsAll = getRankedAirports().map(airport => {
+  const lowestMonthly = getLowestMonthlyPlan(airport);
+  const lowestAnnual = getLowestAnnualPlan(airport);
+  
+  let effectiveMonthly = Infinity;
+  if (lowestMonthly) effectiveMonthly = lowestMonthly.monthly;
+  if (lowestAnnual && lowestAnnual.annual / 12 < effectiveMonthly) {
+    effectiveMonthly = lowestAnnual.annual / 12;
+  }
+  
+  // BitzNet has no monthly, it has quarterly.
+  const lowestDirect = getLowestDirectPayment(airport);
+  if (effectiveMonthly === Infinity && lowestDirect) {
+     if (lowestDirect.cycle === '季付') effectiveMonthly = lowestDirect.cost / 3;
+     if (lowestDirect.cycle === '一次性') effectiveMonthly = lowestDirect.cost; // just a rough baseline
+  }
+  
+  return { ...airport, effectiveMonthly, lowestMonthly, lowestAnnual, lowestDirect };
+}).filter(a => a.effectiveMonthly <= 25);
 
-// Sort by actual lowest possible entry cost (monthly, or amortized if no monthly)
-cheapAirports.sort((a, b) => {
-  const getMinCost = (airport) => {
-    let min = 999;
-    airport.plans?.forEach(p => {
-      if (p.monthly && p.monthly < min) min = p.monthly;
-      if (!p.monthly && p.quarterly && p.quarterly/3 < min) min = p.quarterly/3;
-      if (!p.monthly && !p.quarterly && p.annual && p.annual/12 < min) min = p.annual/12;
-    });
-    return min;
-  };
-  return getMinCost(a) - getMinCost(b);
-});
+// 2. Sort by effective monthly FIRST, then slice(0, 8)
+cheapAirportsAll.sort((a, b) => a.effectiveMonthly - b.effectiveMonthly);
+const cheapAirports = cheapAirportsAll.slice(0, 8);
 
 ---
 <Layout title="便宜机场推荐：高性价比低价机场怎么选？真实价格揭秘" description="汇集全网便宜机场推荐、低价机场与高性价比梯子。为你揭秘月付与年付折算价格的文字游戏，解答一元机场好不好用，提供按预算（10元以内/20元以内）的真实月付筛选指南。">
@@ -58,17 +61,17 @@ cheapAirports.sort((a, b) => {
         <p>脱离需求谈价格是没有意义的。请根据你的实际使用频率对号入座：</p>
         
         <h3>¥1 ～ ¥10 / 月档位（偶尔查资料）</h3>
-        <p>这类极低价服务（包括传说中的<a href="/questions/is-one-yuan-airport-good/">一元机场</a>）通常是为了引流或超售。如果你只是偶尔一个月用两三次查查学术资料，这个价位足够。但请做好晚高峰卡顿、偶尔掉线的心理准备。</p>
+        <p>这类极低价服务（包括传说中的<a href="/questions/is-one-yuan-airport-good/">一元机场</a>，如部分套餐真实月付 ¥1）通常流量极小或存在特殊限制。如果你只是偶尔一个月用两三次查查学术资料，这个价位足够，但请关注其在高峰期的实际连通情况。</p>
         
         <h3>¥10 ～ ¥20 / 月档位（日常使用主力）</h3>
         <p>这是目前市面上竞争最激烈的红海价格带。这个价位能够买到流量充裕（100GB-300GB）、线路较为稳定的公网中转服务，足以满足日常刷图、看标清/高清流媒体的需求，性价比极高。</p>
 
         <h3>¥20 ～ ¥30 / 月档位（重度视频与轻度专线）</h3>
-        <p>如果你每天都在看 Netflix 4K 视频，或者对延迟有一定要求，这个价位可以买到高质量的大流量中转，或者入门级流量的专线（IPLC/IEPL）。</p>
+        <p>如果你每天都在看 Netflix 4K 视频，或者对延迟有一定要求，这个价位可以买到高质量的大流量中转，或者入门级流量的专线。</p>
         
         <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500 mt-6">
           <strong>价格文字游戏预警：</strong> 
-          在下面的对比表中，我们会明确区分“真实最低月付”与“必须年付才能享受的折算价”。如果一个品牌根本没有提供月付套餐，我们会直接标明，避免你被起步门槛误导。
+          在下面的对比表中，我们会明确区分“真实最低月付”与“最低直接付款门槛”。如果一个品牌根本没有提供月付套餐（如 BitzNet 仅支持季付起），我们会直接标明其起步门槛，绝不捏造不存在的月付价格。
         </div>
       </div>
       
@@ -78,12 +81,12 @@ cheapAirports.sort((a, b) => {
         <ul class="space-y-4 text-sm">
           <li class="border-b border-gray-200 dark:border-gray-700 pb-3">
             <span class="block font-bold text-gray-900 dark:text-white mb-1">如果是居家网课 / 远程办公</span>
-            <span class="text-gray-500 text-xs block mb-1">你需要的是极低的断线率，而非绝对低价。</span>
+            <span class="text-gray-500 text-xs block mb-1">请重点关注线路类型与使用场景匹配度。</span>
             <a href="/recommend/stable-airport/" class="text-cyan-blue hover:underline font-bold">👉 去看 稳定机场推荐</a>
           </li>
           <li class="border-b border-gray-200 dark:border-gray-700 pb-3">
             <span class="block font-bold text-gray-900 dark:text-white mb-1">如果是游戏加速 / 炒股交易</span>
-            <span class="text-gray-500 text-xs block mb-1">必须绕过公网拥堵，专线是必选项。</span>
+            <span class="text-gray-500 text-xs block mb-1">通常对延迟要求极高。</span>
             <a href="/recommend/premium-line/" class="text-cyan-blue hover:underline font-bold">👉 去看 专线机场推荐</a>
           </li>
           <li>
@@ -104,30 +107,30 @@ cheapAirports.sort((a, b) => {
             <tr>
               <th class="p-4 rounded-tl-xl">品牌名称</th>
               <th class="p-4">真实最低月付</th>
-              <th class="p-4">其他门槛说明</th>
-              <th class="p-4">基础流量</th>
+              <th class="p-4">最低付款门槛</th>
+              <th class="p-4">代表套餐流量</th>
               <th class="p-4">线路类型</th>
               <th class="p-4 rounded-tr-xl">操作</th>
             </tr>
           </thead>
           <tbody class="divide-y divide-gray-200 dark:divide-gray-700 bg-white dark:bg-midnight">
-            {cheapAirports.map(airport => {
-              const basePlan = airport.plans && airport.plans[0] ? airport.plans[0] : null;
-              const hasMonthly = basePlan && basePlan.monthly !== null;
-              const minMonthlyStr = hasMonthly ? `¥${basePlan.monthly}/月` : '无月付';
+            {cheapAirports.map((airport: any) => {
+              const hasMonthly = !!airport.lowestMonthly;
+              const minMonthlyStr = hasMonthly ? `¥${airport.lowestMonthly.monthly}` : '无月付';
               
-              let thresholdStr = '支持月付体验';
-              if (!hasMonthly) {
-                if (basePlan && basePlan.quarterly) thresholdStr = `最低需季付 ¥${basePlan.quarterly}`;
-                else if (basePlan && basePlan.annual) thresholdStr = `仅限年付 ¥${basePlan.annual}`;
+              let thresholdStr = '数据不足';
+              if (airport.lowestDirect) {
+                 thresholdStr = `${airport.lowestDirect.cycle} ¥${airport.lowestDirect.cost}`;
               }
+              
+              const trafficStr = airport.lowestMonthly ? airport.lowestMonthly.traffic : (airport.lowestDirect ? airport.lowestDirect.plan.traffic : '官网为准');
               
               return (
                 <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition">
                   <td class="p-4 font-bold text-gray-900 dark:text-white">{airport.name}</td>
                   <td class="p-4"><span class="text-coral font-bold">{minMonthlyStr}</span></td>
                   <td class="p-4 text-xs">{thresholdStr}</td>
-                  <td class="p-4">{basePlan ? basePlan.traffic : '以官网为准'}</td>
+                  <td class="p-4">{trafficStr}</td>
                   <td class="p-4">{airport.lineType}</td>
                   <td class="p-4"><a href={`/airports/${airport.slug}`} class="text-cyan-blue hover:underline">详情</a></td>
                 </tr>
@@ -139,9 +142,8 @@ cheapAirports.sort((a, b) => {
 
       <!-- Detailed Reviews -->
       <div class="space-y-8">
-        {cheapAirports.map((airport, index) => {
-          const basePlan = airport.plans && airport.plans[0] ? airport.plans[0] : null;
-          const hasMonthly = basePlan && basePlan.monthly !== null;
+        {cheapAirports.map((airport: any) => {
+          const hasMonthly = !!airport.lowestMonthly;
           
           return (
             <div class="bg-white dark:bg-midnight p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800">
@@ -149,20 +151,23 @@ cheapAirports.sort((a, b) => {
                 <h3 class="text-2xl font-bold">{airport.name}</h3>
                 <div class="flex gap-3">
                   <a href={`/airports/${airport.slug}`} class="px-4 py-2 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-sm font-bold rounded-lg transition">查看详细资料</a>
-                  <a href={airport.affiliateUrl} target="_blank" rel="sponsored nofollow noopener" class="px-4 py-2 bg-cyan-blue hover:bg-blue-600 text-white text-sm font-bold rounded-lg transition shadow-sm">直达官网</a>
+                  <a href={airport.affiliateUrl} target="_blank" rel="sponsored nofollow noopener" class="px-6 py-2 bg-cyan-blue hover:bg-blue-600 text-white text-sm font-bold rounded-lg transition shadow-sm">直达官网</a>
                 </div>
               </div>
               
               <div class="prose dark:prose-invert max-w-none text-sm">
                 <p>
                   <strong>入选便宜专题理由：</strong> 
-                  {airport.name} 能够进入本页面的主要原因在于其极具竞争力的价格门槛。
+                  {airport.name} 的价格结构符合本页的低门槛筛选逻辑。
                   {hasMonthly 
-                    ? `该品牌支持真实月付，最低起步套餐仅需 ¥${basePlan.monthly}，包含 ${basePlan.traffic} 流量。这种低门槛月付能够极大降低用户试错成本。` 
-                    : `需要注意的是，该品牌虽然标价看似便宜，但目前**不提供月付选项**。其最低门槛为 ${basePlan.quarterly ? `季付 ¥${basePlan.quarterly}` : `年付 ¥${basePlan.annual}`}，这就要求用户在购买前必须做好长期锁定的准备。`}
+                    ? `本站数据库记录显示，该品牌支持真实月付，其最便宜的月付套餐为 ¥${airport.lowestMonthly.monthly}。` 
+                    : `该品牌目前在数据库中**不提供月付选项**，其最低付款门槛为 ${airport.lowestDirect ? `${airport.lowestDirect.cycle} ¥${airport.lowestDirect.cost}` : '暂无数据'}。`}
+                  {airport.lowestAnnual && (!hasMonthly || airport.lowestAnnual.annual / 12 < airport.lowestMonthly.monthly) && 
+                    ` 该品牌另外提供年付限定套餐，总价 ¥${airport.lowestAnnual.annual}，需一次性支付（折算约 ¥${(airport.lowestAnnual.annual / 12).toFixed(2)}/月）。`
+                  }
                 </p>
                 <p>
-                  除了价格，根据数据库资料，该服务商的底层线路架构为 <strong>{airport.lineType}</strong>。这种配置在提供低廉资费的同时，也能在大多数非高峰时段满足基础的 <em>{airport.recommendedFor}</em> 等场景需求。
+                  底层线路上，该服务商标注为 <strong>{airport.lineType}</strong>。结合其公开的价格梯度，适合预算有限但有 <em>{airport.recommendedFor}</em> 需求的用户参考。
                 </p>
               </div>
             </div>
