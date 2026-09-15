@@ -3,88 +3,128 @@ import Layout from '../../layouts/Layout.astro';
 import { airports } from '../../data/airports'; 
 import { getDisplayPrice } from '../../utils/airportPrice';
 import { getRankedAirports } from '../../utils/airportRanking';
-
-  
-
 import StructuredData from '../../components/StructuredData.astro';
-const filtered = getRankedAirports().slice(0, 8);;
+
+// Stable specific logic: usually IPLC/IEPL or high-end transit. We prioritize those in the ranked list.
+const stableAirports = getRankedAirports().filter(a => 
+  a.lineType.includes('IPLC') || a.lineType.includes('IEPL') || a.lineType.includes('专线') || a.monthlyStartingPrice >= 20
+).slice(0, 8);
 ---
-<Layout title="稳定机场推荐：稳定机场怎么选？最新真实测评 - 机场湾" description="不晚高峰卡顿的稳定机场，适合重度跨国工作者、外贸人士。这里过滤掉了低端普通中转，只保留了使用专线或高级 BGP 优化的老牌大厂。 结合价格、线路和测速数据的客观购买建议。">
+<Layout title="稳定机场推荐：晚高峰不卡的梯子怎么选？" description="针对远程办公、视频会议、外贸等高要求场景的稳定机场推荐。拒绝盲目追求低价，分析 IPLC/IEPL 专线在降低延迟、减少丢包和晚高峰抗拥堵上的真实表现。">
   <StructuredData type="BreadcrumbList" data={{
         itemListElement: [
           { "@type": "ListItem", "position": 1, "name": "首页", "item": "https://jichangbay.biz/" },
           { "@type": "ListItem", "position": 2, "name": "专题推荐", "item": "https://jichangbay.biz/airports" },
-          { "@type": "ListItem", "position": 3, "name": "稳定机场推荐", "item": `https://jichangbay.biz/recommend/${"stable-airport"}` }
+          { "@type": "ListItem", "position": 3, "name": "稳定机场推荐", "item": "https://jichangbay.biz/recommend/stable-airport" }
         ]
       }} />
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <nav class="text-sm mb-6 text-gray-500">
       <a href="/" class="hover:text-cyan-blue">首页</a> &gt; 
       <a href="/airports" class="hover:text-cyan-blue">专题推荐</a> &gt; 
       <span class="text-gray-800 dark:text-gray-200">稳定机场推荐</span>
     </nav>
+    
     <div class="mb-12 border-b border-gray-200 dark:border-gray-800 pb-8">
-      <h1 class="text-4xl font-bold mb-6">稳定机场推荐</h1>
-      <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">不晚高峰卡顿的稳定机场，适合重度跨国工作者、外贸人士。这里过滤掉了低端普通中转，只保留了使用专线或高级 BGP 优化的老牌大厂。</p>
+      <h1 class="text-4xl font-bold mb-6">稳定机场推荐：告别晚高峰卡顿与频繁断线</h1>
+      <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+        当你搜索“稳定”时，意味着你已经厌倦了便宜梯子在晚高峰时段的无尽转圈，或者你的业务（外贸、远程办公、视频会议）根本无法容忍哪怕 5 秒钟的断流。本页面的核心逻辑，是依靠结构化的线路配置与价格门槛，为你筛选出具备真正“抗压能力”的品牌。
+      </p>
     </div>
-    
-    <div class="prose dark:prose-invert max-w-none mb-12">
-      <h2>核心选择标准</h2>
-      <p>在本专题中，我们针对该需求严格筛选了市面上表现优异的品牌，避免购买到不符合实际使用场景的“便宜坑人”套餐。主要考核点包括：</p>
-      <ul>
-        <li><strong>节点可用率与晚高峰测速</strong>：确保基础稳定。</li>
-        <li><strong>性价比模型</strong>：结合起步价与流量的综合评分。</li>
-        <li><strong>相关协议兼容性</strong>：是否完美匹配你的目标客户端或流媒体需求。</li>
-      </ul>
-      <p>下面是我们为您从 29 个品牌中根据这些标准筛选出的前几名最佳选择：</p>
-    </div>
-    
-    <div class="space-y-6">
-      {filtered.map((airport, index) => (
-        <div class="bg-white dark:bg-midnight p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 flex flex-col md:flex-row justify-between items-start md:items-center relative overflow-hidden group">
-          <div class="absolute top-0 left-0 w-1 h-full bg-cyan-blue opacity-50 group-hover:opacity-100 transition"></div>
-          <div class="mb-4 md:mb-0 pl-4 w-full md:w-2/3">
-            <div class="flex items-center gap-3 mb-2">
-              <span class="bg-gray-100 dark:bg-gray-800 text-gray-500 font-bold px-2 py-1 rounded text-xs">TOP {index + 1}</span>
-              <h2 class="text-2xl font-bold"><a href={`/airports/${airport.slug}`} class="hover:text-cyan-blue transition">{airport.name}</a></h2>
-            </div>
-            <div class="flex flex-wrap gap-2 text-sm text-gray-600 dark:text-gray-400 mb-3">
-              <span class="px-2 py-1 bg-gray-50 dark:bg-gray-800/50 rounded">起步价: <span class="text-coral font-bold">{getDisplayPrice(airport)}</span></span>
-              <span class="px-2 py-1 bg-gray-50 dark:bg-gray-800/50 rounded">线路: {airport.lineType}</span>
-              <span class="px-2 py-1 bg-gray-50 dark:bg-gray-800/50 rounded text-purple-500">流媒体: {airport.streamingSupport}</span>
-            </div>
-            <p class="text-sm text-gray-500 line-clamp-2">{airport.recommendedFor}</p>
-          </div>
-          <div class="flex flex-col md:items-end w-full md:w-auto pl-4 md:pl-0 gap-3">
-             <a href={`/airports/${airport.slug}`} class="px-6 py-2 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg transition font-medium text-center w-full md:w-auto">阅读详细评测</a>
-             <a href={airport.affiliateUrl} target="_blank" rel="sponsored nofollow noopener" class="px-6 py-2 bg-cyan-blue hover:bg-blue-600 text-white rounded-lg transition shadow-md font-bold text-center w-full md:w-auto">官网选购直达</a>
-          </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-16">
+      <div class="lg:col-span-2 prose dark:prose-invert max-w-none">
+        <h2>“稳定”究竟在要求什么？</h2>
+        
+        <p>很多商家自称稳定，但脱离了技术架构的保证只是空谈。不同场景对“稳定”的定义截然不同：</p>
+        
+        <h3>1. 视频会议 / 语音通话 (Zoom / Teams / Discord)</h3>
+        <p><strong>核心需求：极低抖动与丢包率。</strong>如果你在跨国会议中声音断断续续，那不是因为你的总带宽不够，而是因为“公网中转”在国际出口发生了丢包。这类场景必须选择 <code>IPLC/IEPL 专线</code>。</p>
+
+        <h3>2. 跨境电商 / 独立站运营 / 外贸客服</h3>
+        <p><strong>核心需求：IP 环境与长时间在线。</strong>频繁掉线会导致客服软件掉线，甚至触发账号风控。此类用户需要的是具备冷备节点冗余、且严格限制超售的高端套餐。</p>
+        
+        <h3>3. 高清流媒体 (晚高峰看 Netflix / YouTube)</h3>
+        <p><strong>核心需求：持续的峰值带宽。</strong>很多机场白天测速极快，一到晚上八九点就卡成 PPT，因为大家都在挤同一条线路。稳定的流媒体体验需要商家有充足的上游带宽冗余。</p>
+
+        <div class="bg-yellow-50 dark:bg-yellow-900/20 p-4 rounded-lg border-l-4 border-yellow-500 mt-6 text-sm text-gray-700 dark:text-gray-300">
+          <strong>真实情况说明：</strong>没有任何机场可以保证 365 天、24 小时 100% 不掉线。防火墙升级、海底光缆维修、上游机房故障都会导致短暂不可用。真正的“稳定”是指：发生故障时有备用入口、修复速度快、日常晚高峰不拥堵。建议重要业务用户至少备好两家不同底层的机场。
         </div>
-      ))}
-      
-      {filtered.length === 0 && (
-        <div class="p-8 text-center text-gray-500 bg-gray-50 dark:bg-gray-800 rounded-xl">暂无完全符合该严苛条件的机场数据。</div>
-      )}
-    </div>
-    
-    <div class="prose dark:prose-invert max-w-none mt-16 pt-8 border-t border-gray-200 dark:border-gray-800">
-      <h2>常见问题 (FAQ)</h2>
-      <div class="space-y-4">
-        <details class="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-lg cursor-pointer">
-          <summary class="font-bold">这些排名是固定不变的吗？</summary>
-          <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">并不是。我们的编辑部会定期测试所有收录品牌的表现，如果出现频繁断流、晚高峰拥堵或者售后服务响应慢的情况，其排名会被直接下调甚至移出推荐榜单。</p>
-        </details>
-        <details class="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-lg cursor-pointer">
-          <summary class="font-bold">我应该买多长时间的套餐？</summary>
-          <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">强烈建议新手用户先购买<strong>月付</strong>或<strong>季付</strong>套餐。在验证了在你当地网络环境（如电信、联通、移动）表现确实稳定后，再考虑年付以获取最大折扣。</p>
-        </details>
       </div>
       
-      <h3>相关资源推荐</h3>
-      <p>如果你还需要了解更多客户端配置或横向对比，请参考：
-        <a href="/compare" class="text-cyan-blue hover:underline">全站套餐横向比较中心</a>、
-        <a href="https://www.clashwiki.blog/" target="_blank" rel="noopener" class="text-cyan-blue hover:underline">ClashWiki 客户端教程</a>。
-      </p>
+      <div class="bg-gray-50 dark:bg-gray-800/50 p-6 rounded-2xl h-fit border border-gray-100 dark:border-gray-700">
+        <h3 class="text-xl font-bold mb-4">这个专题不适合你？</h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">如果你对网络的容忍度较高，或者有特定客户端需求：</p>
+        <ul class="space-y-4 text-sm">
+          <li class="border-b border-gray-200 dark:border-gray-700 pb-3">
+            <span class="block font-bold text-gray-900 dark:text-white mb-1">如果预算在 20 元以下</span>
+            <span class="text-gray-500 text-xs block mb-1">稳定服务成本极高，低预算只能在晚高峰做出妥协。</span>
+            <a href="/recommend/cheap-airport/" class="text-cyan-blue hover:underline font-bold">👉 退后一步，去看 便宜机场</a>
+          </li>
+          <li class="border-b border-gray-200 dark:border-gray-700 pb-3">
+            <span class="block font-bold text-gray-900 dark:text-white mb-1">如果你只关心是不是专线</span>
+            <span class="text-gray-500 text-xs block mb-1">直接对比各家 IPLC/IEPL 架构差异。</span>
+            <a href="/recommend/premium-line/" class="text-cyan-blue hover:underline font-bold">👉 去看 纯专线机场推荐</a>
+          </li>
+          <li>
+            <span class="block font-bold text-gray-900 dark:text-white mb-1">如果需要特定工具配置指南</span>
+            <a href="/recommend/clash/" class="text-cyan-blue hover:underline font-bold">👉 去看 Clash 机场选购指南</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mb-12">
+      <h2 class="text-3xl font-bold mb-8">稳定向品牌对比表</h2>
+      
+      <div class="overflow-x-auto mb-10 border border-gray-200 dark:border-gray-700 rounded-xl">
+        <table class="w-full text-left text-sm text-gray-600 dark:text-gray-400">
+          <thead class="bg-gray-50 dark:bg-gray-800/80 text-gray-900 dark:text-gray-200 font-bold">
+            <tr>
+              <th class="p-4 rounded-tl-xl">品牌名称</th>
+              <th class="p-4">线路类型</th>
+              <th class="p-4">参考起步价</th>
+              <th class="p-4">适合场景</th>
+              <th class="p-4 rounded-tr-xl">详细资料</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200 dark:divide-gray-700 bg-white dark:bg-midnight">
+            {stableAirports.map(airport => (
+              <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition">
+                <td class="p-4 font-bold text-gray-900 dark:text-white">{airport.name}</td>
+                <td class="p-4"><span class="bg-blue-50 dark:bg-blue-900/30 text-blue-600 px-2 py-1 rounded text-xs">{airport.lineType}</span></td>
+                <td class="p-4 font-mono">{getDisplayPrice(airport)}</td>
+                <td class="p-4 text-xs line-clamp-2">{airport.recommendedFor}</td>
+                <td class="p-4"><a href={`/airports/${airport.slug}`} class="text-cyan-blue hover:underline">详情</a></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="space-y-8">
+        {stableAirports.map((airport, index) => (
+          <div class="bg-white dark:bg-midnight p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4 pb-4 border-b border-gray-100 dark:border-gray-800">
+              <h3 class="text-2xl font-bold">{airport.name}</h3>
+              <div class="flex gap-3">
+                <a href={airport.affiliateUrl} target="_blank" rel="sponsored nofollow noopener" class="px-6 py-2 bg-cyan-blue hover:bg-blue-600 text-white text-sm font-bold rounded-lg transition shadow-sm">直达官网</a>
+              </div>
+            </div>
+            
+            <div class="prose dark:prose-invert max-w-none text-sm">
+              <p>
+                <strong>为什么归入稳定专题：</strong>
+                {airport.name} 之所以被筛选进高可用性专题，主要得益于其公开资料标明的 <strong>{airport.lineType}</strong> 架构。
+                相比于容易受到国际出口拥堵影响的直连网络，这种线路类型在物理/逻辑链路上具备更强的抗波动能力。
+              </p>
+              <p>
+                该品牌最低起步价为 <strong>{getDisplayPrice(airport)}</strong>，这也变相设立了一定的门槛，阻挡了大量因极端低价涌入带来的超售拥挤现象，从而在晚高峰时段能够更好地保障高净值用户的带宽分配。适合 <em>{airport.recommendedFor}</em> 的用户将其作为主力使用。
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   </div>
 </Layout>

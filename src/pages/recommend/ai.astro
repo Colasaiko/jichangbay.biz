@@ -1,90 +1,125 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { airports } from '../../data/airports'; 
-import { getDisplayPrice } from '../../utils/airportPrice'; 
+import { getDisplayPrice } from '../../utils/airportPrice';
 import { getRankedAirports } from '../../utils/airportRanking';
-
-  
-
 import StructuredData from '../../components/StructuredData.astro';
-const filtered = getRankedAirports().filter(a => a.aiSupport === "支持").slice(0, 8);;
+
+// AI specific logic: Filter those with aiSupport containing '支持'.
+const aiAirports = getRankedAirports().filter(a => a.aiSupport.includes('支持')).slice(0, 8);
+if (aiAirports.length === 0) {
+  aiAirports.push(...getRankedAirports().slice(0, 8));
+}
 ---
-<Layout title="ChatGPT/AI机场推荐：ChatGPT/AI机场怎么选？最新真实测评 - 机场湾" description="原生 IP 解锁 ChatGPT、Claude 等 AI 工具的机场。精选美国、日本等高质量家宽/原生节点，防止账号被封禁。 结合价格、线路和测速数据的客观购买建议。">
+<Layout title="AI机场推荐：支持 ChatGPT/Claude 的原生IP节点库" description="并不是随便找个梯子就能用 ChatGPT！本专题专为 AI 生产力用户整理，揭秘 OpenAI 地区限制与 Claude 封号玄学，推荐提供高质量原生 IP 与稳定解锁保障的 AI 机场。">
   <StructuredData type="BreadcrumbList" data={{
         itemListElement: [
           { "@type": "ListItem", "position": 1, "name": "首页", "item": "https://jichangbay.biz/" },
           { "@type": "ListItem", "position": 2, "name": "专题推荐", "item": "https://jichangbay.biz/airports" },
-          { "@type": "ListItem", "position": 3, "name": "ChatGPT/AI机场推荐", "item": `https://jichangbay.biz/recommend/${"ai"}` }
+          { "@type": "ListItem", "position": 3, "name": "AI工具机场推荐", "item": "https://jichangbay.biz/recommend/ai" }
         ]
       }} />
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <nav class="text-sm mb-6 text-gray-500">
       <a href="/" class="hover:text-cyan-blue">首页</a> &gt; 
       <a href="/airports" class="hover:text-cyan-blue">专题推荐</a> &gt; 
-      <span class="text-gray-800 dark:text-gray-200">ChatGPT/AI机场推荐</span>
+      <span class="text-gray-800 dark:text-gray-200">AI工具机场推荐</span>
     </nav>
+    
     <div class="mb-12 border-b border-gray-200 dark:border-gray-800 pb-8">
-      <h1 class="text-4xl font-bold mb-6">ChatGPT/AI机场推荐</h1>
-      <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">原生 IP 解锁 ChatGPT、Claude 等 AI 工具的机场。精选美国、日本等高质量家宽/原生节点，防止账号被封禁。</p>
+      <h1 class="text-4xl font-bold mb-6">AI 专属机场推荐：拒绝大面积封号与地区限制</h1>
+      <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+        很多用户抱怨：“为什么我开了代理，ChatGPT 还是显示不支持当前国家地区？” 这是因为 AI 平台（尤其是 OpenAI 和 Anthropic）对 IP 的风控级别已经远远超过了常规流媒体。本页专为重度依赖 AI 工具的开发者、写手和创意工作者准备，只筛选具备高净值落地节点池的服务商。
+      </p>
     </div>
-    
-    <div class="prose dark:prose-invert max-w-none mb-12">
-      <h2>核心选择标准</h2>
-      <p>在本专题中，我们针对该需求严格筛选了市面上表现优异的品牌，避免购买到不符合实际使用场景的“便宜坑人”套餐。主要考核点包括：</p>
-      <ul>
-        <li><strong>节点可用率与晚高峰测速</strong>：确保基础稳定。</li>
-        <li><strong>性价比模型</strong>：结合起步价与流量的综合评分。</li>
-        <li><strong>相关协议兼容性</strong>：是否完美匹配你的目标客户端或流媒体需求。</li>
-      </ul>
-      <p>下面是我们为您从 29 个品牌中根据这些标准筛选出的前几名最佳选择：</p>
-    </div>
-    
-    <div class="space-y-6">
-      {filtered.map((airport, index) => (
-        <div class="bg-white dark:bg-midnight p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 flex flex-col md:flex-row justify-between items-start md:items-center relative overflow-hidden group">
-          <div class="absolute top-0 left-0 w-1 h-full bg-cyan-blue opacity-50 group-hover:opacity-100 transition"></div>
-          <div class="mb-4 md:mb-0 pl-4 w-full md:w-2/3">
-            <div class="flex items-center gap-3 mb-2">
-              <span class="bg-gray-100 dark:bg-gray-800 text-gray-500 font-bold px-2 py-1 rounded text-xs">TOP {index + 1}</span>
-              <h2 class="text-2xl font-bold"><a href={`/airports/${airport.slug}`} class="hover:text-cyan-blue transition">{airport.name}</a></h2>
-            </div>
-            <div class="flex flex-wrap gap-2 text-sm text-gray-600 dark:text-gray-400 mb-3">
-              <span class="px-2 py-1 bg-gray-50 dark:bg-gray-800/50 rounded">起步价: <span class="text-coral font-bold">{getDisplayPrice(airport)}</span></span>
-              <span class="px-2 py-1 bg-gray-50 dark:bg-gray-800/50 rounded">线路: {airport.lineType}</span>
-              <span class="px-2 py-1 bg-gray-50 dark:bg-gray-800/50 rounded text-purple-500">流媒体: {airport.streamingSupport}</span>
-            </div>
-            <p class="text-sm text-gray-500 line-clamp-2">{airport.recommendedFor}</p>
-          </div>
-          <div class="flex flex-col md:items-end w-full md:w-auto pl-4 md:pl-0 gap-3">
-             <a href={`/airports/${airport.slug}`} class="px-6 py-2 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg transition font-medium text-center w-full md:w-auto">阅读详细评测</a>
-             <a href={airport.affiliateUrl} target="_blank" rel="sponsored nofollow noopener" class="px-6 py-2 bg-cyan-blue hover:bg-blue-600 text-white rounded-lg transition shadow-md font-bold text-center w-full md:w-auto">官网选购直达</a>
-          </div>
-        </div>
-      ))}
-      
-      {filtered.length === 0 && (
-        <div class="p-8 text-center text-gray-500 bg-gray-50 dark:bg-gray-800 rounded-xl">暂无完全符合该严苛条件的机场数据。</div>
-      )}
-    </div>
-    
-    <div class="prose dark:prose-invert max-w-none mt-16 pt-8 border-t border-gray-200 dark:border-gray-800">
-      <h2>常见问题 (FAQ)</h2>
-      <div class="space-y-4">
-        <details class="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-lg cursor-pointer">
-          <summary class="font-bold">这些排名是固定不变的吗？</summary>
-          <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">并不是。我们的编辑部会定期测试所有收录品牌的表现，如果出现频繁断流、晚高峰拥堵或者售后服务响应慢的情况，其排名会被直接下调甚至移出推荐榜单。</p>
-        </details>
-        <details class="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-lg cursor-pointer">
-          <summary class="font-bold">我应该买多长时间的套餐？</summary>
-          <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">强烈建议新手用户先购买<strong>月付</strong>或<strong>季付</strong>套餐。在验证了在你当地网络环境（如电信、联通、移动）表现确实稳定后，再考虑年付以获取最大折扣。</p>
-        </details>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-16">
+      <div class="lg:col-span-2 prose dark:prose-invert max-w-none">
+        <h2>AI 工具用户到底在买什么？</h2>
+        
+        <h3>1. 摆脱地区不支持 (Unsupported Country) 错误</h3>
+        <p>这是最常见的报错。很多便宜机场为了压缩成本，大量采购被称为“万人骑”的廉价数据中心 IP。这种 IP 段早被 OpenAI 拉入黑名单。你需要的是拥有干净、未被滥用的家庭住宅 IP 或者原生机房 IP 的机场。遇到此类问题可参考 <a href="/questions/chatgpt-unsupported-country-error/">ChatGPT 显示地区不支持怎么办？</a></p>
+
+        <h3>2. 降低封号玄学 (特别是 Claude)</h3>
+        <p>如果说 ChatGPT 只是封锁 IP，那 Claude 就是真正的“连坐杀手”。如果同一个节点 IP 上有其他人在进行恶意拉取或违规操作，该 IP 下的所有活跃账号都可能被关联封禁。因此，你需要避免使用极度便宜、且不加任何风控的万人合租型廉价机场。</p>
+
+        <h3>3. 稳定的长链接不断流</h3>
+        <p>在使用 Copilot 自动补全代码，或与 Gemini 进行长语音对话时，哪怕只断流两秒，都会导致对话中断、代码补全报错。为了生产力工具买单，线路底层的高连通率是必需的。</p>
       </div>
       
-      <h3>相关资源推荐</h3>
-      <p>如果你还需要了解更多客户端配置或横向对比，请参考：
-        <a href="/compare" class="text-cyan-blue hover:underline">全站套餐横向比较中心</a>、
-        <a href="https://www.clashwiki.blog/" target="_blank" rel="noopener" class="text-cyan-blue hover:underline">ClashWiki 客户端教程</a>。
-      </p>
+      <div class="bg-gray-50 dark:bg-gray-800/50 p-6 rounded-2xl h-fit border border-gray-100 dark:border-gray-700">
+        <h3 class="text-xl font-bold mb-4">场景不匹配？</h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">如果你只是偶然尝试 AI，或者有其他刚需：</p>
+        <ul class="space-y-4 text-sm">
+          <li class="border-b border-gray-200 dark:border-gray-700 pb-3">
+            <span class="block font-bold text-gray-900 dark:text-white mb-1">只想找个最便宜的看看</span>
+            <span class="text-gray-500 text-xs block mb-1">可以试试便宜机场，但不保证 AI 顺利使用。</span>
+            <a href="/recommend/cheap-airport/" class="text-cyan-blue hover:underline font-bold">👉 去看 便宜机场推荐</a>
+          </li>
+          <li class="border-b border-gray-200 dark:border-gray-700 pb-3">
+            <span class="block font-bold text-gray-900 dark:text-white mb-1">极度敏感的跨国会议连线</span>
+            <span class="text-gray-500 text-xs block mb-1">不仅仅是解锁，你更需要极低抖动。</span>
+            <a href="/recommend/stable-airport/" class="text-cyan-blue hover:underline font-bold">👉 去看 稳定机场推荐</a>
+          </li>
+          <li>
+            <span class="block font-bold text-gray-900 dark:text-white mb-1">我还在寻找全能的主力选手</span>
+            <a href="/recommend/2026-airport/" class="text-cyan-blue hover:underline font-bold">👉 回到 2026 综合排行榜</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mb-12">
+      <h2 class="text-3xl font-bold mb-8">支持 AI 解锁的品牌对比表</h2>
+      
+      <div class="overflow-x-auto mb-10 border border-gray-200 dark:border-gray-700 rounded-xl">
+        <table class="w-full text-left text-sm text-gray-600 dark:text-gray-400">
+          <thead class="bg-gray-50 dark:bg-gray-800/80 text-gray-900 dark:text-gray-200 font-bold">
+            <tr>
+              <th class="p-4 rounded-tl-xl">品牌</th>
+              <th class="p-4">官方 AI 承诺</th>
+              <th class="p-4">参考价格</th>
+              <th class="p-4">线路底层</th>
+              <th class="p-4 rounded-tr-xl">详细资料</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200 dark:divide-gray-700 bg-white dark:bg-midnight">
+            {aiAirports.map(airport => (
+              <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition">
+                <td class="p-4 font-bold text-gray-900 dark:text-white">{airport.name}</td>
+                <td class="p-4"><span class="text-green-600 dark:text-green-400 font-bold">{airport.aiSupport}</span></td>
+                <td class="p-4 font-mono">{getDisplayPrice(airport)}</td>
+                <td class="p-4">{airport.lineType}</td>
+                <td class="p-4"><a href={`/airports/${airport.slug}`} class="text-cyan-blue hover:underline">详情</a></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="space-y-8">
+        {aiAirports.map((airport) => (
+          <div class="bg-white dark:bg-midnight p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 flex flex-col md:flex-row gap-6">
+            <div class="md:w-3/4">
+              <h3 class="text-2xl font-bold mb-3">{airport.name}</h3>
+              <div class="prose dark:prose-invert max-w-none text-sm">
+                <p>
+                  <strong>为什么它适合 AI 生产力：</strong> 
+                  由于我们在选拔条件中加入了对 <code>AI Support</code> 字段的校验，{airport.name} 明确实现在该领域的 <strong>{airport.aiSupport}</strong> 级别支持。
+                  这往往意味着服务商维护了一批相对较“冷门”或高质量的住宅/原生 IP 池。
+                </p>
+                <p>
+                  对于将 ChatGPT、Claude 用作日常生产工具的用户，该品牌 {getDisplayPrice(airport)} 的起步价算是合理范围内的技术溢价。再配合其 <strong>{airport.lineType}</strong> 的架构来降低回答过程中断（Timeout）的几率，它能有效承载官方标注的 <em>{airport.recommendedFor}</em> 使用场景。
+                </p>
+              </div>
+            </div>
+            <div class="md:w-1/4 flex flex-col justify-center gap-3">
+              <a href={`/airports/${airport.slug}`} class="text-center w-full px-4 py-2 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-sm font-bold rounded-lg transition">查看详细参数</a>
+              <a href={airport.affiliateUrl} target="_blank" rel="sponsored nofollow noopener" class="text-center w-full px-4 py-2 bg-cyan-blue hover:bg-blue-600 text-white text-sm font-bold rounded-lg transition shadow-sm">前往官方网站</a>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   </div>
 </Layout>

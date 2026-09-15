@@ -1,90 +1,131 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { airports } from '../../data/airports'; 
-import { getDisplayPrice } from '../../utils/airportPrice'; 
+import { getDisplayPrice } from '../../utils/airportPrice';
 import { getRankedAirports } from '../../utils/airportRanking';
-
-  
-
 import StructuredData from '../../components/StructuredData.astro';
-const filtered = getRankedAirports().filter(a => a.lineType.includes("IPLC") || a.lineType.includes("IEPL")).slice(0, 8);;
+
+// Premium specific logic: strictly IPLC or IEPL.
+const premiumAirports = getRankedAirports().filter(a => 
+  a.lineType.includes('IPLC') || a.lineType.includes('IEPL') || a.lineType.includes('专线')
+).slice(0, 8);
 ---
-<Layout title="专线机场推荐：专线机场怎么选？最新真实测评 - 机场湾" description="IPLC/IEPL 高端专线机场推荐。专线不受 GFW 敏感时期干扰，保证晚高峰测速稳定，是游戏加速与稳定秒开的最佳选择。 结合价格、线路和测速数据的客观购买建议。">
+<Layout title="专线机场推荐：IPLC与IEPL高端机场怎么选？" description="全面解析 IPLC 与 IEPL 专线机场的区别。为游戏玩家、金融交易员及高频视频会议用户整理的真实专线机场推荐榜单。不迷信技术名词，客观分析专线的优势与局限。">
   <StructuredData type="BreadcrumbList" data={{
         itemListElement: [
           { "@type": "ListItem", "position": 1, "name": "首页", "item": "https://jichangbay.biz/" },
           { "@type": "ListItem", "position": 2, "name": "专题推荐", "item": "https://jichangbay.biz/airports" },
-          { "@type": "ListItem", "position": 3, "name": "专线机场推荐", "item": `https://jichangbay.biz/recommend/${"premium-line"}` }
+          { "@type": "ListItem", "position": 3, "name": "专线机场推荐", "item": "https://jichangbay.biz/recommend/premium-line" }
         ]
       }} />
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <nav class="text-sm mb-6 text-gray-500">
       <a href="/" class="hover:text-cyan-blue">首页</a> &gt; 
       <a href="/airports" class="hover:text-cyan-blue">专题推荐</a> &gt; 
-      <span class="text-gray-800 dark:text-gray-200">专线机场推荐</span>
+      <span class="text-gray-800 dark:text-gray-200">高端专线机场推荐</span>
     </nav>
+    
     <div class="mb-12 border-b border-gray-200 dark:border-gray-800 pb-8">
-      <h1 class="text-4xl font-bold mb-6">专线机场推荐</h1>
-      <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">IPLC/IEPL 高端专线机场推荐。专线不受 GFW 敏感时期干扰，保证晚高峰测速稳定，是游戏加速与稳定秒开的最佳选择。</p>
+      <h1 class="text-4xl font-bold mb-6">专线机场推荐：IPLC 与 IEPL 的终极选择</h1>
+      <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+        如果你听说过“不用经过国内防火墙检测”或者“永远不会被封 IP”，那你一定听说过 IPLC 或 IEPL 专线。但技术名词的堆砌往往伴随着营销的水分。本页旨在为你厘清真正的专线机场优势，并依据数据库筛选出真正标注采用此架构的高端服务商。
+      </p>
     </div>
-    
-    <div class="prose dark:prose-invert max-w-none mb-12">
-      <h2>核心选择标准</h2>
-      <p>在本专题中，我们针对该需求严格筛选了市面上表现优异的品牌，避免购买到不符合实际使用场景的“便宜坑人”套餐。主要考核点包括：</p>
-      <ul>
-        <li><strong>节点可用率与晚高峰测速</strong>：确保基础稳定。</li>
-        <li><strong>性价比模型</strong>：结合起步价与流量的综合评分。</li>
-        <li><strong>相关协议兼容性</strong>：是否完美匹配你的目标客户端或流媒体需求。</li>
-      </ul>
-      <p>下面是我们为您从 29 个品牌中根据这些标准筛选出的前几名最佳选择：</p>
-    </div>
-    
-    <div class="space-y-6">
-      {filtered.map((airport, index) => (
-        <div class="bg-white dark:bg-midnight p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 flex flex-col md:flex-row justify-between items-start md:items-center relative overflow-hidden group">
-          <div class="absolute top-0 left-0 w-1 h-full bg-cyan-blue opacity-50 group-hover:opacity-100 transition"></div>
-          <div class="mb-4 md:mb-0 pl-4 w-full md:w-2/3">
-            <div class="flex items-center gap-3 mb-2">
-              <span class="bg-gray-100 dark:bg-gray-800 text-gray-500 font-bold px-2 py-1 rounded text-xs">TOP {index + 1}</span>
-              <h2 class="text-2xl font-bold"><a href={`/airports/${airport.slug}`} class="hover:text-cyan-blue transition">{airport.name}</a></h2>
-            </div>
-            <div class="flex flex-wrap gap-2 text-sm text-gray-600 dark:text-gray-400 mb-3">
-              <span class="px-2 py-1 bg-gray-50 dark:bg-gray-800/50 rounded">起步价: <span class="text-coral font-bold">{getDisplayPrice(airport)}</span></span>
-              <span class="px-2 py-1 bg-gray-50 dark:bg-gray-800/50 rounded">线路: {airport.lineType}</span>
-              <span class="px-2 py-1 bg-gray-50 dark:bg-gray-800/50 rounded text-purple-500">流媒体: {airport.streamingSupport}</span>
-            </div>
-            <p class="text-sm text-gray-500 line-clamp-2">{airport.recommendedFor}</p>
-          </div>
-          <div class="flex flex-col md:items-end w-full md:w-auto pl-4 md:pl-0 gap-3">
-             <a href={`/airports/${airport.slug}`} class="px-6 py-2 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg transition font-medium text-center w-full md:w-auto">阅读详细评测</a>
-             <a href={airport.affiliateUrl} target="_blank" rel="sponsored nofollow noopener" class="px-6 py-2 bg-cyan-blue hover:bg-blue-600 text-white rounded-lg transition shadow-md font-bold text-center w-full md:w-auto">官网选购直达</a>
-          </div>
-        </div>
-      ))}
-      
-      {filtered.length === 0 && (
-        <div class="p-8 text-center text-gray-500 bg-gray-50 dark:bg-gray-800 rounded-xl">暂无完全符合该严苛条件的机场数据。</div>
-      )}
-    </div>
-    
-    <div class="prose dark:prose-invert max-w-none mt-16 pt-8 border-t border-gray-200 dark:border-gray-800">
-      <h2>常见问题 (FAQ)</h2>
-      <div class="space-y-4">
-        <details class="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-lg cursor-pointer">
-          <summary class="font-bold">这些排名是固定不变的吗？</summary>
-          <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">并不是。我们的编辑部会定期测试所有收录品牌的表现，如果出现频繁断流、晚高峰拥堵或者售后服务响应慢的情况，其排名会被直接下调甚至移出推荐榜单。</p>
-        </details>
-        <details class="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-lg cursor-pointer">
-          <summary class="font-bold">我应该买多长时间的套餐？</summary>
-          <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">强烈建议新手用户先购买<strong>月付</strong>或<strong>季付</strong>套餐。在验证了在你当地网络环境（如电信、联通、移动）表现确实稳定后，再考虑年付以获取最大折扣。</p>
-        </details>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-16">
+      <div class="lg:col-span-2 prose dark:prose-invert max-w-none">
+        <h2>IPLC 与 IEPL：别被绝对的结论误导</h2>
+        
+        <p>在很多机场推荐文章中，你可能会看到“IPLC 一定比 IEPL 更高端、更稳定、更昂贵”的绝对断言。但这在实际的网络工程中并不准确。</p>
+        
+        <ul>
+          <li><strong>IPLC (国际私有租用线路)</strong>：是一种传统的端到端物理层/数据链路层专线方案。</li>
+          <li><strong>IEPL (国际以太网专线)</strong>：是基于以太网技术的端到端专线，部署更加灵活。</li>
+          <li><strong>普通中转 (隧道/公网 BGP)</strong>：流量依然要在公网上通过国际出口，容易在晚高峰受到运营商 QoS（服务质量限速）影响。</li>
+        </ul>
+
+        <p><strong>真实情况是：</strong>由于市面上绝大多数机场是通过上游云服务商租用大带宽，具体质量仍取决于该服务商的实际带宽采购量、入口服务器的性能、以及他们是否严重超售。一条超售 10 倍的 IPLC，体验完全可能不如一条带宽充足的 IEPL 甚至优秀的高端公网中转。</p>
+
+        <h3>为什么还是推荐购买专线机场？</h3>
+        <p>尽管存在超售可能，但专线在物理链路上直接绕过了公网国际出口，先天具备<strong>极低延迟</strong>、<strong>极低抖动</strong>和<strong>不经过墙（无 GFW 阻断风险）</strong>的优势。如果是为了打外服游戏（需要极低 Ping）、做高频金融交易或重要跨国直播，选择标注有专线架构的机场仍然是最稳妥的保底方案。</p>
       </div>
       
-      <h3>相关资源推荐</h3>
-      <p>如果你还需要了解更多客户端配置或横向对比，请参考：
-        <a href="/compare" class="text-cyan-blue hover:underline">全站套餐横向比较中心</a>、
-        <a href="https://www.clashwiki.blog/" target="_blank" rel="noopener" class="text-cyan-blue hover:underline">ClashWiki 客户端教程</a>。
-      </p>
+      <div class="bg-gray-50 dark:bg-gray-800/50 p-6 rounded-2xl h-fit border border-gray-100 dark:border-gray-700">
+        <h3 class="text-xl font-bold mb-4">场景不匹配？</h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">专线昂贵且流量通常较小，如果不符合你的需求，请跳转：</p>
+        <ul class="space-y-4 text-sm">
+          <li class="border-b border-gray-200 dark:border-gray-700 pb-3">
+            <span class="block font-bold text-gray-900 dark:text-white mb-1">我是重度追剧党，需要海量流量</span>
+            <span class="text-gray-500 text-xs block mb-1">大流量中转更适合看 Netflix。</span>
+            <a href="/recommend/streaming/" class="text-cyan-blue hover:underline font-bold">👉 去看 流媒体大流量推荐</a>
+          </li>
+          <li class="border-b border-gray-200 dark:border-gray-700 pb-3">
+            <span class="block font-bold text-gray-900 dark:text-white mb-1">我想要尽可能低的月付</span>
+            <span class="text-gray-500 text-xs block mb-1">真正的专线极少有 10 块钱以下的选项。</span>
+            <a href="/recommend/cheap-airport/" class="text-cyan-blue hover:underline font-bold">👉 妥协一下，去看 便宜机场</a>
+          </li>
+          <li>
+            <span class="block font-bold text-gray-900 dark:text-white mb-1">我是电脑白小白</span>
+            <a href="/guides/airport-beginner-guide/" class="text-cyan-blue hover:underline font-bold">👉 去看 2026 新手入门指南</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mb-12">
+      <h2 class="text-3xl font-bold mb-8">高端专线品牌横向对比</h2>
+      
+      <div class="overflow-x-auto mb-10 border border-gray-200 dark:border-gray-700 rounded-xl">
+        <table class="w-full text-left text-sm text-gray-600 dark:text-gray-400">
+          <thead class="bg-gray-50 dark:bg-gray-800/80 text-gray-900 dark:text-gray-200 font-bold">
+            <tr>
+              <th class="p-4 rounded-tl-xl">高端品牌</th>
+              <th class="p-4">宣称线路类型</th>
+              <th class="p-4">起步套餐价格</th>
+              <th class="p-4">基础流量包</th>
+              <th class="p-4 rounded-tr-xl">操作</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200 dark:divide-gray-700 bg-white dark:bg-midnight">
+            {premiumAirports.map(airport => {
+              const basePlan = airport.plans && airport.plans[0] ? airport.plans[0] : null;
+              return (
+                <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition">
+                  <td class="p-4 font-bold text-gray-900 dark:text-white">{airport.name}</td>
+                  <td class="p-4 text-purple-600 dark:text-purple-400 font-medium">{airport.lineType}</td>
+                  <td class="p-4 font-mono">{getDisplayPrice(airport)}</td>
+                  <td class="p-4">{basePlan ? basePlan.traffic : '官网为准'}</td>
+                  <td class="p-4"><a href={`/airports/${airport.slug}`} class="text-cyan-blue hover:underline">详情</a></td>
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="space-y-8">
+        {premiumAirports.map((airport) => (
+          <div class="bg-white dark:bg-midnight p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 flex flex-col md:flex-row gap-6">
+            <div class="md:w-3/4">
+              <h3 class="text-2xl font-bold mb-3">{airport.name}</h3>
+              <div class="prose dark:prose-invert max-w-none text-sm">
+                <p>
+                  <strong>架构与定位：</strong> 
+                  在我们收录的数据库中，{airport.name} 明确标注采用了 <strong>{airport.lineType}</strong>。这种架构说明服务商在入口和落地机房之间有专门的传输链路保障。
+                  相比常规直连机场，该品牌将更适合 <em>{airport.recommendedFor}</em>。
+                </p>
+                <p>
+                  <strong>套餐配置：</strong>其入门级套餐目前标定在 {getDisplayPrice(airport)}。对于专线资源而言，流量与成本通常挂钩，因此该品牌更契合对网络抖动极其敏感、但日常大流量消耗并非第一诉求的高端商务或游戏群体。
+                </p>
+              </div>
+            </div>
+            <div class="md:w-1/4 flex flex-col justify-center gap-3">
+              <a href={`/airports/${airport.slug}`} class="text-center w-full px-4 py-2 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-sm font-bold rounded-lg transition">查看详细参数</a>
+              <a href={airport.affiliateUrl} target="_blank" rel="sponsored nofollow noopener" class="text-center w-full px-4 py-2 bg-cyan-blue hover:bg-blue-600 text-white text-sm font-bold rounded-lg transition shadow-sm">前往官方网站</a>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   </div>
 </Layout>

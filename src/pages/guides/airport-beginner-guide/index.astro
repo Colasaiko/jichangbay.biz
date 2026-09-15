@@ -1,0 +1,108 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import StructuredData from '../../../components/StructuredData.astro';
+---
+<Layout title="2026 机场与梯子新手完整指南：从零基础到进阶全家桶" description="专门为小白准备的机场使用入门教程。一篇文章看懂什么是机场梯子，IPLC、IEPL、中转有什么区别，流量怎么算，Clash客户端怎么导入配置，如何避开跑路陷阱。">
+  <StructuredData type="BreadcrumbList" data={{
+        itemListElement: [
+          { "@type": "ListItem", "position": 1, "name": "首页", "item": "https://jichangbay.biz/" },
+          { "@type": "ListItem", "position": 2, "name": "教程指南", "item": "https://jichangbay.biz/guides" },
+          { "@type": "ListItem", "position": 3, "name": "2026 新手入门指南", "item": "https://jichangbay.biz/guides/airport-beginner-guide" }
+        ]
+      }} />
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <nav class="text-sm mb-6 text-gray-500">
+      <a href="/" class="hover:text-cyan-blue">首页</a> &gt; 
+      <span class="text-gray-800 dark:text-gray-200">2026 机场与梯子新手完整指南</span>
+    </nav>
+    
+    <div class="mb-12 border-b border-gray-200 dark:border-gray-800 pb-8">
+      <h1 class="text-4xl font-bold mb-6">2026 机场与梯子新手完整指南</h1>
+      <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+        如果你对“翻墙”、“魔法上网”、“节点”、“订阅”、“Clash”、“Shadowrocket”这些词感到一头雾水，那么你来对地方了。本指南是机场湾 (JichangBay) 为 2026 年新手准备的学习地图，带你从底层概念走向熟练配置。
+      </p>
+    </div>
+
+    <div class="prose dark:prose-invert max-w-none mb-12">
+      
+      <h2>第一课：最基础的概念厘清</h2>
+      
+      <h3>1. 什么是机场？它和 VPN 有什么区别？</h3>
+      <p>在中文代理圈，“机场”一词早期来源于名为 Shadowsocks 的软件图标（纸飞机），后来泛指所有提供多个代理节点服务器的服务商。机场与传统欧美 VPN（如 ExpressVPN、NordVPN）在底层协议上有本质区别，前者更隐蔽、更针对长城防火墙优化，这也是为什么国内用户主要使用机场而非传统 VPN。</p>
+      <p>👉 深入阅读：<a href="/questions/airport-vs-vpn/">机场和VPN有什么区别？</a>、<a href="/questions/what-is-airport/">机场是什么意思？</a></p>
+
+      <h3>2. 订阅链接是什么？</h3>
+      <p>你向机场付款后，买到的并不是一个立刻就能翻墙的 App，而是一串包含你所有账号信息和节点列表的网址，这叫做“订阅链接 (Subscribe URL)”。你需要把这串链接复制到代理软件里，软件才能获取服务器列表。</p>
+      <p>👉 深入阅读：<a href="/questions/what-is-airport-subscription-link/">机场订阅链接是什么？</a></p>
+
+
+      <hr class="my-10 border-gray-200 dark:border-gray-800" />
+
+      <h2>第二课：买完了，怎么用？</h2>
+      
+      <h3>1. 认准你的代理客户端（软件）</h3>
+      <p>由于你买的只是一串配置代码，你需要一个“壳”来运行它。目前各大平台的主流软件已经高度统一：</p>
+      <ul>
+        <li><strong>Windows 电脑</strong>：曾经流行 Clash for Windows，但现在由于原作者停更，推荐使用 <a href="/clients/clash-verge/">Clash Verge Rev</a> 或 <a href="/clients/v2rayn/">v2rayN</a>。</li>
+        <li><strong>Mac 苹果电脑</strong>：推荐使用 <a href="/clients/clash-mac/">Clash Verge Mac 版</a> 或 ClashX。</li>
+        <li><strong>iPhone / iPad (iOS)</strong>：目前绝对的主流是 <strong>Shadowrocket (小火箭)</strong>，需要使用非国区 Apple ID 下载。如果需要更高级的功能可选择 Quantumult X 或 Surge。👉 查看 <a href="/clients/shadowrocket/">小火箭教程</a>。</li>
+        <li><strong>Android 安卓手机</strong>：推荐 Clash Meta for Android (原 Clash for Android) 或 v2rayNG。</li>
+      </ul>
+
+      <h3>2. 导入与排障</h3>
+      <p>一旦你学会了“复制订阅”和“在软件中导入”，你已经掌握了 90% 的技巧。如果在这之后发现依然无法上网，最常见的情况就是节点超时 (Timeout)。</p>
+      <p>👉 故障排查：<a href="/questions/clash-all-nodes-timeout/">Clash 所有节点 Timeout 怎么办？</a>、<a href="/questions/cannot-open-chatgpt-with-airport/">代理正常但打不开 ChatGPT 怎么办？</a></p>
+
+
+      <hr class="my-10 border-gray-200 dark:border-gray-800" />
+
+      <h2>第三课：进阶篇——钱花在哪里了？</h2>
+      
+      <h3>1. 为什么有的十几块，有的几百块？（线路差异）</h3>
+      <p>机场成本最大的差异来自于他们组网的方式：</p>
+      <ul>
+        <li><strong>直连</strong>：你的设备直接连接国外的服务器，便宜，但晚高峰极其拥堵，丢包严重。</li>
+        <li><strong>公网中转</strong>：先连国内机器，再出国。速度大幅提升，性价比最高。</li>
+        <li><strong>专线 (IPLC/IEPL)</strong>：国内到国外直接拉一条专用线，不过墙，延迟极低，价格最贵。</li>
+      </ul>
+      <p>👉 深入对比：<a href="/questions/iplc-vs-iepl/">IPLC 与 IEPL 有什么区别？</a></p>
+
+      <h3>2. 节点倍率是什么坑？</h3>
+      <p>某些不良商家标榜“10元 1000GB”，但其实里面绝大多数高速节点是“5x 倍率”。也就是说你用了 1GB 流量，系统扣除 5GB。所以买前一定要看清楚机场套餐是 1x 还是高倍率。</p>
+      <p>👉 深入阅读：<a href="/questions/what-is-node-multiplier/">什么是节点倍率？</a></p>
+
+      <h3>3. 最大的风险：跑路</h3>
+      <p>做机场没有营业执照，商家卷钱跑路（直接关站失联）是常态。这也是为什么我们极其反对新手一上来就贪图便宜购买包年套餐。</p>
+      <p>👉 避坑指南：<a href="/questions/airport-monthly-vs-annual/">买月付还是年付？</a>、<a href="/questions/what-to-do-if-airport-runs-away/">机场跑路了怎么办？</a></p>
+
+
+      <hr class="my-10 border-gray-200 dark:border-gray-800" />
+
+      <h2>结业：前往选购大厅</h2>
+      
+      <p>如果你已经理解了以上所有基础知识，知道自己需要大流量还是专线，知道什么是月付防跑路，那么你已经具备了独立挑选机场的能力。</p>
+      
+      <p>现在，你可以前往本站的按场景推荐页面，通过结构化的数据比对来挑选最适合你的服务商了：</p>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 not-prose">
+        <a href="/recommend/2026-airport/" class="p-6 bg-cyan-blue text-white rounded-xl shadow-md hover:bg-blue-600 transition text-center block">
+          <span class="text-xl font-bold block mb-1">🎯 2026综合机场推荐</span>
+          <span class="text-sm opacity-90">不知道选哪个，从这里开始</span>
+        </a>
+        <a href="/recommend/cheap-airport/" class="p-6 bg-white dark:bg-midnight border border-gray-200 dark:border-gray-700 rounded-xl shadow-sm hover:shadow-md transition text-center block text-gray-900 dark:text-white">
+          <span class="text-xl font-bold block mb-1">💰 便宜高性价比机场</span>
+          <span class="text-sm text-gray-500">10-20元价位主力推荐</span>
+        </a>
+        <a href="/recommend/stable-airport/" class="p-6 bg-white dark:bg-midnight border border-gray-200 dark:border-gray-700 rounded-xl shadow-sm hover:shadow-md transition text-center block text-gray-900 dark:text-white">
+          <span class="text-xl font-bold block mb-1">🛡️ 晚高峰稳定机场</span>
+          <span class="text-sm text-gray-500">网课办公与高要求用户</span>
+        </a>
+        <a href="/recommend/premium-line/" class="p-6 bg-white dark:bg-midnight border border-gray-200 dark:border-gray-700 rounded-xl shadow-sm hover:shadow-md transition text-center block text-gray-900 dark:text-white">
+          <span class="text-xl font-bold block mb-1">🚀 顶级 IPLC/IEPL 专线</span>
+          <span class="text-sm text-gray-500">游戏与跨国交易专属</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</Layout>
