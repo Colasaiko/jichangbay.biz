@@ -42,12 +42,17 @@ export function getRankedAirports() {
   
   const fixedTopSlugs = ["weifeng", "feimaoyun"];
   const priorityPoolSlugs = ["firefly", "wuyou", "lingmao", "kuajieyun", "shanyue"];
+  const newBrands = ["jiuyun", "baoyun"];
   
   const weifeng = airports.find(a => a.slug === 'weifeng');
   const feimaoyun = airports.find(a => a.slug === 'feimaoyun');
   
   const priorityAirports = airports.filter(a => priorityPoolSlugs.includes(a.slug));
-  const remainingAirports = airports.filter(a => !fixedTopSlugs.includes(a.slug) && !priorityPoolSlugs.includes(a.slug));
+  const remainingAirports = airports.filter(a => 
+    !fixedTopSlugs.includes(a.slug) && 
+    !priorityPoolSlugs.includes(a.slug) && 
+    !newBrands.includes(a.slug)
+  );
   
   const shuffledPriority = seededShuffle(priorityAirports, rng);
   const shuffledRemaining = seededShuffle(remainingAirports, rng);
@@ -56,5 +61,20 @@ export function getRankedAirports() {
   if (weifeng) ranked.push(weifeng);
   if (feimaoyun) ranked.push(feimaoyun);
   
-  return ranked.concat(shuffledPriority, shuffledRemaining);
+  ranked.push(...shuffledPriority); // 2 + 5 = 7 items
+  
+  // We need exactly 10 items before newBrands. So we take 3 from shuffledRemaining.
+  const next3 = shuffledRemaining.splice(0, 3);
+  ranked.push(...next3);
+  
+  // Insert jiuyun and baoyun at position 11 and 12 (index 10 and 11)
+  const jiuyun = airports.find(a => a.slug === 'jiuyun');
+  const baoyun = airports.find(a => a.slug === 'baoyun');
+  if (jiuyun) ranked.push(jiuyun);
+  if (baoyun) ranked.push(baoyun);
+  
+  // Add the rest
+  ranked.push(...shuffledRemaining);
+  
+  return ranked;
 }
