@@ -1,10 +1,3 @@
----
-title: "Clash Verge 和 Clash for Windows 有什么区别？"
-description: "全面对比 Clash Verge (Rev) 与老款 Clash for Windows，解释2026年为什么你应该迁移到基于 Mihomo 内核的新客户端。"
-category: "客户端指南"
-searchAliases: ["clash verge和clash for windows区别", "clash verge与clash for windows区别", "clash for windows 替代品", "clash for windows 停止维护"]
----
-
 在各种早期的翻墙教程中，你总会看到推荐使用 **Clash for Windows (CFW)**。然而在 2026 年，继续使用 CFW 已经不再是一个好选择。取而代之的是目前的主流客户端 **Clash Verge Rev**。
 
 ### 为什么大家都在放弃 Clash for Windows？

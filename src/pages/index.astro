@@ -1,4 +1,5 @@
 ---
+import { questions } from '../data/questions';
 import Layout from '../layouts/Layout.astro';
 import { airports } from '../data/airports'; 
 import { getDisplayPrice } from '../utils/airportPrice';
@@ -32,7 +33,7 @@ const latestPosts = [...posts].sort((a, b) => b.data.pubDate.valueOf() - a.data.
           <h3 class="text-xl font-bold mb-6 flex items-center"><span class="w-2 h-2 bg-green-400 rounded-full mr-3 animate-pulse shadow-[0_0_8px_rgba(74,222,128,0.8)]"></span>实时收录数据看板</h3>
           <div class="space-y-5">
             <div class="flex justify-between items-center"><span class="text-sm text-gray-300 font-medium">当前收录品牌</span><span class="text-xl font-bold text-cyan-blue">29 家</span></div>
-            <div class="flex justify-between items-center"><span class="text-sm text-gray-300 font-medium">问题百科条目</span><span class="text-xl font-bold text-purple-500">249 条</span></div>
+            <div class="flex justify-between items-center"><span class="text-sm text-gray-300 font-medium">问题百科条目</span><span class="text-xl font-bold text-purple-500">{questions.length} 条</span></div>
             <div class="flex justify-between items-center"><span class="text-sm text-gray-300 font-medium">P0 深度解决指南</span><span class="text-xl font-bold text-green-500">30 篇</span></div>
             <div class="flex justify-between items-center"><span class="text-sm text-gray-300 font-medium">基础套餐数据</span><span class="text-sm font-bold text-coral">来自公开资料整理</span></div>
           </div>

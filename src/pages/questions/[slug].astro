@@ -7,9 +7,16 @@ import { getRankedAirports } from '../../utils/airportRanking';
 import { getDisplayPrice } from '../../utils/airportPrice';
 
 export async function getStaticPaths() {
-  const p0Questions = questions.filter((q: any) => q.priority === 'P0');
+  const mdFiles = import.meta.glob('../../data/questions_content/*.md');
+  const availableSlugs = Object.keys(mdFiles).map(file => {
+    const parts = file.split('/');
+    return parts[parts.length - 1].replace('.md', '');
+  });
   
-  return p0Questions.map((q: any) => ({
+  return questions.filter((q: any) => {
+    if (q.priority === 'P0') return true;
+    return availableSlugs.includes(q.slug);
+  }).map((q: any) => ({
     params: { slug: q.slug },
     props: { question: q },
   }));
@@ -31,7 +38,12 @@ const mdContent = questionContents[contentPath];
 
 let htmlContent = '';
 if (mdContent) {
-  htmlContent = marked.parse(mdContent) as string;
+  let cleanMd = mdContent;
+  if (cleanMd.startsWith('---')) {
+    cleanMd = cleanMd.replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n/, '');
+  }
+  
+  htmlContent = marked.parse(cleanMd) as string;
 } else {
   htmlContent = '<p>内容正在整理中...</p>';
 }

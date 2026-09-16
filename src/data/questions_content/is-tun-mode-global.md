@@ -1,11 +1,4 @@
----
-title: "TUN模式是全局模式吗？TUN与规则模式的区别"
-description: "详细解答 Clash / Sing-box 的 TUN 模式与全局模式(Global)的区别，以及什么时候应该开启虚拟网卡 TUN 模式。"
-category: "基础概念"
-searchAliases: ["tun模式是全局模式吗", "什么是tun模式", "tun模式 规则模式", "vpn规则模式和tun模式", "singbox tun模式", "singbox_tun是什么"]
----
-
-很多人在设置代理软件（如 Clash、Sing-box）时，会把“TUN 模式”和“全局模式（Global）”混淆。这里明确一个结论：**TUN 模式绝对不是全局模式**。
+很多人在设置代理软件（如 Clash、Sing-box）时，会把“TUN 模式”和“全局模式（Global）”混淆。这里明确一个结论：**TUN 模式不是全局模式**。
 
 ### 什么是模式（路由策略 vs 流量接管）
 

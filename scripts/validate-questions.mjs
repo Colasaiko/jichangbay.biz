@@ -45,6 +45,44 @@ qList.forEach(q => {
   }
 });
 
+
+// Check garbage phrases
+const garbagePhrases = [
+  'undefined',
+  '宽带运营商的国际出口策略起到了决定性作用',
+  '建议结合实际测试数据来进行最终决策',
+  '节点服务器的物理距离设定了延迟的下限',
+  '高端玩家偏爱自定义规则',
+  '拥有一个纯净原生 IP 在当今的珍贵性',
+  '能帮你避开市面上80%的营销陷阱'
+];
+
+qList.forEach(q => {
+  if (!q.shortAnswer || q.shortAnswer.trim() === '') {
+    console.error(`Empty shortAnswer in: ${q.question}`);
+    fail = true;
+  }
+  for (const phrase of garbagePhrases) {
+    if (q.shortAnswer.includes(phrase)) {
+      console.error(`Banned garbage phrase found in "${q.question}": ${phrase}`);
+      fail = true;
+    }
+  }
+});
+
+// Check if markdown exists but not in questions
+const mdDir = 'src/data/questions_content';
+if (fs.existsSync(mdDir)) {
+  const mdFiles = fs.readdirSync(mdDir).filter(f => f.endsWith('.md'));
+  for (const f of mdFiles) {
+    const slug = f.replace('.md', '');
+    if (!slugs.has(slug)) {
+      console.error(`Markdown file exists for ${f} but no matching slug in questions.ts`);
+      fail = true;
+    }
+  }
+}
+
 // 3. Check Banned Templates
 const bannedTemplates = [
   "通常建议大家在正式投入",

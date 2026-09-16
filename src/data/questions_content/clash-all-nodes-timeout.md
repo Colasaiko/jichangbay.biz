@@ -1,10 +1,3 @@
----
-title: "Clash节点全部Timeout怎么办？完整排查步骤"
-description: "详解电脑与手机上使用Clash或Clash Verge时，所有节点显示Timeout（全部超时）、代理有流量但是连不上的完整排查与解决办法。"
-category: "故障排查"
-searchAliases: ["clash timeout", "clash节点timeout", "clash全部timeout", "clash所有节点全部超时", "代理有流量但是连不上全部timeout", "clash开启tun后全部timeout", "校园网连接节点超时", "clash导入为什么timeout", "电脑clash verge用着用着突然全部timeout", "clash windows突然连不上"]
----
-
 当你打开 Clash，测速发现所有节点都显示 `Timeout`，或者“代理有流量但是连不上”，这通常意味着你的本地客户端与机场节点服务器之间的通信被阻断了。以下是完整的排查步骤，按顺序检查即可解决大部分超时问题。
 
 ### 1. 确认基础状态：机场是否正常

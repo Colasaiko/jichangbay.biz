@@ -1,4 +1,5 @@
 ---
+import { questions } from '../data/questions';
 import Layout from '../layouts/Layout.astro';
 import StructuredData from '../components/StructuredData.astro';
 ---
@@ -39,7 +40,7 @@ import StructuredData from '../components/StructuredData.astro';
         <p>截至 2026 年，机场湾已建成以下核心模块：</p>
         <ul>
           <li><strong>品牌数据库</strong>：当前收录并长期跟踪 29 家主流网络加速服务商的基础套餐数据。</li>
-          <li><strong>深度问题百科</strong>：针对 Clash 连通性、订阅更新失败、Netflix 解锁失效等常见现象，编写了 249 条常见问题与 30 篇深度排查指南。</li>
+          <li><strong>深度问题百科</strong>：针对 Clash 连通性、订阅更新失败、Netflix 解锁失效等常见现象，编写了 {questions.length} 条常见问题与 30 篇深度排查指南。</li>
           <li><strong>专题推荐系统</strong>：按价格、稳定性、特定流媒体及 AI 使用场景等维度构建了分类对比系统。</li>
           <li><strong>客户端教程中心</strong>：提供包括 Windows、Mac、iOS 在内的多平台代理工具配置方法。</li>
         </ul>

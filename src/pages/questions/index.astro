@@ -3,6 +3,16 @@ import Layout from '../../layouts/Layout.astro';
 import { questions } from '../../data/questions';
 
 const p0Questions = questions.filter((q: any) => q.priority === 'P0');
+
+const questionContents = import.meta.glob(
+  '../../data/questions_content/*.md',
+  { query: '?raw', import: 'default', eager: true }
+);
+const mdSlugs = Object.keys(questionContents).map(f => {
+  const parts = f.split('/');
+  return parts[parts.length - 1].replace('.md', '');
+});
+
 const topSearches = p0Questions.slice(0, 12);
 const categories = Array.from(new Set(questions.map((q: any) => q.category)));
 ---
@@ -75,9 +85,9 @@ const categories = Array.from(new Set(questions.map((q: any) => q.category)));
         
         <div class="space-y-4" id="questions-container">
           {questions.map((q: any) => (
-            <div class="q-card bg-white dark:bg-midnight border border-gray-100 dark:border-gray-800 rounded-xl overflow-hidden shadow-sm" data-cat={q.category} data-text={`${q.question.toLowerCase()} ${q.shortAnswer.toLowerCase()} ${q.category.toLowerCase()}`}>
+            <div class="q-card bg-white dark:bg-midnight border border-gray-100 dark:border-gray-800 rounded-xl overflow-hidden shadow-sm" data-cat={q.category} data-text={`\${q.question.toLowerCase()} \${q.shortAnswer.toLowerCase()} \${q.category.toLowerCase()} \${(q.searchAliases || []).join(" ").toLowerCase()}`}>
               
-              {q.priority === 'P0' ? (
+              {(q.priority === 'P0' || mdSlugs.includes(q.slug)) ? (
                 <div class="p-6">
                   <div class="flex items-center gap-2 mb-2">
                     <span class="text-xs font-bold text-red-500 bg-red-50 dark:bg-red-900/30 px-2 py-0.5 rounded">HOT</span>

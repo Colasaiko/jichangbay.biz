@@ -3,28 +3,69 @@ import path from 'path';
 import { XMLParser } from 'fast-xml-parser';
 
 const host = 'jichangbay.biz';
-const keyFile = fs.readdirSync('public').find(f => f.match(/^[a-f0-9]{32}\.txt$/));
+const keyFile = fs.readdirSync('public').find(f => f.match(/^[a-f0-9]{32}\\.txt$/));
 const key = keyFile ? keyFile.replace('.txt', '') : 'd4f6084c763cc9357919b4793fb84c3d';
 const keyLocation = 'https://' + host + '/' + key + '.txt';
 
+const args = process.argv.slice(2);
+const fileArgIdx = args.indexOf('--file');
+const fileArg = fileArgIdx !== -1 ? args[fileArgIdx + 1] : null;
+
 async function submitIndexNow() {
   try {
-    const files = fs.readdirSync('dist').filter(f => f.startsWith('sitemap') && f.endsWith('.xml'));
     let urls = new Set();
-    const parser = new XMLParser();
     
-    files.forEach(f => {
-      const xml = fs.readFileSync(path.join('dist', f), 'utf-8');
-      const parsed = parser.parse(xml);
-      if (parsed.urlset && parsed.urlset.url) {
-        const urlList = Array.isArray(parsed.urlset.url) ? parsed.urlset.url : [parsed.urlset.url];
-        urlList.forEach(u => {
-          if (u.loc && u.loc.includes(host)) urls.add(u.loc);
-        });
+    if (fileArg) {
+      if (fs.existsSync(fileArg)) {
+        const lines = fs.readFileSync(fileArg, 'utf8').split('\n').map(l => l.trim()).filter(l => l);
+        lines.forEach(u => urls.add(u));
+      } else {
+        console.error('File not found:', fileArg);
+        return;
       }
-    });
+    } else {
+      const files = fs.readdirSync('dist').filter(f => f.startsWith('sitemap') && f.endsWith('.xml'));
+      const parser = new XMLParser();
+      files.forEach(f => {
+        const xml = fs.readFileSync(path.join('dist', f), 'utf-8');
+        const parsed = parser.parse(xml);
+        if (parsed.urlset && parsed.urlset.url) {
+          const urlList = Array.isArray(parsed.urlset.url) ? parsed.urlset.url : [parsed.urlset.url];
+          urlList.forEach(u => {
+            if (u.loc && u.loc.includes(host)) urls.add(u.loc);
+          });
+        }
+      });
+    }
 
-    const urlList = Array.from(urls);
+    let urlList = Array.from(urls).filter(u => u.startsWith('https://jichangbay.biz/'));
+    
+    // Verify files exist if using fileArg
+    if (fileArg) {
+      
+      const validUrls = [];
+      for (const u of urlList) {
+        let p = u.replace('https://jichangbay.biz', '');
+        p = p.replace(/^\/+/, '');
+        let distPath;
+        if (p === '') {
+           distPath = path.join('dist', 'index.html');
+        } else if (p.endsWith('.xml') || p.endsWith('.txt')) {
+           distPath = path.join('dist', p);
+        } else {
+           distPath = path.join('dist', p, 'index.html');
+        }
+        
+        if (!fs.existsSync(distPath)) {
+          console.error('[ERROR] HTML file does not exist for URL:', u, 'at', distPath);
+        } else {
+          validUrls.push(u);
+        }
+      }
+
+      urlList = validUrls;
+    }
+
     console.log("发现 URL: " + urlList.length);
     console.log("合法 URL: " + urlList.length);
     console.log("检查 key: " + keyLocation);
