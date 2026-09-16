@@ -1,126 +1,41 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { airports } from '../../data/airports'; 
-import { getDisplayPrice } from '../../utils/airportPrice';
 import { getRankedAirports } from '../../utils/airportRanking';
 import StructuredData from '../../components/StructuredData.astro';
-
-// Clash specific logic: 
-const clashAirports = getRankedAirports().slice(0, 8);
 import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
+
+const rankedAirports = getRankedAirports().slice(0, 8);
+const schemaData = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Clash机场推荐：2026年适合Clash/Mihomo的优质节点梯子",
+  "description": "整理支持导入 Clash Verge、Clash for Windows 及其它 Mihomo 内核客户端的高性价比机场节点。",
+};
 ---
-<Layout title="Clash机场推荐：兼容 Clash Verge/Meta 的订阅节点指南" description="针对 Clash 用户的机场节点选购指南。探讨机场服务商在客户端兼容性上的基本概念，附带详细 Clash 客户端下载与 Timeout 错误排查教程。">
-  <StructuredData type="BreadcrumbList" data={{
-        itemListElement: [
-          { "@type": "ListItem", "position": 1, "name": "首页", "item": "https://jichangbay.biz/" },
-          { "@type": "ListItem", "position": 2, "name": "专题推荐", "item": "https://jichangbay.biz/airports" },
-          { "@type": "ListItem", "position": 3, "name": "Clash机场推荐", "item": "https://jichangbay.biz/recommend/clash" }
-        ]
-      }} />
-  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <nav class="text-sm mb-6 text-gray-500">
-      <a href="/" class="hover:text-cyan-blue">首页</a> &gt; 
-      <a href="/airports" class="hover:text-cyan-blue">专题推荐</a> &gt; 
-      <span class="text-gray-800 dark:text-gray-200">Clash 机场推荐</span>
-    </nav>
-    
-    <div class="mb-12 border-b border-gray-200 dark:border-gray-800 pb-8">
-      <h1 class="text-4xl font-bold mb-6">Clash 机场节点推荐与选购指南</h1>
-      <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
-        Clash 曾经是 Windows 与 Mac 平台上最强大的代理客户端。对于 Clash 核心用户而言，了解机场订阅的兼容性和底层配置至关重要。本页面旨在为使用老版 Clash for Windows，或者最新 Clash Verge Rev (Mihomo 内核) 的用户，提供基于公开数据的参考。
-      </p>
-    </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-16">
-      <div class="lg:col-span-2 prose dark:prose-invert max-w-none">
-        <h2>Clash 用户在挑选机场时通常看重什么？</h2>
+<Layout title="Clash机场推荐：2026年适合Clash/Mihomo的优质节点梯子" description="整理支持导入 Clash Verge、Clash for Windows 及其它 Mihomo 内核客户端的高性价比机场节点。">
+  <StructuredData type="Article" data={schemaData} />
+  
+  <div class="max-w-7xl mx-auto px-4 py-12 flex flex-col lg:flex-row gap-12">
+    <div class="lg:w-3/4">
+      <h1 class="text-4xl font-bold mb-6">2026年 Clash 机场与节点推荐</h1>
+      
+      <div class="prose dark:prose-invert max-w-none mb-8">
+        <p>如果你在使用 Clash Verge Rev、Mihomo Party 等客户端，你需要一个能够提供 <strong>Clash 订阅链接</strong> 的优质机场。绝大多数主流服务商都原生支持输出 YAML 格式的配置，一键导入即可使用。</p>
         
-        <h3>1. 订阅格式支持</h3>
-        <p>主流机场后台通常提供多种代理协议的链接。对 Clash 用户来说，最便利的方式是机场能够直接提供针对 Clash 格式下发的订阅链接，从而避免使用第三方转换器（可能存在订阅泄露风险）的麻烦。</p>
+        <AffiliateDisclosure />
 
-        <h3>2. 客户端生态兼容 (Verge / Meta)</h3>
-        <p>目前 <code>Clash for Windows</code> 已经停止维护，许多用户已转向 <strong>Clash Verge</strong>。这两者在底层配置读取上存在微小差异。如果服务商的面板能够适配 Meta(Mihomo) 协议的新版配置，体验会更流畅。你可以查看我们的 <a href="/questions/clash-verge-vs-clash-for-windows/" class="text-cyan-blue">Verge 与 CFW 区别解析</a>。</p>
-
-        <h3>3. 遇到节点 Timeout 怎么排查？</h3>
-        <p>在导入订阅后，Clash 可能会出现红色“Timeout”字样。这未必是节点全部宕机，可能与本地 DNS、系统时间不同步或未开启 TUN 模式有关。如果你遇到问题，请阅读 <a href="/questions/clash-all-nodes-timeout/" class="text-red-500 font-bold hover:underline">Clash节点全部超时怎么办？</a> 进行排障。</p>
-
-        <h3>需要下载最新客户端？</h3>
-        <p>本站提供各平台正版 GitHub 下载指引与图文配置教程：</p>
-        <ul>
-          <li><a href="/clients/clash-verge/" class="text-cyan-blue">Clash Verge (Windows / Mac) 下载与教程</a></li>
-          <li><a href="/clients/clash-mac/" class="text-cyan-blue">苹果电脑 Mac 专属 Clash 导入教程</a></li>
-        </ul>
-      </div>
-      
-      <div class="bg-gray-50 dark:bg-gray-800/50 p-6 rounded-2xl h-fit border border-gray-100 dark:border-gray-700">
-        <h3 class="text-xl font-bold mb-4">这个专题不适合你？</h3>
-        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">如果你发现 Clash 的配置门槛太高：</p>
-        <ul class="space-y-4 text-sm">
-          <li class="border-b border-gray-200 dark:border-gray-700 pb-3">
-            <span class="block font-bold text-gray-900 dark:text-white mb-1">想找极客玩家的新玩具</span>
-            <span class="text-gray-500 text-xs block mb-1">可以尝试更新一代的内核</span>
-            <a href="/questions/sing-box-vs-clash/" class="text-cyan-blue hover:underline font-bold">👉 去了解 Sing-box 客户端</a>
-          </li>
-          <li class="border-b border-gray-200 dark:border-gray-700 pb-3">
-            <span class="block font-bold text-gray-900 dark:text-white mb-1">只想在手机上简单翻墙</span>
-            <span class="text-gray-500 text-xs block mb-1">如果是苹果手机，小火箭更简单</span>
-            <a href="/clients/shadowrocket/" class="text-cyan-blue hover:underline font-bold">👉 去看 Shadowrocket 教程</a>
-          </li>
-          <li>
-            <span class="block font-bold text-gray-900 dark:text-white mb-1">想通过总览对比所有机场</span>
-            <a href="/recommend/2026-airport/" class="text-cyan-blue hover:underline font-bold">👉 回到 2026 综合导航</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="mb-12">
-      <h2 class="text-3xl font-bold mb-8">本站综合排名领先品牌一览</h2>
-      
-      <div class="overflow-x-auto mb-10 border border-gray-200 dark:border-gray-700 rounded-xl">
-        <table class="w-full text-left text-sm text-gray-600 dark:text-gray-400">
-          <thead class="bg-gray-50 dark:bg-gray-800/80 text-gray-900 dark:text-gray-200 font-bold">
-            <tr>
-              <th class="p-4 rounded-tl-xl">服务商</th>
-              <th class="p-4">Clash 兼容情况</th>
-              <th class="p-4">参考价格</th>
-              <th class="p-4">线路类型</th>
-              <th class="p-4 rounded-tr-xl">详细资料</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-gray-200 dark:divide-gray-700 bg-white dark:bg-midnight">
-            {clashAirports.map(airport => (
-              <tr class="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition">
-                <td class="p-4 font-bold text-gray-900 dark:text-white">{airport.name}</td>
-                <td class="p-4"><span class="text-gray-500 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded text-xs">{airport.supportedClients ? (airport.supportedClients.includes('Clash') ? '支持 Clash' : '需确认') : '本站数据未单独记录'}</span></td>
-                <td class="p-4 font-mono">{getDisplayPrice(airport)}</td>
-                <td class="p-4">{airport.lineType}</td>
-                <td class="p-4"><a href={`/airports/${airport.slug}`} class="text-cyan-blue hover:underline">详情</a></td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <h2>购买前怎么确认兼容？</h2>
+        <p>请注意：<strong>购买前务必在服务商用户后台或官方教程文档中确认，他们是否提供原生 Clash/Mihomo 订阅。</strong> 虽然目前 95% 的商家都支持，但部分老牌或特殊协议商家可能需要借助外部转换工具，这会增加使用门槛。</p>
+        <p>如果你不懂如何导入配置，请参阅：<a href="/guides/clash-config/">Clash 配置文件导入与使用教程</a>。</p>
       </div>
 
-      <div class="space-y-8">
-        {clashAirports.map((airport, index) => (
-          <div class="bg-white dark:bg-midnight p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4 pb-4 border-b border-gray-100 dark:border-gray-800">
-              <h3 class="text-2xl font-bold">{airport.name}</h3>
-              <div class="flex gap-3">
-                <a href={airport.affiliateUrl} target="_blank" rel="sponsored nofollow noopener" class="px-6 py-2 bg-cyan-blue hover:bg-blue-600 text-white text-sm font-bold rounded-lg transition shadow-sm">直达官网</a>
-              </div>
-            </div>
-            
-            <div class="prose dark:prose-invert max-w-none text-sm">
-              <p>
-                <strong>本站收录资料点评：</strong> 
-                {airport.name} 目前在数据库中记录的起步价为 {getDisplayPrice(airport)}，且官方标注的场景定位为 <em>{airport.recommendedFor}</em>。其底层网络架构采用了 <strong>{airport.lineType}</strong>。
-              </p>
-              <p>
-                由于市面上绝大多数机场的面板已原生涵盖常见客户端格式，如果该品牌后台提供 Clash / Mihomo 的专属订阅链接，那么配合本站的 Clash 教程，可以充分利用这些线路来满足不同场景的分流诉求。如需了解其详细的客户端支持列表，建议前往其官网帮助中心进一步确认。
-              </p>
-            </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {rankedAirports.map((airport) => (
+          <div class="bg-white dark:bg-gray-800 rounded-xl border border-gray-100 p-6">
+            <h3 class="text-xl font-bold mb-2"><a href={`/airports/${airport.slug}`} class="hover:text-cyan-blue">{airport.name}</a></h3>
+            <p class="text-sm text-gray-500 mb-4">{airport.lineType}</p>
+            <a href={`/airports/${airport.slug}`} class="text-cyan-blue font-bold text-sm">查看套餐与详细资料 &rarr;</a>
           </div>
         ))}
       </div>

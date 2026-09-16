@@ -1,4 +1,18 @@
----
+const fs = require('fs');
+const path = require('path');
+
+function write(file, content) {
+  const dir = path.dirname(file);
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
+  }
+  fs.writeFileSync(file, content.trim() + '\n', 'utf8');
+  console.log('Updated:', file);
+}
+
+// 1. Clash Mac
+const clashMacPath = 'src/pages/clients/clash-mac/index.astro';
+const clashMacContent = `---
 import Layout from '../../../layouts/Layout.astro';
 import { getRankedAirports } from '../../../utils/airportRanking';
 import StructuredData from '../../../components/StructuredData.astro';
@@ -77,7 +91,7 @@ const schemaData = {
         <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">热门机场推荐</h3>
         <div class="space-y-4">
           {rankedAirports.map((airport) => (
-            <a href={`/airports/${airport.slug}`} class="block bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition">
+            <a href={\`/airports/\${airport.slug}/\`} class="block bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition">
               <div class="font-bold text-gray-900 dark:text-white mb-1">{airport.name}</div>
               <div class="text-sm text-gray-500 mb-2">{airport.lineType}</div>
               <span class="text-xs bg-cyan-blue/10 text-cyan-blue px-2 py-1 rounded">查看详情</span>
@@ -88,3 +102,5 @@ const schemaData = {
     </div>
   </div>
 </Layout>
+`;
+write(clashMacPath, clashMacContent);

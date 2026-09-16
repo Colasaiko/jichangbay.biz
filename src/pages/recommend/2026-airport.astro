@@ -1,127 +1,44 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { airports } from '../../data/airports'; 
-import { getDisplayPrice } from '../../utils/airportPrice';
 import { getRankedAirports } from '../../utils/airportRanking';
 import StructuredData from '../../components/StructuredData.astro';
-
-const top8 = getRankedAirports().slice(0, 8);
 import AffiliateDisclosure from '../../components/AffiliateDisclosure.astro';
+
+const rankedAirports = getRankedAirports().slice(0, 8);
+const schemaData = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "2026机场推荐怎么选？最新节点排行榜与防坑指南",
+  "description": "2026年9月更新，全面解析今年选择机场梯子节点的核心标准，满足稳定、便宜与专线需求。",
+};
 ---
-<Layout title="2026机场推荐：2026年机场怎么选？综合排行榜与选购指南" description="2026年最新机场推荐综合入口。解答月付还是年付、100GB够不够等新手疑问，并根据不同预算与场景（便宜、稳定、专线、Clash、AI、流媒体）提供快速匹配通道与真实品牌对比。">
-  <StructuredData type="BreadcrumbList" data={{
-        itemListElement: [
-          { "@type": "ListItem", "position": 1, "name": "首页", "item": "https://jichangbay.biz/" },
-          { "@type": "ListItem", "position": 2, "name": "专题推荐", "item": "https://jichangbay.biz/airports" },
-          { "@type": "ListItem", "position": 3, "name": "2026机场推荐", "item": "https://jichangbay.biz/recommend/2026-airport" }
-        ]
-      }} />
-  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <nav class="text-sm mb-6 text-gray-500">
-      <a href="/" class="hover:text-cyan-blue">首页</a> &gt; 
-      <a href="/airports" class="hover:text-cyan-blue">专题推荐</a> &gt; 
-      <span class="text-gray-800 dark:text-gray-200">2026综合机场推荐</span>
-    </nav>
-    
-    <div class="mb-12 border-b border-gray-200 dark:border-gray-800 pb-8">
-      <h1 class="text-4xl font-bold mb-6">2026机场推荐：今年到底怎么选？</h1>
-      <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
-        面对市面上成百上千的机场服务商，单纯看“起步价”已经不足以挑选出好用的主力梯子。2026年，我们更应该根据自己的真实使用场景来匹配。本页面是机场湾的综合导航入口，帮助你理清思路，快速定位适合自己的专属专题。
-      </p>
-    </div>
-    
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-16">
-      <div class="lg:col-span-2 prose dark:prose-invert max-w-none">
-        <h2>新手必看：买前四大核心疑问</h2>
-        
-        <h3>1. 到底该月付还是年付？</h3>
-        <p>强烈建议：<strong>无论多便宜的机场，首次购买只选月付。</strong> 长周期预付费是资金跑路风险的最大来源。只有在你的宽带环境下（如晚高峰电信/联通/移动）实际体验了一个月，且表现确实稳定后，再考虑季付或半年付。如果没有十足的把握，请坚持月付。</p>
-        
-        <h3>2. 100GB 流量一个月够用吗？</h3>
-        <p>如果你只是偶尔查资料、用 ChatGPT 提问、刷几张网页，100GB 绰绰有余。但如果你每天在手机和电脑上重度观看 Netflix 或 YouTube 的 4K 视频，100GB 可能不到半个月就会耗尽。视频用户建议起步 300GB~500GB。详情可参考 <a href="/questions/is-100gb-data-enough/">100GB 够用吗？</a></p>
 
-        <h3>3. 专线是不是人人都需要？</h3>
-        <p>并不是。专线（IPLC/IEPL）能有效绕过公网拥堵，延迟极低，非常适合需要极高稳定性的外贸办公、金融交易或电竞玩家。但如果你只用来刷剧，普通大带宽的公网中转线路性价比更高。具体区别详见 <a href="/questions/iplc-vs-iepl/">IPLC 与 IEPL 区别</a>。</p>
-        
-        <h3>4. 完全不懂怎么配置怎么办？</h3>
-        <p>请先阅读我们的 <a href="/guides/airport-beginner-guide/" class="text-cyan-blue font-bold">2026 机场新手完整指南</a>，从零开始学习客户端下载、订阅导入和日常使用常识。</p>
-      </div>
+<Layout title="2026机场推荐怎么选？最新节点梯子防坑指南" description="2026年9月更新，全面解析今年选择机场梯子节点的核心标准，满足稳定、便宜与专线需求。">
+  <StructuredData type="Article" data={schemaData} />
+  
+  <div class="max-w-7xl mx-auto px-4 py-12 flex flex-col lg:flex-row gap-12">
+    <div class="lg:w-3/4">
+      <h1 class="text-4xl font-bold mb-6">2026机场推荐怎么选？节点防坑指南</h1>
       
-      <div class="bg-gray-50 dark:bg-gray-800/50 p-6 rounded-2xl h-fit border border-gray-100 dark:border-gray-700">
-        <h3 class="text-xl font-bold mb-4">按需求快速匹配</h3>
-        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">不确定看哪家？对照你的核心需求直接跳转：</p>
-        <ul class="space-y-3 text-sm">
-          <li class="flex flex-col">
-            <span class="font-bold text-gray-900 dark:text-white">预算有限，想找高性价比</span>
-            <span class="text-gray-500 text-xs mb-1">重点关注：最低起步价与计费周期</span>
-            <a href="/recommend/cheap-airport/" class="text-cyan-blue hover:underline">👉 去看 便宜机场推荐</a>
-          </li>
-          <li class="flex flex-col">
-            <span class="font-bold text-gray-900 dark:text-white">不能断线，网课/远程办公</span>
-            <span class="text-gray-500 text-xs mb-1">重点关注：晚高峰波动与线路冗余</span>
-            <a href="/recommend/stable-airport/" class="text-cyan-blue hover:underline">👉 去看 稳定机场推荐</a>
-          </li>
-          <li class="flex flex-col">
-            <span class="font-bold text-gray-900 dark:text-white">打游戏 / 低延迟极客</span>
-            <span class="text-gray-500 text-xs mb-1">重点关注：IPLC/IEPL等专线架构</span>
-            <a href="/recommend/premium-line/" class="text-cyan-blue hover:underline">👉 去看 专线机场推荐</a>
-          </li>
-          <li class="flex flex-col">
-            <span class="font-bold text-gray-900 dark:text-white">Clash Verge / Mac 用户</span>
-            <span class="text-gray-500 text-xs mb-1">重点关注：订阅兼容与客户端教程</span>
-            <a href="/recommend/clash/" class="text-cyan-blue hover:underline">👉 去看 Clash 机场推荐</a>
-          </li>
-          <li class="flex flex-col">
-            <span class="font-bold text-gray-900 dark:text-white">重度追剧 Netflix / Disney+</span>
-            <span class="text-gray-500 text-xs mb-1">重点关注：流媒体支持与原生IP</span>
-            <a href="/recommend/streaming/" class="text-cyan-blue hover:underline">👉 去看 流媒体解锁推荐</a>
-          </li>
-          <li class="flex flex-col">
-            <span class="font-bold text-gray-900 dark:text-white">ChatGPT / Claude 重度依赖</span>
-            <span class="text-gray-500 text-xs mb-1">重点关注：AI 支持度与防风控策略</span>
-            <a href="/recommend/ai/" class="text-cyan-blue hover:underline">👉 去看 AI 机场推荐</a>
-          </li>
+      <div class="prose dark:prose-invert max-w-none mb-8">
+        <p>随着防火墙规则的不断升级和代理协议的演进，<strong>2026年9月</strong>寻找优质的机场节点有了新的标准。本站收录了包含微风网络、跨界云等在内的 29 个品牌的基础资料，帮你理清选择思路。</p>
+        <AffiliateDisclosure />
+
+        <h2>2026 机场推荐重点看什么？</h2>
+        <ul>
+          <li><strong>根据客户端选</strong>：如果你是 Clash 用户，绝大多数机场原生支持。如果你使用 Sing-box 客户端，最好确认商家支持 JSON 格式的一键订阅。<a href="/recommend/clash/">查看 Clash 专题</a>。</li>
+          <li><strong>根据线路选</strong>：如果是重度游戏、视频会议需求，建议关注标明拥有 <strong>IPLC/IEPL 专线</strong> 的品牌。<a href="/recommend/premium-line/">查看专线专题</a>。</li>
+          <li><strong>根据预算选</strong>：如果你只是查查资料偶尔上外网，性价比中转机场足以满足需求。<a href="/recommend/cheap-airport/">查看平价专题</a>。</li>
         </ul>
+        <p>切记：不要盲目追求大流量年付。网络服务存在波段性，先买月付或季付测试，确认在你的本地网络（特别是晚高峰）体验良好后，再考虑长期续费。</p>
       </div>
-    </div>
 
-    <div class="mb-12">
-      <h2 class="text-3xl font-bold mb-8">2026 综合实力 TOP 8 品牌点评</h2>
-      <p class="text-gray-600 dark:text-gray-400 mb-8">
-        本榜单基于本站收录的最新公开套餐数据及特性整理。这些品牌在价格梯度、节点覆盖及线路类型上展现了较强的综合实力。以下是我们基于其实际公开资料作出的独立点评。
-      </p>
-      
-      <div class="space-y-8">
-        {top8.map((airport, index) => (
-          <div class="bg-white dark:bg-midnight p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 flex flex-col md:flex-row gap-6 relative overflow-hidden group">
-            <div class="absolute top-0 left-0 w-1 h-full bg-cyan-blue opacity-50 group-hover:opacity-100 transition"></div>
-            
-            <div class="md:w-1/4 flex flex-col justify-center">
-              <span class="bg-gray-100 dark:bg-gray-800 text-gray-500 font-bold px-3 py-1 rounded w-max text-sm mb-3">综合排名 #{index + 1}</span>
-              <h3 class="text-2xl font-bold mb-2"><a href={`/airports/${airport.slug}`} class="hover:text-cyan-blue transition">{airport.name}</a></h3>
-              <div class="text-xl text-coral font-bold mb-4">{getDisplayPrice(airport)} <span class="text-sm font-normal text-gray-500">起</span></div>
-              <a href={airport.affiliateUrl} target="_blank" rel="sponsored nofollow noopener" class="w-full py-2 bg-cyan-blue hover:bg-blue-600 text-white rounded-lg transition shadow-md font-bold text-center block">访问官网</a>
-            </div>
-            
-            <div class="md:w-3/4 flex flex-col justify-center">
-              <div class="flex flex-wrap gap-2 text-sm text-gray-600 dark:text-gray-400 mb-4">
-                <span class="px-2 py-1 bg-gray-50 dark:bg-gray-800/50 rounded border border-gray-100 dark:border-gray-700">线路类型: <strong>{airport.lineType}</strong></span>
-                <span class="px-2 py-1 bg-gray-50 dark:bg-gray-800/50 rounded border border-gray-100 dark:border-gray-700">流媒体: <strong>{airport.streamingSupport}</strong></span>
-                <span class="px-2 py-1 bg-gray-50 dark:bg-gray-800/50 rounded border border-gray-100 dark:border-gray-700">AI 支持: <strong>{airport.aiSupport}</strong></span>
-              </div>
-              
-              <div class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed mb-4">
-                <strong>综合点评：</strong>
-                作为综合榜排名第 {index + 1} 的品牌，{airport.name} 的核心优势在于 <em>{airport.recommendedFor}</em>。
-                根据本站数据库记录的数据，其线路类型为 {airport.lineType}，并在流媒体和 AI 支持度上记录为了 {airport.streamingSupport} 和 {airport.aiSupport}。
-                结合其最低起步价 {getDisplayPrice(airport)}，该品牌能够满足绝大多数常规用户的日用需求。
-                {airport.plans && airport.plans.length > 0 && `其常规套餐主要覆盖 ${airport.plans[0].traffic} 左右的基础流量需求，`}适合作为主力选项之一。
-              </div>
-              
-              <div class="flex gap-4">
-                 <a href={`/airports/${airport.slug}`} class="text-sm text-cyan-blue hover:underline font-medium">查看 {airport.name} 详细资料与套餐拆解 &rarr;</a>
-              </div>
-            </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {rankedAirports.map((airport) => (
+          <div class="bg-white dark:bg-gray-800 rounded-xl border border-gray-100 p-6">
+            <h3 class="text-xl font-bold mb-2"><a href={`/airports/${airport.slug}`} class="hover:text-cyan-blue">{airport.name}</a></h3>
+            <p class="text-sm text-gray-500 mb-4">{airport.lineType}</p>
+            <a href={`/airports/${airport.slug}`} class="text-cyan-blue font-bold text-sm">查看套餐与详细资料 &rarr;</a>
           </div>
         ))}
       </div>
