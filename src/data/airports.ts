@@ -2,7 +2,7 @@ export const airports = [
   {
     "slug": "weifeng",
     "name": "微风网络",
-    "affiliateUrl": "https://edp01.breezenetaff.com/#/?code=bSnymFll",
+    "affiliateUrl": "/go/weifeng",
     "coupon": "weifeng90（7折）",
     "macDownload": "https://168downloads.oss-ap-northeast-2.aliyuncs.com/wf/wfnetwork-3.0.0-macos.zip",
     "lineType": "IEPL/IPLC专线",
@@ -82,12 +82,13 @@ export const airports = [
       "微风网络的机场好用吗",
       "微风测评",
       "breeze加速器"
-    ]
+    ],
+    "realAffiliateUrl": "https://edp01.breezenetaff.com/#/?code=bSnymFll"
   },
   {
     "slug": "firefly",
     "name": "firefly",
-    "affiliateUrl": "https://vip02.fireflyaff.com/#/?code=mcYQUZxG",
+    "affiliateUrl": "/go/firefly",
     "coupon": "firefly (8折)",
     "macDownload": "https://168downloads.oss-ap-northeast-2.aliyuncs.com/ff/firefly-3.0.0-macos.zip",
     "lineType": "IEPL/IPLC专线",
@@ -164,12 +165,13 @@ export const airports = [
       "萤火虫能不能用clash",
       "萤火虫加速",
       "firefly 机场邀请码"
-    ]
+    ],
+    "realAffiliateUrl": "https://vip02.fireflyaff.com/#/?code=mcYQUZxG"
   },
   {
     "slug": "kuajieyun",
     "name": "跨界云",
-    "affiliateUrl": "https://vip02.kuajieaff.com/#/?code=HRzqSLrR",
+    "affiliateUrl": "/go/kuajieyun",
     "coupon": "kuajie（8 折）",
     "macDownload": "https://168downloads.oss-ap-northeast-2.aliyuncs.com/kj/kuajiecloud-3.0.0-macos.zip",
     "lineType": "IEPL/IPLC专线",
@@ -235,12 +237,13 @@ export const airports = [
     "searchAliases": [
       "跨界云",
       "kuajie"
-    ]
+    ],
+    "realAffiliateUrl": "https://vip02.kuajieaff.com/#/?code=HRzqSLrR"
   },
   {
     "slug": "shanyue",
     "name": "闪跃",
-    "affiliateUrl": "https://vip02.flashleapaff.com/#/?code=hCwClNUi",
+    "affiliateUrl": "/go/shanyue",
     "coupon": "shanyue（8折）",
     "macDownload": "https://168downloads.oss-ap-northeast-2.aliyuncs.com/sy/sycloud-3.0.0-macos.zip",
     "lineType": "IEPL/IPLC专线",
@@ -303,12 +306,13 @@ export const airports = [
     "searchAliases": [
       "闪跃机场",
       "闪跃这个机场这么样"
-    ]
+    ],
+    "realAffiliateUrl": "https://vip02.flashleapaff.com/#/?code=hCwClNUi"
   },
   {
     "slug": "wuyou",
     "name": "无忧链接",
-    "affiliateUrl": "https://wep01.worryfreeaff.com/#/?code=ydtFVWqU",
+    "affiliateUrl": "/go/wuyou",
     "coupon": "(暂无优惠）",
     "macDownload": "https://168downloads.oss-ap-northeast-2.aliyuncs.com/wy/wuyoucloud-3.0.0-macos.zip",
     "lineType": "IEPL/IPLC专线",
@@ -370,12 +374,13 @@ export const airports = [
     "monthlyStartingPrice": 19,
     "searchAliases": [
       "无忧链接"
-    ]
+    ],
+    "realAffiliateUrl": "https://wep01.worryfreeaff.com/#/?code=ydtFVWqU"
   },
   {
     "slug": "lingmao",
     "name": "灵猫",
-    "affiliateUrl": "https://vip02.civetaff.com/#/?code=2Ai6V6Ub",
+    "affiliateUrl": "/go/lingmao",
     "coupon": "lingmao（8折）",
     "macDownload": "https://168downloads.oss-ap-northeast-2.aliyuncs.com/lm/lingmaocloud-3.0.0-macos.zip",
     "lineType": "IEPL/IPLC专线",
@@ -458,12 +463,13 @@ export const airports = [
     "monthlyStartingPrice": 25,
     "searchAliases": [
       "灵猫机场"
-    ]
+    ],
+    "realAffiliateUrl": "https://vip02.civetaff.com/#/?code=2Ai6V6Ub"
   },
   {
     "slug": "bitznet",
     "name": "BitzNet",
-    "affiliateUrl": "https://red.bnaffred.com/#/register?code=8Hqeq4XA",
+    "affiliateUrl": "/go/bitznet",
     "coupon": "(暂无优惠）",
     "macDownload": null,
     "lineType": "IEPL/IPLC专线",
@@ -509,15 +515,16 @@ export const airports = [
         "oneTime": null
       }
     ],
-    "monthlyStartingPrice": null,
+    "monthlyStartingPrice": 5,
     "searchAliases": [
       "bitznet优惠券"
-    ]
+    ],
+    "realAffiliateUrl": "https://red.bnaffred.com/#/register?code=8Hqeq4XA"
   },
   {
     "slug": "feimaoyun",
     "name": "飞猫云",
-    "affiliateUrl": "https://flycat1.flycatvipaff.cc/#/?code=UUcH5yh9",
+    "affiliateUrl": "/go/feimaoyun",
     "coupon": "(暂无优惠）",
     "macDownload": "https://down-apps.oss-cn-hongkong.aliyuncs.com/fmy/images/%E9%A3%9E%E7%8C%AB%E4%BA%91-2.2.3-macos-universal.pkg",
     "lineType": "IEPL/IPLC专线",
@@ -590,12 +597,13 @@ export const airports = [
         "oneTime": null
       }
     ],
-    "monthlyStartingPrice": 25
+    "monthlyStartingPrice": 25,
+    "realAffiliateUrl": "https://flycat1.flycatvipaff.cc/#/?code=UUcH5yh9"
   },
   {
     "slug": "sogo",
     "name": "sogo云",
-    "affiliateUrl": "https://wzjc.sogoyunaff.cc/#/?code=JvxcPy2A",
+    "affiliateUrl": "/go/sogo",
     "coupon": "(暂无优惠）",
     "macDownload": "https://asfdgd.sogotztz2.sbs/#/?code=JvxcPy2A",
     "lineType": "IEPL/IPLC专线",
@@ -665,12 +673,13 @@ export const airports = [
         "oneTime": null
       }
     ],
-    "monthlyStartingPrice": 25
+    "monthlyStartingPrice": 25,
+    "realAffiliateUrl": "https://wzjc.sogoyunaff.cc/#/?code=JvxcPy2A"
   },
   {
     "slug": "muguang",
     "name": "暮光加速",
-    "affiliateUrl": "https://varnexa.twilightaff.com/#/?code=1eGqV85O",
+    "affiliateUrl": "/go/muguang",
     "coupon": "mm88（8折）",
     "macDownload": "https://muguang9.oss-ap-southeast-1.aliyuncs.com/v1.0.0/muguangjiasu-3.0.0-macos.zip",
     "lineType": "IEPL/IPLC专线",
@@ -743,12 +752,197 @@ export const airports = [
     "searchAliases": [
       "暮光加速",
       "暮光加速器 二毛"
-    ]
+    ],
+    "realAffiliateUrl": "https://varnexa.twilightaff.com/#/?code=1eGqV85O"
+  },
+  {
+    "slug": "jiuyun",
+    "name": "九云",
+    "affiliateUrl": "/go/jiuyun",
+    "coupon": "9yun（8折）",
+    "macDownload": "https://www.ruanjiandaohang.com/xz/QiNHVx43bsUf.dmg",
+    "lineType": "海外中转",
+    "aiSupport": "全面支持",
+    "streamingSupport": "全面支持",
+    "recommendedFor": "智能路由自动择优，稳定顺滑",
+    "features": [
+      "支持 Netflix / ChatGPT / TikTok",
+      "3-5台设备同时在线",
+      "专业客服，快速响应"
+    ],
+    "plans": [
+      {
+        "name": "特惠一",
+        "traffic": "200 GB",
+        "monthly": null,
+        "quarterly": null,
+        "semiannual": null,
+        "annual": 68,
+        "oneTime": null
+      },
+      {
+        "name": "特惠二",
+        "traffic": "400 GB",
+        "monthly": null,
+        "quarterly": null,
+        "semiannual": null,
+        "annual": 88,
+        "oneTime": null
+      },
+      {
+        "name": "特惠三",
+        "traffic": "200 GB",
+        "monthly": null,
+        "quarterly": 18,
+        "semiannual": 36,
+        "annual": 72,
+        "oneTime": null
+      },
+      {
+        "name": "招财版",
+        "traffic": "150 GB",
+        "monthly": 6,
+        "quarterly": 18,
+        "semiannual": 36,
+        "annual": 72,
+        "oneTime": null
+      },
+      {
+        "name": "聚财版",
+        "traffic": "300 GB",
+        "monthly": 9,
+        "quarterly": 27,
+        "semiannual": 54,
+        "annual": 108,
+        "oneTime": null
+      },
+      {
+        "name": "旺财版",
+        "traffic": "600 GB",
+        "monthly": 16,
+        "quarterly": 48,
+        "semiannual": 96,
+        "annual": 192,
+        "oneTime": null
+      },
+      {
+        "name": "来财版",
+        "traffic": "100 GB",
+        "monthly": null,
+        "quarterly": null,
+        "semiannual": null,
+        "annual": null,
+        "oneTime": 68
+      },
+      {
+        "name": "鸿运版",
+        "traffic": "300 GB",
+        "monthly": null,
+        "quarterly": null,
+        "semiannual": null,
+        "annual": null,
+        "oneTime": 99
+      }
+    ],
+    "realAffiliateUrl": "https://888.jiuyundl.com/#/register?code=RvrYuabu",
+    "monthlyStartingPrice": 5
+  },
+  {
+    "slug": "baoyun",
+    "name": "宝云",
+    "affiliateUrl": "/go/baoyun",
+    "coupon": "暂无优惠",
+    "macDownload": "https://www.ruanjiandaohang.com/xz/QiNHVx43bsUf.dmg",
+    "lineType": "海外中转",
+    "aiSupport": "部分支持",
+    "streamingSupport": "全面支持",
+    "recommendedFor": "支持常规流媒体服务",
+    "features": [
+      "支持常规流媒体服务",
+      "2-5台设备同时在线",
+      "在线客服 · 售后技术支持"
+    ],
+    "plans": [
+      {
+        "name": "年付轻量特惠",
+        "traffic": "100 GB",
+        "monthly": null,
+        "quarterly": null,
+        "semiannual": null,
+        "annual": 32,
+        "oneTime": null
+      },
+      {
+        "name": "季付轻量特惠",
+        "traffic": "500 GB",
+        "monthly": null,
+        "quarterly": 16,
+        "semiannual": null,
+        "annual": null,
+        "oneTime": null
+      },
+      {
+        "name": "福宝",
+        "traffic": "200 GB",
+        "monthly": 4,
+        "quarterly": 12,
+        "semiannual": 24,
+        "annual": 48,
+        "oneTime": null
+      },
+      {
+        "name": "财宝",
+        "traffic": "500 GB",
+        "monthly": 8,
+        "quarterly": 24,
+        "semiannual": 48,
+        "annual": 96,
+        "oneTime": null
+      },
+      {
+        "name": "金宝",
+        "traffic": "1000 GB",
+        "monthly": 13,
+        "quarterly": 39,
+        "semiannual": 78,
+        "annual": 156,
+        "oneTime": null
+      },
+      {
+        "name": "传家宝",
+        "traffic": "200 GB",
+        "monthly": null,
+        "quarterly": null,
+        "semiannual": null,
+        "annual": null,
+        "oneTime": 29
+      },
+      {
+        "name": "传世宝",
+        "traffic": "500 GB",
+        "monthly": null,
+        "quarterly": null,
+        "semiannual": null,
+        "annual": null,
+        "oneTime": 39
+      },
+      {
+        "name": "传承宝",
+        "traffic": "1000 GB",
+        "monthly": null,
+        "quarterly": null,
+        "semiannual": null,
+        "annual": null,
+        "oneTime": 59
+      }
+    ],
+    "realAffiliateUrl": "https://888by.baoyundl.com/#/register?code=9thDnaCR",
+    "monthlyStartingPrice": 2
   },
   {
     "slug": "xingdaomeng",
     "name": "星岛梦",
-    "affiliateUrl": "https://kfccbb.xingdaomeng.com/#/?code=1qBePxW1",
+    "affiliateUrl": "/go/xingdaomeng",
     "coupon": "nmw888（9折）",
     "macDownload": "https://down-apps.oss-cn-hongkong.aliyuncs.com/xdm/images/%E6%98%9F%E5%B2%9B%E6%A2%A6-2.2.3-macos-universal.pkg",
     "lineType": "IEPL/IPLC专线",
@@ -821,12 +1015,13 @@ export const airports = [
         "oneTime": null
       }
     ],
-    "monthlyStartingPrice": 25
+    "monthlyStartingPrice": 25,
+    "realAffiliateUrl": "https://kfccbb.xingdaomeng.com/#/?code=1qBePxW1"
   },
   {
     "slug": "weituyun",
     "name": "唯兔云",
-    "affiliateUrl": "https://fast.v2yunvipaff.com/#/?code=bGS5G7xn",
+    "affiliateUrl": "/go/weituyun",
     "coupon": "rabbit（8折）",
     "macDownload": "https://down-apps.oss-cn-hongkong.aliyuncs.com/wty/download/v2cloud-3.0.0-macos.zip",
     "lineType": "IEPL/IPLC专线",
@@ -926,12 +1121,13 @@ export const airports = [
         "oneTime": 340
       }
     ],
-    "monthlyStartingPrice": 19.9
+    "monthlyStartingPrice": 19.9,
+    "realAffiliateUrl": "https://fast.v2yunvipaff.com/#/?code=bGS5G7xn"
   },
   {
     "slug": "guangsuyun",
     "name": "光速云",
-    "affiliateUrl": "https://mdlky.gsyaff.com/#/?code=GKfXFvJh",
+    "affiliateUrl": "/go/guangsuyun",
     "coupon": "(暂无优惠）",
     "macDownload": "https://down-apps.oss-cn-hongkong.aliyuncs.com/gsy/images/%E5%85%89%E9%80%9F%E4%BA%91-2.2.3-macos-universal.pkg",
     "lineType": "IEPL/IPLC专线",
@@ -1013,12 +1209,13 @@ export const airports = [
         "oneTime": null
       }
     ],
-    "monthlyStartingPrice": 23
+    "monthlyStartingPrice": 23,
+    "realAffiliateUrl": "https://mdlky.gsyaff.com/#/?code=GKfXFvJh"
   },
   {
     "slug": "u1s1",
     "name": "U1S1",
-    "affiliateUrl": "https://pkdj7.vipaff.cc/#/?code=T1UVuVDP",
+    "affiliateUrl": "/go/u1s1",
     "coupon": "U1S1（85折）",
     "macDownload": "https://down-apps.oss-cn-hongkong.aliyuncs.com/u1s1/images/U1S1-2.2.3-macos-universal.pkg",
     "lineType": "IEPL/IPLC专线",
@@ -1090,12 +1287,13 @@ export const airports = [
         "oneTime": null
       }
     ],
-    "monthlyStartingPrice": 20
+    "monthlyStartingPrice": 20,
+    "realAffiliateUrl": "https://pkdj7.vipaff.cc/#/?code=T1UVuVDP"
   },
   {
     "slug": "jilianyun",
     "name": "极连云",
-    "affiliateUrl": "https://kdjhao.jlyvipaff.com/#/?code=nrPTQT2i",
+    "affiliateUrl": "/go/jilianyun",
     "coupon": "JLY888（8折）",
     "macDownload": "https://down-apps.oss-cn-hongkong.aliyuncs.com/jly/download/jly-2.2.3-macos-universal.pkg",
     "lineType": "IEPL/IPLC专线",
@@ -1169,12 +1367,13 @@ export const airports = [
         "oneTime": 399
       }
     ],
-    "monthlyStartingPrice": 18
+    "monthlyStartingPrice": 18,
+    "realAffiliateUrl": "https://kdjhao.jlyvipaff.com/#/?code=nrPTQT2i"
   },
   {
     "slug": "guangnianti",
     "name": "光年梯",
-    "affiliateUrl": "https://ggmq.gntaff.com/#/?code=k0rrn5UQ",
+    "affiliateUrl": "/go/guangnianti",
     "coupon": "(暂无优惠）",
     "macDownload": "https://down-apps.oss-cn-hongkong.aliyuncs.com/gnt/download/gnt-2.2.3-macos-universal.pkg",
     "lineType": "IEPL/IPLC专线",
@@ -1248,12 +1447,13 @@ export const airports = [
         "oneTime": null
       }
     ],
-    "monthlyStartingPrice": 18
+    "monthlyStartingPrice": 18,
+    "realAffiliateUrl": "https://ggmq.gntaff.com/#/?code=k0rrn5UQ"
   },
   {
     "slug": "yifanyun",
     "name": "一翻云",
-    "affiliateUrl": "https://wzjc.1flyunaff.cc/#/?code=e61goYLt",
+    "affiliateUrl": "/go/yifanyun",
     "coupon": "(暂无优惠）",
     "macDownload": "https://bbn3uyoiu.1fyohnzt.xyz/#/?code=e61goYLt（注册后网页内下载）",
     "lineType": "中转/直连",
@@ -1340,12 +1540,13 @@ export const airports = [
         "oneTime": 400
       }
     ],
-    "monthlyStartingPrice": 20
+    "monthlyStartingPrice": 20,
+    "realAffiliateUrl": "https://wzjc.1flyunaff.cc/#/?code=e61goYLt"
   },
   {
     "slug": "ermaoyun",
     "name": "二猫云",
-    "affiliateUrl": "https://waaa.2maoyunaff.cc/#/?code=c842udvC",
+    "affiliateUrl": "/go/ermaoyun",
     "coupon": "ermao888（85折）",
     "macDownload": "https://shadow.ermaotztz3.homes/#/?code=c842udvC（注册后网页内下载）",
     "lineType": "IEPL/IPLC专线",
@@ -1418,12 +1619,13 @@ export const airports = [
         "oneTime": null
       }
     ],
-    "monthlyStartingPrice": 20
+    "monthlyStartingPrice": 20,
+    "realAffiliateUrl": "https://waaa.2maoyunaff.cc/#/?code=c842udvC"
   },
   {
     "slug": "bianyuan",
     "name": "边缘节点",
-    "affiliateUrl": "https://work.edgenovaaff.cc/#/?code=etUBOp4S",
+    "affiliateUrl": "/go/bianyuan",
     "coupon": "xk808（8折）",
     "macDownload": "https://bcbhk40y.ztymforedge.lol/#/?code=etUBOp4S（注册后网页内下载）",
     "lineType": "IEPL/IPLC专线",
@@ -1495,12 +1697,13 @@ export const airports = [
         "oneTime": null
       }
     ],
-    "monthlyStartingPrice": 15
+    "monthlyStartingPrice": 15,
+    "realAffiliateUrl": "https://work.edgenovaaff.cc/#/?code=etUBOp4S"
   },
   {
     "slug": "kexinyun",
     "name": "可信云",
-    "affiliateUrl": "https://work.kosingaff.com/#/?code=PY3isazT",
+    "affiliateUrl": "/go/kexinyun",
     "coupon": "(暂无优惠）",
     "macDownload": "https://asfasf.kexintztz2.sbs/#/?code=PY3isazT（注册后网页内下载）",
     "lineType": "IEPL/IPLC专线",
@@ -1580,12 +1783,13 @@ export const airports = [
         "oneTime": 50
       }
     ],
-    "monthlyStartingPrice": 15
+    "monthlyStartingPrice": 15,
+    "realAffiliateUrl": "https://work.kosingaff.com/#/?code=PY3isazT"
   },
   {
     "slug": "sujie",
     "name": "速界机场",
-    "affiliateUrl": "https://work.speedworldaff.cc/#/?code=q1enwrOd",
+    "affiliateUrl": "/go/sujie",
     "coupon": "sujie888（8折)",
     "macDownload": "https://j3gncnh.tzztssuujj.xyz/#/?code=q1enwrOd（注册后网页内下载）",
     "lineType": "IEPL/IPLC专线",
@@ -1659,12 +1863,13 @@ export const airports = [
         "oneTime": null
       }
     ],
-    "monthlyStartingPrice": 15
+    "monthlyStartingPrice": 15,
+    "realAffiliateUrl": "https://work.speedworldaff.cc/#/?code=q1enwrOd"
   },
   {
     "slug": "kuaili",
     "name": "快狸",
-    "affiliateUrl": "https://work.kuailicloud.cc/#/?code=9RhZkrkV",
+    "affiliateUrl": "/go/kuaili",
     "coupon": "(暂无优惠）",
     "macDownload": "https://iasfasf.kuailitztz2.xyz/#/?code=9RhZkrkV（注册后网页内下载）",
     "lineType": "IEPL/IPLC专线",
@@ -1737,12 +1942,13 @@ export const airports = [
         "oneTime": null
       }
     ],
-    "monthlyStartingPrice": 15
+    "monthlyStartingPrice": 15,
+    "realAffiliateUrl": "https://work.kuailicloud.cc/#/?code=9RhZkrkV"
   },
   {
     "slug": "flyv",
     "name": "飞V",
-    "affiliateUrl": "https://varnexa.flyvaff.com/#/?code=6ae5FH9i",
+    "affiliateUrl": "/go/flyv",
     "coupon": "fly20（8折)",
     "macDownload": "https://asfawsf.flyvastt.lol/#/?code=6ae5FH9i（注册后网页内下载）",
     "lineType": "IEPL/IPLC专线",
@@ -1839,12 +2045,13 @@ export const airports = [
         "oneTime": null
       }
     ],
-    "monthlyStartingPrice": 25
+    "monthlyStartingPrice": 25,
+    "realAffiliateUrl": "https://varnexa.flyvaff.com/#/?code=6ae5FH9i"
   },
   {
     "slug": "tiziyun",
     "name": "梯子云",
-    "affiliateUrl": "https://varnexa.ladderaff.com/#/?code=3vf6NG2u",
+    "affiliateUrl": "/go/tiziyun",
     "coupon": "tiziyun（8折)",
     "macDownload": "https://asfawsf.ladderttt.sbs/#/?code=3vf6NG2u（注册后网页内下载）",
     "lineType": "中转/直连",
@@ -1940,12 +2147,13 @@ export const airports = [
         "oneTime": null
       }
     ],
-    "monthlyStartingPrice": 25
+    "monthlyStartingPrice": 25,
+    "realAffiliateUrl": "https://varnexa.ladderaff.com/#/?code=3vf6NG2u"
   },
   {
     "slug": "wavenet",
     "name": "WaveNet",
-    "affiliateUrl": "https://varnexa.wavenetaff.com/#/?code=pcFhy7Lb",
+    "affiliateUrl": "/go/wavenet",
     "coupon": "lw888（8折)",
     "macDownload": "https://asfawsf.wavenetttt.homes/#/?code=YPxgLl5c（注册后网页内下载）",
     "lineType": "IEPL/IPLC专线",
@@ -2043,12 +2251,13 @@ export const airports = [
         "oneTime": null
       }
     ],
-    "monthlyStartingPrice": 30
+    "monthlyStartingPrice": 30,
+    "realAffiliateUrl": "https://varnexa.wavenetaff.com/#/?code=pcFhy7Lb"
   },
   {
     "slug": "lingdongyun",
     "name": "灵动云",
-    "affiliateUrl": "https://varnexa.lingdongaff.com/#/?code=TIMwZeIR",
+    "affiliateUrl": "/go/lingdongyun",
     "coupon": "880223（8折)",
     "macDownload": "https://asfawsf.lingdongyunttt.homes/#/?code=TIMwZeIR（注册后网页内下载）",
     "lineType": "IEPL/IPLC专线",
@@ -2145,12 +2354,13 @@ export const airports = [
         "oneTime": null
       }
     ],
-    "monthlyStartingPrice": 20
+    "monthlyStartingPrice": 20,
+    "realAffiliateUrl": "https://varnexa.lingdongaff.com/#/?code=TIMwZeIR"
   },
   {
     "slug": "yinxingren",
     "name": "隐形人",
-    "affiliateUrl": "https://varnexa.invisibleaff.com/#/?code=8jyAXfu3",
+    "affiliateUrl": "/go/yinxingren",
     "coupon": "yxr888（8折)",
     "macDownload": "https://asfweroasf.invisiblettt.homes/#/?code=8jyAXfu3（注册后网页内下载）",
     "lineType": "IEPL/IPLC专线",
@@ -2246,12 +2456,13 @@ export const airports = [
         "oneTime": 600
       }
     ],
-    "monthlyStartingPrice": 24
+    "monthlyStartingPrice": 24,
+    "realAffiliateUrl": "https://varnexa.invisibleaff.com/#/?code=8jyAXfu3"
   },
   {
     "slug": "nanocloud",
     "name": "NanoCloud",
-    "affiliateUrl": "https://edu.uodoo.bid/auth/register?code=P7gzTydW",
+    "affiliateUrl": "/go/nanocloud",
     "coupon": "（加入tg享受内部优惠）",
     "macDownload": null,
     "lineType": "中转/直连",
@@ -2301,12 +2512,13 @@ export const airports = [
         "oneTime": null
       }
     ],
-    "monthlyStartingPrice": 1
+    "monthlyStartingPrice": 1,
+    "realAffiliateUrl": "https://edu.uodoo.bid/auth/register?code=P7gzTydW"
   },
   {
     "slug": "phantom",
     "name": "Phantom",
-    "affiliateUrl": "https://pin.dianping.men/auth/register?code=Cv2pH8HA",
+    "affiliateUrl": "/go/phantom",
     "coupon": "（暂无优惠）",
     "macDownload": null,
     "lineType": "中转/直连",
@@ -2343,6 +2555,7 @@ export const airports = [
         "oneTime": null
       }
     ],
-    "monthlyStartingPrice": 1
+    "monthlyStartingPrice": 1,
+    "realAffiliateUrl": "https://pin.dianping.men/auth/register?code=Cv2pH8HA"
   }
 ];
