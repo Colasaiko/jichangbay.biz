@@ -515,7 +515,7 @@ export const airports = [
         "oneTime": null
       }
     ],
-    "monthlyStartingPrice": 5,
+    "monthlyStartingPrice": null,
     "searchAliases": [
       "bitznet优惠券"
     ],
@@ -845,7 +845,7 @@ export const airports = [
       }
     ],
     "realAffiliateUrl": "https://888.jiuyundl.com/#/register?code=RvrYuabu",
-    "monthlyStartingPrice": 5
+    "monthlyStartingPrice": 6
   },
   {
     "slug": "baoyun",

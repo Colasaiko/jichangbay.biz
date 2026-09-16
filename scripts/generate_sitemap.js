@@ -26,7 +26,11 @@ for (const file of htmlFiles) {
   } else if (relativePath.endsWith('.html')) {
     relativePath = relativePath.replace('.html', '');
   }
-  if (relativePath === '/404') continue;
+  if (relativePath === '/404' || relativePath === '/404/') continue;
+  if (relativePath.startsWith('/go/')) continue;
+  
+  const content = fs.readFileSync(file, 'utf8');
+  if (content.includes('<meta name="robots" content="noindex')) continue;
   
   urls += `
   <url>

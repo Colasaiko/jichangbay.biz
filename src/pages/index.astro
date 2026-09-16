@@ -13,13 +13,13 @@ const posts = await getCollection('blog');
 
 const latestPosts = [...posts].sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()).slice(0, 4);
 ---
-<Layout title="2026 机场推荐：稳定、便宜与专线机场排行榜 - 机场湾" description="2026机场推荐与套餐资料整理，收录29个品牌，提供便宜机场、稳定机场、专线机场、Clash客户端、套餐对比和常见问题指南。">
+<Layout title="2026 机场推荐：稳定、便宜与专线机场排行榜 - 机场湾" description={`2026机场推荐与套餐资料整理，收录${airports.length}个品牌，提供便宜机场、稳定机场、专线机场、Clash客户端、套餐对比和常见问题指南。`}>
   <!-- 1. Hero & 2. 2026 更新状态 -->
   <div class="bg-gradient-to-b from-deep-sea to-midnight text-white py-20 relative overflow-hidden">
     <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 32px 32px;"></div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col md:flex-row items-center">
       <div class="md:w-1/2 pr-8">
-        <span class="inline-block py-1 px-3 rounded-full bg-cyan-blue/20 text-cyan-blue border border-cyan-blue/30 text-sm font-semibold mb-6 shadow-sm">🚀 2026 年资料持续更新 · 严选收录 29 个品牌</span>
+        <span class="inline-block py-1 px-3 rounded-full bg-cyan-blue/20 text-cyan-blue border border-cyan-blue/30 text-sm font-semibold mb-6 shadow-sm">🚀 2026 年资料持续更新 · 严选收录 {airports.length} 个品牌</span>
         <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">2026 机场推荐与<br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-blue to-coral">网络加速器</span>选择指南</h1>
         <p class="text-lg text-gray-300 mb-8 leading-relaxed">在这个信息爆炸的时代，打破网络边界是每个数字公民的必修课。从IPLC/IEPL 等线路 专线到低预算中转方案的便宜中转，我们为你提供最全面的套餐资料参考。</p>
         <div class="flex flex-wrap gap-4">
@@ -32,7 +32,7 @@ const latestPosts = [...posts].sort((a, b) => b.data.pubDate.valueOf() - a.data.
           <div class="absolute -top-4 -right-4 w-20 h-20 bg-coral/30 rounded-full blur-2xl"></div>
           <h3 class="text-xl font-bold mb-6 flex items-center"><span class="w-2 h-2 bg-green-400 rounded-full mr-3 animate-pulse shadow-[0_0_8px_rgba(74,222,128,0.8)]"></span>实时收录数据看板</h3>
           <div class="space-y-5">
-            <div class="flex justify-between items-center"><span class="text-sm text-gray-300 font-medium">当前收录品牌</span><span class="text-xl font-bold text-cyan-blue">29 家</span></div>
+            <div class="flex justify-between items-center"><span class="text-sm text-gray-300 font-medium">当前收录品牌</span><span class="text-xl font-bold text-cyan-blue">{airports.length} 家</span></div>
             <div class="flex justify-between items-center"><span class="text-sm text-gray-300 font-medium">问题百科条目</span><span class="text-xl font-bold text-purple-500">{questions.length} 条</span></div>
             <div class="flex justify-between items-center"><span class="text-sm text-gray-300 font-medium">P0 深度解决指南</span><span class="text-xl font-bold text-green-500">30 篇</span></div>
             <div class="flex justify-between items-center"><span class="text-sm text-gray-300 font-medium">基础套餐数据</span><span class="text-sm font-bold text-coral">来自公开资料整理</span></div>
