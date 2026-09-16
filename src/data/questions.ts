@@ -1961,7 +1961,7 @@ export const questions = [
     "category": "使用场景",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "两者都要关注，但长期使用通常更应重视稳定性。单次测速只反映某一时刻的速度，还需观察晚高峰波动、断线频率和本地网络下的实际体验。",
+    "shortAnswer": "价格决定预算门槛，线路类型只是选购时的参考字段之一，不能单独代表实际性能。应结合预算、付款周期、公开线路资料，以及自己网络环境下的实际体验综合判断。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2082,7 +2082,7 @@ export const questions = [
     "category": "客户端",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "Clash Meta 已更名为 Mihomo，绝大多数提供 YAML 格式订阅的服务商节点都可导入使用，建议直接询问服务商或查看其导入教程。",
+    "shortAnswer": "Mihomo（原 Clash Meta）是否能够直接使用，取决于服务商提供的订阅格式和节点协议。购买前查看其当前导入教程或向客服确认。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -3006,7 +3006,7 @@ export const questions = [
     "category": "流媒体",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "看到代理检测提示说明当前节点 IP 已被 Netflix 标记。建议切换到服务商标注的流媒体解锁节点，并避免使用普通大众节点。",
+    "shortAnswer": "代理提示可能与当前出口 IP、地区识别、平台检测策略或节点状态有关。可以尝试切换服务商明确标注支持该地区流媒体的节点，并重新登录或清理应用缓存；实际可用性会随时间变化。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -3223,7 +3223,7 @@ export const questions = [
     "category": "选购指南",
     "intent": "INFORMATIONAL",
     "priority": "P2",
-    "shortAnswer": "一元套餐通常是试用性质，用于验证线路速度和稳定性，好不好用需要自己在实际使用场景中测试，不能代表正式套餐的完整体验。",
+    "shortAnswer": "一元价位本身无法判断是否好用，可能是正式低价套餐、促销体验或季节性活动。购买前应确认流量额度、付款周期、线路类型、设备限制和服务条款，并优先用短周期实际测试。",
     "searchAliases": [
       "一元机场好用吗",
       "两块钱机场推荐 clash",

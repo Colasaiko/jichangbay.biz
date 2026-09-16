@@ -114,8 +114,8 @@ qList.forEach(q => {
 });
 
 for (const [ans, count] of Object.entries(shortCounts)) {
-  if (count >= 3) {
-    console.error(`Semantic Duplicate >= 3 times (${count}): ${ans}`);
+  if (count >= 2) {
+    console.error(`Semantic Duplicate >= 2 times (${count}): ${ans}`);
     fail = true;
   }
 }
@@ -156,6 +156,24 @@ qList.forEach(q => {
   }
 });
 
+
+const bannedStarts = ['值得注意的是，', '从性价比的角度', '在目前的网络环境下，', '面对这种情况，', '究其根本，', '不可忽视的一点是，', '根据多数用户的经验'];
+qList.forEach(q => {
+  const s = q.shortAnswer || '';
+  bannedStarts.forEach(b => {
+    if (s.startsWith(b)) {
+      console.error('Banned start:', b, 'in', q.question);
+      fail = true;
+    }
+  });
+  const abs = ['绝大多数服务商都会', '绝对不可以', '一定会封号', '必然', '100%'];
+  abs.forEach(b => {
+    if (s.includes(b)) {
+      console.error('Absolute expression:', b, 'in', q.question);
+      fail = true;
+    }
+  });
+});
 if (fail) {
   process.exit(1);
 } else {
