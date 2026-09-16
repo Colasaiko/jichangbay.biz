@@ -85,7 +85,7 @@ const categories = Array.from(new Set(questions.map((q: any) => q.category)));
         
         <div class="space-y-4" id="questions-container">
           {questions.map((q: any) => (
-            <div class="q-card bg-white dark:bg-midnight border border-gray-100 dark:border-gray-800 rounded-xl overflow-hidden shadow-sm" data-cat={q.category} data-text={`\${q.question.toLowerCase()} \${q.shortAnswer.toLowerCase()} \${q.category.toLowerCase()} \${(q.searchAliases || []).join(" ").toLowerCase()}`}>
+            <div class="q-card bg-white dark:bg-midnight border border-gray-100 dark:border-gray-800 rounded-xl overflow-hidden shadow-sm" data-cat={q.category} data-text={`${q.question.toLowerCase()} ${q.shortAnswer.toLowerCase()} ${q.category.toLowerCase()} ${(q.searchAliases || []).join(" ").toLowerCase()}`}>
               
               {(q.priority === 'P0' || mdSlugs.includes(q.slug)) ? (
                 <div class="p-6">

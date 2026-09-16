@@ -135,6 +135,27 @@ qList.forEach(q => {
   }
 });
 
+
+qList.forEach(q => {
+  const s = q.shortAnswer || '';
+  if (s.includes('，，') || s.includes('，。') || s.includes('因此。') || s.includes('情况下，，') || s.includes('角度出发，，') || s.includes('情况，。')) {
+    console.error('Invalid punctuation/residual phrase in:', q.question);
+    fail = true;
+  }
+  if (s.length < 15) {
+    console.error('Answer too short in:', q.question);
+    fail = true;
+  }
+  if (s.includes('相关问题的详细指南与说明正在更新中')) {
+    console.error('Generic fallback detected in:', q.question);
+    fail = true;
+  }
+  if (s.includes('undefined')) {
+    console.error('undefined found in:', q.question);
+    fail = true;
+  }
+});
+
 if (fail) {
   process.exit(1);
 } else {
