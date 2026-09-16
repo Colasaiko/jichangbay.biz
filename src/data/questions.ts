@@ -751,7 +751,7 @@ export const questions = [
     "category": "使用场景",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "虽然通常指同一类能够实现网络代理的服务，但在圈内，“机场”偏指提供大量节点订阅的服务商，而“梯子”则是各类代理软件或自建节点的统称。",
+    "shortAnswer": "虽然在网络社区中经常混用，但两个词有细微区别。机场专指提供订阅节点的服务商，梯子则是更泛化的说法，泛指各类能绕过访问限制的工具或方案。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -762,7 +762,7 @@ export const questions = [
     "category": "使用场景",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "一个常见误区是，优质的专线（IPLC/IEPL）能有效绕过公网拥堵，这要求我们在使用时保持软件和配置的实时更新。",
+    "shortAnswer": "早期代理协议使用飞机图标（Shadowsocks），梯子是对科学上网工具的戏称，两者都属于社区俗语，没有严格定义，在使用中含义基本相同。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -773,7 +773,7 @@ export const questions = [
     "category": "新手入门",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "通常是对代理、VPN 或节点订阅类网络工具的通俗称呼，用于将部分或全部网络流量通过其他服务器转发。不同工具的技术实现和使用方式并不相同。",
+    "shortAnswer": "通俗指能让你访问到被本地网络屏蔽的互联网服务的代理类工具，如节点订阅、VPN 或自建代理服务器等，没有统一的官方定义。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -784,7 +784,7 @@ export const questions = [
     "category": "新手入门",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "这是网络社区中的通俗说法，与“科学上网工具”类似，不是正式技术名称。",
+    "shortAnswer": "是科学上网工具的另一种民间说法，本质上指同类代理或节点订阅服务，没有行业标准定义，使用场景基本相同。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -795,7 +795,7 @@ export const questions = [
     "category": "机场选择",
     "intent": "commercial",
     "priority": "P1",
-    "shortAnswer": "推荐页面应重点列出真实评测数据、支持协议、节点覆盖情况、套餐价格对比，以及是否提供一键导入和新手教程，帮助用户做出适合自己的决定。",
+    "shortAnswer": "主要看线路类型（直连/中转/专线）、支持的客户端格式、套餐价格与流量、设备数限制，以及服务商运营时间和是否提供月付测试。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -806,7 +806,7 @@ export const questions = [
     "category": "机场选择",
     "intent": "commercial",
     "priority": "P1",
-    "shortAnswer": "由于防火墙策略不断升级，寻找稳定推荐应关注采用专线（如 IPLC/IEPL）传输且有备用域名的服务商，同时优先考虑支持月付测试的品牌。",
+    "shortAnswer": "2026 年仍有稳定的服务商在运营，但网络环境持续变化，建议优先选择有专线线路和备用域名的服务商，并以月付方式先测试再续费。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -817,7 +817,7 @@ export const questions = [
     "category": "新手入门",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "可以，但新手最好选择提供一键导入、客户端教程和月付套餐的服务，避免第一次购买就选择复杂协议或长期套餐。",
+    "shortAnswer": "适合，但新手建议优先选择提供图形界面客户端、一键导入教程和月付套餐的服务，避免从复杂协议或年付套餐开始。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -828,7 +828,7 @@ export const questions = [
     "category": "使用场景",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "购买 → 复制订阅 → 安装客户端 → 导入 → 选择节点 → 开启代理。",
+    "shortAnswer": "购买节点订阅后复制链接，在客户端（如 Clash 或 Shadowrocket）中导入，打开系统代理或 TUN 模式，选择可用节点即可开始使用。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -839,7 +839,7 @@ export const questions = [
     "category": "客户端",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "在服务商后台复制订阅链接后，打开 Clash（如 Verge 版）进入配置或 Profiles 页面，点击新建/导入并粘贴链接，下载成功后即可切换使用。",
+    "shortAnswer": "在服务商后台复制订阅链接，打开 Clash（如 Clash Verge Rev），进入 Profiles 页面，粘贴链接后点击下载，选中配置后打开系统代理即可。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -850,7 +850,7 @@ export const questions = [
     "category": "客户端",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "在 iPhone 上安装 Shadowrocket 后，点击首页右上角的加号，选择类型为 Subscribe（订阅），在 URL 栏粘贴机场链接并保存即可更新节点。",
+    "shortAnswer": "在机场后台复制 Shadowrocket 订阅链接，打开 Shadowrocket，点击右上角加号，选择类型 Subscribe，粘贴链接并保存，即可获取节点列表。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -861,7 +861,7 @@ export const questions = [
     "category": "客户端",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "在电脑上打开 v2rayN，点击顶部菜单栏的“订阅设置”，添加新订阅并粘贴机场提供的链接，然后返回主页面点击“更新订阅”即可获取节点。",
+    "shortAnswer": "复制机场订阅链接，打开 v2rayN，点击订阅设置添加链接后，在主界面点击更新订阅获取节点，最后在托盘图标右键开启系统代理。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -872,7 +872,7 @@ export const questions = [
     "category": "客户端",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "打开 Stash 应用，进入“配置”或“Settings”中的订阅管理页面，粘贴从机场后台复制的 Clash 格式订阅链接并下载，即可获取并使用最新节点。",
+    "shortAnswer": "在 Stash 的配置管理页面中添加远程订阅，粘贴服务商提供的 Clash 格式链接并保存，下载完成后即可选择配置启动代理。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -883,7 +883,7 @@ export const questions = [
     "category": "客户端",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "复制服务商提供的专属链接，打开 Quantumult X，在节点或引用管理中添加远程订阅，粘贴链接并开启自动更新，完成配置后即可正常连接网络。",
+    "shortAnswer": "在 Quantumult X 中进入节点管理页面，添加引用（远程订阅），粘贴服务商提供的链接并开启自动更新，保存后在策略中选择节点启动代理。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -894,7 +894,7 @@ export const questions = [
     "category": "客户端",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "获取服务商支持的对应格式链接，在 sing-box 客户端中进入配置界面，添加外部资源或订阅链接，保存并更新后，即可在主界面选择节点启动代理。",
+    "shortAnswer": "获取服务商支持的 sing-box 格式订阅链接（通常在后台选择 sing-box 格式），在 sing-box 客户端中添加远程配置，保存后启动代理服务。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -905,7 +905,7 @@ export const questions = [
     "category": "客户端",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "重点确认机场是否提供 Clash/Mihomo 兼容订阅、一键导入、订阅转换是否正常，以及线路本身是否稳定。",
+    "shortAnswer": "确认服务商是否提供 Clash/Mihomo 可读取的 YAML 格式订阅，并查看是否有一键导入或官方 Clash 配置教程，购买前以官方后台为准。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -916,7 +916,7 @@ export const questions = [
     "category": "客户端",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "重点确认是否提供 Shadowrocket 可直接导入的订阅、是否兼容常见协议，以及 iOS 使用教程是否完整。",
+    "shortAnswer": "确认服务商是否提供 Shadowrocket 可直接导入的订阅链接，并查看是否支持你常用的协议（SS、Vmess、Trojan 等），购买前先查后台。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -927,7 +927,7 @@ export const questions = [
     "category": "客户端",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "应关注服务商是否原生支持 SS/SSR/Vmess/Trojan 等主流协议，是否提供一键导入功能，以及针对 iOS 环境的专门教程与售后支持情况。",
+    "shortAnswer": "选购逻辑与 Shadowrocket 相同，需确认服务商是否提供兼容格式的订阅，是否有 iOS 专属的导入教程。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -938,7 +938,7 @@ export const questions = [
     "category": "客户端",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "确认是否提供 v2rayN 兼容格式、订阅更新是否正常、协议兼容情况等。",
+    "shortAnswer": "确认服务商是否提供 v2rayN 支持的格式订阅，是否有适合 Windows 的入门教程，以及更新订阅是否正常。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -949,7 +949,7 @@ export const questions = [
     "category": "使用场景",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "Android 常见选择包括 v2rayNG、Hiddify、Mihomo 系客户端等，具体要看机场提供的订阅格式；购买机场前最好先确认它是否提供 Android 导入教程。",
+    "shortAnswer": "Android 常见选择有 v2rayNG、Hiddify、Mihomo 系客户端等，具体看服务商支持的协议格式，购买前确认服务商是否提供 Android 导入教程。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -960,7 +960,7 @@ export const questions = [
     "category": "使用场景",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "在众多选择中，第三方防火墙的干扰往往是隐性因素，如果实在搞不懂，直接购买大厂的现成方案会更省心。",
+    "shortAnswer": "iOS 主流选择是 Shadowrocket，需要境外 App Store 账户购买。Stash 和 Quantumult X 同样可用，具体看服务商提供哪种导入格式的教程。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -971,7 +971,7 @@ export const questions = [
     "category": "新手入门",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "Windows 电脑通常使用 Clash Verge Rev、v2rayN 或 Mihomo 等客户端，购买服务后获取订阅链接并导入客户端，开启系统代理即可实现全网代理。",
+    "shortAnswer": "Windows 用户通常使用 Clash Verge Rev 或 v2rayN，购买套餐后复制订阅链接，导入客户端并开启系统代理即可使用。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -982,7 +982,7 @@ export const questions = [
     "category": "新手入门",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "Mac 用户推荐使用 Clash Verge Rev、Surge 或 Shadowrocket（M系列芯片），将服务商提供的订阅链接导入软件并开启系统代理或 TUN 模式即可。",
+    "shortAnswer": "Mac 用户可以使用 Clash Verge Rev（支持 Apple Silicon）或 Surge 等工具，导入订阅链接并在设置中开启系统代理或 TUN 模式即可。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -993,7 +993,7 @@ export const questions = [
     "category": "新手入门",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "节点通常指服务商部署在海外各地的数据中心服务器，代理客户端通过连接这些节点，将你的本地网络请求转发至目标网站，从而实现绕过限制。",
+    "shortAnswer": "节点是服务商部署在海外的代理服务器，客户端连接后将流量通过该服务器转发，从而访问被屏蔽的内容，每个节点对应不同地区或性能。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1004,7 +1004,7 @@ export const questions = [
     "category": "线路与节点",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "延迟只代表响应时间(ms)，不代表下载速度。",
+    "shortAnswer": "延迟（ms）反映节点响应速度，通常越低越好，适合游戏和实时通讯。在客户端的节点测速功能中可以看到，但实际体验还受带宽和丢包影响。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1015,7 +1015,7 @@ export const questions = [
     "category": "线路与节点",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "看实际下载/上传、视频播放、丢包与高峰表现，而不只是 ping。",
+    "shortAnswer": "节点速度通常指带宽吞吐量，可用 Speedtest 等工具测试。但单次测速仅供参考，晚高峰实际速度可能和测速结果差距较大。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1026,7 +1026,7 @@ export const questions = [
     "category": "线路与节点",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "不一定。节点数量多不等于质量高，比数量更重要的是线路稳定性、地区覆盖、晚高峰表现以及备用入口。",
+    "shortAnswer": "不是。节点数量多不等于稳定或快速，更重要的是节点所在地区是否符合需求、线路质量和服务器带宽是否充足。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1037,7 +1037,7 @@ export const questions = [
     "category": "线路与节点",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "优先选择距离较近且满足目标服务地区要求的节点；日常浏览可以先测试香港、日本、新加坡等低延迟地区，但具体速度仍取决于本地运营商和线路质量。",
+    "shortAnswer": "选节点地区主要看使用目的：访问美区内容选美国，看 Netflix 日本区选日本，游戏加速选离目标服务器最近的地区，无特殊需求选延迟最低的。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1048,7 +1048,7 @@ export const questions = [
     "category": "线路与节点",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "香港节点物理距离近、延迟极低，非常适合日常网页浏览、亚洲服游戏加速，以及对低延迟要求较高的实时通讯与跨境电商业务。",
+    "shortAnswer": "香港节点延迟极低，适合需要低延迟的游戏和实时业务，但受大带宽用户共享影响，晚高峰可能拥挤；也适合访问部分亚太区内容。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1059,7 +1059,7 @@ export const questions = [
     "category": "线路与节点",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "根据物理距离、目标服务地区和本地线路测试决定，不要直接套“专线优于直连”。",
+    "shortAnswer": "台湾节点延迟低、带宽通常较充足，适合访问台湾地区的内容服务（如动画疯、台区 Netflix），以及对东亚低延迟有需求的场景。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1070,7 +1070,7 @@ export const questions = [
     "category": "线路与节点",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "日本节点带宽通常较充足且延迟适中，适合观看流媒体（如 Netflix、动画疯）、下载大文件以及连接亚太地区的各类互联网服务。",
+    "shortAnswer": "日本节点带宽大、延迟适中，适合观看日本流媒体、下载大文件，以及对亚太地区连接质量有要求的使用场景。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1081,7 +1081,7 @@ export const questions = [
     "category": "线路与节点",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "这背后反映出，订阅链接的及时更新能避免大部分连通性问题，所以准备两到三家不同上游的备用服务是非常明智的。",
+    "shortAnswer": "新加坡节点延迟低、网络基础设施好，适合跨境工作、游戏和访问东南亚地区服务，也是许多 AI 工具支持的地区之一。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1092,7 +1092,7 @@ export const questions = [
     "category": "线路与节点",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "美国节点带宽大且价格相对便宜，非常适合解锁北美专属流媒体内容（如 Hulu、HBO Max）、使用 ChatGPT 等 AI 服务以及大量数据下载。",
+    "shortAnswer": "美国节点带宽大、地区内容多，适合解锁北美流媒体（Netflix、Hulu）、使用 ChatGPT 等 AI 工具，以及大文件下载场景。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1103,7 +1103,7 @@ export const questions = [
     "category": "故障排查",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "晚高峰（通常 20:00-23:00）国际出口带宽拥挤，如果服务商没有采用专线传输或带宽冗余不足，出现卡顿是正常现象，建议切换冷门节点或使用专线服务。",
+    "shortAnswer": "晚高峰（20:00-23:00）国际出口带宽紧张，如果服务商没有专线或带宽冗余不足，卡顿是正常现象，可以尝试切换冷门地区节点。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1114,7 +1114,7 @@ export const questions = [
     "category": "故障排查",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "晚高峰卡顿时可尝试切换至冷门国家节点，或更换使用 IPLC/IEPL 专线的服务商。另外，也可尝试重启本地路由器或更改 DNS 来排除本地网络干扰。",
+    "shortAnswer": "尝试切换到延迟更低或使用率更少的节点（如台湾、日本的低负载节点），或联系服务商确认是否有专线套餐可以应对高峰时段。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1136,7 +1136,7 @@ export const questions = [
     "category": "故障排查",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "在众多选择中，订阅链接的及时更新能避免大部分连通性问题，所以切忌盲目追求绝对的低价或夸张的宣传。",
+    "shortAnswer": "可能原因包括：节点带宽超售、所选节点离目标服务器较远、本地网络质量差或晚高峰公网拥堵，可依次排查排除。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1147,7 +1147,7 @@ export const questions = [
     "category": "故障排查",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "可能是套餐过期、流量耗尽、节点大面积维护、本地网络异常，或是客户端防封锁规则失效。请先登录服务商后台检查状态，并尝试更新订阅。",
+    "shortAnswer": "可能原因：套餐过期、流量用完、订阅未更新、本地网络异常或 DNS 污染。先登录服务商后台确认账号状态，再检查客户端设置。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1158,7 +1158,7 @@ export const questions = [
     "category": "故障排查",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "解决此问题的捷径是，客户端软件的版本与协议兼容性是关键，这也是为什么月付套餐在当下越来越受推崇的原因。",
+    "shortAnswer": "节点全红通常不是所有服务器都挂了，更可能是订阅未更新（旧节点已失效）、套餐到期，或本地 DNS/网络异常导致无法连接。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1169,7 +1169,7 @@ export const questions = [
     "category": "故障排查",
     "intent": "troubleshooting",
     "priority": "P1",
-    "shortAnswer": "解决此问题的捷径是，第三方防火墙的干扰往往是隐性因素，如果实在搞不懂，直接购买大厂的现成方案会更省心。",
+    "shortAnswer": "先更新订阅获取最新节点，确认套餐未到期，再检查系统时间是否准确（V2ray 类协议对时间差敏感），最后尝试切换其他节点。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1180,7 +1180,7 @@ export const questions = [
     "category": "故障排查",
     "intent": "troubleshooting",
     "priority": "P1",
-    "shortAnswer": "很多时候，目标网站（如 Netflix/ChatGPT）的风控机制在不断升级，这要求我们在使用时保持软件和配置的实时更新。",
+    "shortAnswer": "检查复制的链接是否完整，关闭其他代理软件或 VPN 后重试，若依然失败则返回服务商后台重新复制链接，或换用移动网络尝试。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1191,7 +1191,7 @@ export const questions = [
     "category": "故障排查",
     "intent": "troubleshooting",
     "priority": "P1",
-    "shortAnswer": "请检查系统时间是否准确，确保订阅链接已更新至最新；如果依然失败，请关闭系统代理并更换网络环境，或尝试在后台更换其他可用节点重试。",
+    "shortAnswer": "可能是订阅未加载成功或系统时间误差导致协议握手失败。请确认订阅已成功更新、系统时间准确，并检查代理模式是否正确开启。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1202,7 +1202,7 @@ export const questions = [
     "category": "套餐与价格",
     "intent": "commercial",
     "priority": "P1",
-    "shortAnswer": "最直接的解决办法是，本地 DNS 的解析准确度经常被忽视，所以切忌盲目追求绝对的低价或夸张的宣传。",
+    "shortAnswer": "可以在服务商后台购买补充流量包，或等下一个账期自动重置（如为月付套餐）；也可以购买按量计费套餐作为临时补充，避免中断使用。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1213,7 +1213,7 @@ export const questions = [
     "category": "套餐与价格",
     "intent": "commercial",
     "priority": "P1",
-    "shortAnswer": "绝大多数包月、包季或包年套餐都会在每个账单周期（如每月特定日期）自动重置流量。具体重置日期取决于你的购买时间，请查看服务商后台说明。",
+    "shortAnswer": "大多数按月计费套餐会在账期（如每月特定日期）自动重置，具体重置时间以购买日期和服务商规则为准，可在后台查看下次重置时间。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1224,7 +1224,7 @@ export const questions = [
     "category": "套餐与价格",
     "intent": "commercial",
     "priority": "P1",
-    "shortAnswer": "很多时候，服务商是否超售直接影响了晚高峰的可用性，一旦遇到无解的报错，重置网络或重启设备往往有奇效。",
+    "shortAnswer": "流量倍率是指消耗该节点流量时的计算乘数。倍率 2 表示使用 1GB 实际消耗 2GB 额度，高倍率通常对应高带宽节点，购买前查看套餐说明。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1235,7 +1235,7 @@ export const questions = [
     "category": "套餐与价格",
     "intent": "commercial",
     "priority": "P1",
-    "shortAnswer": "如果只是查阅网页、使用即时通讯，100G 绰绰有余；但如果每天高强度观看 4K 视频或频繁下载大文件，100G 可能只够使用一两周。",
+    "shortAnswer": "如果只是日常网页浏览和通讯，100GB 通常够用；但每天看高清视频或频繁下载大文件，100GB 可能撑不了一个月，建议估算自己的实际用量。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1246,7 +1246,7 @@ export const questions = [
     "category": "套餐与价格",
     "intent": "commercial",
     "priority": "P1",
-    "shortAnswer": "小流量用户非常适合购买“按量计费（不限时）”套餐，流量用完再买，或者选择低价位的小流量基础月付套餐，避免资源和资金浪费。",
+    "shortAnswer": "按量计费（流量不过期）套餐最适合，用多少买多少；小额月付基础套餐也可以，但注意月底流量不够用时不会自动补充，需手动购买。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1257,7 +1257,7 @@ export const questions = [
     "category": "套餐与价格",
     "intent": "commercial",
     "priority": "P1",
-    "shortAnswer": "很多时候，套餐的流量倍率规则决定了实际消耗，所以不要过分迷信测速软件跑出来的瞬间峰值。",
+    "shortAnswer": "大流量用户应优先关注月流量额度、是否有专线保障晚高峰速度，以及是否有无限流量或超大流量的年付套餐，价格通常按流量阶梯计算。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1268,7 +1268,7 @@ export const questions = [
     "category": "套餐与价格",
     "intent": "commercial",
     "priority": "P1",
-    "shortAnswer": "这也是为什么，设备系统时间的准确性是 TLS 握手成功的前提，因此，日常浏览和高强度下载最好使用不同的节点策略。",
+    "shortAnswer": "按量计费适合使用频率不固定、偶尔才需要代理的用户，以及作为备用节点的补充。不适合每天高强度使用的用户，成本会较高。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1279,7 +1279,7 @@ export const questions = [
     "category": "新手入门",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "不限时套餐指的是流量没有过期时间（或长期有效，如数年），直到流量消耗完毕才需要再次购买。非常适合平时偶尔使用或作为备用网络的用户。",
+    "shortAnswer": "不限时套餐指流量没有过期日期，直到消耗完毕前可以持续使用。适合使用频率低、不确定何时需要用的用户。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1290,7 +1290,7 @@ export const questions = [
     "category": "套餐与价格",
     "intent": "commercial",
     "priority": "P1",
-    "shortAnswer": "理论上讲，优质的专线（IPLC/IEPL）能有效绕过公网拥堵，总之，没有绝对完美的网络，只有最适合自己预算的妥协。",
+    "shortAnswer": "不限时套餐适合使用频率低、断断续续用的用户；月付适合使用稳定、每月有固定用量的用户。两者各有适用场景，选择取决于自己的使用习惯。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1301,7 +1301,7 @@ export const questions = [
     "category": "套餐与价格",
     "intent": "commercial",
     "priority": "P1",
-    "shortAnswer": "从技术角度来看，优质的专线（IPLC/IEPL）能有效绕过公网拥堵，总之，没有绝对完美的网络，只有最适合自己预算的妥协。",
+    "shortAnswer": "月付适合新用户测试（风险低）、需求不稳定的用户，以及不确定某个服务商是否可靠时的初次购买，不建议一开始就买年付。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1312,7 +1312,7 @@ export const questions = [
     "category": "使用场景",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "季付通常比月付便宜 5%-15%，适合已经通过月付测试、确认线路稳定且符合自己需求的用户。但仍需防范商家突然关停的潜在风险。",
+    "shortAnswer": "通常比月付便宜，适合已通过月付测试确认满意的用户。但季付依然存在商家关停风险，不建议第一次购买就冲季付。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1323,7 +1323,7 @@ export const questions = [
     "category": "套餐与价格",
     "intent": "commercial",
     "priority": "P1",
-    "shortAnswer": "从性价比的角度出发，目标网站（如 Netflix/ChatGPT）的风控机制在不断升级，总之，没有绝对完美的网络，只有最适合自己预算的妥协。",
+    "shortAnswer": "如果已通过月付测试确认该服务商稳定可靠，年付价格通常有一定折扣，值得购买。但仍有跑路风险，年付金额越高风险越大，需自行判断。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1334,7 +1334,7 @@ export const questions = [
     "category": "使用场景",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "只要服务商持续运营且你按时续费，就可以长期使用。但强烈建议避免一次性购买超过一年的套餐，以免商家跑路带来较大的资金损失。",
+    "shortAnswer": "可以长期使用，但建议不要一次性购买超过一年。服务商能否持续运营无法保证，月付或季付的风险相对更低。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1345,7 +1345,7 @@ export const questions = [
     "category": "使用场景",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "低价服务商往往面临带宽超售严重、晚高峰卡顿、无专线保障、客服响应慢以及较高的跑路风险。适合预算有限且对稳定性要求不高的场景。",
+    "shortAnswer": "低价服务商可能存在带宽超售、晚高峰卡顿、节点稳定性差等问题，跑路风险也相对较高。购买前先用月付测试，不要一次性购买年付。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1356,7 +1356,7 @@ export const questions = [
     "category": "套餐与价格",
     "intent": "commercial",
     "priority": "P1",
-    "shortAnswer": "推荐页面应明确其带宽限制、可用节点地区、晚高峰连通率，并强调购买时优先选择月付，避免用户因低价诱惑而承受长期不稳定风险。",
+    "shortAnswer": "应关注月付价格、流量大小、线路类型（直连/中转/专线）、可用地区是否符合需求，以及是否提供月付测试选项。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1367,7 +1367,7 @@ export const questions = [
     "category": "使用场景",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "面对这种情况，免费或极度廉价的公共节点往往伴随着隐私泄露隐患，对于新手来说，跟着官方的图文教程一步步走是最省时的。",
+    "shortAnswer": "通常是指将国内某些服务出口绕出，或将境外流量引导回国内，实现反向访问。具体实现方式因服务商不同而有差异。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1378,7 +1378,7 @@ export const questions = [
     "category": "机场选择",
     "intent": "commercial",
     "priority": "P1",
-    "shortAnswer": "稳定推荐必须看重是否拥有 IPLC/IEPL 专线、是否有 SLA 保障、历史运营时长，以及多ISP出口的冗余能力，价格反而是次要考量因素。",
+    "shortAnswer": "稳定性通常看是否有 IPLC/IEPL 专线、服务商的运营年限、晚高峰节点可用率，以及是否有备用线路保障，价格是次要因素。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1389,7 +1389,7 @@ export const questions = [
     "category": "新手入门",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "如果要深究其原因，设备系统时间的准确性是 TLS 握手成功的前提，合理的预期管理能让你在使用这些工具时少很多烦恼。",
+    "shortAnswer": "专线通常指通过私有网络专用线路（如 IPLC 或 IEPL）进行流量传输，不经过普通公网，延迟更低、更稳定，价格通常高于普通中转套餐。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1400,7 +1400,7 @@ export const questions = [
     "category": "新手入门",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "在众多选择中，按量计费套餐是作为主力挂掉时的最佳备用方案，对于新手来说，跟着官方的图文教程一步步走是最省时的。",
+    "shortAnswer": "IPLC（International Private Leased Circuit）是一种国际专用租用线路，物理链路独立，抗干扰性强，常用于高稳定性需求的代理传输。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1411,7 +1411,7 @@ export const questions = [
     "category": "新手入门",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "IEPL (International Ethernet Private Line) 是国际以太网专线，具有极高的稳定性和低延迟，不经过普通公网，受晚高峰和防火墙干扰极小。",
+    "shortAnswer": "IEPL（International Ethernet Private Line）是以太网形式的国际专线，技术实现与 IPLC 类似，延迟低、稳定性高，价格通常高于普通中转线路。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1422,7 +1422,7 @@ export const questions = [
     "category": "新手入门",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "中转通常指在国内设置入口服务器，将流量通过优化线路（如隧道）转发至海外出口节点，能显著降低延迟并提高稳定性，比直连效果好得多。",
+    "shortAnswer": "中转是指在国内部署入口服务器，流量经由国内优化线路转至海外节点，比直连更稳定，延迟比直连低，价格比专线低。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1433,7 +1433,7 @@ export const questions = [
     "category": "新手入门",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "直连指你的设备直接将加密流量发送至海外服务器，不经过国内中转节点。成本最低，但受国际出口带宽拥堵和防火墙封锁影响最大。",
+    "shortAnswer": "直连指客户端直接连接海外服务器，不经过国内中转节点，成本最低，但晚高峰容易受公网拥堵影响，稳定性低于中转或专线。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1444,7 +1444,7 @@ export const questions = [
     "category": "新手入门",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "直连线路成本低但晚高峰易卡顿、易受干扰；中转线路通过国内服务器接力传输，延迟更低、速度更稳，但成本较高，通常出现在中高端套餐中。",
+    "shortAnswer": "直连成本低但稳定性受公网影响大；中转加入国内优化线路后延迟更低、更稳定，但价格较高。两者适用不同的预算和使用场景。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1455,7 +1455,7 @@ export const questions = [
     "category": "线路与节点",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "如果要深究其原因，优质的专线（IPLC/IEPL）能有效绕过公网拥堵，总之，没有绝对完美的网络，只有最适合自己预算的妥协。",
+    "shortAnswer": "专线使用私有传输链路，不走普通公网，稳定性高且延迟低，建设和维护成本远高于普通中转，因此套餐价格通常更贵。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1466,7 +1466,7 @@ export const questions = [
     "category": "线路与节点",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "如果你经常玩外服游戏、需要稳定进行跨国视频会议或对晚高峰卡顿零容忍，专线非常值得；如果只是偶尔查查资料，普通中转线路已经足够。",
+    "shortAnswer": "如果日常只用于浏览网页或偶发使用，普通中转线路通常够用。重度游戏、视频会议或对低延迟要求高的用户才更有必要考虑专线。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1477,7 +1477,7 @@ export const questions = [
     "category": "流媒体",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "为了获得最佳体验，复杂的路由分流规则对新手的学习成本较高，对于新手来说，跟着官方的图文教程一步步走是最省时的。",
+    "shortAnswer": "部分服务商的特定节点支持 Netflix 解锁，但不是所有机场都支持，且解锁能力会随 IP 状态变化。购买前确认服务商是否明确说明提供流媒体解锁节点。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1499,7 +1499,7 @@ export const questions = [
     "category": "流媒体",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "为了获得最佳体验，复杂的路由分流规则对新手的学习成本较高，如果条件允许，尝试切换不同的网络环境（如 5G）往往能快速定位症结。",
+    "shortAnswer": "YouTube 通常可以正常访问，但速度取决于节点带宽和线路质量，4K 视频需要较大带宽。晚高峰节点拥堵时可能出现缓冲，可尝试切换节点。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1521,7 +1521,7 @@ export const questions = [
     "category": "AI 工具",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "大多数服务商都提供支持 ChatGPT 的节点（通常是美日新等地区）。但由于 OpenAI 封控严格，部分被标记的 IP 可能无法使用，建议购买前与客服确认。",
+    "shortAnswer": "许多服务商提供支持 ChatGPT 的节点（通常是美日地区），但 OpenAI 对 IP 有检测机制，部分节点可能无法使用。购买前建议询问或先月付测试。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1532,7 +1532,7 @@ export const questions = [
     "category": "AI 工具",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "Gemini 的区域限制较为严格，通常需要原生 IP 或未被 Google 风控的节点。主流服务商的优质冷门节点或特定解锁节点通常可以正常使用。",
+    "shortAnswer": "Gemini 的地区限制较严，通常需要未被 Google 标记的节点。服务商是否支持、哪些节点有效，建议直接询问客服或参考近期用户反馈。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1543,7 +1543,7 @@ export const questions = [
     "category": "AI 工具",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "核心的考量因素在于，目标网站（如 Netflix/ChatGPT）的风控机制在不断升级，理解这一点，能帮你避开市面上 80% 的营销陷阱。",
+    "shortAnswer": "Claude 对 IP 纯净度要求较高，普通节点可能被拒绝。建议选择服务商明确说明支持 Claude 访问的套餐，或使用高质量原生 IP 节点测试。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1554,7 +1554,7 @@ export const questions = [
     "category": "AI 工具",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "应重点考虑那些声明提供“原生 IP”、“家宽 IP”或明确提供“AI 解锁节点”的服务商，并在推荐中提醒用户部分免费或拥挤节点极易被风控封锁。",
+    "shortAnswer": "优先选择服务商明确标注 AI 解锁或提供原生 IP 节点的服务，确认支持的地区（如美国、日本），购买前以服务商当前说明为准。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1565,7 +1565,7 @@ export const questions = [
     "category": "流媒体",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "应挑选声明提供“流媒体解锁”或“原生 IP”的服务商，重点查看其香港、日本、新加坡及美国节点是否能稳定观看 Netflix、Disney+ 等平台。",
+    "shortAnswer": "应优先选择服务商明确说明提供流媒体解锁节点，并确认支持的平台（Netflix、Disney+ 等）和地区，购买前以服务商当前后台说明为准。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1576,7 +1576,7 @@ export const questions = [
     "category": "流媒体",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "必须关注其节点是否能解锁非自制剧、是否经常掉线或被检测为代理（Proxy Detected），以及服务商是否有专门的流媒体解锁服务器保障。",
+    "shortAnswer": "关注节点是否能稳定解锁（不只是偶尔成功）、地区库是否符合需求，以及服务商对 Netflix 解锁的维护是否及时，可先月付测试验证。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1587,7 +1587,7 @@ export const questions = [
     "category": "机场选择",
     "intent": "commercial",
     "priority": "P1",
-    "shortAnswer": "如果要深究其原因，服务商是否超售直接影响了晚高峰的可用性，一旦遇到无解的报错，重置网络或重启设备往往有奇效。",
+    "shortAnswer": "TikTok 对 IP 纯净度要求较高，需确认服务商是否明确标注支持 TikTok 或提供干净出口 IP，而不是依赖通用节点碰运气。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1598,7 +1598,7 @@ export const questions = [
     "category": "新手入门",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "原生 IP（Native IP）通常指 IP 的注册国家与机房所在国家一致，未被各大内容平台（如 Netflix、TikTok）识别为数据中心或代理，能享受本地化服务。",
+    "shortAnswer": "原生 IP 通常指注册地与机房所在地一致的 IP，未被平台标记为数据中心或代理，能减少被流媒体、AI 平台风控的概率。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1620,7 +1620,7 @@ export const questions = [
     "category": "新手入门",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "值得注意的是，客户端软件的版本与协议兼容性是关键，这也是为什么月付套餐在当下越来越受推崇的原因。",
+    "shortAnswer": "住宅 IP 是通过真实家庭宽带分配的 IP，被各平台视为普通用户访问，风控触发率通常低于数据中心 IP，但成本较高且速度有限。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1631,7 +1631,7 @@ export const questions = [
     "category": "新手入门",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "动态 IP 会定期或在重新连接时改变，适合避免被封锁；静态 IP 保持不变，非常适合需要固定 IP 养号的跨境电商或特定安全访问需求。",
+    "shortAnswer": "动态 IP 每次连接可能变化，不易被固定追踪；静态 IP 保持不变，适合需要固定地址的跨境电商账号维护，选择时依实际需求而定。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1642,7 +1642,7 @@ export const questions = [
     "category": "流媒体",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "通常情况下，按量计费套餐是作为主力挂掉时的最佳备用方案，如果条件允许，尝试切换不同的网络环境（如 5G）往往能快速定位症结。",
+    "shortAnswer": "各平台会对数据中心 IP 和已知代理 IP 进行检测，被标记的节点无法正常播放内容。服务商通常会标注哪些节点具备流媒体解锁能力。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1653,7 +1653,7 @@ export const questions = [
     "category": "AI 工具",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "AI 工具（如 ChatGPT、Claude）会对访问 IP 进行严格的信誉度检测。如果某个节点的 IP 被大量用户滥用，就会被官方拉黑，导致无法正常访问。",
+    "shortAnswer": "各 AI 平台（ChatGPT、Claude、Gemini）对 IP 信誉度有检测，数据中心 IP 和被大量用户共用的节点容易被拒绝，这是平台检测机制造成的。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1664,7 +1664,7 @@ export const questions = [
     "category": "使用场景",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "通常可以在服务商官网公告、官方 Telegram 群组、节日促销邮件以及本站的特定推荐评测页面中找到最新的优惠码。",
+    "shortAnswer": "通常可以在服务商官网公告、官方 Telegram 群组、节日促销邮件，以及本站的推荐评测页面中找到最新的优惠码。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1675,7 +1675,7 @@ export const questions = [
     "category": "新手入门",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "在服务商网站选择套餐并进入结账或订单确认页面时，找到“优惠码”或“Promo Code”输入框，输入并点击应用，确认价格扣减后再进行支付。",
+    "shortAnswer": "在服务商结账页面找到优惠码输入框，填入后点击应用，确认折扣生效后再支付，优惠码通常有使用条件，请以页面说明为准。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1686,7 +1686,7 @@ export const questions = [
     "category": "机场选择",
     "intent": "commercial",
     "priority": "P1",
-    "shortAnswer": "正规服务商在节假日（如双十一、黑五）的优惠通常是真实的；但需警惕那些打着“跳楼价”名义诱导购买长期套餐的跑路前兆行为。",
+    "shortAnswer": "正规服务商的节假日促销通常是真实的，但需警惕用极低价格诱导购买多年套餐的操作，这可能是跑路前的大量变现行为。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1697,7 +1697,7 @@ export const questions = [
     "category": "安全与风险",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "大厂提供的免费试用通常是安全的，旨在让你测试线路连通性；但需注意不要在不知名的小网站随意输入真实个人隐私信息或直接绑定主卡支付。",
+    "shortAnswer": "大服务商的免费试用通常是安全的，旨在让用户测试线路质量。但不要在不知名网站输入个人信息或绑定主卡，注意试用结束后的自动续费规则。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1708,7 +1708,7 @@ export const questions = [
     "category": "使用场景",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "一元试用是非常好的测试手段，能让你在低成本下验证晚高峰速度、流媒体解锁和客户端兼容性。确认满意后再购买正式套餐是明智之举。",
+    "shortAnswer": "一元试用可以用低成本验证线路速度和连通性，确认满意后再购买正式套餐是合理的做法。但应注意绑定支付方式时的续费规则。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1719,7 +1719,7 @@ export const questions = [
     "category": "使用场景",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "防范风险的最佳手段是，目标网站（如 Netflix/ChatGPT）的风控机制在不断升级，所以不要过分迷信测速软件跑出来的瞬间峰值。",
+    "shortAnswer": "主要风险是泄露你的使用行为和出口 IP；对于有安全意识的用户，建议评估服务商的隐私政策，并避免在敏感场景下使用低信誉服务商。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1730,7 +1730,7 @@ export const questions = [
     "category": "使用场景",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "购买前需明确自己的需求（流量、延迟、协议），确认服务商是否支持你所用的客户端，并坚持“先试用或买月付测试”的原则，不要盲目冲年付。",
+    "shortAnswer": "明确使用场景和预算，确认服务商支持你所用的客户端，查看套餐说明和设备数限制，坚持先月付测试，不要因价格优惠直接购买年付。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1741,7 +1741,7 @@ export const questions = [
     "category": "新手入门",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "跑路指服务商突然关闭网站、断开服务器且切断所有联系方式，导致用户已付款的套餐无法继续使用。这是网络代理行业最大的风险之一。",
+    "shortAnswer": "跑路指服务商停止运营，关闭官网和服务器，停止响应用户请求，已付款的套餐无法继续使用，这是购买机场服务时最主要的风险之一。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1752,7 +1752,7 @@ export const questions = [
     "category": "安全与风险",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "无法百分百预测，但频繁更换域名、节点大量长时间掉线不修、疯狂推销极低价的多年份套餐、官方群组全体禁言等往往是跑路的高危信号。",
+    "shortAnswer": "无法百分百预测，但高危信号包括：域名频繁更换、节点长时间大量失效无修复、疯狂推销极低价多年套餐、官方渠道突然全部禁言。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1763,7 +1763,7 @@ export const questions = [
     "category": "故障排查",
     "intent": "troubleshooting",
     "priority": "P1",
-    "shortAnswer": "在实际操作中，优质的专线（IPLC/IEPL）能有效绕过公网拥堵，理解这一点，能帮你避开市面上 80% 的营销陷阱。",
+    "shortAnswer": "可能是域名被封锁或服务器临时故障。尝试换网络（4G/5G）、换 DNS（如 8.8.8.8）、访问备用官网，或在官方 Telegram 频道查看公告。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1774,7 +1774,7 @@ export const questions = [
     "category": "使用场景",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "如果要深究其原因，服务商是否超售直接影响了晚高峰的可用性，这也是与独立客户端的理由。",
+    "shortAnswer": "如果只是单次访问困难，多半是 DNS 问题或节点未连接；如果长期都打不开，建议更换节点地区、检查代理规则是否将该网站排除在外。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1785,7 +1785,7 @@ export const questions = [
     "category": "故障排查",
     "intent": "troubleshooting",
     "priority": "P1",
-    "shortAnswer": "首先登录服务商官网查看是否有故障公告；如果没有，尝试在客户端中更新订阅；如果官网也打不开，请尝试使用备用网络，或等待确认是否跑路。",
+    "shortAnswer": "先登录后台确认套餐状态，再在客户端中手动更新订阅；如官网也无法访问，到官方 Telegram 频道确认服务商是否发布了故障或域名更换公告。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1796,7 +1796,7 @@ export const questions = [
     "category": "使用场景",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "如果是节点被封锁，服务商通常会在几小时至几天内更换 IP 恢复服务。在此期间，你可以尝试更新订阅获取最新节点，或暂时使用其他备用服务。",
+    "shortAnswer": "节点被封通常是服务商的出口 IP 被针对性封锁。服务商通常会在几小时至几天内更换 IP，可尝试更新订阅获取新节点，或临时使用备用服务。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1807,7 +1807,7 @@ export const questions = [
     "category": "使用场景",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "服务商换域名是为了应对 DNS 污染或防火墙封锁。你需要通过关注官方邮件、Telegram 频道或本站导航页，获取最新备用域名，并重新登录更新订阅。",
+    "shortAnswer": "服务商换域名是为应对封锁，你需要通过官方 Telegram 频道或注册邮件获取最新备用域名，登录后台重新复制订阅链接更新即可。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1818,7 +1818,7 @@ export const questions = [
     "category": "使用场景",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "公告通常会发布在服务商官网的用户中心首页、绑定的官方 Telegram 频道，或者通过注册邮箱发送。强烈建议关注官方频道以获取一手信息。",
+    "shortAnswer": "公告通常发布在服务商官网用户中心首页、绑定的官方 Telegram 频道，或通过注册邮箱发送，建议关注官方频道以获取第一手信息。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1829,7 +1829,7 @@ export const questions = [
     "category": "使用场景",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "备用官网（防失联地址）用于在主域名被墙或被污染时，依然能让用户登录后台更新订阅或查看公告，是避免彻底失联的重要保障。",
+    "shortAnswer": "备用官网（防失联地址）用于在主域名被封时，仍能让用户登录后台更新订阅或查看公告，是避免彻底失联的重要保障。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1840,7 +1840,7 @@ export const questions = [
     "category": "新手入门",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "导航网站是一个收录各大服务商最新官网、备用地址及相关评测的目录平台，帮助用户在找不到服务商入口时快速恢复联系。",
+    "shortAnswer": "机场导航是收录代理服务商官网地址和基本信息的目录站，帮助用户在主域名被封时找到备用入口或新的服务商，是辅助找站的工具。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1851,7 +1851,7 @@ export const questions = [
     "category": "新手入门",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "最直接的解决办法是，客户端软件的版本与协议兼容性是关键，一旦遇到无解的报错，重置网络或重启设备往往有奇效。",
+    "shortAnswer": "梯子导航和机场导航功能类似，收录代理工具和服务商资源，侧重点可能更广，包括客户端下载、教程和服务商列表等内容。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1862,7 +1862,7 @@ export const questions = [
     "category": "机场选择",
     "intent": "commercial",
     "priority": "P1",
-    "shortAnswer": "值得注意的是，优质的专线（IPLC/IEPL）能有效绕过公网拥堵，所以不要过分迷信测速软件跑出来的瞬间峰值。",
+    "shortAnswer": "排行榜有参考价值，但要关注榜单的更新时间、评分依据是否透明，以及是否存在推广关系，不能只看排名顺序做决定。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1873,7 +1873,7 @@ export const questions = [
     "category": "机场选择",
     "intent": "commercial",
     "priority": "P1",
-    "shortAnswer": "天梯榜能反映服务商的综合实力和历史稳定性，有一定参考价值；但需警惕纯广告驱动的排名。最终是否好用仍需通过实际购买月付进行测试。",
+    "shortAnswer": "天梯榜反映历史口碑，可作为筛选参考，但服务商表现会变化，应结合近期用户评价和自己的月付测试结果做综合判断。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1884,7 +1884,7 @@ export const questions = [
     "category": "使用场景",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "最简单的判断标准是，订阅链接的及时更新能避免大部分连通性问题，这也凸显了。",
+    "shortAnswer": "建议综合看多个不同来源的榜单，关注其评测方法、更新时间和是否透明说明推广关系，不能依赖单一榜单做购买决定。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1895,7 +1895,7 @@ export const questions = [
     "category": "机场选择",
     "intent": "commercial",
     "priority": "P1",
-    "shortAnswer": "优秀的榜单应综合考量真实测速数据、节点专线比例、流媒体及 AI 解锁能力、历史跑路风险、售后响应速度以及套餐价格合理性等多个维度。",
+    "shortAnswer": "优质榜单应基于实测速度、线路类型、流媒体解锁、价格合理性和历史运营时长等维度，而非只依据赞助或流量排名。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1906,7 +1906,7 @@ export const questions = [
     "category": "使用场景",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "在目前的网络环境下，第三方防火墙的干扰往往是隐性因素，如果实在搞不懂，直接购买大厂的现成方案会更省心。",
+    "shortAnswer": "测评文章可以作为参考，但要核对文章发布时间、测试条件、是否有推广关系，并与服务商当前套餐页交叉验证，避免依赖过时数据。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1917,7 +1917,7 @@ export const questions = [
     "category": "机场选择",
     "intent": "commercial",
     "priority": "P1",
-    "shortAnswer": "值得注意的是，优质的专线（IPLC/IEPL）能有效绕过公网拥堵，这要求我们在使用时保持软件和配置的实时更新。",
+    "shortAnswer": "知乎回答质量差异大，有真实经验也有推广内容，建议查看回答日期、是否披露推广关系，并与服务商当前官网信息交叉核对。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1928,7 +1928,7 @@ export const questions = [
     "category": "机场选择",
     "intent": "commercial",
     "priority": "P1",
-    "shortAnswer": "GitHub 上的推荐有真实的开源评测，但也混杂着大量利用 SEO 霸屏的推广链接。建议交叉对比多方信息，不要盲目相信单一的排名和极度夸大的宣传。",
+    "shortAnswer": "GitHub 上的推荐有开源性，但也混有大量 SEO 导流链接，应核对更新时间、贡献者背景和数据来源，不能单一依赖某个仓库。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1939,7 +1939,7 @@ export const questions = [
     "category": "机场选择",
     "intent": "commercial",
     "priority": "P1",
-    "shortAnswer": "Reddit 上的真实用户讨论较多，参考价值较高，但由于用户分布全球，针对特定地区（如中国大陆）的网络环境推荐可能不一定完全适用，需甄别。",
+    "shortAnswer": "Reddit 用户讨论较真实，但用户分布全球，对大陆特定网络环境的推荐不一定适用，需甄别回答者的使用场景是否与你相符。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1950,7 +1950,7 @@ export const questions = [
     "category": "使用场景",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "对于绝大多数场景而言，本地 DNS 的解析准确度经常被忽视，如果实在搞不懂，直接购买大厂的现成方案会更省心。",
+    "shortAnswer": "两者都要关注，但长期使用通常更应重视稳定性。单次测速只反映某一时刻的速度，还需观察晚高峰波动、断线频率和本地网络下的实际体验。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1961,7 +1961,7 @@ export const questions = [
     "category": "使用场景",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "应综合考量：普通用户首看价格与日常可用性；重度游戏或视频用户则必须重点看线路质量（是否专线）及延迟稳定性。单一唯价格论容易踩坑。",
+    "shortAnswer": "两者都要关注，但长期使用通常更应重视稳定性。单次测速只反映某一时刻的速度，还需观察晚高峰波动、断线频率和本地网络下的实际体验。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1972,7 +1972,7 @@ export const questions = [
     "category": "机场选择",
     "intent": "commercial",
     "priority": "P1",
-    "shortAnswer": "常见的坑包括：超售严重导致晚高峰卡死、伪造专线（实为普通中转）、流媒体解锁频繁失效、跑路前疯狂促销，以及用虚假极速数据诱导购买长年付。",
+    "shortAnswer": "常见坑包括：受超低年付价格吸引导致跑路损失、轻信测速图忽略晚高峰表现、选了协议不兼容常用客户端的服务商。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1983,7 +1983,7 @@ export const questions = [
     "category": "新手入门",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "新手最容易犯的错：为了贪便宜一次性购买两年套餐结果商家跑路；不会配置客户端导致误以为节点全挂；以及盲目追求冷门小众服务商。",
+    "shortAnswer": "新手最常见的坑：为省钱一次购买年付结果商家跑路、不会配置客户端以为节点全挂、选了不支持常用客户端的服务商。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -1994,7 +1994,7 @@ export const questions = [
     "category": "套餐与价格",
     "intent": "commercial",
     "priority": "P1",
-    "shortAnswer": "套餐名字通常包含“基础/高级”、“流量限额（如100G）”、“是否含专线（IPLC）”或“设备数”。理解这些后缀能帮你快速定位符合自己预算和需求的档位。",
+    "shortAnswer": "套餐名通常包含流量额度（如 100G）、计费周期（月付/年付）、线路类型（专线/中转）和设备数，理解这些字段可以快速比较不同套餐。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2005,7 +2005,7 @@ export const questions = [
     "category": "新手入门",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "在线设备数指同一时间允许连接到该服务商节点的客户端数量。比如“限制3台设备”，即你只能同时在手机、电脑和平板上保持代理连接运行。",
+    "shortAnswer": "在线设备数指同一时间允许连接到该账号节点的客户端数量，超过限制可能被服务商系统自动断开，购买前应查看套餐说明。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2016,7 +2016,7 @@ export const questions = [
     "category": "使用场景",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "绝大多数服务商都会限制同时在线设备数量（通常在 3-5 台之间），以防止账号被恶意共享。超出限制可能会导致账号被系统自动封禁。",
+    "shortAnswer": "设备数限制因服务商和套餐而不同，有些允许 3 台，有些允许更多，也有不限制的套餐，购买前查看套餐说明是唯一准确的方式。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2027,7 +2027,7 @@ export const questions = [
     "category": "使用场景",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "一个常见误区是，优质的专线（IPLC/IEPL）能有效绕过公网拥堵，总之，没有绝对完美的网络，只有最适合自己预算的妥协。",
+    "shortAnswer": "是否可以多人共用取决于服务商的设备数限制和共享规则，有些套餐允许家庭共享，有些则会因设备超限触发封号，购买前查看套餐说明。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2038,7 +2038,7 @@ export const questions = [
     "category": "安全与风险",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "非常不安全。共享账号极易导致同时连接设备数超出限制，从而触发系统自动封号机制；同时，这也可能暴露你的真实使用 IP 或账号隐私。",
+    "shortAnswer": "非常不建议，超出设备数会触发封号，且账号可能暴露订阅配置。是否允许家庭共享，应以服务商的套餐说明和账号规则为准。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2049,7 +2049,7 @@ export const questions = [
     "category": "新手入门",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "被封号的常见原因包括：同时在线设备数超过套餐限制、将账号公开分享、使用节点进行 BT 下载侵权内容，或利用节点进行违反当地法律的活动。",
+    "shortAnswer": "常见原因包括：同时在线设备数超出限制、订阅链接被多人使用、使用节点进行违规操作，或触发了服务商的防滥用检测规则。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2060,7 +2060,7 @@ export const questions = [
     "category": "使用场景",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "绝对不可以。订阅链接包含你的专属身份凭证（如 UUID），分享给他人会导致设备数超限并被封号。如果链接已泄露，请立即前往后台重置。",
+    "shortAnswer": "不建议随意分享。订阅链接包含你的账号配置，泄露后他人可用你的流量；是否允许家庭共享以服务商的账号和设备规则为准。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2071,7 +2071,7 @@ export const questions = [
     "category": "客户端",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "目前绝大多数主流服务商都支持输出 Clash 兼容的 YAML 配置格式，完全可以导入 Clash Verge Rev 使用，这也是当前 PC 端最主流的方案之一。",
+    "shortAnswer": "需要确认服务商是否提供 Clash/Mihomo 可读取的订阅格式，而不是仅凭机场这个名称判断，购买前以服务商当前帮助文档为准。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2082,7 +2082,7 @@ export const questions = [
     "category": "客户端",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "Clash Meta（现更名为 Mihomo）是目前最强大的开源内核，几乎所有支持标准 Clash 订阅的服务商节点都能在基于该内核的客户端上正常运行。",
+    "shortAnswer": "Clash Meta 已更名为 Mihomo，绝大多数提供 YAML 格式订阅的服务商节点都可导入使用，建议直接询问服务商或查看其导入教程。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2093,7 +2093,7 @@ export const questions = [
     "category": "客户端",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "Mihomo（原 Clash Meta）内核兼容性极佳，支持包括 Vless、Trojan 在内的绝大多数协议，大部分主流服务商的订阅都可以直接导入使用。",
+    "shortAnswer": "Mihomo（原 Clash Meta）的兼容性较广，大多数主流协议都支持，购买前确认服务商是否提供 Mihomo/Clash 格式的订阅链接或配置文件。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2104,7 +2104,7 @@ export const questions = [
     "category": "客户端",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "Shadowrocket（小火箭）兼容市面上几乎所有的主流代理协议。绝大多数服务商都在后台提供一键导入小火箭的专属按钮或链接，非常方便。",
+    "shortAnswer": "购买前确认服务商是否提供 Shadowrocket 一键导入链接或 SS/Vmess/Trojan 协议支持，不是所有服务商都明确标注了 iOS 兼容说明。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2115,7 +2115,7 @@ export const questions = [
     "category": "客户端",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "如果要深究其原因，单一依赖某个地区的节点容易在关键时刻掉线，因此在确认购买前，仔细阅读商家的服务条款（TOS）很重要。",
+    "shortAnswer": "购买前确认服务商是否提供 Quantumult X 格式的节点资源，或其订阅格式是否可通过 Quantumult X 的引用功能正常解析。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2126,7 +2126,7 @@ export const questions = [
     "category": "客户端",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "Surge 是 Mac/iOS 上的高端网络工具。部分服务商提供原生的 Surge 托管配置，没有提供的也可通过第三方订阅转换工具将通用链接转为 Surge 格式。",
+    "shortAnswer": "Surge 的订阅格式较特殊，建议询问服务商是否提供 Surge 托管配置，或通过第三方工具将通用订阅转换为 Surge 可用格式后导入。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2137,7 +2137,7 @@ export const questions = [
     "category": "客户端",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "Stash 被称为 iOS 上的 Clash，原生支持导入 Clash 格式的 YAML 订阅配置文件，因此只要服务商支持 Clash，就基本完美兼容 Stash。",
+    "shortAnswer": "Stash 原生支持 Clash 格式订阅，确认服务商提供标准 Clash YAML 格式即可，导入方式与 Clash 客户端基本相同。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2148,7 +2148,7 @@ export const questions = [
     "category": "客户端",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "这背后反映出，复杂的路由分流规则对新手的学习成本较高，对于新手来说，跟着官方的图文教程一步步走是最省时的。",
+    "shortAnswer": "确认服务商是否提供 v2rayN 支持的格式（Vmess、Trojan 等），或通用订阅链接能否被 v2rayN 正常识别并更新。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2159,7 +2159,7 @@ export const questions = [
     "category": "客户端",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "v2rayNG 是 Android 端非常普及的客户端，只要服务商提供 v2ray (Vmess/Vless) 或通用订阅链接，就可以直接复制导入并正常使用。",
+    "shortAnswer": "v2rayNG 支持大多数主流协议，购买前确认服务商提供的订阅格式是否能被 v2rayNG 正常解析，或询问官方是否有 Android 使用教程。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2170,7 +2170,7 @@ export const questions = [
     "category": "客户端",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "通常情况下，设备系统时间的准确性是 TLS 握手成功的前提，合理的预期管理能让你在使用这些工具时少很多烦恼。",
+    "shortAnswer": "sing-box 的配置格式较特殊，购买前确认服务商是否提供 sing-box 格式的配置文件或订阅链接，不是所有机场都支持 sing-box 格式输出。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2181,7 +2181,7 @@ export const questions = [
     "category": "客户端",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "Hiddify 是一款跨平台的免配置客户端，支持解析通用订阅链接及各类新型协议。大部分提供通用 V2ray 订阅的服务商都能兼容导入。",
+    "shortAnswer": "Hiddify 支持多种协议，购买前确认服务商是否提供通用格式订阅链接（V2ray/Xray），并查看服务商帮助页面的 Hiddify 导入教程。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2192,7 +2192,7 @@ export const questions = [
     "category": "新手入门",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "“代理”是一种网络转发技术；而“机场”则是将这些代理技术（如 Shadowsocks、Vmess）商业化、规模化，提供多个节点订阅套餐的服务提供商。",
+    "shortAnswer": "代理是一种网络转发技术，机场则是将代理协议商业化、提供多节点订阅套餐的服务商，可以把机场理解为代理服务的集成销售方。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2203,7 +2203,7 @@ export const questions = [
     "category": "新手入门",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "从技术角度来看，单一依赖某个地区的节点容易在关键时刻掉线，因此，日常浏览和高强度下载最好使用不同的节点策略。",
+    "shortAnswer": "机场指提供订阅服务的服务商；节点订阅则是你购买后获得的配置资源本身，可以通过链接导入客户端使用，两者是包含关系。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2214,7 +2214,7 @@ export const questions = [
     "category": "新手入门",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "服务商负责在云端搭建服务器并生成“订阅链接”；代理软件（如 Clash、Shadowrocket）则是安装在你设备上的工具，用于解析链接并接管本地流量。",
+    "shortAnswer": "服务商负责提供节点服务器和订阅链接；代理软件（如 Clash、Shadowrocket）安装在你的设备上，负责读取链接并接管本地网络流量。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2225,7 +2225,7 @@ export const questions = [
     "category": "使用场景",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "不一定。自己搭建需要购买 VPS、掌握 Linux 命令并自行维护防封锁策略，学习成本高；而购买现成服务则开箱即用，省时省力但需承担跑路风险。",
+    "shortAnswer": "不需要自己搭建。机场服务已包含服务器和节点配置，用户只需购买套餐并在客户端中导入订阅链接，不需要有任何技术基础。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2236,7 +2236,7 @@ export const questions = [
     "category": "线路与节点",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "自建节点适合有一定技术基础、追求绝对隐私或固定独享 IP 的极客；买现成服务适合追求多地区节点、低延迟游戏专线以及不想折腾的普通用户。",
+    "shortAnswer": "自建节点适合有 Linux 基础、注重隐私或需要独享 IP 的用户；买现成服务更适合需要多地区节点、不愿折腾运维的普通用户。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2247,7 +2247,7 @@ export const questions = [
     "category": "机场选择",
     "intent": "commercial",
     "priority": "P1",
-    "shortAnswer": "非常适合。外贸用户需要稳定的网络来访问 Google、WhatsApp 并维护社媒账号，推荐选择提供高质量静态 IP 或原生 IP 的服务商以防账号被风控。",
+    "shortAnswer": "可以。外贸用户通常需要访问 Google 工作套件、WhatsApp 等工具，选择时注意节点稳定性和 IP 纯净度，以免影响账号正常使用。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2258,7 +2258,7 @@ export const questions = [
     "category": "机场选择",
     "intent": "commercial",
     "priority": "P1",
-    "shortAnswer": "留学生可以使用服务商提供的回国节点访问国内专属版权内容（如网易云、B站），或者在出国前配置好设备以保持与国内家人的顺畅联络。",
+    "shortAnswer": "可以。留学生可以用于回国访问国内内容，或在出国前配置好设备保持与家人的联系，建议选支持多设备的套餐。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2269,7 +2269,7 @@ export const questions = [
     "category": "机场选择",
     "intent": "commercial",
     "priority": "P1",
-    "shortAnswer": "程序员不仅需要快速查阅 GitHub、StackOverflow，还常需要稳定的网络拉取依赖包，建议选择速度快、无审计拦截的优质专线服务以提高工作效率。",
+    "shortAnswer": "可以。程序员常需访问 GitHub、文档资源和拉取依赖包，建议选速度稳定、带宽充足的服务，以免影响工作效率。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2280,7 +2280,7 @@ export const questions = [
     "category": "机场选择",
     "intent": "commercial",
     "priority": "P1",
-    "shortAnswer": "跨境电商（如 Amazon、TikTok 运营）对 IP 的纯净度和固定性要求极高。普通大流量节点极易导致店铺被封，建议选择专属的独立原生静态 IP 方案。",
+    "shortAnswer": "跨境电商对 IP 纯净度和一致性要求很高，普通大流量节点可能触发平台风控。建议提前向服务商确认 IP 类型，并在实际操作前测试。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2291,7 +2291,7 @@ export const questions = [
     "category": "机场选择",
     "intent": "commercial",
     "priority": "P1",
-    "shortAnswer": "刷短视频（尤其是 TikTok）需要带宽大且延迟较低的网络，同时要求 IP 没有被平台拉黑。建议选择明确标有“流媒体解锁”或“TikTok可用”的节点。",
+    "shortAnswer": "可以用于访问 TikTok 等短视频平台，但平台对 IP 有检测机制，需要服务商节点本身未被标记。建议在购买前确认服务商是否明确说明支持。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2302,7 +2302,7 @@ export const questions = [
     "category": "流媒体",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "看 Netflix/Disney+ 等流媒体需要稳定的大带宽和特定地区的解锁能力，购买前务必确认服务商是否原生支持解锁并具备足够的流量套餐（4K极耗流量）。",
+    "shortAnswer": "可以，但流媒体解锁能力因服务商、节点地区和 IP 状态不同而有差异。购买前确认是否提供解锁说明，或先以月付小流量测试。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2313,7 +2313,7 @@ export const questions = [
     "category": "机场选择",
     "intent": "commercial",
     "priority": "P1",
-    "shortAnswer": "打游戏对延迟和丢包率要求极其苛刻。普通的直连或中转网络很难满足竞技游戏需求，强烈建议选择具备 IPLC/IEPL 国际专线的顶级服务商。",
+    "shortAnswer": "可以，但游戏对延迟和稳定性要求高，建议选有专线线路的服务商，并在实际游戏中测试节点表现，而不是只看测速图。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2324,7 +2324,7 @@ export const questions = [
     "category": "使用场景",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "最直接的解决办法是，路由器级别的底层代理能接管全屋设备的流量，因此多关注相关技术社区的最新动态是有好处的。",
+    "shortAnswer": "可以，但不建议长期作为主要上网方式，应根据需求选择套餐，并了解流量限制和设备数规定，避免超额触发限制。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2335,7 +2335,7 @@ export const questions = [
     "category": "线路与节点",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "防范风险的最佳手段是，本地 DNS 的解析准确度经常被忽视，所以切忌盲目追求绝对的低价或夸张的宣传。",
+    "shortAnswer": "不一定。低延迟表示到达节点的速度快，但如果节点带宽有限或被超售，下载速度依然会很慢。实际体验还取决于带宽和丢包情况。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2346,7 +2346,7 @@ export const questions = [
     "category": "使用场景",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "速度快说明带宽充足，但不等于稳定。如果在晚高峰频繁掉线、丢包或受到防火墙严重干扰，即使单次测速高达 1000M 也会极大影响实际体验。",
+    "shortAnswer": "速度快说明带宽足够，但稳定性还要看晚高峰表现、丢包率和断线频率。单次测速高不代表全天候使用都流畅。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2357,7 +2357,7 @@ export const questions = [
     "category": "新手入门",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "对于绝大多数场景而言，设备系统时间的准确性是 TLS 握手成功的前提，必要时可以直接联系官方客服获取技术支持。",
+    "shortAnswer": "丢包是指发出的数据包未能到达目标，通常表现为网页加载卡住、视频频繁缓冲或游戏掉帧，丢包率高通常意味着线路不稳定。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2368,7 +2368,7 @@ export const questions = [
     "category": "故障排查",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "测速图只能反映某一个时刻的带宽峰值，不能代表全天候表现。最准确的方法是观察晚高峰（21:00左右）观看 YouTube 4K 的加载速度和实际掉线频率。",
+    "shortAnswer": "最准确的方式是在晚高峰时段观察实际使用体验（如 YouTube 4K 的加载速度），单次测速图只能反映某一时刻的峰值，不能代表日常表现。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2379,7 +2379,7 @@ export const questions = [
     "category": "线路与节点",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "核心的考量因素在于，目标网站（如 Netflix/ChatGPT）的风控机制在不断升级，所以不要过分迷信测速软件跑出来的瞬间峰值。",
+    "shortAnswer": "测速软件可以作为参考，但单次结果受测试时间、本地网络和服务器状态影响，不能代表全天候的实际体验，尤其是晚高峰时段。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2390,7 +2390,7 @@ export const questions = [
     "category": "线路与节点",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "最简单的判断标准是，订阅链接的及时更新能避免大部分连通性问题，所以准备两到三家不同上游的备用服务是非常明智的。",
+    "shortAnswer": "测速工具通常使用多线程测试最大带宽，而实际使用（如浏览、视频）是单线程或特定协议请求，两者测量对象不同，结果差距是正常的。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2401,7 +2401,7 @@ export const questions = [
     "category": "套餐与价格",
     "intent": "commercial",
     "priority": "P1",
-    "shortAnswer": "对比套餐应清晰列出：月付价格基准、月度流量额度、限制在线设备数、是否包含专线线路，以及是否提供原生 IP 等差异化特性，避免纯价格比拼。",
+    "shortAnswer": "推荐页面应列出月付价格基准、流量额度、线路类型、设备数限制等核心参数对比，帮助用户做横向比较，避免只靠广告标语判断。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2412,7 +2412,7 @@ export const questions = [
     "category": "使用场景",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "品牌页应重点介绍：成立年份（衡量跑路风险）、核心线路类型（直连/中转/专线）、支付方式、是否有退款政策以及实际的流媒体解锁表现。",
+    "shortAnswer": "品牌页应提供成立时长、线路类型、套餐价格结构、支持的客户端、客服联系方式等实际可核对信息，避免只堆营销语言。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2423,7 +2423,7 @@ export const questions = [
     "category": "使用场景",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "防范假冒官网的最佳方式是：不要轻信搜索引擎中的广告链接，尽量从官方的 Telegram 频道、有信誉的评测导航网站或原始注册邮件中获取入口。",
+    "shortAnswer": "不要轻信搜索引擎广告结果，建议通过官方 Telegram 频道、原始注册邮件或可信导航站核对当前官网地址。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2434,7 +2434,7 @@ export const questions = [
     "category": "使用场景",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "通常情况下，优质的专线（IPLC/IEPL）能有效绕过公网拥堵，总之，没有绝对完美的网络，只有最适合自己预算的妥协。",
+    "shortAnswer": "机场 Emoji 常用于社区帖子和 Telegram 中表示节点服务，属于用户约定俗成的记号，没有行业标准用法。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2445,7 +2445,7 @@ export const questions = [
     "category": "使用场景",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "一个常见误区是，套餐的流量倍率规则决定了实际消耗，理解这一点，能帮你避开市面上 80% 的营销陷阱。",
+    "shortAnswer": "比较表应基于可核实的参数，如月付价格、流量额度、线路类型和设备数，不要加入无法核实的稳定性评分或主观描述。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2456,7 +2456,7 @@ export const questions = [
     "category": "使用场景",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "这也是为什么，免费或极度廉价的公共节点往往伴随着隐私泄露隐患，如果条件允许，尝试切换不同的网络环境（如 5G）往往能快速定位症结。",
+    "shortAnswer": "品牌评分目前没有行业统一标准。如果网站展示评分，应说明评分依据，否则不具参考价值，用户更应关注可核实的实际参数。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2467,7 +2467,7 @@ export const questions = [
     "category": "客户端",
     "intent": "commercial",
     "priority": "P1",
-    "shortAnswer": "更新推荐时必须移除已跑路或频繁宕机的品牌，重新评估剩余品牌的晚高峰表现与价格变动，并补充经过数月测试确认稳定的新起之秀。",
+    "shortAnswer": "更新推荐需要移除已跑路品牌，核对套餐价格是否变化，重新评估晚高峰稳定性，并补充经测试的新品牌，不能只靠旧数据维护。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2478,7 +2478,7 @@ export const questions = [
     "category": "使用场景",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "在实际操作中，服务商是否超售直接影响了晚高峰的可用性，这也是为什么月付套餐在当下越来越受推崇的原因。",
+    "shortAnswer": "机场问答页应围绕用户实际遇到的问题，包括如何导入订阅、常见故障排查、套餐选择逻辑、客户端兼容性等，避免堆砌关键词。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2489,7 +2489,7 @@ export const questions = [
     "category": "使用场景",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "落地页应解答该品牌是否值得买、真实价格与流量、客户端兼容性、是否支持 Netflix 等特定需求，以及提供最新的备用网址或优惠码信息。",
+    "shortAnswer": "落地页应说明该品牌的核心套餐价格、线路类型、支持的客户端、购买方式和备用官网，帮助用户快速判断是否适合自己。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2500,7 +2500,7 @@ export const questions = [
     "category": "新手入门",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "解决此问题的捷径是，目标网站（如 Netflix/ChatGPT）的风控机制在不断升级，总之，没有绝对完美的网络，只有最适合自己预算的妥协。",
+    "shortAnswer": "通常指当某个服务商跑路或停服后，给出功能相似的备选服务商建议，供用户平滑切换，而不是只说换一家。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2511,7 +2511,7 @@ export const questions = [
     "category": "故障排查",
     "intent": "troubleshooting",
     "priority": "P1",
-    "shortAnswer": "从性价比的角度出发，路由器级别的底层代理能接管全屋设备的流量，因此多关注相关技术社区的最新动态是有好处的。",
+    "shortAnswer": "如果是节点被封，可先尝试更新订阅换节点；如果是服务商暂时宕机，可临时启用备用订阅；建议日常维护一个月付备用服务商。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2522,7 +2522,7 @@ export const questions = [
     "category": "安全与风险",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "发现跑路后请立即停止当前代理，更换设备上的所有订阅链接防泄露，并在可靠导航站寻找新的备用服务商，切记吸取教训后续只买月付。",
+    "shortAnswer": "跑路后先停止使用该服务商，更换设备上的所有订阅链接，并在可信渠道找到备用服务商快速恢复上网，之后吸取教训控制单次充值金额。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2533,7 +2533,7 @@ export const questions = [
     "category": "使用场景",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "应收录各大服务商的最新可用备用网址、官方 Telegram 频道链接、最新的优惠活动、以及帮助用户排除连接故障的新手教程与防失联指南。",
+    "shortAnswer": "机场导航页应收录各服务商的最新可用官网和备用地址，帮助用户在主域名被封时找到服务入口，同时提供基础评测参考。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2544,7 +2544,7 @@ export const questions = [
     "category": "机场选择",
     "intent": "commercial",
     "priority": "P1",
-    "shortAnswer": "为了获得最佳体验，服务商是否超售直接影响了晚高峰的可用性，这也是与独立客户端的理由。",
+    "shortAnswer": "梯子推荐页应解答什么是梯子、如何选择、各类工具的区别，以及购买注意事项，并说明推荐与广告的关系，帮助用户做自主判断。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2555,7 +2555,7 @@ export const questions = [
     "category": "机场选择",
     "intent": "commercial",
     "priority": "P1",
-    "shortAnswer": "推荐页应说明工具适用平台、配置难度、订阅方式、线路兼容性和常见故障，并区分教程型工具与网络服务，避免只堆下载链接或广告。",
+    "shortAnswer": "推荐页应说明工具适用平台、配置难度、订阅方式和常见兼容问题，区分代理软件本身与网络服务的区别，避免只堆下载链接。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2566,7 +2566,7 @@ export const questions = [
     "category": "机场选择",
     "intent": "commercial",
     "priority": "P1",
-    "shortAnswer": "内容应聚焦于各平台主流代理软件（如 Clash、Shadowrocket 等）的优缺点对比、安装指引和防坑建议，强调软件本身并不自带免费节点的常识。",
+    "shortAnswer": "内容应重点介绍各平台主流代理客户端的特点和配置方式，说明软件本身不含免费节点，并提供基本安装与导入教程。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2577,7 +2577,7 @@ export const questions = [
     "category": "使用场景",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "应说明优惠码适用套餐范围、折扣比例、有效期限、是否限新用户，以及是否可与周期折扣叠加，并提示最终价格应以服务商结算页为准。",
+    "shortAnswer": "应说明优惠码适用范围、有效期、是否限新用户，以及最终价格以服务商结算页为准，避免用户因促销信息产生误解。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2588,7 +2588,7 @@ export const questions = [
     "category": "使用场景",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "必须讲清试用时长、流量限制、是否需要绑定支付方式或手机号验证，同时提醒用户不要在不知名的小型试用网站泄露过多的个人隐私信息。",
+    "shortAnswer": "应说明试用时长、流量限制、是否需要绑定支付方式，以及试用结束后的自动续费规则，帮助用户在了解条件后再决定。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2599,7 +2599,7 @@ export const questions = [
     "category": "套餐与价格",
     "intent": "commercial",
     "priority": "P1",
-    "shortAnswer": "重点解答按量计费不过期的真实含义、适用人群（低频备用）、节点单价是否有倍率溢价，以及服务商倒闭导致长期余额作废的潜在风险。",
+    "shortAnswer": "应解释按量计费的实际规则（流量不过期，用完再充）、适合人群，以及余额在服务商关闭时可能无法退款的风险，帮助用户理性决策。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2610,7 +2610,7 @@ export const questions = [
     "category": "套餐与价格",
     "intent": "commercial",
     "priority": "P1",
-    "shortAnswer": "必须明确指出低价背后可能隐藏的晚高峰卡顿、无专线保障、无售后等缺陷，建议用户不要盲目购买年付，并提供经过筛选的月付可用名单。",
+    "shortAnswer": "便宜推荐页应说明低价服务可能的局限（晚高峰稳定性、无专线保障），建议月付测试，并以可核实的套餐数据为基础，避免只展示最低价排行。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2621,7 +2621,7 @@ export const questions = [
     "category": "机场选择",
     "intent": "commercial",
     "priority": "P1",
-    "shortAnswer": "这背后反映出，服务商是否超售直接影响了晚高峰的可用性，一旦遇到无解的报错，重置网络或重启设备往往有奇效。",
+    "shortAnswer": "稳定性推荐页应说明稳定性难以单次测速判断的原因，列出可观察指标（如晚高峰波动、丢包频率），以及建议用户先试用再决定。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2632,7 +2632,7 @@ export const questions = [
     "category": "线路与节点",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "从性价比的角度出发，按量计费套餐是作为主力挂掉时的最佳备用方案，因此多关注相关技术社区的最新动态是有好处的。",
+    "shortAnswer": "应解释专线的技术优势（低延迟、高稳定性）和使用场景，说明为何通常比普通中转贵，并帮助用户判断是否真的需要专线。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2643,7 +2643,7 @@ export const questions = [
     "category": "客户端",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "页面需要重点提示用户在购买前确认该服务商是否提供标准兼容的 YAML 格式订阅，是否支持一键导入，以及客户端版本的更新维护情况。",
+    "shortAnswer": "应涵盖如何确认服务商支持 Clash/Mihomo 格式、一键导入方法、常见配置问题，以及如何判断订阅链接是否兼容。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2654,7 +2654,7 @@ export const questions = [
     "category": "客户端",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "需要明确服务商是否支持 SS/Vmess/Trojan 等协议的一键导入功能，是否提供美区 Apple ID 获取指引，以及针对 iOS 环境的专门配置教程。",
+    "shortAnswer": "应包含如何确认服务商支持 Shadowrocket 导入格式、订阅类型的区别、常见导入失败原因，以及 iOS 系统的特殊注意事项。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2665,7 +2665,7 @@ export const questions = [
     "category": "机场选择",
     "intent": "commercial",
     "priority": "P1",
-    "shortAnswer": "最简单的判断标准是，本地 DNS 的解析准确度经常被忽视，所以切忌盲目追求绝对的低价或夸张的宣传。",
+    "shortAnswer": "梯子推荐页面应解答当前主流代理工具类型、各客户端的区别与适用场景，以及如何结合网络需求选择合适的工具和订阅服务。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2676,7 +2676,7 @@ export const questions = [
     "category": "机场选择",
     "intent": "commercial",
     "priority": "P1",
-    "shortAnswer": "应总结 2026 年防火墙封锁趋势，指出专线与冷门协议的优势，并提供按预算分类、注重流媒体与 AI 解锁的最新优质品牌对比表与选购逻辑。",
+    "shortAnswer": "应提供按场景分类的选购逻辑（流媒体/游戏/日常/AI），列出关键参数对比，并说明 2026 年的线路趋势和常见购买误区。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2687,7 +2687,7 @@ export const questions = [
     "category": "故障排查",
     "intent": "troubleshooting",
     "priority": "P1",
-    "shortAnswer": "面对这种情况，优质的专线（IPLC/IEPL）能有效绕过公网拥堵，所以不要过分迷信测速软件跑出来的瞬间峰值。",
+    "shortAnswer": "可能是套餐到期、流量用完、订阅链接失效、系统时间不准，或本地网络 DNS 异常。按这个顺序逐一检查，通常能快速定位原因。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2698,7 +2698,7 @@ export const questions = [
     "category": "故障排查",
     "intent": "troubleshooting",
     "priority": "P1",
-    "shortAnswer": "先检查订阅链接是否仍有效，再关闭系统代理尝试更新；如果浏览器也打不开订阅地址，可重新从服务商后台复制备用链接，并检查 DNS 与系统时间。",
+    "shortAnswer": "先确认订阅链接是否有效，暂时关闭系统代理后重新尝试更新，如仍失败则返回服务商后台重新复制备用订阅链接，并检查本地 DNS。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2709,7 +2709,7 @@ export const questions = [
     "category": "故障排查",
     "intent": "troubleshooting",
     "priority": "P1",
-    "shortAnswer": "提示错误往往是因为网络不通或链接已重置。请先暂时关闭当前的代理软件连接，使用直连网络刷新订阅，或确认套餐未过期且链接复制完整。",
+    "shortAnswer": "提示错误通常是 URL 失效或当前网络无法访问订阅服务器。先关闭现有代理连接，换用直连网络，或重新从服务商后台获取最新订阅地址。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2720,7 +2720,7 @@ export const questions = [
     "category": "客户端",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "通常是因为路由策略冲突或 DNS 被污染。请尝试将代理模式切换为“全局(Global)”或开启“TUN 模式”测试，若仍不行，请检查浏览器是否安装了代理插件拦截。",
+    "shortAnswer": "先检查是否开启了系统代理，再尝试切换到全局（Global）模式排除规则问题，如还不行可开启 TUN 模式让 Clash 接管全部流量。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2731,7 +2731,7 @@ export const questions = [
     "category": "客户端",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "在实际操作中，订阅链接的及时更新能避免大部分连通性问题，这也凸显了。",
+    "shortAnswer": "可能是订阅没有成功下载，或配置文件为空。检查订阅链接是否有效，在 Profiles 页面重新导入，下载成功后选中配置即可出现节点。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2742,7 +2742,7 @@ export const questions = [
     "category": "故障排查",
     "intent": "troubleshooting",
     "priority": "P1",
-    "shortAnswer": "可能是配置文件格式不兼容或本地网络无法下载。请检查链接是否为标准的 Clash 订阅格式，并尝试在软件中“重启内核”或进入设置刷新配置目录。",
+    "shortAnswer": "可能是配置文件格式不兼容或订阅下载失败。检查链接是否为标准 Clash YAML 格式，尝试在 Profiles 页面删除后重新添加，或重启内核。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2753,7 +2753,7 @@ export const questions = [
     "category": "新手入门",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "Clash Verge Rev 是图形化外壳，而 Mihomo 是它底层运行的核心（原 Meta 内核）。Verge 依赖 Mihomo 强大的协议解析能力来实现顺畅的网络接管。",
+    "shortAnswer": "Clash Verge Rev 是一个图形界面（GUI）客户端，Mihomo 是其底层运行的代理内核（原名 Clash Meta），二者是界面与引擎的关系。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2764,7 +2764,7 @@ export const questions = [
     "category": "故障排查",
     "intent": "troubleshooting",
     "priority": "P1",
-    "shortAnswer": "通常情况下，系统的代理开关状态决定了流量的走向，这也凸显了。",
+    "shortAnswer": "测试节点可连通但连接失败可能是协议参数错误或节点已限速。尝试切换其他节点，确认订阅已更新至最新版本，再检查 TUN 模式是否冲突。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2775,7 +2775,7 @@ export const questions = [
     "category": "故障排查",
     "intent": "troubleshooting",
     "priority": "P1",
-    "shortAnswer": "检查套餐是否到期，尝试向右滑动订阅项并点击“更新”；若仍失败，请关闭所有代理，登录官网重新复制订阅链接或使用移动数据网络重试。",
+    "shortAnswer": "确认链接是否有效，关闭 VPN 后右滑订阅点击更新，若仍失败则登录后台重新复制订阅链接，并检查手机是否有其他代理软件干扰。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2786,7 +2786,7 @@ export const questions = [
     "category": "客户端",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "最简单的判断标准是，系统的代理开关状态决定了流量的走向，所以切忌盲目追求绝对的低价或夸张的宣传。",
+    "shortAnswer": "URL 无效通常是链接复制不完整或包含多余空格，重新从服务商后台复制完整链接，粘贴时注意不要截断后再试一次。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2797,7 +2797,7 @@ export const questions = [
     "category": "故障排查",
     "intent": "troubleshooting",
     "priority": "P1",
-    "shortAnswer": "连接成功仅代表本地开启了 VPN 图标，不代表远端节点通畅。请在首页点击“连通性测试(Ping)”，如果节点全部超时，说明节点不可用或套餐已过期。",
+    "shortAnswer": "连接成功只表示本地代理已启动，如打不开网页说明节点未正常工作或规则阻止了请求。建议开启全局模式后测试，或切换其他节点。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2808,7 +2808,7 @@ export const questions = [
     "category": "客户端",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "Shadowrocket 目前仅在非中国大陆区的 App Store 上架。你需要准备或借用一个美区或港区的 Apple ID，登录商店后付费（约 2.99 美元）下载安装。",
+    "shortAnswer": "Shadowrocket 只在非大陆区 App Store 上架，需要注册或切换到境外 Apple ID（如美区）后，在商店搜索购买，费用约 2.99 美元。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2819,7 +2819,7 @@ export const questions = [
     "category": "故障排查",
     "intent": "troubleshooting",
     "priority": "P1",
-    "shortAnswer": "理论上讲，本地 DNS 的解析准确度经常被忽视，这也凸显了。",
+    "shortAnswer": "检查订阅是否更新成功，确认套餐未过期，查看系统时间是否准确；如以上都没问题，尝试切换协议或联系服务商确认节点状态。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2830,7 +2830,7 @@ export const questions = [
     "category": "故障排查",
     "intent": "troubleshooting",
     "priority": "P1",
-    "shortAnswer": "请检查右下角系统托盘中的时间是否准确，V2ray 协议对时间误差极为敏感；同时，可尝试关闭系统代理后重新点击“更新订阅”或更换网络环境。",
+    "shortAnswer": "检查网络是否能访问订阅域名（可先关闭代理），确认 v2rayN 中的订阅地址没有被修改，尝试重新从后台复制最新链接替换原有地址。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2841,7 +2841,7 @@ export const questions = [
     "category": "故障排查",
     "intent": "troubleshooting",
     "priority": "P1",
-    "shortAnswer": "说明节点成功下载，但未接管本地流量。请确认底部状态栏的系统代理设置已勾选为“自动配置系统代理”，并在节点列表回车选中某个具体节点。",
+    "shortAnswer": "有节点但打不开网页通常是系统代理未开启。检查 v2rayN 托盘图标是否已勾选自动配置系统代理，并确认选中了一个具体节点（而非 auto）。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2852,7 +2852,7 @@ export const questions = [
     "category": "故障排查",
     "intent": "troubleshooting",
     "priority": "P1",
-    "shortAnswer": "防范风险的最佳手段是，服务商是否超售直接影响了晚高峰的可用性，一旦遇到无解的报错，重置网络或重启设备往往有奇效。",
+    "shortAnswer": "可能是 Wi-Fi 路由器的 DNS 设置或防火墙规则与代理冲突。尝试将路由器 DNS 修改为 114.114.114.114 或 8.8.8.8，再重新测试。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2863,7 +2863,7 @@ export const questions = [
     "category": "故障排查",
     "intent": "troubleshooting",
     "priority": "P1",
-    "shortAnswer": "这通常是因为本地 Wi-Fi 路由器的 DNS 设置被污染，或者光猫内置了反诈拦截策略。可尝试在手机或路由器上将 DNS 修改为 223.5.5.5 或 8.8.8.8。",
+    "shortAnswer": "可能是运营商对 DNS 的特殊处理或 Wi-Fi 环境的 DNS 污染。尝试在手机网络设置中将 DNS 改为 223.5.5.5 或 8.8.8.8，或切换客户端的 DNS 模式。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2874,7 +2874,7 @@ export const questions = [
     "category": "故障排查",
     "intent": "troubleshooting",
     "priority": "P1",
-    "shortAnswer": "当客户端提示 DNS 解析失败时，请关闭系统代理，刷新配置并清除浏览器缓存；也可尝试在软件的进阶设置中，将本地及远程 DNS 修改为公共可靠节点。",
+    "shortAnswer": "先在客户端中清除 DNS 缓存或重启代理服务，检查本地 DNS 设置是否被污染，也可以尝试在客户端高级设置中切换到可靠的远程 DNS 服务。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2885,7 +2885,7 @@ export const questions = [
     "category": "线路与节点",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "测速 Ping 值低只代表节点物理距离近（如香港），如果服务器带宽极小或被严重超售，实际传输数据时就会严重拥堵，导致测速好看但实际使用卡顿。",
+    "shortAnswer": "低延迟说明网络往返快，但节点的实际带宽可能已被超售或限速，导致数据传输速率极低，让人感觉延迟低但就是卡。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2896,7 +2896,7 @@ export const questions = [
     "category": "线路与节点",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "测速软件通常使用的是多线程、大并发的瞬时测试，而实际浏览网页或看视频依赖持续稳定的单线程数据流。如果线路缺乏专线保障，实际体验就会很差。",
+    "shortAnswer": "测速通常使用并发多线程，而实际使用是单连接流量，晚高峰时节点带宽被多用户共享，测速结果高但实际体验卡是正常现象。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2907,7 +2907,7 @@ export const questions = [
     "category": "故障排查",
     "intent": "troubleshooting",
     "priority": "P1",
-    "shortAnswer": "解决此问题的捷径是，单一依赖某个地区的节点容易在关键时刻掉线，因此，日常浏览和高强度下载最好使用不同的节点策略。",
+    "shortAnswer": "Google 的检测机制较严格，节点 IP 可能已被标记。尝试切换到其他节点，或切换代理模式为全局，确认代理确实接管了对 Google 的请求。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2918,7 +2918,7 @@ export const questions = [
     "category": "故障排查",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "这通常说明节点可以翻墙，但对应的 IP 已经被 Google/YouTube 识别并拉黑，或者流媒体解锁服务宕机。建议更换其他冷门节点再试。",
+    "shortAnswer": "节点本身可连通但 YouTube 打不开，可能是节点 IP 已被 Google 拉黑，或代理规则将 YouTube 排除在外。尝试切换节点或开启全局模式。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2929,7 +2929,7 @@ export const questions = [
     "category": "故障排查",
     "intent": "troubleshooting",
     "priority": "P1",
-    "shortAnswer": "在具体配置时，按量计费套餐是作为主力挂掉时的最佳备用方案，因此多关注相关技术社区的最新动态是有好处的。",
+    "shortAnswer": "先确认套餐状态和订阅有效性，登录服务商后台查看是否有故障公告；如果官网也打不开，到 Telegram 频道确认服务商是否发布了维护通知。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2940,7 +2940,7 @@ export const questions = [
     "category": "AI 工具",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "\"Unsupported country\"通常指 OpenAI 检测到当前出口 IP 不在其支持地区名单内。需要切换至美国、日本等官方支持地区的节点，并清除浏览器缓存后重试。",
+    "shortAnswer": "Unsupported country 表示当前出口 IP 不在 OpenAI 支持地区列表内，需切换至美国、日本等支持地区节点，清除浏览器 Cookie 后重试。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2951,7 +2951,7 @@ export const questions = [
     "category": "AI 工具",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "ChatGPT 会缓存并记录你之前尝试失败的 IP 或指纹信息。请彻底清理浏览器 Cookie、更换浏览器无痕模式，并确保新节点是专门的 AI 解锁节点。",
+    "shortAnswer": "ChatGPT 可能记住了之前的风控状态，需清除浏览器 Cookie 和缓存，切换到不同支持地区节点（如换美国其他节点），再用无痕模式重新访问。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2962,7 +2962,7 @@ export const questions = [
     "category": "AI 工具",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "推荐使用美国、日本、新加坡、英国等 OpenAI 官方明确支持的国家节点；同时，尽量避免使用廉价且被万人骑的共享 IP，以降低被风控拒绝的概率。",
+    "shortAnswer": "建议使用美国、日本、英国、新加坡等在 OpenAI 明确支持列表内的地区节点，且节点 IP 应尽量干净、未被大量用户共用。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2973,7 +2973,7 @@ export const questions = [
     "category": "AI 工具",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "面对这种情况，复杂的路由分流规则对新手的学习成本较高，对于新手来说，跟着官方的图文教程一步步走是最省时的。",
+    "shortAnswer": "有一定关系。若节点 IP 被 OpenAI 检测为代理，可能触发登录状态失效。建议使用干净的固定节点，避免频繁切换 IP 造成账号异常。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2984,7 +2984,7 @@ export const questions = [
     "category": "AI 工具",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "Claude 的风控标准比 ChatGPT 更为严苛。普通节点基本都会被封锁，必须购买提供高质量纯净原生 IP 或专门声明解锁 Claude 的高阶服务套餐。",
+    "shortAnswer": "Claude 的 IP 检测比 ChatGPT 更严，普通节点通常无法使用。建议选择服务商标注为 Claude 可用的节点，或咨询服务商哪些节点支持访问。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -2995,7 +2995,7 @@ export const questions = [
     "category": "故障排查",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "Gemini 同样依赖干净的 IP 和支持地区。如果更换节点后依然打不开，请清理浏览器缓存，并确保使用的节点所在地区属于 Google 允许使用 AI 服务的列表。",
+    "shortAnswer": "Gemini 需要符合支持地区的干净 IP，IP 被风控后换节点可能仍无效。尝试清除浏览器 Cookie 和缓存，换用不同地区节点，并确认该地区在支持列表内。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -3006,7 +3006,7 @@ export const questions = [
     "category": "流媒体",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "看到\"你似乎使用了代理或 VPN\"提示时，尝试更换服务商提供的\"流媒体专用节点\"，该类节点会使用未被 Netflix 列入黑名单的干净出口 IP。",
+    "shortAnswer": "看到代理检测提示说明当前节点 IP 已被 Netflix 标记。建议切换到服务商标注的流媒体解锁节点，并避免使用普通大众节点。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -3017,7 +3017,7 @@ export const questions = [
     "category": "流媒体",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "在众多选择中，优质的专线（IPLC/IEPL）能有效绕过公网拥堵，这要求我们在使用时保持软件和配置的实时更新。",
+    "shortAnswer": "能打开但无法播放内容，通常说明节点可访问 Netflix 服务器，但该节点 IP 无法通过内容解锁验证，需更换服务商标注的解锁节点。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -3028,7 +3028,7 @@ export const questions = [
     "category": "流媒体",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "在具体配置时，优质的专线（IPLC/IEPL）能有效绕过公网拥堵，所以不要过分迷信测速软件跑出来的瞬间峰值。",
+    "shortAnswer": "不同节点使用不同的出口 IP，平台会逐个 IP 进行解锁授权和检测，因此同一服务商下不同节点的解锁能力可能不同，这是正常现象。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -3039,7 +3039,7 @@ export const questions = [
     "category": "流媒体",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "Netflix 4K 画质大约消耗 7GB 流量/小时。如果每天观看一小时，一个月至少需要 200GB 纯流媒体流量，此时普通小流量套餐将完全不够用。",
+    "shortAnswer": "Netflix 4K 画质约消耗 7GB/小时，一个月若每天看 1 小时 4K，需要约 200GB 流量；不同画质消耗差异较大，HD 约 3GB/小时。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -3050,7 +3050,7 @@ export const questions = [
     "category": "流媒体",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "YouTube 1080P 视频每小时大约消耗 1.5GB 流量。如果你每天刷一两个小时视频，建议至少购买 100GB 或以上的月度套餐以防超额断网。",
+    "shortAnswer": "YouTube 1080P 每小时约消耗 1.5~2GB，具体取决于视频码率和平台自动调整的画质设定。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -3061,7 +3061,7 @@ export const questions = [
     "category": "流媒体",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "这也是为什么，目标网站（如 Netflix/ChatGPT）的风控机制在不断升级，理解这一点，能帮你避开市面上 80% 的营销陷阱。",
+    "shortAnswer": "YouTube 4K 每小时约消耗 5~7GB，码率较高的视频可能更多。4K 视频同时对节点带宽要求也较高，选择大带宽节点效果更好。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -3072,7 +3072,7 @@ export const questions = [
     "category": "套餐与价格",
     "intent": "commercial",
     "priority": "P1",
-    "shortAnswer": "续费通常只延长套餐有效期，流量重置日期可能仍按原账期计算。不同服务商规则不同，应查看套餐说明或后台的下一次重置时间。",
+    "shortAnswer": "续费只延长套餐有效期，流量重置日期取决于服务商规则（通常按账期重置而不是按续费日期），查看后台的下次重置时间确认。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -3083,7 +3083,7 @@ export const questions = [
     "category": "套餐与价格",
     "intent": "commercial",
     "priority": "P1",
-    "shortAnswer": "后台续费后，本地客户端并不会自动知道状态更新。你必须在代理软件中手动点击“更新订阅”，拉取最新的到期时间和有效节点列表后才能正常使用。",
+    "shortAnswer": "续费后客户端不会自动刷新状态，需要手动在代理软件中点击更新订阅，拉取最新的有效期和节点信息，否则显示仍会是旧的过期状态。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -3094,7 +3094,7 @@ export const questions = [
     "category": "新手入门",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "从性价比的角度出发，订阅链接的及时更新能避免大部分连通性问题，这也凸显了。",
+    "shortAnswer": "套餐到期是账户有效期结束，即使流量还有剩余也无法使用；流量用完是额度耗尽，即使套餐未到期也会断网，两者触发机制不同。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -3105,7 +3105,7 @@ export const questions = [
     "category": "安全与风险",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "泄露会导致他人使用你的流量，并且多设备同时在线极易触发商家的“防滥用封禁机制”，导致你的账号被直接永久封停。泄露后请立即在后台重置。",
+    "shortAnswer": "订阅链接泄露后，他人可以使用你的流量额度，超出设备限制还可能导致封号。应立即登录服务商后台重置订阅链接，让旧链接失效。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -3116,7 +3116,7 @@ export const questions = [
     "category": "使用场景",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "通常套餐会严格限制 3-5 台设备同时在线。这指的是同时发包连接的设备数，如果只是安装但不开启代理，则不受影响。请勿将账号公开共享。",
+    "shortAnswer": "是否允许多人共用取决于服务商的账号设备数限制和共享规则，有些套餐允许家庭共享，有些则会因设备超限触发封号，购买前确认说明。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -3127,7 +3127,7 @@ export const questions = [
     "category": "安全与风险",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "最常见原因：同时在线设备数超出限制、分享订阅给多人、使用节点进行 BT 违规下载、触发审计规则拦截，或利用付款漏洞恶意白嫖退款。",
+    "shortAnswer": "常见封号原因：同时在线设备数超限、订阅被多人共用、使用节点进行违规行为（如 BT 下载），或触发了服务商的防滥用检测机制。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -3138,7 +3138,7 @@ export const questions = [
     "category": "使用场景",
     "intent": "informational",
     "priority": "P1",
-    "shortAnswer": "很多平价服务商客服团队极小，工单可能需要数天才回复。请耐心等待，同时可尝试去官方 Telegram 群组寻求群管帮助；如果长期无果则准备备用方案。",
+    "shortAnswer": "先查看服务商是否有工单超时说明，可以尝试通过官方 Telegram 频道寻求帮助；如果长期无回复，评估是否需要启用备用服务商。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -3149,7 +3149,7 @@ export const questions = [
     "category": "故障排查",
     "intent": "troubleshooting",
     "priority": "P1",
-    "shortAnswer": "不能立刻断定，可能是遭受 DDoS 攻击或域名被墙。请查看官方 Telegram 频道是否有维护公告，并尝试使用备用网络或访问官方提供的最新防失联导航。",
+    "shortAnswer": "不一定是跑路，也可能是域名被封锁或服务器故障。先到官方 Telegram 频道查公告，确认 48 小时以上无任何通知且联系方式全部中断，再做判断。",
     "relatedArticles": [],
     "relatedQuestions": []
   },
@@ -3160,7 +3160,7 @@ export const questions = [
     "category": "客户端",
     "intent": "INFORMATIONAL",
     "priority": "P1",
-    "shortAnswer": "TUN 模式可以在网卡层级接管所有流量，因此常被称为全局代理，但具体仍受路由规则控制。",
+    "shortAnswer": "TUN 和全局模式是两个不同维度。TUN 是流量接管方式（接管所有网络栈），全局/规则是路由策略（决定哪些流量走代理），可以同时开启也可分别使用。",
     "searchAliases": [
       "tun模式是全局模式吗",
       "什么是tun模式",
@@ -3177,7 +3177,7 @@ export const questions = [
     "category": "客户端",
     "intent": "INFORMATIONAL",
     "priority": "P1",
-    "shortAnswer": "Verge 采用了更现代的 Tauri 架构且支持 Meta(Mihomo) 内核，功能更强大，目前 CFW 已停止维护，推荐使用 Verge。",
+    "shortAnswer": "Clash Verge Rev 基于 Mihomo 内核开发，功能更丰富，且持续维护；Clash for Windows 已停止更新，功能老旧，建议迁移到 Clash Verge Rev 使用。",
     "searchAliases": [
       "clash verge和clash for windows区别",
       "clash verge与clash for windows区别",
@@ -3192,7 +3192,7 @@ export const questions = [
     "category": "客户端",
     "intent": "INFORMATIONAL",
     "priority": "P1",
-    "shortAnswer": "Sing-box 是一个更轻量、跨平台且支持更多新协议（如 VLESS Reality）的新一代核心，Clash 生态则更成熟且拥有丰富的图形界面。",
+    "shortAnswer": "Sing-box 是更底层的通用代理内核，协议支持广泛但配置门槛较高；Clash（Mihomo）有更完善的图形界面生态，对普通用户更友好。",
     "searchAliases": [
       "sing box clash 对比",
       "clash meta 和 sing-box",
@@ -3207,7 +3207,7 @@ export const questions = [
     "category": "客户端",
     "intent": "HOW_TO",
     "priority": "P2",
-    "shortAnswer": "Sing-box 采用纯 JSON 格式配置，重点在于配置入站(inbounds)、出站(outbounds)和路由规则(route)，建议利用图形化客户端自动生成。",
+    "shortAnswer": "sing-box 的配置使用 JSON 格式，需要手动指定入站、出站、路由规则等字段。可以从官方文档或社区的模板配置入手，逐步修改适配自己的需求。",
     "searchAliases": [
       "sing-box 配置",
       "sing-box用的config.json配置如何编写",
@@ -3223,7 +3223,7 @@ export const questions = [
     "category": "选购指南",
     "intent": "INFORMATIONAL",
     "priority": "P2",
-    "shortAnswer": "极低价机场通常存在超售严重、晚高峰卡顿和高跑路风险，不适合作为主力，仅推荐作为临时备用。",
+    "shortAnswer": "一元套餐通常是试用性质，用于验证线路速度和稳定性，好不好用需要自己在实际使用场景中测试，不能代表正式套餐的完整体验。",
     "searchAliases": [
       "一元机场好用吗",
       "两块钱机场推荐 clash",
@@ -3238,7 +3238,7 @@ export const questions = [
     "category": "线路与节点",
     "intent": "INFORMATIONAL",
     "priority": "P2",
-    "shortAnswer": "通常用于特定东南亚服游戏加速或注册限制区域的当地流媒体和业务账号，日常较少使用。",
+    "shortAnswer": "菲律宾节点适合在菲律宾工作、旅游或访问本地内容的用户，也适合外服游戏或业务测试场景。购买前确认服务商是否实际提供菲律宾节点。",
     "searchAliases": [
       "菲律宾节点机场",
       "菲律宾节点",
