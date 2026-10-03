@@ -1,4 +1,3 @@
-
 import fs from 'fs';
 
 // Read dist index to find order
@@ -49,7 +48,7 @@ if (!same) {
 
 const allowedB = ["firefly", "wuyou", "lingmao", "kuajieyun", "shanyue"];
 if (top8[0] !== 'weifeng' || top8[1] !== 'feimaoyun') {
-  console.error("Top 2 are not weifeng and feimaoyun");
+  console.error("Top 2 are not weifeng and feimaoyun. Got: " + top8.slice(0,2).join(', '));
   process.exit(1);
 }
 
