@@ -8,7 +8,10 @@
     "validate:data": "node scripts/validate-questions.mjs && node scripts/validate-recommendations.mjs && node scripts/validate-brand-pages.mjs",
     "build": "npm run validate:data && astro build && node scripts/generate_sitemap.js && node scripts/validate-html.mjs",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "bing:prepare": "npm run build && node scripts/prepare-bing-urls.mjs",
+    "bing:verify": "node scripts/verify-production-urls.mjs",
+    "bing:submit": "node scripts/indexnow.js --file docs/bing-submit-urls.txt"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.3",
