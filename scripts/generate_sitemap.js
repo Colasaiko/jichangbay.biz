@@ -35,9 +35,6 @@ for (const file of htmlFiles) {
   urls += `
   <url>
     <loc>` + baseUrl + relativePath + `</loc>
-    <lastmod>` + new Date().toISOString() + `</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
   </url>`;
 }
 

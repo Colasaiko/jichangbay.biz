@@ -3,7 +3,7 @@ import path from 'path';
 import { XMLParser } from 'fast-xml-parser';
 
 const host = 'jichangbay.biz';
-const keyFile = fs.readdirSync('public').find(f => f.match(/^[a-f0-9]{32}\\.txt$/));
+const keyFile = fs.readdirSync('public').find(f => f.match(/^[a-f0-9]{32}\.txt$/));
 const key = keyFile ? keyFile.replace('.txt', '') : 'd4f6084c763cc9357919b4793fb84c3d';
 const keyLocation = 'https://' + host + '/' + key + '.txt';
 
@@ -21,7 +21,7 @@ async function submitIndexNow() {
         lines.forEach(u => urls.add(u));
       } else {
         console.error('File not found:', fileArg);
-        return;
+        process.exit(1);
       }
     } else {
       const files = fs.readdirSync('dist').filter(f => f.startsWith('sitemap') && f.endsWith('.xml'));
@@ -70,8 +70,13 @@ async function submitIndexNow() {
     console.log("合法 URL: " + urlList.length);
     console.log("检查 key: " + keyLocation);
 
-    if (urlList.length === 0) return;
+    if (urlList.length === 0) {
+      console.log("\nINDEXNOW_BOOTSTRAP = PASS");
+      process.exit(0);
+    }
 
+    let hasError = false;
+    
     // Batch processing
     const batchSize = 100;
     for (let i = 0; i < urlList.length; i += batchSize) {
@@ -95,11 +100,22 @@ async function submitIndexNow() {
 
       console.log("HTTP 状态: " + response.status);
       if (!response.ok) {
+        hasError = true;
         console.error('IndexNow Error:', await response.text());
       }
     }
+    
+    if (hasError) {
+      console.log("\nINDEXNOW_BOOTSTRAP = FAIL");
+      process.exit(1);
+    } else {
+      console.log("\nINDEXNOW_BOOTSTRAP = PASS");
+      process.exit(0);
+    }
   } catch (err) {
     console.error('IndexNow Submission Failed:', err);
+    console.log("\nINDEXNOW_BOOTSTRAP = FAIL");
+    process.exit(1);
   }
 }
 
